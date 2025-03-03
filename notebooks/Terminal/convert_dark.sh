@@ -13,6 +13,6 @@ OUTPUT_NAME="${NOTEBOOK%.ipynb}_dark.html"
 jupyter nbconvert --to html --template classic --output "$OUTPUT_NAME" "$NOTEBOOK"
 
 # Inject dark mode CSS into the HTML file
-sed -i '' 's#</head>#<link rel="stylesheet" type="text/css" href="dark_theme.css"></head>#g' "$OUTPUT_NAME"
+sed -i '' 's#</head>#<link rel="stylesheet" type="text/css" href="../../dark_theme.css"></head>#g' "$OUTPUT_NAME"
 
 echo "✅ Converted $NOTEBOOK to dark mode: $OUTPUT_NAME"

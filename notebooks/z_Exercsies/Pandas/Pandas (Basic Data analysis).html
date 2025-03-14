@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GitHub_Terminal</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Pandas (Basic Data analysis)</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,123 +7510,307 @@ a.anchor-link {
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b72317b-d508-4d19-b511-2ee6311b097f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a17ae945-fae3-4146-ae64-3289c1f0c88b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Home-Page"><a href="https://brolo231.github.io/Learning-Notebooks/">Home Page</a><a class="anchor-link" href="#Home-Page">¶</a></h1>
+<h1 id="Pandas-Exercises-(Basics-for-data-analysis)">Pandas Exercises (Basics for data analysis)<a class="anchor-link" href="#Pandas-Exercises-(Basics-for-data-analysis)">¶</a></h1><h2 id="%F0%9F%93%8C-Sample-Dataset-(CSV)">📌 Sample Dataset (CSV)<a class="anchor-link" href="#%F0%9F%93%8C-Sample-Dataset-(CSV)">¶</a></h2>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cf0ada9-1d3d-420f-99cb-8a3d9db66775">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3f09e952-12ed-4a52-827b-205eda4e4d0e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GitHub-&amp;-Git">GitHub &amp; Git<a class="anchor-link" href="#GitHub-&amp;-Git">¶</a></h1><p>Git is a local version control system that tracks changes in files on your computer.</p>
-<h4 id="If-you-havent-already-installed-Git,-install-it:">If you havent already installed Git, install it:<a class="anchor-link" href="#If-you-havent-already-installed-Git,-install-it:">¶</a></h4><pre><code>• Linux (Debian-based): sudo apt install git
-• Mac: brew install git
-• Windows: Download and install Git for Windows
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-</code></pre>
-<h4 id="Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">Configure Git with your details to ensure commits are linked to GitHub<a class="anchor-link" href="#Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">¶</a></h4><p><code>git config --global user.name "Your Name"</code> <br/>
-<code>git config --global user.email "your_email@example.com"</code></p>
+<span class="c1"># Sample sales dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Order_ID"</span><span class="p">:</span> <span class="p">[</span><span class="mi">101</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span>
+    <span class="s2">"Customer"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"Charlie"</span><span class="p">,</span> <span class="s2">"David"</span><span class="p">,</span> <span class="s2">"Eve"</span><span class="p">,</span> <span class="s2">"Frank"</span><span class="p">,</span> <span class="s2">"Grace"</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"Charlie"</span><span class="p">],</span>
+    <span class="s2">"Category"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Electronics"</span><span class="p">,</span> <span class="s2">"Furniture"</span><span class="p">,</span> <span class="s2">"Electronics"</span><span class="p">,</span> <span class="s2">"Clothing"</span><span class="p">,</span> <span class="s2">"Furniture"</span><span class="p">,</span> 
+                 <span class="s2">"Clothing"</span><span class="p">,</span> <span class="s2">"Electronics"</span><span class="p">,</span> <span class="s2">"Furniture"</span><span class="p">,</span> <span class="s2">"Clothing"</span><span class="p">,</span> <span class="s2">"Electronics"</span><span class="p">],</span>
+    <span class="s2">"Product"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Laptop"</span><span class="p">,</span> <span class="s2">"Chair"</span><span class="p">,</span> <span class="s2">"Phone"</span><span class="p">,</span> <span class="s2">"Shirt"</span><span class="p">,</span> <span class="s2">"Table"</span><span class="p">,</span> <span class="s2">"Shoes"</span><span class="p">,</span> <span class="s2">"Headphones"</span><span class="p">,</span> <span class="s2">"Sofa"</span><span class="p">,</span> <span class="s2">"Jacket"</span><span class="p">,</span> <span class="s2">"Tablet"</span><span class="p">],</span>
+    <span class="s2">"Quantity"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">"Price_per_unit"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+    <span class="s2">"Date"</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">([</span><span class="s2">"2024-03-01"</span><span class="p">,</span> <span class="s2">"2024-03-02"</span><span class="p">,</span> <span class="s2">"2024-03-03"</span><span class="p">,</span> <span class="s2">"2024-03-04"</span><span class="p">,</span> 
+                             <span class="s2">"2024-03-05"</span><span class="p">,</span> <span class="s2">"2024-03-06"</span><span class="p">,</span> <span class="s2">"2024-03-07"</span><span class="p">,</span> <span class="s2">"2024-03-08"</span><span class="p">,</span> 
+                             <span class="s2">"2024-03-09"</span><span class="p">,</span> <span class="s2">"2024-03-10"</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"sales_data.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d8107e-edf9-40c2-b74b-01ab1e061a68">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b8b247b-dfea-414a-b5a5-bcacf1a364d1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GitHub-CLI">GitHub CLI<a class="anchor-link" href="#GitHub-CLI">¶</a></h1><h4 id="The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">The easiest way to interact with GitHub from the terminal is by using the GitHub CLI.<a class="anchor-link" href="#The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">¶</a></h4><p>Ubuntu/Debian: <code>sudo apt install gh</code> <br/>
-Mac (homebrew): <code>brew install gh</code> <br/>
-Windows: Download from GitHub CLI website</p>
-<h4 id="Authenticate-GitHub-CLI:">Authenticate GitHub CLI:<a class="anchor-link" href="#Authenticate-GitHub-CLI:">¶</a></h4><p><code>gh auth login</code></p>
+<h3 id="%F0%9F%94%B9-Exercises">🔹 Exercises<a class="anchor-link" href="#%F0%9F%94%B9-Exercises">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e351bc58-0ccc-459a-9d1c-3a871ed69018">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0cd404b-d8aa-46e6-a641-d253c5468a48">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-List-your-repositories">1. List your repositories<a class="anchor-link" href="#1.-List-your-repositories">¶</a></h2><p><code>gh repo list</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=576bec11-1a0b-4198-8491-4f1566c21fcb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Check-to-see-if-you're-inside-a-git-repo">2. Check to see if you're inside a git repo<a class="anchor-link" href="#2.-Check-to-see-if-you're-inside-a-git-repo">¶</a></h2><p><code>git status</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3987bb2b-dd55-4b81-b2a3-77c9b5f7ef81">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Navigate-to-repo-by-cd-into">3. Navigate to repo by cd into<a class="anchor-link" href="#3.-Navigate-to-repo-by-cd-into">¶</a></h2><p><code>cd /path/to/repository</code></p>
-<h4 id="Then-we-can-use-tree--a-to-list-the-full-directory-structure">Then we can use tree -a to list the full directory structure<a class="anchor-link" href="#Then-we-can-use-tree--a-to-list-the-full-directory-structure">¶</a></h4><p><code>tree -a</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9264e1cd-9106-436f-832e-e7fb4721a044">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Create-a-repository-from-the-terminal">4. Create a repository from the terminal<a class="anchor-link" href="#4.-Create-a-repository-from-the-terminal">¶</a></h2><ol>
-<li><p>Create a Local Repository <br/>
-<code>mkdir my-new-repo</code> # Create a new folder <br/>
-<code>cd my-new-repo</code> # Navigate into the folder <br/>
-<code>git init</code> # Initialize Git in this folder</p>
-</li>
-<li><p>Add files and make initial commit <br/>
-<code>echo "# My New Repository" &gt;&gt; README.md</code> # Create a README file <br/>
-<code>git add .</code> # Stage all files <br/>
-<code>git commit -m "Initial commit"</code> # Commit the files</p>
-</li>
-<li><p>Create a GitHub Repository from Terminal <br/>
-<code>gh repo create my-new-repo --public --source=. --remote=origin</code> <br/>
-     	• --public → Creates a public repository (use --private for private repos). <br/>
-     	• --source=. → Uses the current directory as the repo. <br/>
-     	• --remote=origin → Adds GitHub as a remote repository.</p>
-</li>
-<li><p>Verify remote URL <br/>
-<code>git remote -v</code> <br/>
-     # This tells us what repository our local git is linked to</p>
-</li>
+<ol>
+<li>Load the dataset <br/>
+ •	Read the dataset from sales_data.csv and display the first 5 rows.</li>
 </ol>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3ee94266-9557-4308-b5f6-7c37d3086845">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4626fc0-3dfb-4d96-91ee-61deabe56002">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b5647bbf-a497-47ed-ba07-b8a4ffb4079c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Push-code-to-github">5. Push code to github<a class="anchor-link" href="#5.-Push-code-to-github">¶</a></h2><p><code>git branch -M main</code> # Rename default branch to 'main' (optional) <br/>
-<code>git push -u origin main</code> # Push the repo to GitHub</p>
+<ol start="2">
+<li>Add a new column for total sales <br/>
+ •	Create a new column Total_Sales by multiplying Quantity with Price_per_unit.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3718fc5f-e636-4445-8430-bad13734a5c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=89e57ffc-5e09-4ab3-9578-a516084e54b4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="3">
+<li>Filter data <br/>
+ •	Find all sales where the Total_Sales is greater than 500.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7db54e46-71fc-42e2-9dce-e4f9ae7bf22d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0af13de-4ee8-47fb-91f2-247e5feb965e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="4">
+<li>Find the most purchased category <br/>
+ •	Identify which Category has the highest total quantity sold.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=50b23eed-e4b5-4d2e-9705-5f8e61119dcc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5228ca39-6e14-46ea-b90d-c0f15861cc24">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="5">
+<li>Find the top 2 customers with the highest total spending <br/>
+ •	Group by Customer, sum the Total_Sales, and display the top 2 spenders.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4f11f7ca-cf9d-43f6-a7d4-eb1e4c721af9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1140245b-4080-4da6-bb51-78181ddaa0f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="6">
+<li>Find the most expensive item sold <br/>
+ •	Identify the item with the highest Price_per_unit.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3050f941-f47a-44f1-a71b-8fd0c02861ed">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44b195a6-dd76-4f6a-adfb-278b92b36ab1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="7">
+<li>Add a discount column <br/>
+ •	Create a new column Discounted_Price where a 10% discount is applied if the Quantity purchased is more than 1.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=23234033-ea6d-4ae8-a6c9-b1dfac3c8d2c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=464f7617-a4f4-4b80-b984-e38dd5bc773c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="8">
+<li>Find daily total sales <br/>
+ •	Group by Date and find the total sales per day.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=58dfa0dc-27f2-47c4-93ed-e077316c1bbe">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7cb95d2d-9c44-4509-bc46-c8d10f22dcf6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="9">
+<li>Pivot Table Analysis <br/>
+ •	Create a pivot table showing total sales by Category and Customer.</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8b9b6002-3c3f-44d9-99e6-6bd2bab3e63e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

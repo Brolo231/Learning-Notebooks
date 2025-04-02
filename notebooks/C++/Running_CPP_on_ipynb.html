@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Python_Data_Structures</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Running_CPP_on_ipynb</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,209 +7510,31 @@ a.anchor-link {
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0e97599a-f37e-4df5-8cfb-e32ad3f85664">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8633e9e-ea6e-4538-b1bd-399d765e8de1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Lists,-Tuples,-Dictionaries,-and-Sets:-What-Are-They?">Lists, Tuples, Dictionaries, and Sets: What Are They?<a class="anchor-link" href="#Lists,-Tuples,-Dictionaries,-and-Sets:-What-Are-They?">¶</a></h1><p>These are data structures in Python, specifically built-in collections used to store and manage groups of data efficiently. 
-They each serve different purposes based on their properties.</p>
-<p><strong>Quick overview:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>List (<code>list</code>)</th>
-<th>Tuple (<code>tuple</code>)</th>
-<th>Dictionary (<code>dict</code>)</th>
-<th>Set (<code>set</code>)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Ordered?</strong></td>
-<td>✅ Yes</td>
-<td>✅ Yes</td>
-<td>❌ No (before Python 3.7), ✅ Yes (Python 3.7+)</td>
-<td>❌ No</td>
-</tr>
-<tr>
-<td><strong>Mutable?</strong></td>
-<td>✅ Yes</td>
-<td>❌ No</td>
-<td>✅ Yes</td>
-<td>✅ Yes</td>
-</tr>
-<tr>
-<td><strong>Allows Duplicates?</strong></td>
-<td>✅ Yes</td>
-<td>✅ Yes</td>
-<td>❌ No (keys must be unique)</td>
-<td>❌ No</td>
-</tr>
-<tr>
-<td><strong>Indexing Supported?</strong></td>
-<td>✅ Yes</td>
-<td>✅ Yes</td>
-<td>❌ No (keys instead of index)</td>
-<td>❌ No</td>
-</tr>
-<tr>
-<td><strong>Best For</strong></td>
-<td>Dynamic collections</td>
-<td>Fixed data</td>
-<td>Key-value storage</td>
-<td>Unique values</td>
-</tr>
-</tbody>
-</table>
-<h2 id="List%5B%5D"><code>List[]</code><a class="anchor-link" href="#List%5B%5D">¶</a></h2><p>A list is an ordered, mutable (changeable) collection of elements. It allows duplicate values and can store different data types.</p>
-<ul>
-<li>What do we mean by <strong>ordered</strong>? This means that elements maintain their position/order. If it was not ordered and we repeatedly printed the list, the order of the elemnts would be different each time.</li>
-</ul>
-<h3 id="Useful-Use-Cases:">Useful Use Cases:<a class="anchor-link" href="#Useful-Use-Cases:">¶</a></h3><p>✅ Dynamic collections – When you need to store an ordered sequence of items that might change. <br/>
-✅ Storing records – E.g., a list of student names or user input. <br/>
-✅ Stack/Queue operations – Lists support .append() (push) and .pop() (pop).</p>
+<h1 id="Working-with-C++-on-notebooks">Working with C++ on notebooks<a class="anchor-link" href="#Working-with-C++-on-notebooks">¶</a></h1><h3 id="The-following-will-create-a-cpp-file-called-hello-and-write-the-below-code-into-it:">The following will create a cpp file called hello and write the below code into it:<a class="anchor-link" href="#The-following-will-create-a-cpp-file-called-hello-and-write-the-below-code-into-it:">¶</a></h3><h4 id="Note:-The-issue-with-the-following-method-is-that-when-the-below-structure-is-executed,-the-file-will-be-created-and-written,-and-each-rerun-will-overide-the-file-and-rewrite-it.">Note: The issue with the following method is that when the below structure is executed, the file will be created and written, and each rerun will overide the file and rewrite it.<a class="anchor-link" href="#Note:-The-issue-with-the-following-method-is-that-when-the-below-structure-is-executed,-the-file-will-be-created-and-written,-and-each-rerun-will-overide-the-file-and-rewrite-it.">¶</a></h4>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=21b446e0-7e54-4d1c-902b-021fa056913e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bdddb4d2-dab5-4712-b1f0-f12959e19016">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a list</span>
-<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"hello"</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>  <span class="c1"># Lists can store different data types</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> hello.cpp
+<span class="c1">#include &lt;iostream&gt;</span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span class="c1"># Accessing elements</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 1 (indexing starts from 0)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 5 (last element)</span>
-
-<span class="c1"># Modifying list</span>
-<span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>  <span class="c1"># Adds element at the end</span>
-<span class="n">numbers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Removes first occurrence of 3</span>
-<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>    <span class="c1"># Change second element to 99</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>  <span class="c1"># [1, 99, 4, 5, 6]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1
-5
-[1, 99, 4, 5, 6]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=23709815-b5bc-4f76-baa8-b5f654b96d2f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Tuple()"><code>Tuple()</code><a class="anchor-link" href="#Tuple()">¶</a></h2><p>A tuple is an ordered, immutable (unchangeable) collection of elements. It allows duplicate values and is often used for fixed data.</p>
-<h3 id="Useful-Use-Cases:">Useful Use Cases:<a class="anchor-link" href="#Useful-Use-Cases:">¶</a></h3><p>✅ Fixed data – When you don’t want values to change (e.g., GPS coordinates, settings). <br/>
-✅ Dictionary keys – Tuples can be used as dictionary keys (lists cannot). <br/>
-✅ Returning multiple values from a function:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=293e19e6-e704-4779-ade0-d094c4123d89">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a tuple</span>
-<span class="n">coordinates</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="mf">20.8</span><span class="p">)</span>
-<span class="n">user_data</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"John"</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">"Engineer"</span><span class="p">)</span>
-
-<span class="c1"># Accessing elements</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 10.5</span>
-
-<span class="c1"># Tuples are immutable, so this will cause an error:</span>
-<span class="c1"># coordinates[0] = 15  ❌ TypeError</span>
-
-<span class="c1"># Tuple unpacking</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">coordinates</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># 10.5, 20.8</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>10.5
-10.5 20.8
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0a2c697c-40d5-4c95-9c68-74ac1d6f3abe">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Dictionaries-Dict%7B%7D"><code>Dictionaries Dict{}</code><a class="anchor-link" href="#Dictionaries-Dict%7B%7D">¶</a></h2><p>A dictionary is an unordered, mutable collection of key-value pairs. Each key is unique.</p>
-<h3 id="Useful-Use-Cases:">Useful Use Cases:<a class="anchor-link" href="#Useful-Use-Cases:">¶</a></h3><p>✅ Fast lookups – Retrieving values using keys (O(1) complexity). <br/>
-✅ JSON-like data storage – API responses and config files often use dictionaries. <br/>
-✅ Counting occurrences:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f2440bbf-dcff-479b-b577-4cf11560cbd2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a dictionary</span>
-<span class="n">student</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Alice"</span><span class="p">,</span>
-    <span class="s2">"age"</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
-    <span class="s2">"major"</span><span class="p">:</span> <span class="s2">"Computer Science"</span>
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">"Hello world"</span><span class="p">;</span>
 <span class="p">}</span>
-
-<span class="c1"># Accessing values</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>  <span class="c1"># Alice</span>
-
-<span class="c1"># Modifying dictionary</span>
-<span class="n">student</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>  <span class="c1"># Update age</span>
-<span class="n">student</span><span class="p">[</span><span class="s2">"GPA"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.8</span>  <span class="c1"># Add new key-value pair</span>
-
-<span class="c1"># Removing an element</span>
-<span class="k">del</span> <span class="n">student</span><span class="p">[</span><span class="s2">"major"</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>  <span class="c1"># {'name': 'Alice', 'age': 22, 'GPA': 3.8}</span>
 </pre></div>
 </div>
 </div>
@@ -7725,36 +7547,37 @@ They each serve different purposes based on their properties.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Alice
-{'name': 'Alice', 'age': 22, 'GPA': 3.8}
+<pre>Overwriting hello.cpp
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2236a23-ebb4-4139-a2c5-a6d930901d3e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Another-Useful-Example:">Another Useful Example:<a class="anchor-link" href="#Another-Useful-Example:">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ba500c6d-9e5b-4710-9740-ed40f4a7101e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=dfeeb1b6-be18-44c0-b63d-398c0fe7e35a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">]</span>
-<span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">word_count</span><span class="p">)</span>  <span class="c1"># {'apple': 2, 'banana': 1, 'orange': 1}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The code is then compiled and r</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6882fbe3-89f3-4217-941c-74fc2607db3b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The following compiles the code and runs it</span>
+<span class="o">!</span>g++<span class="w"> </span>hello.cpp<span class="w"> </span>-o<span class="w"> </span>hello
+<span class="o">!</span>./hello
 </pre></div>
 </div>
 </div>
@@ -7767,24 +7590,12 @@ They each serve different purposes based on their properties.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Counter({'apple': 2, 'banana': 1, 'orange': 1})
-</pre>
+<pre>Hello world</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3394f31d-79a5-4230-809a-47b1ea37be4f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Looping-through-keys-and-values-of-a-dict"><strong>Looping through keys and values of a dict</strong><a class="anchor-link" href="#Looping-through-keys-and-values-of-a-dict">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ff5d5749-7482-4b1d-a24b-12a0deb3fa3b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eeb25525-0dab-4b20-8668-db0f0cfe8ea3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7792,14 +7603,8 @@ They each serve different purposes based on their properties.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"age"</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-    <span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"John"</span><span class="p">,</span>
-    <span class="s2">"height"</span> <span class="p">:</span> <span class="mi">172</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="n">key_val</span><span class="p">,</span> <span class="n">pair_val</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"key: </span><span class="si">{</span><span class="n">key_val</span><span class="si">}</span><span class="s2">, Pair value: </span><span class="si">{</span><span class="n">pair_val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Whats great is its easy to switch between python and c++</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Python is better!"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7812,108 +7617,9 @@ They each serve different purposes based on their properties.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>key: age, Pair value: 25
-key: name, Pair value: John
-key: height, Pair value: 172
+<pre>Python is better!
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7538908c-426c-4bff-8594-04ddc8973dbd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Sets%7B%7D-(set)"><code>Sets{} (set)</code><a class="anchor-link" href="#Sets%7B%7D-(set)">¶</a></h2><p>A set is an unordered, mutable collection of unique elements. It does not allow duplicates.</p>
-<h3 id="Useful-Use-Cases:">Useful Use Cases:<a class="anchor-link" href="#Useful-Use-Cases:">¶</a></h3><p>✅ Removing duplicates from a list:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1cb637ac-98f0-4b8c-ab69-0690b4ff4be5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">unique_numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">unique_numbers</span><span class="p">)</span>  <span class="c1"># [1, 2, 3]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[1, 2, 3]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30bc3ba7-eb61-4abe-8b47-134921e587b9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>✅ Mathematical operations – Union, Intersection, Difference:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a54e69e8-03d4-4ff5-a451-893b5040d5b7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># Union: {1, 2, 3, 4, 5}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># Intersection: {3}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span><span class="p">)</span>  <span class="c1"># Difference: {1, 2}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>{1, 2, 3, 4, 5}
-{3}
-{1, 2}
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd005245-7b10-4cfa-bd52-ea9eea0ac5ab">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>✅ Checking membership efficiently – Sets use hashing, making in operations faster than lists.</p>
 </div>
 </div>
 </div>

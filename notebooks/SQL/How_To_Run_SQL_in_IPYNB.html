@@ -7631,6 +7631,8 @@ a.anchor-link {
 
 <span class="s1">'''</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7643,7 +7645,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/var/folders/n8/9yntm7xn011dlh6xd73ph4x80000gn/T/ipykernel_6621/4210537175.py:2: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+<pre>/var/folders/n8/9yntm7xn011dlh6xd73ph4x80000gn/T/ipykernel_7442/3294492386.py:2: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
   df = pd.read_sql_query('''
 </pre>
 </div>
@@ -7651,9 +7653,24 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<table class="display nowrap" data-quarto-disable-processing="true" id="itables_79268466_e68f_4b07_bee4_797f15eff6b5" style="table-layout:auto;width:auto;margin:0;caption-side:bottom">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe tex2jax_ignore">
 <thead>
 <tr style="text-align: right;">
+<th></th>
 <th>product_id</th>
 <th>category_id</th>
 <th>product_code</th>
@@ -7663,83 +7680,162 @@ a.anchor-link {
 <th>discount_percent</th>
 <th>date_added</th>
 </tr>
-</thead><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g style="fill:#d9d7fc">
-<path d="M100,400H500V357H100Z"></path>
-<path d="M100,300H400V257H100Z"></path>
-<path d="M0,200H400V157H0Z"></path>
-<path d="M100,100H500V57H100Z"></path>
-<path d="M100,350H500V307H100Z"></path>
-<path d="M100,250H400V207H100Z"></path>
-<path d="M0,150H400V107H0Z"></path>
-<path d="M100,50H500V7H100Z"></path>
-</g>
-<g style="fill:#1a1366;stroke:#1a1366;">
-<rect height="43" width="400" x="100" y="7">
-<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<rect height="43" width="400" x="0" y="107">
-<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
-</rect>
-<rect height="43" width="300" x="100" y="207">
-<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
-<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
-</rect>
-<rect height="43" width="400" x="100" y="307">
-<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
-<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
-</rect>
-<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
-<g transform="translate(45 50) rotate(-45)">
-<circle cx="0" cy="0" r="33"></circle>
-<rect height="30" width="16" x="-8" y="32"></rect>
-</g>
-<g transform="translate(450 152)">
-<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-<rect height="60" width="60" x="-15" y="-40"></rect>
-</g>
-<g transform="translate(50 352)">
-<polygon points="-35,-5 0,-40 35,-5"></polygon>
-<polygon points="-35,10 0,45 35,10"></polygon>
-</g>
-<g transform="translate(75 250)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-<g transform="translate(425 250) rotate(180)">
-<polyline points="-30,30 -60,0 -30,-30"></polyline>
-<polyline points="0,30 -30,0 0,-30"></polyline>
-</g>
-</g>
-</g>
-</svg>
-</a>
-Loading ITables v2.3.0 from the <code>init_notebook_mode</code> cell...
-(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>1</td>
+<td>strat</td>
+<td>Fender Stratocaster</td>
+<td>The Fender Stratocaster is the electric guitar design that changed the world. New features include a tinted neck, parchment pickguard and control knobs, and a '70s-style logo. Includes select alder body, 21-fret maple neck with your choice of a rosewood or maple fretboard, 3 single-coil pickups, vintage-style tremolo, and die-cast tuning keys. This guitar features a thicker bridge block for increased sustain and a more stable point of contact with the strings. At this low price, why play anything but the real thing?\r\n\r\nFeatures:\r\n\r\n* New features:\r\n* Thicker bridge block\r\n* 3-ply parchment pick guard\r\n* Tinted neck</td>
+<td>699.00</td>
+<td>30.0</td>
+<td>2021-10-30 09:32:40</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>1</td>
+<td>les_paul</td>
+<td>Gibson Les Paul</td>
+<td>This Les Paul guitar offers a carved top and humbucking pickups. It has a simple yet elegant design. Cutting-yet-rich tone?the hallmark of the Les Paul?pours out of the 490R and 498T Alnico II magnet humbucker pickups, which are mounted on a carved maple top with a mahogany back. The faded finish models are equipped with BurstBucker Pro pickups and a mahogany top. This guitar includes a Gibson hardshell case (Faded and satin finish models come with a gig bag) and a limited lifetime warranty.\r\n\r\nFeatures:\r\n\r\n* Carved maple top and mahogany back (Mahogany top on faded finish models)\r\n* Mahogany neck, '59 Rounded Les Paul\r\n* Rosewood fingerboard (Ebony on Alpine white)\r\n* Tune-O-Matic bridge with stopbar\r\n* Chrome or gold hardware\r\n* 490R and 498T Alnico 2 magnet humbucker pickups (BurstBucker Pro on faded finish models)\r\n* 2 volume and 2 tone knobs, 3-way switch</td>
+<td>1199.00</td>
+<td>30.0</td>
+<td>2021-12-05 16:33:13</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+<td>1</td>
+<td>sg</td>
+<td>Gibson SG</td>
+<td>This Gibson SG electric guitar takes the best of the '62 original and adds the longer and sturdier neck joint of the late '60s models. All the classic features you'd expect from a historic guitar. Hot humbuckers go from rich, sweet lightning to warm, tingling waves of sustain. A silky-fast rosewood fretboard plays like a dream. The original-style beveled mahogany body looks like a million bucks. Plus, Tune-O-Matic bridge and chrome hardware. Limited lifetime warranty. Includes hardshell case.\r\n\r\nFeatures:\r\n\r\n* Double-cutaway beveled mahogany body\r\n* Set mahogany neck with rounded '50s profile\r\n* Bound rosewood fingerboard with trapezoid inlays\r\n* Tune-O-Matic bridge with stopbar tailpiece\r\n* Chrome hardware\r\n* 490R humbucker in the neck position\r\n* 498T humbucker in the bridge position\r\n* 2 volume knobs, 2 tone knobs, 3-way switch\r\n* 24-3/4" scale</td>
+<td>2517.00</td>
+<td>52.0</td>
+<td>2022-02-04 11:04:31</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4</td>
+<td>1</td>
+<td>fg700s</td>
+<td>Yamaha FG700S</td>
+<td>The Yamaha FG700S solid top acoustic guitar has the ultimate combo for projection and pure tone. The expertly braced spruce top speaks clearly atop the rosewood body. It has a rosewood fingerboard, rosewood bridge, die-cast tuners, body and neck binding, and a tortoise pickguard.\r\n\r\nFeatures:\r\n\r\n* Solid Sitka spruce top\r\n* Rosewood back and sides\r\n* Rosewood fingerboard\r\n* Rosewood bridge\r\n* White/black body and neck binding\r\n* Die-cast tuners\r\n* Tortoise pickguard\r\n* Limited lifetime warranty</td>
+<td>489.99</td>
+<td>38.0</td>
+<td>2022-06-01 11:12:59</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5</td>
+<td>1</td>
+<td>washburn</td>
+<td>Washburn D10S</td>
+<td>The Washburn D10S acoustic guitar is superbly crafted with a solid spruce top and mahogany back and sides for exceptional tone. A mahogany neck and rosewood fingerboard make fretwork a breeze, while chrome Grover-style machines keep you perfectly tuned. The Washburn D10S comes with a limited lifetime warranty.\r\n\r\nFeatures:\r\n\r\n    * Spruce top\r\n    * Mahogany back, sides\r\n    * Mahogany neck Rosewood fingerboard\r\n    * Chrome Grover-style machines</td>
+<td>299.00</td>
+<td>0.0</td>
+<td>2022-07-30 13:58:35</td>
+</tr>
+<tr>
+<th>5</th>
+<td>6</td>
+<td>1</td>
+<td>rodriguez</td>
+<td>Rodriguez Caballero 11</td>
+<td>Featuring a carefully chosen, solid Canadian cedar top and laminated bubinga back and sides, the Caballero 11 classical guitar is a beauty to behold and play. The headstock and fretboard are of Indian rosewood. Nickel-plated tuners and Silver-plated frets are installed to last a lifetime. The body binding and wood rosette are exquisite.\r\n\r\nThe Rodriguez Guitar is hand crafted and glued to create precise balances. From the invisible careful sanding, even inside the body, that ensures the finished instrument's purity of tone, to the beautifully unique rosette inlays around the soundhole and on the back of the neck, each guitar is a credit to its luthier and worthy of being handed down from one generation to another.\r\n\r\nThe tone, resonance and beauty of fine guitars are all dependent upon the wood from which they are made. The wood used in the construction of Rodriguez guitars is carefully chosen and aged to guarantee the highest quality. No wood is purchased before the tree has been cut down, and at least 2 years must elapse before the tree is turned into lumber. The wood has to be well cut from the log. The grain must be close and absolutely vertical. The shop is totally free from humidity.</td>
+<td>415.00</td>
+<td>39.0</td>
+<td>2022-07-30 14:12:41</td>
+</tr>
+<tr>
+<th>6</th>
+<td>7</td>
+<td>2</td>
+<td>precision</td>
+<td>Fender Precision</td>
+<td>The Fender Precision bass guitar delivers the sound, look, and feel today's bass players demand. This bass features that classic P-Bass old-school design. Each Precision bass boasts contemporary features and refinements that make it an excellent value. Featuring an alder body and a split single-coil pickup, this classic electric bass guitar lives up to its Fender legacy.\r\n\r\nFeatures:\r\n\r\n* Body: Alder\r\n* Neck: Maple, modern C shape, tinted satin urethane finish\r\n* Fingerboard: Rosewood or maple (depending on color)\r\n* 9-1/2" Radius (241 mm)\r\n* Frets: 20 Medium-jumbo frets\r\n* Pickups: 1 Standard Precision Bass split single-coil pickup (Mid)\r\n* Controls: Volume, Tone\r\n* Bridge: Standard vintage style with single groove saddles\r\n* Machine heads: Standard\r\n* Hardware: Chrome\r\n* Pickguard: 3-Ply Parchment\r\n* Scale Length: 34" (864 mm)\r\n* Width at Nut: 1-5/8" (41.3 mm)\r\n* Unique features: Knurled chrome P Bass knobs, Fender transition logo</td>
+<td>799.99</td>
+<td>30.0</td>
+<td>2022-06-01 11:29:35</td>
+</tr>
+<tr>
+<th>7</th>
+<td>8</td>
+<td>2</td>
+<td>hofner</td>
+<td>Hofner Icon</td>
+<td>With authentic details inspired by the original, the Hofner Icon makes the legendary violin bass available to the rest of us. Don't get the idea that this a just a "nowhere man" look-alike. This quality instrument features a real spruce top and beautiful flamed maple back and sides. The semi-hollow body and set neck will give you the warm, round tone you expect from the violin bass.\r\n\r\nFeatures:\r\n\r\n* Authentic details inspired by the original\r\n* Spruce top\r\n* Flamed maple back and sides\r\n* Set neck\r\n* Rosewood fretboard\r\n* 30" scale\r\n* 22 frets\r\n* Dot inlay</td>
+<td>499.99</td>
+<td>25.0</td>
+<td>2022-07-30 14:18:33</td>
+</tr>
+<tr>
+<th>8</th>
+<td>9</td>
+<td>3</td>
+<td>ludwig</td>
+<td>Ludwig 5-piece Drum Set with Cymbals</td>
+<td>This product includes a Ludwig 5-piece drum set and a Zildjian starter cymbal pack.\r\n\r\nWith the Ludwig drum set, you get famous Ludwig quality. This set features a bass drum, two toms, a floor tom, and a snare?each with a wrapped finish. Drum hardware includes LA214FP bass pedal, snare stand, cymbal stand, hi-hat stand, and a throne.\r\n\r\nWith the Zildjian cymbal pack, you get a 14" crash, 18" crash/ride, and a pair of 13" hi-hats. Sound grooves and round hammer strikes in a simple circular pattern on the top surface of these cymbals magnify the basic sound of the distinctive alloy.\r\n\r\nFeatures:\r\n\r\n* Famous Ludwig quality\r\n* Wrapped finishes\r\n* 22" x 16" kick drum\r\n* 12" x 10" and 13" x 11" toms\r\n* 16" x 16" floor tom\r\n* 14" x 6-1/2" snare drum kick pedal\r\n* Snare stand\r\n* Straight cymbal stand hi-hat stand\r\n* FREE throne</td>
+<td>699.99</td>
+<td>30.0</td>
+<td>2022-07-30 12:46:40</td>
+</tr>
+<tr>
+<th>9</th>
+<td>10</td>
+<td>3</td>
+<td>tama</td>
+<td>Tama 5-Piece Drum Set with Cymbals</td>
+<td>The Tama 5-piece Drum Set is the most affordable Tama drum kit ever to incorporate so many high-end features.\r\n\r\nWith over 40 years of experience, Tama knows what drummers really want. Which is why, no matter how long you've been playing the drums, no matter what budget you have to work with, Tama has the set you need, want, and can afford. Every aspect of the modern drum kit was exhaustively examined and reexamined and then improved before it was accepted as part of the Tama design. Which is why, if you start playing Tama now as a beginner, you'll still enjoy playing it when you've achieved pro-status. That's how good these groundbreaking new drums are.\r\n\r\nOnly Tama comes with a complete set of genuine Meinl HCS cymbals. These high-quality brass cymbals are made in Germany and are sonically matched so they sound great together. They are even lathed for a more refined tonal character. The set includes 14" hi-hats, 16" crash cymbal, and a 20" ride cymbal.\r\n\r\nFeatures:\r\n\r\n* 100% poplar 6-ply/7.5mm shells\r\n* Precise bearing edges\r\n* 100% glued finishes\r\n* Original small lugs\r\n* Drum heads\r\n* Accu-tune bass drum hoops\r\n* Spur brackets\r\n* Tom holder\r\n* Tom brackets</td>
+<td>799.99</td>
+<td>15.0</td>
+<td>2022-07-30 13:14:15</td>
+</tr>
+</tbody>
 </table>
-<script type="module">
-    const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_3_0);
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>   product_id  category_id product_code                          product_name  \
+0           1            1        strat                   Fender Stratocaster   
+1           2            1     les_paul                       Gibson Les Paul   
+2           3            1           sg                             Gibson SG   
+3           4            1       fg700s                         Yamaha FG700S   
+4           5            1     washburn                         Washburn D10S   
+5           6            1    rodriguez                Rodriguez Caballero 11   
+6           7            2    precision                      Fender Precision   
+7           8            2       hofner                           Hofner Icon   
+8           9            3       ludwig  Ludwig 5-piece Drum Set with Cymbals   
+9          10            3         tama    Tama 5-Piece Drum Set with Cymbals   
 
-    document.querySelectorAll("#itables_79268466_e68f_4b07_bee4_797f15eff6b5:not(.dataTable)").forEach(table => {
-        if (!(table instanceof HTMLTableElement))
-            return;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        description  \
+0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      The Fender Stratocaster is the electric guitar design that changed the world. New features include a tinted neck, parchment pickguard and control knobs, and a '70s-style logo. Includes select alder body, 21-fret maple neck with your choice of a rosewood or maple fretboard, 3 single-coil pickups, vintage-style tremolo, and die-cast tuning keys. This guitar features a thicker bridge block for increased sustain and a more stable point of contact with the strings. At this low price, why play anything but the real thing?\r\n\r\nFeatures:\r\n\r\n* New features:\r\n* Thicker bridge block\r\n* 3-ply parchment pick guard\r\n* Tinted neck   
+1                                                                                                                                                                                                                                                                                                                                      This Les Paul guitar offers a carved top and humbucking pickups. It has a simple yet elegant design. Cutting-yet-rich tone?the hallmark of the Les Paul?pours out of the 490R and 498T Alnico II magnet humbucker pickups, which are mounted on a carved maple top with a mahogany back. The faded finish models are equipped with BurstBucker Pro pickups and a mahogany top. This guitar includes a Gibson hardshell case (Faded and satin finish models come with a gig bag) and a limited lifetime warranty.\r\n\r\nFeatures:\r\n\r\n* Carved maple top and mahogany back (Mahogany top on faded finish models)\r\n* Mahogany neck, '59 Rounded Les Paul\r\n* Rosewood fingerboard (Ebony on Alpine white)\r\n* Tune-O-Matic bridge with stopbar\r\n* Chrome or gold hardware\r\n* 490R and 498T Alnico 2 magnet humbucker pickups (BurstBucker Pro on faded finish models)\r\n* 2 volume and 2 tone knobs, 3-way switch   
+2                                                                                                                                                                                                                                                                                                                                               This Gibson SG electric guitar takes the best of the '62 original and adds the longer and sturdier neck joint of the late '60s models. All the classic features you'd expect from a historic guitar. Hot humbuckers go from rich, sweet lightning to warm, tingling waves of sustain. A silky-fast rosewood fretboard plays like a dream. The original-style beveled mahogany body looks like a million bucks. Plus, Tune-O-Matic bridge and chrome hardware. Limited lifetime warranty. Includes hardshell case.\r\n\r\nFeatures:\r\n\r\n* Double-cutaway beveled mahogany body\r\n* Set mahogany neck with rounded '50s profile\r\n* Bound rosewood fingerboard with trapezoid inlays\r\n* Tune-O-Matic bridge with stopbar tailpiece\r\n* Chrome hardware\r\n* 490R humbucker in the neck position\r\n* 498T humbucker in the bridge position\r\n* 2 volume knobs, 2 tone knobs, 3-way switch\r\n* 24-3/4" scale   
+3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          The Yamaha FG700S solid top acoustic guitar has the ultimate combo for projection and pure tone. The expertly braced spruce top speaks clearly atop the rosewood body. It has a rosewood fingerboard, rosewood bridge, die-cast tuners, body and neck binding, and a tortoise pickguard.\r\n\r\nFeatures:\r\n\r\n* Solid Sitka spruce top\r\n* Rosewood back and sides\r\n* Rosewood fingerboard\r\n* Rosewood bridge\r\n* White/black body and neck binding\r\n* Die-cast tuners\r\n* Tortoise pickguard\r\n* Limited lifetime warranty   
+4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  The Washburn D10S acoustic guitar is superbly crafted with a solid spruce top and mahogany back and sides for exceptional tone. A mahogany neck and rosewood fingerboard make fretwork a breeze, while chrome Grover-style machines keep you perfectly tuned. The Washburn D10S comes with a limited lifetime warranty.\r\n\r\nFeatures:\r\n\r\n    * Spruce top\r\n    * Mahogany back, sides\r\n    * Mahogany neck Rosewood fingerboard\r\n    * Chrome Grover-style machines   
+5  Featuring a carefully chosen, solid Canadian cedar top and laminated bubinga back and sides, the Caballero 11 classical guitar is a beauty to behold and play. The headstock and fretboard are of Indian rosewood. Nickel-plated tuners and Silver-plated frets are installed to last a lifetime. The body binding and wood rosette are exquisite.\r\n\r\nThe Rodriguez Guitar is hand crafted and glued to create precise balances. From the invisible careful sanding, even inside the body, that ensures the finished instrument's purity of tone, to the beautifully unique rosette inlays around the soundhole and on the back of the neck, each guitar is a credit to its luthier and worthy of being handed down from one generation to another.\r\n\r\nThe tone, resonance and beauty of fine guitars are all dependent upon the wood from which they are made. The wood used in the construction of Rodriguez guitars is carefully chosen and aged to guarantee the highest quality. No wood is purchased before the tree has been cut down, and at least 2 years must elapse before the tree is turned into lumber. The wood has to be well cut from the log. The grain must be close and absolutely vertical. The shop is totally free from humidity.   
+6                                                                                                                                                                                                                                              The Fender Precision bass guitar delivers the sound, look, and feel today's bass players demand. This bass features that classic P-Bass old-school design. Each Precision bass boasts contemporary features and refinements that make it an excellent value. Featuring an alder body and a split single-coil pickup, this classic electric bass guitar lives up to its Fender legacy.\r\n\r\nFeatures:\r\n\r\n* Body: Alder\r\n* Neck: Maple, modern C shape, tinted satin urethane finish\r\n* Fingerboard: Rosewood or maple (depending on color)\r\n* 9-1/2" Radius (241 mm)\r\n* Frets: 20 Medium-jumbo frets\r\n* Pickups: 1 Standard Precision Bass split single-coil pickup (Mid)\r\n* Controls: Volume, Tone\r\n* Bridge: Standard vintage style with single groove saddles\r\n* Machine heads: Standard\r\n* Hardware: Chrome\r\n* Pickguard: 3-Ply Parchment\r\n* Scale Length: 34" (864 mm)\r\n* Width at Nut: 1-5/8" (41.3 mm)\r\n* Unique features: Knurled chrome P Bass knobs, Fender transition logo   
+7                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         With authentic details inspired by the original, the Hofner Icon makes the legendary violin bass available to the rest of us. Don't get the idea that this a just a "nowhere man" look-alike. This quality instrument features a real spruce top and beautiful flamed maple back and sides. The semi-hollow body and set neck will give you the warm, round tone you expect from the violin bass.\r\n\r\nFeatures:\r\n\r\n* Authentic details inspired by the original\r\n* Spruce top\r\n* Flamed maple back and sides\r\n* Set neck\r\n* Rosewood fretboard\r\n* 30" scale\r\n* 22 frets\r\n* Dot inlay   
+8                                                                                                                                                                                                                                                                                                                                                                   This product includes a Ludwig 5-piece drum set and a Zildjian starter cymbal pack.\r\n\r\nWith the Ludwig drum set, you get famous Ludwig quality. This set features a bass drum, two toms, a floor tom, and a snare?each with a wrapped finish. Drum hardware includes LA214FP bass pedal, snare stand, cymbal stand, hi-hat stand, and a throne.\r\n\r\nWith the Zildjian cymbal pack, you get a 14" crash, 18" crash/ride, and a pair of 13" hi-hats. Sound grooves and round hammer strikes in a simple circular pattern on the top surface of these cymbals magnify the basic sound of the distinctive alloy.\r\n\r\nFeatures:\r\n\r\n* Famous Ludwig quality\r\n* Wrapped finishes\r\n* 22" x 16" kick drum\r\n* 12" x 10" and 13" x 11" toms\r\n* 16" x 16" floor tom\r\n* 14" x 6-1/2" snare drum kick pedal\r\n* Snare stand\r\n* Straight cymbal stand hi-hat stand\r\n* FREE throne   
+9        The Tama 5-piece Drum Set is the most affordable Tama drum kit ever to incorporate so many high-end features.\r\n\r\nWith over 40 years of experience, Tama knows what drummers really want. Which is why, no matter how long you've been playing the drums, no matter what budget you have to work with, Tama has the set you need, want, and can afford. Every aspect of the modern drum kit was exhaustively examined and reexamined and then improved before it was accepted as part of the Tama design. Which is why, if you start playing Tama now as a beginner, you'll still enjoy playing it when you've achieved pro-status. That's how good these groundbreaking new drums are.\r\n\r\nOnly Tama comes with a complete set of genuine Meinl HCS cymbals. These high-quality brass cymbals are made in Germany and are sonically matched so they sound great together. They are even lathed for a more refined tonal character. The set includes 14" hi-hats, 16" crash cymbal, and a 20" ride cymbal.\r\n\r\nFeatures:\r\n\r\n* 100% poplar 6-ply/7.5mm shells\r\n* Precise bearing edges\r\n* 100% glued finishes\r\n* Original small lugs\r\n* Drum heads\r\n* Accu-tune bass drum hoops\r\n* Spur brackets\r\n* Tom holder\r\n* Tom brackets   
 
-        // Define the table data
-        const data = [[1, 1, "strat", "Fender Stratocaster", "The Fender Stratocaster is the electric guitar design that changed the world. New features include a tinted neck, parchment pickguard and control knobs, and a '70s-style logo. Includes select alder body, 21-fret maple neck with your choice of a rosewood or maple fretboard, 3 single-coil pickups, vintage-style tremolo, and die-cast tuning keys. This guitar features a thicker bridge block for increased sustain and a more stable point of contact with the strings. At this low price, why play anything but the real thing?\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* New features:\\r\\n* Thicker bridge block\\r\\n* 3-ply parchment pick guard\\r\\n* Tinted neck", 699.0, 30.0, "2021-10-30 09:32:40"], [2, 1, "les_paul", "Gibson Les Paul", "This Les Paul guitar offers a carved top and humbucking pickups. It has a simple yet elegant design. Cutting-yet-rich tone?the hallmark of the Les Paul?pours out of the 490R and 498T Alnico II magnet humbucker pickups, which are mounted on a carved maple top with a mahogany back. The faded finish models are equipped with BurstBucker Pro pickups and a mahogany top. This guitar includes a Gibson hardshell case (Faded and satin finish models come with a gig bag) and a limited lifetime warranty.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Carved maple top and mahogany back (Mahogany top on faded finish models)\\r\\n* Mahogany neck, '59 Rounded Les Paul\\r\\n* Rosewood fingerboard (Ebony on Alpine white)\\r\\n* Tune-O-Matic bridge with stopbar\\r\\n* Chrome or gold hardware\\r\\n* 490R and 498T Alnico 2 magnet humbucker pickups (BurstBucker Pro on faded finish models)\\r\\n* 2 volume and 2 tone knobs, 3-way switch", 1199.0, 30.0, "2021-12-05 16:33:13"], [3, 1, "sg", "Gibson SG", "This Gibson SG electric guitar takes the best of the '62 original and adds the longer and sturdier neck joint of the late '60s models. All the classic features you'd expect from a historic guitar. Hot humbuckers go from rich, sweet lightning to warm, tingling waves of sustain. A silky-fast rosewood fretboard plays like a dream. The original-style beveled mahogany body looks like a million bucks. Plus, Tune-O-Matic bridge and chrome hardware. Limited lifetime warranty. Includes hardshell case.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Double-cutaway beveled mahogany body\\r\\n* Set mahogany neck with rounded '50s profile\\r\\n* Bound rosewood fingerboard with trapezoid inlays\\r\\n* Tune-O-Matic bridge with stopbar tailpiece\\r\\n* Chrome hardware\\r\\n* 490R humbucker in the neck position\\r\\n* 498T humbucker in the bridge position\\r\\n* 2 volume knobs, 2 tone knobs, 3-way switch\\r\\n* 24-3/4\" scale", 2517.0, 52.0, "2022-02-04 11:04:31"], [4, 1, "fg700s", "Yamaha FG700S", "The Yamaha FG700S solid top acoustic guitar has the ultimate combo for projection and pure tone. The expertly braced spruce top speaks clearly atop the rosewood body. It has a rosewood fingerboard, rosewood bridge, die-cast tuners, body and neck binding, and a tortoise pickguard.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Solid Sitka spruce top\\r\\n* Rosewood back and sides\\r\\n* Rosewood fingerboard\\r\\n* Rosewood bridge\\r\\n* White/black body and neck binding\\r\\n* Die-cast tuners\\r\\n* Tortoise pickguard\\r\\n* Limited lifetime warranty", 489.99, 38.0, "2022-06-01 11:12:59"], [5, 1, "washburn", "Washburn D10S", "The Washburn D10S acoustic guitar is superbly crafted with a solid spruce top and mahogany back and sides for exceptional tone. A mahogany neck and rosewood fingerboard make fretwork a breeze, while chrome Grover-style machines keep you perfectly tuned. The Washburn D10S comes with a limited lifetime warranty.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n    * Spruce top\\r\\n    * Mahogany back, sides\\r\\n    * Mahogany neck Rosewood fingerboard\\r\\n    * Chrome Grover-style machines", 299.0, 0.0, "2022-07-30 13:58:35"], [6, 1, "rodriguez", "Rodriguez Caballero 11", "Featuring a carefully chosen, solid Canadian cedar top and laminated bubinga back and sides, the Caballero 11 classical guitar is a beauty to behold and play. The headstock and fretboard are of Indian rosewood. Nickel-plated tuners and Silver-plated frets are installed to last a lifetime. The body binding and wood rosette are exquisite.\\r\\n\\r\\nThe Rodriguez Guitar is hand crafted and glued to create precise balances. From the invisible careful sanding, even inside the body, that ensures the finished instrument's purity of tone, to the beautifully unique rosette inlays around the soundhole and on the back of the neck, each guitar is a credit to its luthier and worthy of being handed down from one generation to another.\\r\\n\\r\\nThe tone, resonance and beauty of fine guitars are all dependent upon the wood from which they are made. The wood used in the construction of Rodriguez guitars is carefully chosen and aged to guarantee the highest quality. No wood is purchased before the tree has been cut down, and at least 2 years must elapse before the tree is turned into lumber. The wood has to be well cut from the log. The grain must be close and absolutely vertical. The shop is totally free from humidity.", 415.0, 39.0, "2022-07-30 14:12:41"], [7, 2, "precision", "Fender Precision", "The Fender Precision bass guitar delivers the sound, look, and feel today's bass players demand. This bass features that classic P-Bass old-school design. Each Precision bass boasts contemporary features and refinements that make it an excellent value. Featuring an alder body and a split single-coil pickup, this classic electric bass guitar lives up to its Fender legacy.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Body: Alder\\r\\n* Neck: Maple, modern C shape, tinted satin urethane finish\\r\\n* Fingerboard: Rosewood or maple (depending on color)\\r\\n* 9-1/2\" Radius (241 mm)\\r\\n* Frets: 20 Medium-jumbo frets\\r\\n* Pickups: 1 Standard Precision Bass split single-coil pickup (Mid)\\r\\n* Controls: Volume, Tone\\r\\n* Bridge: Standard vintage style with single groove saddles\\r\\n* Machine heads: Standard\\r\\n* Hardware: Chrome\\r\\n* Pickguard: 3-Ply Parchment\\r\\n* Scale Length: 34\" (864 mm)\\r\\n* Width at Nut: 1-5/8\" (41.3 mm)\\r\\n* Unique features: Knurled chrome P Bass knobs, Fender transition logo", 799.99, 30.0, "2022-06-01 11:29:35"], [8, 2, "hofner", "Hofner Icon", "With authentic details inspired by the original, the Hofner Icon makes the legendary violin bass available to the rest of us. Don't get the idea that this a just a \"nowhere man\" look-alike. This quality instrument features a real spruce top and beautiful flamed maple back and sides. The semi-hollow body and set neck will give you the warm, round tone you expect from the violin bass.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Authentic details inspired by the original\\r\\n* Spruce top\\r\\n* Flamed maple back and sides\\r\\n* Set neck\\r\\n* Rosewood fretboard\\r\\n* 30\" scale\\r\\n* 22 frets\\r\\n* Dot inlay", 499.99, 25.0, "2022-07-30 14:18:33"], [9, 3, "ludwig", "Ludwig 5-piece Drum Set with Cymbals", "This product includes a Ludwig 5-piece drum set and a Zildjian starter cymbal pack.\\r\\n\\r\\nWith the Ludwig drum set, you get famous Ludwig quality. This set features a bass drum, two toms, a floor tom, and a snare?each with a wrapped finish. Drum hardware includes LA214FP bass pedal, snare stand, cymbal stand, hi-hat stand, and a throne.\\r\\n\\r\\nWith the Zildjian cymbal pack, you get a 14\" crash, 18\" crash/ride, and a pair of 13\" hi-hats. Sound grooves and round hammer strikes in a simple circular pattern on the top surface of these cymbals magnify the basic sound of the distinctive alloy.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Famous Ludwig quality\\r\\n* Wrapped finishes\\r\\n* 22\" x 16\" kick drum\\r\\n* 12\" x 10\" and 13\" x 11\" toms\\r\\n* 16\" x 16\" floor tom\\r\\n* 14\" x 6-1/2\" snare drum kick pedal\\r\\n* Snare stand\\r\\n* Straight cymbal stand hi-hat stand\\r\\n* FREE throne", 699.99, 30.0, "2022-07-30 12:46:40"], [10, 3, "tama", "Tama 5-Piece Drum Set with Cymbals", "The Tama 5-piece Drum Set is the most affordable Tama drum kit ever to incorporate so many high-end features.\\r\\n\\r\\nWith over 40 years of experience, Tama knows what drummers really want. Which is why, no matter how long you've been playing the drums, no matter what budget you have to work with, Tama has the set you need, want, and can afford. Every aspect of the modern drum kit was exhaustively examined and reexamined and then improved before it was accepted as part of the Tama design. Which is why, if you start playing Tama now as a beginner, you'll still enjoy playing it when you've achieved pro-status. That's how good these groundbreaking new drums are.\\r\\n\\r\\nOnly Tama comes with a complete set of genuine Meinl HCS cymbals. These high-quality brass cymbals are made in Germany and are sonically matched so they sound great together. They are even lathed for a more refined tonal character. The set includes 14\" hi-hats, 16\" crash cymbal, and a 20\" ride cymbal.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* 100% poplar 6-ply/7.5mm shells\\r\\n* Precise bearing edges\\r\\n* 100% glued finishes\\r\\n* Original small lugs\\r\\n* Drum heads\\r\\n* Accu-tune bass drum hoops\\r\\n* Spur brackets\\r\\n* Tom holder\\r\\n* Tom brackets", 799.99, 15.0, "2022-07-30 13:14:15"]];
-
-        // Define the dt_args
-        let dt_args = {"layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "lengthMenu": [10, 25, 50, 100], "order": [], "scrollX": true, "warn_on_selected_rows_not_rendered": true};
-        dt_args["data"] = data;
-
-        
-        new DataTable(table, dt_args);
-    });
-</script>
+   list_price  discount_percent          date_added  
+0      699.00              30.0 2021-10-30 09:32:40  
+1     1199.00              30.0 2021-12-05 16:33:13  
+2     2517.00              52.0 2022-02-04 11:04:31  
+3      489.99              38.0 2022-06-01 11:12:59  
+4      299.00               0.0 2022-07-30 13:58:35  
+5      415.00              39.0 2022-07-30 14:12:41  
+6      799.99              30.0 2022-06-01 11:29:35  
+7      499.99              25.0 2022-07-30 14:18:33  
+8      699.99              30.0 2022-07-30 12:46:40  
+9      799.99              15.0 2022-07-30 13:14:15  
+</pre>
 </div>
 </div>
 </div>

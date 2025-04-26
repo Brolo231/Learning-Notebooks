@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pandas</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>How_To_Run_SQL_in_IPYNB</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,75 +7510,40 @@ a.anchor-link {
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=54ec3b7a-d50e-48b4-a3bc-6b376be3bd1d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c70c0e5-c018-46c8-ae9b-9be29740b5a6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Pandas-101:-By-Niraj-Tiwari">Pandas 101: By <a href="https://medium.com/@niraj.e21/pandas-101-dccdc78c2248" target="_blank">Niraj Tiwari</a><a class="anchor-link" href="#Pandas-101:-By-Niraj-Tiwari">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c9159915-c624-426d-916d-46a9219e05ec">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="%F0%9F%93%8C-Table-of-Contents:">📌 Table of Contents:<a class="anchor-link" href="#%F0%9F%93%8C-Table-of-Contents:">¶</a></h3><ol>
-<li><a href="#1">Introduction to Pandas</a></li>
-<li><a href="#2">Data Importing and Exporting</a></li>
-<li><a href="#3">Basic Data Operations</a></li>
-<li><a href="#4">Data Cleaning</a></li>
-<li><a href="#5">Basic Data Analysis</a></li>
-<li><a href="#6">Conditional Selections</a></li>
-<li><a href="#7">Data Transformation</a></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=67040292-1e62-4cdf-b348-7e2e800addb6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="%F0%9F%92%BB-Working-with-MySQL-in-Jupyter-Notebook">💻 Working with MySQL in Jupyter Notebook<a class="anchor-link" href="#%F0%9F%92%BB-Working-with-MySQL-in-Jupyter-Notebook">¶</a></h1><p>In this notebook, we will demonstrate how to <strong>connect to a MySQL database</strong>, run a <strong>SQL query</strong>, and display the results in a well-formatted table in Jupyter. We will also cover important practices, like <strong>hiding sensitive credentials</strong> using <strong>environment variables</strong> and <strong><code>.gitignore</code></strong> for security.</p>
 <hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19f7a96d-dfbb-4a30-ba52-3c0c991957bd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="1"></p>
-<h2 id="1.-Introduction-to-Pandas"><strong>1. Introduction to Pandas</strong><a class="anchor-link" href="#1.-Introduction-to-Pandas">¶</a></h2><p>Pandas is an open-source library in Python used for data manipulation and analysis. It offers data structures and operations for manipulating numerical tables and time series. It’s particularly well-suited for handling structured data, i.e., data that is organized into tables.</p>
-<p><strong>Series and DataFrames:</strong> The two primary data structures in Pandas.</p>
+<h2 id="%F0%9F%9B%A0%EF%B8%8F-Libraries-Used">🛠️ Libraries Used<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Libraries-Used">¶</a></h2><h3 id="1.-MySQL-Connector-(mysql-connector-python)">1. <strong>MySQL Connector</strong> (<code>mysql-connector-python</code>)<a class="anchor-link" href="#1.-MySQL-Connector-(mysql-connector-python)">¶</a></h3><p>This library allows Python to connect to MySQL databases and run SQL queries directly from the code.</p>
 <ul>
-<li><strong>A Series</strong> is a one-dimensional array-like structure.</li>
-<li><strong>A DataFrame</strong> is a two-dimensional, size-mutable, and potentially heterogeneous tabular data structure.</li>
+<li><strong>Installation</strong>: <code>pip install mysql-connector-python</code></li>
 </ul>
-<p><strong>Example 1: Creating a Series</strong></p>
+<h3 id="2.-Pandas-(pandas)">2. <strong>Pandas</strong> (<code>pandas</code>)<a class="anchor-link" href="#2.-Pandas-(pandas)">¶</a></h3><p>Pandas is a powerful Python library for data manipulation and analysis. In this notebook, we use Pandas to handle the data returned from the MySQL query and display it in a clean format.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install pandas</code></li>
+</ul>
+<h3 id="3.-dotenv-(python-dotenv)">3. <strong>dotenv</strong> (<code>python-dotenv</code>)<a class="anchor-link" href="#3.-dotenv-(python-dotenv)">¶</a></h3><p>The <code>dotenv</code> library loads environment variables from a <code>.env</code> file. This is essential for storing <strong>sensitive information</strong> such as database credentials securely and prevents them from being hardcoded in the script.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install python-dotenv</code></li>
+</ul>
+<h3 id="4.-IPython.display-(IPython)">4. <strong>IPython.display</strong> (<code>IPython</code>)<a class="anchor-link" href="#4.-IPython.display-(IPython)">¶</a></h3><p>This module provides the <code>display()</code> function that is used to render Pandas DataFrames nicely in Jupyter notebooks, making them more readable.</p>
+<hr/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8a270091-3f09-423f-b64a-dc885befe2cf">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bbbcbe80-6a3b-499e-8da3-6e28ceca97ba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>python-dotenv
 </pre></div>
 </div>
 </div>
@@ -7591,635 +7556,81 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0    1
-1    3
-2    5
-3    7
-4    9
-dtype: int64
+<pre>Requirement already satisfied: python-dotenv in /opt/anaconda3/lib/python3.12/site-packages (0.21.0)
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ca29962-8089-4a84-92ba-b22ede3a9f78">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Example 2: Creating a DataFrame</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d708fc9e-c9f5-44de-b1e2-01a86945cc35">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ad5d5531-5e0d-48c3-95f7-6c52b4e93d69">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'John'</span><span class="p">,</span> <span class="s1">'Anna'</span><span class="p">,</span> <span class="s1">'Peter'</span><span class="p">,</span> <span class="s1">'Linda'</span><span class="p">],</span>
-        <span class="s1">'Age'</span><span class="p">:</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">32</span><span class="p">]}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>    Name  Age
-0   John   28
-1   Anna   34
-2  Peter   29
-3  Linda   32
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed4b9aeb-094a-4a86-8e50-345195b3dedd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3455a626-ec74-42a1-9b49-105684995c6e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="2"></p>
-<h2 id="2.-Data-Importing-and-Exporting"><strong>2. Data Importing and Exporting</strong><a class="anchor-link" href="#2.-Data-Importing-and-Exporting">¶</a></h2><p>Pandas supports various data formats for importing and exporting, such as CSV, Excel, and SQL databases.</p>
-<p><strong>Reading from CSV</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9a8c7930-afaa-4392-9b9d-5ba7e9c381f1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f3e9add5-d492-4dc4-9b5a-2827d0d1c2c7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'path/to/your/file.csv'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1d3ace4a-3e80-4f9b-bba0-9889d44fba61">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Writing data to CSV</strong></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=61455d12-088b-48f6-906a-9f7f56410ad3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><code>df.to_csv('path/to/save/file.csv', index=False)</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8e015e3-6166-4cef-b15f-a0aef3c2f134">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=345ec58c-701f-4ad7-97ec-fac9aa783114">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="3"></p>
-<h2 id="3.-Basic-Data-Operations"><strong>3. Basic Data Operations</strong><a class="anchor-link" href="#3.-Basic-Data-Operations">¶</a></h2><p>These operations involve viewing, selecting, indexing, and slicing data.</p>
-<p><strong>Viewing Data</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=bc3472e6-01af-4164-a669-4e1c8b2b22b3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># To look at the first few rows of a DataFrame.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>  <span class="c1"># First five rows</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6edcc4d-2600-428e-b42a-2f856659be80">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Selecting a Column</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7c329a6b-6b27-44b0-b548-a64dff53e632">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># To access a column in the DataFrame.</span>
-<span class="n">ages</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">])</span>  <span class="c1"># Displays the 'Name' column</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dac5e1b6-f99d-4bd5-b7a7-11e06b352de7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Slicing Rows</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=79b5e02d-371f-46a6-9ab9-2c343661b331">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># First two rows</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d6f3dd3-926b-4236-bc41-3fa2ae3050b4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Filtering Data:</strong> Selecting rows based on a condition.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=054ff31c-f7c3-4e32-8c68-ef0940ea6f31">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">]</span>  <span class="c1"># Rows where age is greater than 30</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d1d8034-a2e0-4462-b83e-5f105f2427f0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Adding Columns:</strong> You can add new columns to a DataFrame.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=db20a4b9-d3cf-4efb-9e15-718c94176c36">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'AgeInTenYears'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8bb20199-5426-4607-bd1b-1ed4880b2238">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=edcef1f8-f676-4b95-bfb8-9b29d3c27095">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="4"></p>
-<h2 id="4.-Data-Cleaning"><strong>4. Data Cleaning</strong><a class="anchor-link" href="#4.-Data-Cleaning">¶</a></h2><p>Data cleaning involves handling missing data, data type conversion, and renaming/replacing values.</p>
-<p><strong>Handling Missing Data</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8b72bf0e-3c7c-48cd-8a35-a961fbe4c6b6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Replace missing values with 0</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0543aa5-c398-4c66-9a73-ecf9c4d95f59">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Data Type Conversion</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=58c8b765-efbb-48e1-bedc-570ad169853e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=052db186-fffd-4584-9f50-3a4710e8fa66">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Renaming Columns</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=91181bdb-e245-45d6-b5c3-6477fa3bbf12">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'Age'</span><span class="p">:</span> <span class="s1">'AgeYears'</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a667bd00-ea83-48e6-b5d5-ee499269f894">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14a4a13f-63a9-40d1-b223-88b301e1c155">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="5"></p>
-<h2 id="5.-Basic-Data-Analysis">5. Basic Data Analysis<a class="anchor-link" href="#5.-Basic-Data-Analysis">¶</a></h2><p>Pandas provides functions to perform basic descriptive statistics and aggregations.</p>
-<p><strong>Descriptive Statistics</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0e3d261a-8e8f-459b-b9ce-31594e1cc947">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Quickly get a statistical summary of the data.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c554f68-784f-4377-bb43-3e9daa433eae">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Aggregation</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=da7c43e4-7dfa-4fcd-86c1-c54762d406e8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># Average age</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ccf1d9d3-9e1b-4854-a8b1-6c75fab90119">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0b35fed-e628-4558-8b2f-b6f542a896f5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="6"></p>
-<h2 id="6.-Conditional-Selections">6. Conditional Selections<a class="anchor-link" href="#6.-Conditional-Selections">¶</a></h2><p>This involves selections and filtering techniques.</p>
-<p><strong>Conditional Selections</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7526f863-3235-48bd-b3ef-518edb3ad96c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Select rows where 'Age' is greater than 30</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Pretty SQL</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.width'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_colwidth'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">use_mathjax</span> <span class="o">=</span> <span class="kc">False</span>
 
-<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'Age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">]</span>  <span class="c1"># Rows where age is greater than 30</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span>
+<span class="c1"># Load environment variables from .env</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Read the variables</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_HOST"</span><span class="p">)</span>
+<span class="n">db_database</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_DATABASE"</span><span class="p">)</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_USER"</span><span class="p">)</span>
+<span class="n">db_password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_PASSWORD"</span><span class="p">)</span>
+
+<span class="c1"># Connect to the database</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="n">db_host</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="n">db_database</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">db_user</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">db_password</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bdcee5e-1569-407b-8797-828f73500ef7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e628b1a-f90c-40d1-ae6c-93c25cc32289">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p id="7"></p>
-<h2 id="7.-Data-Transformation">7. Data Transformation<a class="anchor-link" href="#7.-Data-Transformation">¶</a></h2><p>Transforming data using functions like <code>apply</code>, and performing group operations.</p>
-<p><strong>Using Apply</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2f3a6f7e-d5fd-49dd-ad46-4a4110a2ebdc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f2b21d8f-8383-47ec-b597-6d7d9cdae4f3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function</span>
-<span class="k">def</span> <span class="nf">to_uppercase</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Query the database</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">'''</span>
 
-<span class="c1"># Apply function to column</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Name'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">to_uppercase</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a96876e-97ed-42ad-9146-a3bfe28fd6dc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><em>Another Example</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3f40b044-0f62-4624-b10a-92af94c93caf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sample DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Period'</span><span class="p">:</span> <span class="p">[</span><span class="mi">201701</span><span class="p">,</span> <span class="mi">202012</span><span class="p">,</span> <span class="mi">202305</span><span class="p">]})</span>
+<span class="s1">    SELECT * </span>
+<span class="s1">    FROM products;</span>
 
-<span class="c1"># Define function</span>
-<span class="k">def</span> <span class="nf">format_period</span><span class="p">(</span><span class="n">period</span><span class="p">):</span>
-    <span class="n">period</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>  <span class="c1"># Convert to string</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">period</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">period</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span>  <span class="c1"># Insert hyphen</span>
-
-<span class="c1"># Apply function</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'Formatted_Period'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Period'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">format_period</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>   Period Formatted_Period
-0  201701          2017-01
-1  202012          2020-12
-2  202305          2023-05
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e042f9a3-40a8-48a6-92cd-634ae38815ed">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>GroupBy Operations</strong></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b31c5155-34c2-430c-bf47-c013d3683f17">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Grouping data and calculating mean for each group</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Department'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3a8fbfe-85a6-4f86-9aad-1ffe1fe1c1cb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Pivot Tables</strong></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b4fad15-5c3f-4ce7-9806-b818543a3233">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Explanation of the Pivot Table Below:</strong> <br/>
-<code>1. index='Date' → Rows are based on the Date column.</code> <br/>
-<code>2. columns='Store' → Columns are based on the Store (A &amp; B).</code> <br/>
-<code>3. values='Sales' → Values inside the table are from the Sales column.</code> <br/>
-<code>4. aggfunc='sum' → Aggregates sales using the sum function.</code></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=264a6ec3-fb62-4ab5-9280-e340c3263518">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sample sales data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'Date'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'2024-01-01'</span><span class="p">,</span> <span class="s1">'2024-01-01'</span><span class="p">,</span> <span class="s1">'2024-01-02'</span><span class="p">,</span> <span class="s1">'2024-01-02'</span><span class="p">,</span> <span class="s1">'2024-01-03'</span><span class="p">],</span>
-    <span class="s1">'Store'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">],</span>
-    <span class="s1">'Product'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Apple'</span><span class="p">,</span> <span class="s1">'Apple'</span><span class="p">,</span> <span class="s1">'Banana'</span><span class="p">,</span> <span class="s1">'Banana'</span><span class="p">,</span> <span class="s1">'Apple'</span><span class="p">],</span>
-    <span class="s1">'Sales'</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1"># Convert Date column to datetime</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">'Date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Date'</span><span class="p">])</span>
-
-<span class="c1"># Creating a pivot table</span>
-<span class="n">pivot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">'Date'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'Store'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'Sales'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">'sum'</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
+<span class="s1">'''</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8232,22 +7643,118 @@ dtype: int64
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 9</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span style="color: rgb(95,135,135)"># Sample sales data</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> data <span style="color: rgb(98,98,98)">=</span> {
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Date</span><span style="color: rgb(175,0,0)">'</span>: [<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">2024-01-01</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">2024-01-01</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">2024-01-02</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">2024-01-02</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">2024-01-03</span><span style="color: rgb(175,0,0)">'</span>],
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Store</span><span style="color: rgb(175,0,0)">'</span>: [<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">A</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">B</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">A</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">B</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">A</span><span style="color: rgb(175,0,0)">'</span>],
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Product</span><span style="color: rgb(175,0,0)">'</span>: [<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Apple</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Apple</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Banana</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Banana</span><span style="color: rgb(175,0,0)">'</span>, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Apple</span><span style="color: rgb(175,0,0)">'</span>],
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Sales</span><span style="color: rgb(175,0,0)">'</span>: [<span style="color: rgb(98,98,98)">100</span>, <span style="color: rgb(98,98,98)">150</span>, <span style="color: rgb(98,98,98)">200</span>, <span style="color: rgb(98,98,98)">180</span>, <span style="color: rgb(98,98,98)">120</span>]
-<span class="ansi-green-intense-fg ansi-bold">      7</span> }
-<span class="ansi-green-fg">----&gt; 9</span> df <span style="color: rgb(98,98,98)">=</span> pd<span style="color: rgb(98,98,98)">.</span>DataFrame(data)
-<span class="ansi-green-intense-fg ansi-bold">     11</span> <span style="color: rgb(95,135,135)"># Convert Date column to datetime</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span> df[<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Date</span><span style="color: rgb(175,0,0)">'</span>] <span style="color: rgb(98,98,98)">=</span> pd<span style="color: rgb(98,98,98)">.</span>to_datetime(df[<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">Date</span><span style="color: rgb(175,0,0)">'</span>])
+<pre>/var/folders/n8/9yntm7xn011dlh6xd73ph4x80000gn/T/ipykernel_6621/4210537175.py:2: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql_query('''
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<table class="display nowrap" data-quarto-disable-processing="true" id="itables_79268466_e68f_4b07_bee4_797f15eff6b5" style="table-layout:auto;width:auto;margin:0;caption-side:bottom">
+<thead>
+<tr style="text-align: right;">
+<th>product_id</th>
+<th>category_id</th>
+<th>product_code</th>
+<th>product_name</th>
+<th>description</th>
+<th>list_price</th>
+<th>discount_percent</th>
+<th>date_added</th>
+</tr>
+</thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<a href="https://mwouts.github.io/itables/"><svg class="main-svg" style="font-family: 'Droid Sans', sans-serif;" viewbox="0 0 500 400" width="64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g style="fill:#d9d7fc">
+<path d="M100,400H500V357H100Z"></path>
+<path d="M100,300H400V257H100Z"></path>
+<path d="M0,200H400V157H0Z"></path>
+<path d="M100,100H500V57H100Z"></path>
+<path d="M100,350H500V307H100Z"></path>
+<path d="M100,250H400V207H100Z"></path>
+<path d="M0,150H400V107H0Z"></path>
+<path d="M100,50H500V7H100Z"></path>
+</g>
+<g style="fill:#1a1366;stroke:#1a1366;">
+<rect height="43" width="400" x="100" y="7">
+<animate attributename="width" dur="5s" repeatcount="indefinite" values="0;400;0"></animate>
+<animate attributename="x" dur="5s" repeatcount="indefinite" values="100;100;500"></animate>
+</rect>
+<rect height="43" width="400" x="0" y="107">
+<animate attributename="width" dur="3.5s" repeatcount="indefinite" values="0;400;0"></animate>
+<animate attributename="x" dur="3.5s" repeatcount="indefinite" values="0;0;400"></animate>
+</rect>
+<rect height="43" width="300" x="100" y="207">
+<animate attributename="width" dur="3s" repeatcount="indefinite" values="0;300;0"></animate>
+<animate attributename="x" dur="3s" repeatcount="indefinite" values="100;100;400"></animate>
+</rect>
+<rect height="43" width="400" x="100" y="307">
+<animate attributename="width" dur="4s" repeatcount="indefinite" values="0;400;0"></animate>
+<animate attributename="x" dur="4s" repeatcount="indefinite" values="100;100;500"></animate>
+</rect>
+<g rx="5" style="fill:transparent;stroke-width:8; stroke-linejoin:round">
+<g transform="translate(45 50) rotate(-45)">
+<circle cx="0" cy="0" r="33"></circle>
+<rect height="30" width="16" x="-8" y="32"></rect>
+</g>
+<g transform="translate(450 152)">
+<polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
+<rect height="60" width="60" x="-15" y="-40"></rect>
+</g>
+<g transform="translate(50 352)">
+<polygon points="-35,-5 0,-40 35,-5"></polygon>
+<polygon points="-35,10 0,45 35,10"></polygon>
+</g>
+<g transform="translate(75 250)">
+<polyline points="-30,30 -60,0 -30,-30"></polyline>
+<polyline points="0,30 -30,0 0,-30"></polyline>
+</g>
+<g transform="translate(425 250) rotate(180)">
+<polyline points="-30,30 -60,0 -30,-30"></polyline>
+<polyline points="0,30 -30,0 0,-30"></polyline>
+</g>
+</g>
+</g>
+</svg>
+</a>
+Loading ITables v2.3.0 from the <code>init_notebook_mode</code> cell...
+(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
+</tr></tbody>
+</table>
+<script type="module">
+    const { DataTable, jQuery: $ } = await import(window._datatables_src_for_itables_2_3_0);
 
-<span class="ansi-red-fg">NameError</span>: name 'pd' is not defined</pre>
+    document.querySelectorAll("#itables_79268466_e68f_4b07_bee4_797f15eff6b5:not(.dataTable)").forEach(table => {
+        if (!(table instanceof HTMLTableElement))
+            return;
+
+        // Define the table data
+        const data = [[1, 1, "strat", "Fender Stratocaster", "The Fender Stratocaster is the electric guitar design that changed the world. New features include a tinted neck, parchment pickguard and control knobs, and a '70s-style logo. Includes select alder body, 21-fret maple neck with your choice of a rosewood or maple fretboard, 3 single-coil pickups, vintage-style tremolo, and die-cast tuning keys. This guitar features a thicker bridge block for increased sustain and a more stable point of contact with the strings. At this low price, why play anything but the real thing?\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* New features:\\r\\n* Thicker bridge block\\r\\n* 3-ply parchment pick guard\\r\\n* Tinted neck", 699.0, 30.0, "2021-10-30 09:32:40"], [2, 1, "les_paul", "Gibson Les Paul", "This Les Paul guitar offers a carved top and humbucking pickups. It has a simple yet elegant design. Cutting-yet-rich tone?the hallmark of the Les Paul?pours out of the 490R and 498T Alnico II magnet humbucker pickups, which are mounted on a carved maple top with a mahogany back. The faded finish models are equipped with BurstBucker Pro pickups and a mahogany top. This guitar includes a Gibson hardshell case (Faded and satin finish models come with a gig bag) and a limited lifetime warranty.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Carved maple top and mahogany back (Mahogany top on faded finish models)\\r\\n* Mahogany neck, '59 Rounded Les Paul\\r\\n* Rosewood fingerboard (Ebony on Alpine white)\\r\\n* Tune-O-Matic bridge with stopbar\\r\\n* Chrome or gold hardware\\r\\n* 490R and 498T Alnico 2 magnet humbucker pickups (BurstBucker Pro on faded finish models)\\r\\n* 2 volume and 2 tone knobs, 3-way switch", 1199.0, 30.0, "2021-12-05 16:33:13"], [3, 1, "sg", "Gibson SG", "This Gibson SG electric guitar takes the best of the '62 original and adds the longer and sturdier neck joint of the late '60s models. All the classic features you'd expect from a historic guitar. Hot humbuckers go from rich, sweet lightning to warm, tingling waves of sustain. A silky-fast rosewood fretboard plays like a dream. The original-style beveled mahogany body looks like a million bucks. Plus, Tune-O-Matic bridge and chrome hardware. Limited lifetime warranty. Includes hardshell case.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Double-cutaway beveled mahogany body\\r\\n* Set mahogany neck with rounded '50s profile\\r\\n* Bound rosewood fingerboard with trapezoid inlays\\r\\n* Tune-O-Matic bridge with stopbar tailpiece\\r\\n* Chrome hardware\\r\\n* 490R humbucker in the neck position\\r\\n* 498T humbucker in the bridge position\\r\\n* 2 volume knobs, 2 tone knobs, 3-way switch\\r\\n* 24-3/4\" scale", 2517.0, 52.0, "2022-02-04 11:04:31"], [4, 1, "fg700s", "Yamaha FG700S", "The Yamaha FG700S solid top acoustic guitar has the ultimate combo for projection and pure tone. The expertly braced spruce top speaks clearly atop the rosewood body. It has a rosewood fingerboard, rosewood bridge, die-cast tuners, body and neck binding, and a tortoise pickguard.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Solid Sitka spruce top\\r\\n* Rosewood back and sides\\r\\n* Rosewood fingerboard\\r\\n* Rosewood bridge\\r\\n* White/black body and neck binding\\r\\n* Die-cast tuners\\r\\n* Tortoise pickguard\\r\\n* Limited lifetime warranty", 489.99, 38.0, "2022-06-01 11:12:59"], [5, 1, "washburn", "Washburn D10S", "The Washburn D10S acoustic guitar is superbly crafted with a solid spruce top and mahogany back and sides for exceptional tone. A mahogany neck and rosewood fingerboard make fretwork a breeze, while chrome Grover-style machines keep you perfectly tuned. The Washburn D10S comes with a limited lifetime warranty.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n    * Spruce top\\r\\n    * Mahogany back, sides\\r\\n    * Mahogany neck Rosewood fingerboard\\r\\n    * Chrome Grover-style machines", 299.0, 0.0, "2022-07-30 13:58:35"], [6, 1, "rodriguez", "Rodriguez Caballero 11", "Featuring a carefully chosen, solid Canadian cedar top and laminated bubinga back and sides, the Caballero 11 classical guitar is a beauty to behold and play. The headstock and fretboard are of Indian rosewood. Nickel-plated tuners and Silver-plated frets are installed to last a lifetime. The body binding and wood rosette are exquisite.\\r\\n\\r\\nThe Rodriguez Guitar is hand crafted and glued to create precise balances. From the invisible careful sanding, even inside the body, that ensures the finished instrument's purity of tone, to the beautifully unique rosette inlays around the soundhole and on the back of the neck, each guitar is a credit to its luthier and worthy of being handed down from one generation to another.\\r\\n\\r\\nThe tone, resonance and beauty of fine guitars are all dependent upon the wood from which they are made. The wood used in the construction of Rodriguez guitars is carefully chosen and aged to guarantee the highest quality. No wood is purchased before the tree has been cut down, and at least 2 years must elapse before the tree is turned into lumber. The wood has to be well cut from the log. The grain must be close and absolutely vertical. The shop is totally free from humidity.", 415.0, 39.0, "2022-07-30 14:12:41"], [7, 2, "precision", "Fender Precision", "The Fender Precision bass guitar delivers the sound, look, and feel today's bass players demand. This bass features that classic P-Bass old-school design. Each Precision bass boasts contemporary features and refinements that make it an excellent value. Featuring an alder body and a split single-coil pickup, this classic electric bass guitar lives up to its Fender legacy.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Body: Alder\\r\\n* Neck: Maple, modern C shape, tinted satin urethane finish\\r\\n* Fingerboard: Rosewood or maple (depending on color)\\r\\n* 9-1/2\" Radius (241 mm)\\r\\n* Frets: 20 Medium-jumbo frets\\r\\n* Pickups: 1 Standard Precision Bass split single-coil pickup (Mid)\\r\\n* Controls: Volume, Tone\\r\\n* Bridge: Standard vintage style with single groove saddles\\r\\n* Machine heads: Standard\\r\\n* Hardware: Chrome\\r\\n* Pickguard: 3-Ply Parchment\\r\\n* Scale Length: 34\" (864 mm)\\r\\n* Width at Nut: 1-5/8\" (41.3 mm)\\r\\n* Unique features: Knurled chrome P Bass knobs, Fender transition logo", 799.99, 30.0, "2022-06-01 11:29:35"], [8, 2, "hofner", "Hofner Icon", "With authentic details inspired by the original, the Hofner Icon makes the legendary violin bass available to the rest of us. Don't get the idea that this a just a \"nowhere man\" look-alike. This quality instrument features a real spruce top and beautiful flamed maple back and sides. The semi-hollow body and set neck will give you the warm, round tone you expect from the violin bass.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Authentic details inspired by the original\\r\\n* Spruce top\\r\\n* Flamed maple back and sides\\r\\n* Set neck\\r\\n* Rosewood fretboard\\r\\n* 30\" scale\\r\\n* 22 frets\\r\\n* Dot inlay", 499.99, 25.0, "2022-07-30 14:18:33"], [9, 3, "ludwig", "Ludwig 5-piece Drum Set with Cymbals", "This product includes a Ludwig 5-piece drum set and a Zildjian starter cymbal pack.\\r\\n\\r\\nWith the Ludwig drum set, you get famous Ludwig quality. This set features a bass drum, two toms, a floor tom, and a snare?each with a wrapped finish. Drum hardware includes LA214FP bass pedal, snare stand, cymbal stand, hi-hat stand, and a throne.\\r\\n\\r\\nWith the Zildjian cymbal pack, you get a 14\" crash, 18\" crash/ride, and a pair of 13\" hi-hats. Sound grooves and round hammer strikes in a simple circular pattern on the top surface of these cymbals magnify the basic sound of the distinctive alloy.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* Famous Ludwig quality\\r\\n* Wrapped finishes\\r\\n* 22\" x 16\" kick drum\\r\\n* 12\" x 10\" and 13\" x 11\" toms\\r\\n* 16\" x 16\" floor tom\\r\\n* 14\" x 6-1/2\" snare drum kick pedal\\r\\n* Snare stand\\r\\n* Straight cymbal stand hi-hat stand\\r\\n* FREE throne", 699.99, 30.0, "2022-07-30 12:46:40"], [10, 3, "tama", "Tama 5-Piece Drum Set with Cymbals", "The Tama 5-piece Drum Set is the most affordable Tama drum kit ever to incorporate so many high-end features.\\r\\n\\r\\nWith over 40 years of experience, Tama knows what drummers really want. Which is why, no matter how long you've been playing the drums, no matter what budget you have to work with, Tama has the set you need, want, and can afford. Every aspect of the modern drum kit was exhaustively examined and reexamined and then improved before it was accepted as part of the Tama design. Which is why, if you start playing Tama now as a beginner, you'll still enjoy playing it when you've achieved pro-status. That's how good these groundbreaking new drums are.\\r\\n\\r\\nOnly Tama comes with a complete set of genuine Meinl HCS cymbals. These high-quality brass cymbals are made in Germany and are sonically matched so they sound great together. They are even lathed for a more refined tonal character. The set includes 14\" hi-hats, 16\" crash cymbal, and a 20\" ride cymbal.\\r\\n\\r\\nFeatures:\\r\\n\\r\\n* 100% poplar 6-ply/7.5mm shells\\r\\n* Precise bearing edges\\r\\n* 100% glued finishes\\r\\n* Original small lugs\\r\\n* Drum heads\\r\\n* Accu-tune bass drum hoops\\r\\n* Spur brackets\\r\\n* Tom holder\\r\\n* Tom brackets", 799.99, 15.0, "2022-07-30 13:14:15"]];
+
+        // Define the dt_args
+        let dt_args = {"layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "lengthMenu": [10, 25, 50, 100], "order": [], "scrollX": true, "warn_on_selected_rows_not_rendered": true};
+        dt_args["data"] = data;
+
+        
+        new DataTable(table, dt_args);
+    });
+</script>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9baeeaee-b2f2-46e5-848d-2ac6af875306">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Close the connection</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 </div>
 </div>
 </div>

@@ -12,42 +12,26 @@ details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1r
 a.home-link { font-size: 16px; font-weight: bold; margin-bottom: 1rem; display: inline-block; color: #0d6efd; }
 .container { max-width: 900px; margin: 0 auto; }
 summary { position: relative; list-style: none; }
-summary::after {
-  content: '▶';
-  font-size: 0.8rem;
-  position: absolute;
-  right: 0;
-  transition: transform 0.3s ease;
-}
-details[open] > summary::after {
-  transform: rotate(90deg);
-}
-details > *:not(summary) {
-  animation: fadeInSlide 0.3s ease;
-}
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+summary::after { content: '▶'; font-size: 0.8rem; position: absolute; right: 0; transition: transform 0.3s ease; }
+details[open] > summary::after { transform: rotate(90deg); }
+details > *:not(summary) { animation: fadeInSlide 0.3s ease; }
+@keyframes fadeInSlide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head><body><div class='container mt-5'>
 <h1 class='text-center mb-4'>Learning Notebooks</h1>
-<details class='mb-4'>
-<summary style='cursor:pointer; font-size:1.1rem; color: 45,45,45;'>📍 Data Scientist Roadmap</summary>
-<div style='margin-top:10px; text-align:center;'>
+<details class='mb-4'><summary style='cursor:pointer;'>📍 Data Scientist Roadmap</summary><div style='margin-top:10px; text-align:center;'>
 <img src='data-science-roadmap.png' alt='Learning Banner' style='width:80%; max-width:800px; border-radius:5px;'>
-</div>
-</details>
+</div></details>
 <details>
 <summary>Data Science</summary>
   <details>
   <summary>Coding</summary>
     <details>
     <summary>NumPy</summary>
-<div class='nested'><a href='notebooks/Data Science/Coding/NumPy/50_Numpy_Exercises.html'target='_blank' rel='noopener noreferrer'>- 50 Numpy Exercises</a></div>
-<div class='nested'><a href='notebooks/Data Science/Coding/NumPy/NumPy.html'target='_blank' rel='noopener noreferrer'>- NumPy</a></div>
+<div class='nested'><a href='notebooks/Data Science/Coding/NumPy/50_Numpy_Exercises.html' target='_blank' rel='noopener noreferrer'>- 50 numpy exercises</a></div>
+<div class='nested'><a href='notebooks/Data Science/Coding/NumPy/NumPy.html' target='_blank' rel='noopener noreferrer'>- Numpy</a></div>
     </details>
-<div class='nested'><a href='notebooks/Data Science/Coding/Pandas.html'target='_blank' rel='noopener noreferrer'>- Pandas</a></div>
+<div class='nested'><a href='notebooks/Data Science/Coding/Pandas.html' target='_blank' rel='noopener noreferrer'>- Pandas</a></div>
   </details>
   <details>
   <summary>Deep Learning</summary>
@@ -63,8 +47,8 @@ details > *:not(summary) {
   </details>
   <details>
   <summary>Mathematics</summary>
-<div class='nested'><a href='notebooks/Data Science/Mathematics/Linear Algebra.html'target='_blank' rel='noopener noreferrer'>- Linear Algebra</a></div>
-<div class='nested'><a href='notebooks/Data Science/Mathematics/matrix_transformations.html'target='_blank' rel='noopener noreferrer'>- matrix transformations</a></div>
+<div class='nested'><a href='notebooks/Data Science/Mathematics/Linear Algebra.html' target='_blank' rel='noopener noreferrer'>- Linear algebra</a></div>
+<div class='nested'><a href='notebooks/Data Science/Mathematics/Matrix Transformations.html' target='_blank' rel='noopener noreferrer'>- Matrix transformations</a></div>
   </details>
   <details>
   <summary>Statistics</summary>
@@ -72,20 +56,20 @@ details > *:not(summary) {
 </details>
 <details>
 <summary>Machine Learning Projects</summary>
-<div class='nested'><a href='notebooks/Machine Learning Projects/Apple_Music_Analyzer.html'target='_blank' rel='noopener noreferrer'>- Apple Music Analyzer</a></div>
+<div class='nested'><a href='notebooks/Machine Learning Projects/Apple_Music_Analyzer.html' target='_blank' rel='noopener noreferrer'>- Apple music analyzer</a></div>
 </details>
 <details>
 <summary>SQL</summary>
-<div class='nested'><a href='notebooks/SQL/How_To_Run_SQL_in_IPYNB.html'target='_blank' rel='noopener noreferrer'>- How To Run SQL in IPYNB</a></div>
+<div class='nested'><a href='notebooks/SQL/How_To_Run_SQL_in_IPYNB.html' target='_blank' rel='noopener noreferrer'>- How to run sql in ipynb</a></div>
 </details>
 <details>
 <summary>Terminal</summary>
-<div class='nested'><a href='notebooks/Terminal/GitHub_Terminal.html'target='_blank' rel='noopener noreferrer'>- GitHub Terminal</a></div>
-<div class='nested'><a href='notebooks/Terminal/Terminal.html'target='_blank' rel='noopener noreferrer'>- Terminal</a></div>
+<div class='nested'><a href='notebooks/Terminal/GitHub_Terminal.html' target='_blank' rel='noopener noreferrer'>- Github terminal</a></div>
+<div class='nested'><a href='notebooks/Terminal/Terminal.html' target='_blank' rel='noopener noreferrer'>- Terminal</a></div>
 </details>
 <details>
 <summary>Web Development</summary>
-<div class='nested'><a href='notebooks/Web Development/Flask_Simple_Web_App.html'target='_blank' rel='noopener noreferrer'>- Flask Simple Web App</a></div>
+<div class='nested'><a href='notebooks/Web Development/Flask_Simple_Web_App.html' target='_blank' rel='noopener noreferrer'>- Flask simple web app</a></div>
 </details>
 </div>
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>

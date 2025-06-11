@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Linear Algebra</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>1. Introduction to Statistics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,108 +7510,331 @@ a.anchor-link {
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0d8ce611-ea9e-4f1c-b252-81c28fb03aed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Linear-Algebra-for-data-science">Linear Algebra for data science<a class="anchor-link" href="#Linear-Algebra-for-data-science">¶</a></h1><hr/>
-<h4 id="Math-is-crucial-for-data-science-because-it-provides-the-framework-for:">Math is crucial for data science because it provides the framework for:<a class="anchor-link" href="#Math-is-crucial-for-data-science-because-it-provides-the-framework-for:">¶</a></h4><ul>
-<li>understanding data</li>
-<li>building models</li>
-<li>making predictions.</li>
+<h1 id="An-introduction-to-Statistics-as-a-skillset-for-Data-Science">An introduction to Statistics as a skillset for Data Science<a class="anchor-link" href="#An-introduction-to-Statistics-as-a-skillset-for-Data-Science">¶</a></h1><h4 id="Statistics-is-one-of-the-many-pillars-of-data-science-that-enables-us-to-transform-raw-data-into-actionable-insights.">Statistics is one of the many pillars of data science that enables us to transform raw data into actionable insights.<a class="anchor-link" href="#Statistics-is-one-of-the-many-pillars-of-data-science-that-enables-us-to-transform-raw-data-into-actionable-insights.">¶</a></h4><h3 id="Statistics'-use-case-in-Data-Science:">Statistics' use case in Data Science:<a class="anchor-link" href="#Statistics'-use-case-in-Data-Science:">¶</a></h3><ul>
+<li><strong>Data Understanding</strong>: Statistics helps you summarize and describe the main features of a dataset (e.g., average, variability).</li>
+<li><strong>Uncertainty Handling</strong>: Real-world data is messy and incomplete. Statistics helps quantify uncertainty and make informed decisions despite it.</li>
+<li><strong>Pattern Detection</strong>: You can identify trends, correlations, and anomalies that might not be obvious just by looking at raw data.</li>
+<li><strong>Modeling and Prediction</strong>: Statistical methods are the foundation of machine learning models (especially supervised learning).</li>
+<li><strong>Hypothesis Testing</strong>: You can test assumptions or claims about data, which is essential for experiments (A/B testing, clinical trials, etc.).</li>
 </ul>
-<h4 id="It's-the-foundation-for:">It's the foundation for:<a class="anchor-link" href="#It's-the-foundation-for:">¶</a></h4><ul>
-<li>analyzing patterns</li>
-<li>developing algorithms</li>
-<li>interpreting results</li>
-</ul>
-<h4 id="ultimately-enabling-data-scientists-to-extract-valuable-insights-from-raw-data.">ultimately enabling data scientists to extract valuable insights from raw data.<a class="anchor-link" href="#ultimately-enabling-data-scientists-to-extract-valuable-insights-from-raw-data.">¶</a></h4><hr/>
-<h2 id="Vectors-and-Vector-Spaces">Vectors and Vector Spaces<a class="anchor-link" href="#Vectors-and-Vector-Spaces">¶</a></h2><p>👉 Definition:</p>
-<p>A vector is an ordered list of numbers that represents a direction and magnitude in space. In 2D:</p>
-<p>$V = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix}$</p>
-<p>In 3D:</p>
-<p>$V = \begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}$</p>
-<p>Vectors can represent:</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=23827737-19a3-4331-8879-8131b5a5f67f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+<h2 id="Understanding-the-kind-of-data-you%E2%80%99re-working-with-is-crucial.">Understanding the kind of data you’re working with is crucial.<a class="anchor-link" href="#Understanding-the-kind-of-data-you%E2%80%99re-working-with-is-crucial.">¶</a></h2><h3 id="Types-of-Data">Types of Data<a class="anchor-link" href="#Types-of-Data">¶</a></h3><p>Importance:</p>
 <ul>
-<li>Points in space</li>
-<li>Features of a data sample</li>
-<li>Directions in geometry</li>
+<li>Determines what statistical tools and visualizations can be applied.</li>
+<li>Helps avoid incorrect analysis (e.g., calculating average of categorical data makes no sense).</li>
 </ul>
-<hr/>
-<h2 id="Linear-Combinations-and-Spans">Linear Combinations and Spans<a class="anchor-link" href="#Linear-Combinations-and-Spans">¶</a></h2><p>👉 Linear Combination:</p>
-<p>Given vectors $\vec{v_1}, \vec{v_2}, …, \vec{v_n}$ a linear combination is:</p>
-<p>$a_1\vec{v_1} + a_2\vec{v_2} + … + a_n\vec{v_n}$</p>
-<p>Where $a_1, a_2, …, a_n \in \mathbb{R}$ are scalars.</p>
-<p>Example:</p>
-<p>Let: $\vec{v_1} = \begin{bmatrix} 1 \\ 2 \end{bmatrix},\quad \vec{v_2} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$</p>
-<p>Then: $3\vec{v_1} - 1\vec{v_2} = 3\begin{bmatrix} 1 \\ 2 \end{bmatrix} - 1\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \end{bmatrix} - \begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \\ 5 \end{bmatrix}$</p>
-<h3 id="%F0%9F%93%90-Span:">📐 Span:<a class="anchor-link" href="#%F0%9F%93%90-Span:">¶</a></h3><p>The span of a set of vectors is the set of all possible linear combinations of them.</p>
-<p>If $\vec{v_1}$ and $\vec{v_2}$ are 2D vectors not on the same line, their span is the entire 2D plane.</p>
-<hr/>
-<h2 id="Linear-Dependence-and-Independence">Linear Dependence and Independence<a class="anchor-link" href="#Linear-Dependence-and-Independence">¶</a></h2><p>👉 Linearly Dependent:</p>
-<p>Vectors are dependent if one can be written as a combination of the others.</p>
-<p>$\vec{v_3} = a\vec{v_1} + b\vec{v_2}$</p>
-<p>If this is possible, then the vectors are dependent.</p>
-<p>👉 Linearly Independent:</p>
-<p>Vectors are independent if no vector in the set can be written as a combination of the others.</p>
-<p>✨ Geometric Intuition:</p>
+<p>Use Cases:</p>
 <ul>
-<li>Two vectors in 2D are dependent if they lie on the same line.</li>
-<li>Three vectors in 3D are dependent if they lie in the same plane.</li>
+<li>Choosing encoding strategies for machine learning (e.g., one-hot encoding for nominal data).</li>
+<li>Selecting appropriate models: regression for numerical, classification for categorical.</li>
 </ul>
-<hr/>
-<h2 id="Dot-Product">Dot Product<a class="anchor-link" href="#Dot-Product">¶</a></h2><p>👉 Definition:</p>
-<p>For vectors $\vec{a} = [a_1, a_2, …, a_n]$ and $\vec{b} = [b_1, b_2, …, b_n]$:</p>
-<p>$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + … + a_nb_n$</p>
-<p>👉 Geometric Form:</p>
-<p>$\vec{a} \cdot \vec{b} = \|\vec{a}\| \|\vec{b}\| \cos(\theta)$</p>
-<p>Where $\theta$ is the angle between vectors.</p>
-<p>🔍 Interpretation:</p>
 <table>
 <thead>
 <tr>
-<th>Result</th>
+<th>Type</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Numerical</strong></td>
+<td>Quantitative values</td>
+<td>Age, salary, temperature</td>
+</tr>
+<tr>
+<td>- Continuous</td>
+<td>Any value in a range</td>
+<td>5.5, 3.14159, 100.01</td>
+</tr>
+<tr>
+<td>- Discrete</td>
+<td>Countable values</td>
+<td>Number of students, cars</td>
+</tr>
+<tr>
+<td><strong>Categorical</strong></td>
+<td>Qualitative values (labels)</td>
+<td>Gender, country, product category</td>
+</tr>
+<tr>
+<td>- Nominal</td>
+<td>No inherent order</td>
+<td>Red, Blue, Green</td>
+</tr>
+<tr>
+<td>- Ordinal</td>
+<td>Ordered categories</td>
+<td>Low, Medium, High; Star Ratings</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="Shape-of-a-Distribution">Shape of a Distribution<a class="anchor-link" href="#Shape-of-a-Distribution">¶</a></h3><p>Importance:</p>
+<ul>
+<li>Reveals how data is spread.</li>
+<li>Helps detect skewness, outliers, and the need for transformations.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>Normal distribution enables using many parametric tests (e.g., t-test).</li>
+<li>Skewed data may need transformation (e.g., log or Box-Cox) before modeling.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>What it Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Symmetrical</strong></td>
+<td>Mean ≈ Median ≈ Mode (e.g., normal)</td>
+</tr>
+<tr>
+<td><strong>Skewed Left</strong></td>
+<td>Long tail on the left (mean &lt; median)</td>
+</tr>
+<tr>
+<td><strong>Skewed Right</strong></td>
+<td>Long tail on the right (mean &gt; median)</td>
+</tr>
+<tr>
+<td><strong>Uniform</strong></td>
+<td>All values equally likely</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="Variance-and-Standard-Deviation">Variance and Standard Deviation<a class="anchor-link" href="#Variance-and-Standard-Deviation">¶</a></h3><p>Importance:</p>
+<ul>
+<li>Measures <strong>spread</strong> or <strong>dispersion</strong> in data.</li>
+<li>Low spread = consistent data; High spread = more variability.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>Feature scaling (e.g., in SVM or KNN, where distance matters).</li>
+<li>Risk analysis in finance (e.g., high standard deviation = high volatility).</li>
+</ul>
+<hr/>
+<h2 id="Percentiles-and-Quartiles">Percentiles and Quartiles<a class="anchor-link" href="#Percentiles-and-Quartiles">¶</a></h2><p>Importance:</p>
+<ul>
+<li>Provide robust measures of spread (not affected by extreme values).</li>
+<li>IQR is useful for outlier detection.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>Setting grading curves in education.</li>
+<li>Understanding salary distribution (e.g., top 25% earners).</li>
+<li>Detecting data anomalies (e.g., fraud detection).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Term</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&gt; 0</td>
-<td>Vectors point in similar direction</td>
+<td><strong>Percentile</strong></td>
+<td>Value below which a % of data falls</td>
 </tr>
 <tr>
-<td>= 0</td>
-<td>Vectors are perpendicular</td>
+<td><strong>Quartiles</strong></td>
+<td>Divide data into four parts</td>
 </tr>
 <tr>
-<td>&lt; 0</td>
-<td>Vectors point in opposite direction</td>
+<td>- Q1 (25%)</td>
+<td>Lower quartile</td>
+</tr>
+<tr>
+<td>- Q2 (50%)</td>
+<td>Median</td>
+</tr>
+<tr>
+<td>- Q3 (75%)</td>
+<td>Upper quartile</td>
+</tr>
+<tr>
+<td><strong>IQR</strong></td>
+<td>Interquartile range = Q3 - Q1</td>
 </tr>
 </tbody>
 </table>
-<h3 id="Real-world-example:">Real world example:<a class="anchor-link" href="#Real-world-example:">¶</a></h3><p>Imagine you’re building a movie recommender system. You want to recommend movies to a user based on how similar their tastes are to a movie’s characteristics.</p>
-<p>🧠 Concept: User Preference Vector vs Movie Feature Vector</p>
-<p>Let’s say:</p>
+<hr/>
+<h2 id="Outlier-Detection-(Z-score-/-IQR)">Outlier Detection (Z-score / IQR)<a class="anchor-link" href="#Outlier-Detection-(Z-score-/-IQR)">¶</a></h2><p>Importance:</p>
 <ul>
-<li>Each user has preferences for genres like Action, Comedy, and Drama.</li>
-<li>Each movie has a score for how much it fits into each genre.</li>
+<li>Outliers can distort statistical models and mean values.</li>
+<li>Important for cleaning and preprocessing.</li>
 </ul>
-<p>User = [0.9, 0.1, 0.0] <br/>
-<em>Likes Action a lot, Comedy a bit, doesn't like Drama</em></p>
-<p>Movie A = [1.0, 0.0, 0.0] <br/>
-<em>Pure Action</em></p>
-<p>Movie B = [0.3, 0.7, 0.0] <br/>
-<em>Mixed Action and Comedy</em></p>
-<p>✅ Dot Product Calculation</p>
-<p>The dot product of two vectors gives a scalar score indicating how aligned they are.</p>
-$$\text{Score}_A = \vec{User} \cdot \vec{Movie}_A = (0.9)(1.0) + (0.1)(0.0) + (0.0)(0.0) = 0.9$$$$\text{Score}_B = \vec{User} \cdot \vec{Movie}_B = (0.9)(0.3) + (0.1)(0.7) + (0.0)(0.0) = 0.27 + 0.07 = 0.34$$<p>📊 Interpretation:</p>
+<p>Use Cases:</p>
 <ul>
-<li>Movie A has a higher score (0.9), meaning it aligns closely with the user’s preferences.</li>
-<li>Movie B is less aligned (score 0.34).</li>
+<li>Data cleaning before ML modeling.</li>
+<li>Detecting fraudulent transactions or sensor failures.</li>
 </ul>
-<p>So, you would recommend Movie A to the user.</p>
+<hr/>
+<h2 id="Correlation-and-Covariance">Correlation and Covariance<a class="anchor-link" href="#Correlation-and-Covariance">¶</a></h2><p>Importance:</p>
+<ul>
+<li>Identifies relationships between variables.</li>
+<li>Avoids using redundant or highly collinear features in models.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>Feature selection (e.g., removing multicollinearity before linear regression).</li>
+<li>Recommender systems (e.g., item similarity).</li>
+<li>Market basket analysis (e.g., product A correlates with product B).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Covariance</strong></td>
+<td>Direction of relationship</td>
+<td>-∞ to +∞</td>
+</tr>
+<tr>
+<td><strong>Correlation</strong></td>
+<td>Strength &amp; direction (normalized covariance)</td>
+<td>-1 to +1</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="Probability-Basics">Probability Basics<a class="anchor-link" href="#Probability-Basics">¶</a></h2><p><strong>Probability</strong> = Likelihood of an event (from 0 to 1)
+Key Concepts:</p>
+<ul>
+<li>Independent events</li>
+<li>Dependent events</li>
+<li>Conditional probability</li>
+<li>Bayes’ Theorem</li>
+</ul>
+<p>Importance:</p>
+<ul>
+<li>Foundation of inferential statistics and machine learning.</li>
+<li>Quantifies uncertainty.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>Predictive modeling (e.g., Naive Bayes, probabilistic models).</li>
+<li>Spam detection, risk scoring, recommendation engines.</li>
+</ul>
+<hr/>
+<h2 id="Inferential-Statistics">Inferential Statistics<a class="anchor-link" href="#Inferential-Statistics">¶</a></h2><p>Importance:</p>
+<ul>
+<li>Allows generalizing from samples to populations.</li>
+<li>Helps test hypotheses and estimate parameters.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>A/B testing for product changes or marketing strategies.</li>
+<li>Clinical trials for drug effectiveness.</li>
+<li>Determining if observed differences are statistically significant.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tool/Concept</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Confidence Intervals</strong></td>
+<td>Estimate range of a population parameter</td>
+</tr>
+<tr>
+<td><strong>Hypothesis Testing</strong></td>
+<td>Test claims using data</td>
+</tr>
+<tr>
+<td>- Null vs. Alternative</td>
+<td>( H_0 ) vs. ( H_1 )</td>
+</tr>
+<tr>
+<td>- p-value</td>
+<td>Probability the result is due to chance</td>
+</tr>
+<tr>
+<td><strong>t-tests / z-tests</strong></td>
+<td>Compare means</td>
+</tr>
+<tr>
+<td><strong>Chi-Square Test</strong></td>
+<td>Test for categorical distributions</td>
+</tr>
+<tr>
+<td><strong>ANOVA</strong></td>
+<td>Compare more than 2 means</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="Distributions">Distributions<a class="anchor-link" href="#Distributions">¶</a></h2><p>Importance:</p>
+<ul>
+<li>Underpin models and statistical assumptions.</li>
+<li>Choosing the right distribution improves prediction accuracy.</li>
+</ul>
+<p>Use Cases:</p>
+<ul>
+<li>Poisson: modeling website traffic or call center events.</li>
+<li>Binomial: success/failure outcomes like click-through rates.</li>
+<li>Normal: quality control, measurement errors.</li>
+<li>Exponential: modeling wait times or survival analysis.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Normal</strong></td>
+<td>Most natural data</td>
+</tr>
+<tr>
+<td><strong>Binomial</strong></td>
+<td>Binary outcomes (yes/no)</td>
+</tr>
+<tr>
+<td><strong>Poisson</strong></td>
+<td>Rare events (per time unit)</td>
+</tr>
+<tr>
+<td><strong>Uniform</strong></td>
+<td>Equal chance outcomes</td>
+</tr>
+<tr>
+<td><strong>Exponential</strong></td>
+<td>Time between events</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

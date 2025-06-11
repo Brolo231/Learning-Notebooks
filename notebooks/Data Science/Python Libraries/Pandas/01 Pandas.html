@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Linear Algebra</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>01 Pandas</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7509,109 +7509,17 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=30b6fa79-acfd-46d4-8cb6-ac1ef1d15352">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Linear-Algebra-for-data-science">Linear Algebra for data science<a class="anchor-link" href="#Linear-Algebra-for-data-science">¶</a></h1><hr/>
-<h4 id="Math-is-crucial-for-data-science-because-it-provides-the-framework-for:">Math is crucial for data science because it provides the framework for:<a class="anchor-link" href="#Math-is-crucial-for-data-science-because-it-provides-the-framework-for:">¶</a></h4><ul>
-<li>understanding data</li>
-<li>building models</li>
-<li>making predictions.</li>
-</ul>
-<h4 id="It's-the-foundation-for:">It's the foundation for:<a class="anchor-link" href="#It's-the-foundation-for:">¶</a></h4><ul>
-<li>analyzing patterns</li>
-<li>developing algorithms</li>
-<li>interpreting results</li>
-</ul>
-<h4 id="ultimately-enabling-data-scientists-to-extract-valuable-insights-from-raw-data.">ultimately enabling data scientists to extract valuable insights from raw data.<a class="anchor-link" href="#ultimately-enabling-data-scientists-to-extract-valuable-insights-from-raw-data.">¶</a></h4><hr/>
-<h2 id="Vectors-and-Vector-Spaces">Vectors and Vector Spaces<a class="anchor-link" href="#Vectors-and-Vector-Spaces">¶</a></h2><p>👉 Definition:</p>
-<p>A vector is an ordered list of numbers that represents a direction and magnitude in space. In 2D:</p>
-<p>$V = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix}$</p>
-<p>In 3D:</p>
-<p>$V = \begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}$</p>
-<p>Vectors can represent:</p>
-<ul>
-<li>Points in space</li>
-<li>Features of a data sample</li>
-<li>Directions in geometry</li>
-</ul>
-<hr/>
-<h2 id="Linear-Combinations-and-Spans">Linear Combinations and Spans<a class="anchor-link" href="#Linear-Combinations-and-Spans">¶</a></h2><p>👉 Linear Combination:</p>
-<p>Given vectors $\vec{v_1}, \vec{v_2}, …, \vec{v_n}$ a linear combination is:</p>
-<p>$a_1\vec{v_1} + a_2\vec{v_2} + … + a_n\vec{v_n}$</p>
-<p>Where $a_1, a_2, …, a_n \in \mathbb{R}$ are scalars.</p>
-<p>Example:</p>
-<p>Let: $\vec{v_1} = \begin{bmatrix} 1 \\ 2 \end{bmatrix},\quad \vec{v_2} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$</p>
-<p>Then: $3\vec{v_1} - 1\vec{v_2} = 3\begin{bmatrix} 1 \\ 2 \end{bmatrix} - 1\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \end{bmatrix} - \begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \\ 5 \end{bmatrix}$</p>
-<h3 id="%F0%9F%93%90-Span:">📐 Span:<a class="anchor-link" href="#%F0%9F%93%90-Span:">¶</a></h3><p>The span of a set of vectors is the set of all possible linear combinations of them.</p>
-<p>If $\vec{v_1}$ and $\vec{v_2}$ are 2D vectors not on the same line, their span is the entire 2D plane.</p>
-<hr/>
-<h2 id="Linear-Dependence-and-Independence">Linear Dependence and Independence<a class="anchor-link" href="#Linear-Dependence-and-Independence">¶</a></h2><p>👉 Linearly Dependent:</p>
-<p>Vectors are dependent if one can be written as a combination of the others.</p>
-<p>$\vec{v_3} = a\vec{v_1} + b\vec{v_2}$</p>
-<p>If this is possible, then the vectors are dependent.</p>
-<p>👉 Linearly Independent:</p>
-<p>Vectors are independent if no vector in the set can be written as a combination of the others.</p>
-<p>✨ Geometric Intuition:</p>
-<ul>
-<li>Two vectors in 2D are dependent if they lie on the same line.</li>
-<li>Three vectors in 3D are dependent if they lie in the same plane.</li>
-</ul>
-<hr/>
-<h2 id="Dot-Product">Dot Product<a class="anchor-link" href="#Dot-Product">¶</a></h2><p>👉 Definition:</p>
-<p>For vectors $\vec{a} = [a_1, a_2, …, a_n]$ and $\vec{b} = [b_1, b_2, …, b_n]$:</p>
-<p>$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + … + a_nb_n$</p>
-<p>👉 Geometric Form:</p>
-<p>$\vec{a} \cdot \vec{b} = \|\vec{a}\| \|\vec{b}\| \cos(\theta)$</p>
-<p>Where $\theta$ is the angle between vectors.</p>
-<p>🔍 Interpretation:</p>
-<table>
-<thead>
-<tr>
-<th>Result</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&gt; 0</td>
-<td>Vectors point in similar direction</td>
-</tr>
-<tr>
-<td>= 0</td>
-<td>Vectors are perpendicular</td>
-</tr>
-<tr>
-<td>&lt; 0</td>
-<td>Vectors point in opposite direction</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Real-world-example:">Real world example:<a class="anchor-link" href="#Real-world-example:">¶</a></h3><p>Imagine you’re building a movie recommender system. You want to recommend movies to a user based on how similar their tastes are to a movie’s characteristics.</p>
-<p>🧠 Concept: User Preference Vector vs Movie Feature Vector</p>
-<p>Let’s say:</p>
-<ul>
-<li>Each user has preferences for genres like Action, Comedy, and Drama.</li>
-<li>Each movie has a score for how much it fits into each genre.</li>
-</ul>
-<p>User = [0.9, 0.1, 0.0] <br/>
-<em>Likes Action a lot, Comedy a bit, doesn't like Drama</em></p>
-<p>Movie A = [1.0, 0.0, 0.0] <br/>
-<em>Pure Action</em></p>
-<p>Movie B = [0.3, 0.7, 0.0] <br/>
-<em>Mixed Action and Comedy</em></p>
-<p>✅ Dot Product Calculation</p>
-<p>The dot product of two vectors gives a scalar score indicating how aligned they are.</p>
-$$\text{Score}_A = \vec{User} \cdot \vec{Movie}_A = (0.9)(1.0) + (0.1)(0.0) + (0.0)(0.0) = 0.9$$$$\text{Score}_B = \vec{User} \cdot \vec{Movie}_B = (0.9)(0.3) + (0.1)(0.7) + (0.0)(0.0) = 0.27 + 0.07 = 0.34$$<p>📊 Interpretation:</p>
-<ul>
-<li>Movie A has a higher score (0.9), meaning it aligns closely with the user’s preferences.</li>
-<li>Movie B is less aligned (score 0.34).</li>
-</ul>
-<p>So, you would recommend Movie A to the user.</p>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

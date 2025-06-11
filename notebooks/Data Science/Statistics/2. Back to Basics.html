@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Linear Algebra</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2. Back to Basics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7510,108 +7510,316 @@ a.anchor-link {
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=829a464b-2116-4c2a-a04e-ddbe0063bd3d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Linear-Algebra-for-data-science">Linear Algebra for data science<a class="anchor-link" href="#Linear-Algebra-for-data-science">¶</a></h1><hr/>
-<h4 id="Math-is-crucial-for-data-science-because-it-provides-the-framework-for:">Math is crucial for data science because it provides the framework for:<a class="anchor-link" href="#Math-is-crucial-for-data-science-because-it-provides-the-framework-for:">¶</a></h4><ul>
-<li>understanding data</li>
-<li>building models</li>
-<li>making predictions.</li>
-</ul>
-<h4 id="It's-the-foundation-for:">It's the foundation for:<a class="anchor-link" href="#It's-the-foundation-for:">¶</a></h4><ul>
-<li>analyzing patterns</li>
-<li>developing algorithms</li>
-<li>interpreting results</li>
-</ul>
-<h4 id="ultimately-enabling-data-scientists-to-extract-valuable-insights-from-raw-data.">ultimately enabling data scientists to extract valuable insights from raw data.<a class="anchor-link" href="#ultimately-enabling-data-scientists-to-extract-valuable-insights-from-raw-data.">¶</a></h4><hr/>
-<h2 id="Vectors-and-Vector-Spaces">Vectors and Vector Spaces<a class="anchor-link" href="#Vectors-and-Vector-Spaces">¶</a></h2><p>👉 Definition:</p>
-<p>A vector is an ordered list of numbers that represents a direction and magnitude in space. In 2D:</p>
-<p>$V = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix}$</p>
-<p>In 3D:</p>
-<p>$V = \begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}$</p>
-<p>Vectors can represent:</p>
+<h1 id="Technical-Introduction-to-Statistics">Technical Introduction to Statistics<a class="anchor-link" href="#Technical-Introduction-to-Statistics">¶</a></h1><p>This notebook will cover the fundamental statistical operations and how to utilize these concepts in a format that is <em>'data science ready'</em></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=206c4a92-d076-4953-90b6-048dc85286ad">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Install pandas </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d78ba34a-990e-4dd3-90f8-33c3e5482557">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Sample data for testing purposes:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=30cfcdf7-832f-46ce-a6b9-cfa61590d4ce">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a simple dataset using a Python dictionary</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Student'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Alice'</span><span class="p">,</span> <span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Charlie'</span><span class="p">,</span> <span class="s1">'David'</span><span class="p">,</span> <span class="s1">'Eva'</span><span class="p">],</span>
+    <span class="s1">'Score'</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convert the dictionary into a DataFrame (table)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Display the table</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>   Student  Score
+0    Alice     85
+1      Bob     90
+2  Charlie     78
+3    David     92
+4      Eva     88
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8d0dddf-7b01-4d90-9905-c3dd9df83f08">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Descriptive-statistics">Descriptive statistics<a class="anchor-link" href="#Descriptive-statistics">¶</a></h3><p>This is the branch of statistics that summarizes and describes the main features of a dataset so that we can get an idea of what the data looks like.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a065a609-b6fb-45f7-a666-6f97dbce2b7f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li>Points in space</li>
-<li>Features of a data sample</li>
-<li>Directions in geometry</li>
+<li><strong>Mean</strong></li>
 </ul>
-<hr/>
-<h2 id="Linear-Combinations-and-Spans">Linear Combinations and Spans<a class="anchor-link" href="#Linear-Combinations-and-Spans">¶</a></h2><p>👉 Linear Combination:</p>
-<p>Given vectors $\vec{v_1}, \vec{v_2}, …, \vec{v_n}$ a linear combination is:</p>
-<p>$a_1\vec{v_1} + a_2\vec{v_2} + … + a_n\vec{v_n}$</p>
-<p>Where $a_1, a_2, …, a_n \in \mathbb{R}$ are scalars.</p>
-<p>Example:</p>
-<p>Let: $\vec{v_1} = \begin{bmatrix} 1 \\ 2 \end{bmatrix},\quad \vec{v_2} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$</p>
-<p>Then: $3\vec{v_1} - 1\vec{v_2} = 3\begin{bmatrix} 1 \\ 2 \end{bmatrix} - 1\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 3 \\ 6 \end{bmatrix} - \begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \\ 5 \end{bmatrix}$</p>
-<h3 id="%F0%9F%93%90-Span:">📐 Span:<a class="anchor-link" href="#%F0%9F%93%90-Span:">¶</a></h3><p>The span of a set of vectors is the set of all possible linear combinations of them.</p>
-<p>If $\vec{v_1}$ and $\vec{v_2}$ are 2D vectors not on the same line, their span is the entire 2D plane.</p>
-<hr/>
-<h2 id="Linear-Dependence-and-Independence">Linear Dependence and Independence<a class="anchor-link" href="#Linear-Dependence-and-Independence">¶</a></h2><p>👉 Linearly Dependent:</p>
-<p>Vectors are dependent if one can be written as a combination of the others.</p>
-<p>$\vec{v_3} = a\vec{v_1} + b\vec{v_2}$</p>
-<p>If this is possible, then the vectors are dependent.</p>
-<p>👉 Linearly Independent:</p>
-<p>Vectors are independent if no vector in the set can be written as a combination of the others.</p>
-<p>✨ Geometric Intuition:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9f30f33a-7007-46e6-b00f-5d2ce4fa0843">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Mean</span>
+
+<span class="n">mean_score</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean Score:"</span><span class="p">,</span> <span class="n">mean_score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Mean Score: 86.6
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c2940be0-1bca-4f68-95df-6c8f1ca008a2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li>Two vectors in 2D are dependent if they lie on the same line.</li>
-<li>Three vectors in 3D are dependent if they lie in the same plane.</li>
+<li><strong>Median</strong> \</li>
 </ul>
-<hr/>
-<h2 id="Dot-Product">Dot Product<a class="anchor-link" href="#Dot-Product">¶</a></h2><p>👉 Definition:</p>
-<p>For vectors $\vec{a} = [a_1, a_2, …, a_n]$ and $\vec{b} = [b_1, b_2, …, b_n]$:</p>
-<p>$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + … + a_nb_n$</p>
-<p>👉 Geometric Form:</p>
-<p>$\vec{a} \cdot \vec{b} = \|\vec{a}\| \|\vec{b}\| \cos(\theta)$</p>
-<p>Where $\theta$ is the angle between vectors.</p>
-<p>🔍 Interpretation:</p>
-<table>
-<thead>
-<tr>
-<th>Result</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&gt; 0</td>
-<td>Vectors point in similar direction</td>
-</tr>
-<tr>
-<td>= 0</td>
-<td>Vectors are perpendicular</td>
-</tr>
-<tr>
-<td>&lt; 0</td>
-<td>Vectors point in opposite direction</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Real-world-example:">Real world example:<a class="anchor-link" href="#Real-world-example:">¶</a></h3><p>Imagine you’re building a movie recommender system. You want to recommend movies to a user based on how similar their tastes are to a movie’s characteristics.</p>
-<p>🧠 Concept: User Preference Vector vs Movie Feature Vector</p>
-<p>Let’s say:</p>
+<p>Sorts the scores and picks the middle one. Useful when your data has outliers.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f51e0ca8-cd63-4b9f-a446-6c81d5ddadbd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Median</span>
+
+<span class="n">median_score</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Score'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Median Score:"</span><span class="p">,</span> <span class="n">median_score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Median Score: 88.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f72b0829-9a85-4afc-b7e5-731946e69d04">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li>Each user has preferences for genres like Action, Comedy, and Drama.</li>
-<li>Each movie has a score for how much it fits into each genre.</li>
+<li><strong>Mode</strong></li>
 </ul>
-<p>User = [0.9, 0.1, 0.0] <br/>
-<em>Likes Action a lot, Comedy a bit, doesn't like Drama</em></p>
-<p>Movie A = [1.0, 0.0, 0.0] <br/>
-<em>Pure Action</em></p>
-<p>Movie B = [0.3, 0.7, 0.0] <br/>
-<em>Mixed Action and Comedy</em></p>
-<p>✅ Dot Product Calculation</p>
-<p>The dot product of two vectors gives a scalar score indicating how aligned they are.</p>
-$$\text{Score}_A = \vec{User} \cdot \vec{Movie}_A = (0.9)(1.0) + (0.1)(0.0) + (0.0)(0.0) = 0.9$$$$\text{Score}_B = \vec{User} \cdot \vec{Movie}_B = (0.9)(0.3) + (0.1)(0.7) + (0.0)(0.0) = 0.27 + 0.07 = 0.34$$<p>📊 Interpretation:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9ab5cc5d-b0ab-4d26-97de-3b478ecd5dbb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Mode</span>
+
+<span class="n">mode_score</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Score'</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mode Score:"</span><span class="p">,</span> <span class="n">mode_score</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Mode Score: [78, 85, 88, 90, 92]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=28043d9c-221f-4640-8e2c-f51916b644e2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li>Movie A has a higher score (0.9), meaning it aligns closely with the user’s preferences.</li>
-<li>Movie B is less aligned (score 0.34).</li>
+<li><strong>Standard Deviation</strong> \</li>
 </ul>
-<p>So, you would recommend Movie A to the user.</p>
+<p>How spread out the data is</p>
+<ul>
+<li>A low standard deviation means most values are close to the mean → consistent, stable data.</li>
+<li>A high standard deviation means values are spread out over a wider range → more variability, less predictable.</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3851a8be-1f4d-40e0-8c88-8e28ee5bfc28">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Standard Deviation</span>
+
+<span class="n">std_score</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Score'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Standard Deviation:"</span><span class="p">,</span> <span class="n">std_score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Standard Deviation: 5.458937625582473
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c4fe28e-c764-4546-912c-bebefc925238">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li><strong>Min, Max, and Range</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9944a366-13d2-4ce2-9a6c-50edf1320e36">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Minimum, Maximum and Range</span>
+
+<span class="n">min_score</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Score'</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">max_score</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Score'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">range_score</span> <span class="o">=</span> <span class="n">max_score</span> <span class="o">-</span> <span class="n">min_score</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Min:"</span><span class="p">,</span> <span class="n">min_score</span><span class="p">,</span> <span class="s2">"| Max:"</span><span class="p">,</span> <span class="n">max_score</span><span class="p">,</span> <span class="s2">"| Range:"</span><span class="p">,</span> <span class="n">range_score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Min: 78 | Max: 92 | Range: 14
+</pre>
+</div>
 </div>
 </div>
 </div>

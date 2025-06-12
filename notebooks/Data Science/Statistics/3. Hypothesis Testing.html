@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>01 Stats Q&amp;A</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>3. Hypothesis Testing</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7509,120 +7509,180 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --><link rel="stylesheet" href="../dark_theme.css"><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51238d82-0433-4a35-b275-54858daf201f">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a0d4dbc6-047d-448a-b343-8ab61a982b9a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%F0%9F%A7%A0-Statistics-for-Data-Science-%E2%80%93-Quiz-/-Self-Check%7C">🧠 Statistics for Data Science – Quiz / Self-Check|<a class="anchor-link" href="#%F0%9F%A7%A0-Statistics-for-Data-Science-%E2%80%93-Quiz-/-Self-Check%7C">¶</a></h1>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">kaggle.api.kaggle_api_extended</span> <span class="kn">import</span> <span class="n">KaggleApi</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">KaggleApi</span><span class="p">()</span>
+<span class="n">api</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
+
+<span class="c1"># Download the dataset</span>
+<span class="n">api</span><span class="o">.</span><span class="n">dataset_download_file</span><span class="p">(</span><span class="s1">'rakeshkapilavai/extrovert-vs-introvert-behavior-data'</span><span class="p">,</span> 
+                          <span class="n">file_name</span><span class="o">=</span><span class="s1">'personality_dataset.csv'</span><span class="p">,</span> 
+                          <span class="n">path</span><span class="o">=</span><span class="s1">'datasets2/'</span><span class="p">)</span>
+
+<span class="c1"># Unzip if needed</span>
+<span class="c1"># with zipfile.ZipFile("personality_dataset.csv.zip", 'r') as zip_ref:</span>
+<span class="c1">#    zip_ref.extractall(".")</span>
+
+<span class="c1"># Load the dataset</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'datasets2/personality_dataset.csv'</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=87cabd9b-fdf5-45cb-824d-1d02edb92c4d">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Dataset URL: https://www.kaggle.com/datasets/rakeshkapilavai/extrovert-vs-introvert-behavior-data
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16583d79-1e34-4f7d-b279-3eee17bedb37">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Types-of-Data">Types of Data<a class="anchor-link" href="#Types-of-Data">¶</a></h2><p><strong>Q1:</strong> What is the difference between <em>nominal</em> and <em>ordinal</em> data?</p>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3792d2f-91b4-4e24-8649-5e65523f5872">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Time_spent_Alone</th>
+<th>Social_event_attendance</th>
+<th>Going_outside</th>
+<th>Friends_circle_size</th>
+<th>Post_frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>2837.000000</td>
+<td>2838.000000</td>
+<td>2834.000000</td>
+<td>2823.000000</td>
+<td>2835.000000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>4.505816</td>
+<td>3.963354</td>
+<td>3.000000</td>
+<td>6.268863</td>
+<td>3.564727</td>
+</tr>
+<tr>
+<th>std</th>
+<td>3.479192</td>
+<td>2.903827</td>
+<td>2.247327</td>
+<td>4.289693</td>
+<td>2.926582</td>
+</tr>
+<tr>
+<th>min</th>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>25%</th>
+<td>2.000000</td>
+<td>2.000000</td>
+<td>1.000000</td>
+<td>3.000000</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>4.000000</td>
+<td>3.000000</td>
+<td>3.000000</td>
+<td>5.000000</td>
+<td>3.000000</td>
+</tr>
+<tr>
+<th>75%</th>
+<td>8.000000</td>
+<td>6.000000</td>
+<td>5.000000</td>
+<td>10.000000</td>
+<td>6.000000</td>
+</tr>
+<tr>
+<th>max</th>
+<td>11.000000</td>
+<td>10.000000</td>
+<td>7.000000</td>
+<td>15.000000</td>
+<td>10.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=640a6ff0-5f07-475c-a54d-d1e4bf68b849">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Shape-of-Distribution">Shape of Distribution<a class="anchor-link" href="#Shape-of-Distribution">¶</a></h2><p><strong>Q2:</strong> What does it mean if a dataset is <em>right-skewed</em>?</p>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dfd25e03-c895-49b8-8694-84666ef93fcd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Variance-and-Standard-Deviation">Variance and Standard Deviation<a class="anchor-link" href="#Variance-and-Standard-Deviation">¶</a></h2><p><strong>Q3:</strong> What does a high standard deviation tell you about a dataset?</p>
-<p><strong>Q4:</strong> Can variance ever be negative?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62785e60-08dd-4ad4-9e00-1c82964539b4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Percentiles,-Quartiles,-and-IQR">Percentiles, Quartiles, and IQR<a class="anchor-link" href="#Percentiles,-Quartiles,-and-IQR">¶</a></h2><p><strong>Q5:</strong> What does the 75th percentile represent?</p>
-<p><strong>Q6:</strong> How is IQR calculated and what is it used for?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bde9d0e2-568f-4952-90a8-fb5ffa0a7b9a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Outliers">Outliers<a class="anchor-link" href="#Outliers">¶</a></h2><p><strong>Q7:</strong> How can you detect outliers using the IQR method?</p>
-<p><strong>Q8:</strong> Why is it important to handle outliers before building a machine learning model?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c250b873-f080-41fb-a729-f3e98e0c4e54">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Correlation-and-Covariance">Correlation and Covariance<a class="anchor-link" href="#Correlation-and-Covariance">¶</a></h2><p><strong>Q9:</strong> What does a correlation coefficient of -0.95 indicate?</p>
-<p><strong>Q10:</strong> How does correlation differ from covariance?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f99f71a1-ca8b-4c10-a706-103c2b80ab84">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Probability-Basics">Probability Basics<a class="anchor-link" href="#Probability-Basics">¶</a></h2><p><strong>Q11:</strong> What is the probability of getting heads in a fair coin toss?</p>
-<p><strong>Q12:</strong> Why is probability important in machine learning?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aa6f0516-07b4-40ec-b445-3172fe3669ad">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Common-Distributions">Common Distributions<a class="anchor-link" href="#Common-Distributions">¶</a></h2><p><strong>Q17:</strong> Give an example where the Poisson distribution is appropriate.</p>
-<p><strong>Q18:</strong> When should you use the normal distribution in analysis?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad41753a-c5bf-4412-ac13-1f421dcfc06a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Challenge-Questions">Challenge Questions<a class="anchor-link" href="#Challenge-Questions">¶</a></h2><p><strong>Q19:</strong> You have two features in your dataset with a correlation of 0.98. What should you consider doing before training a linear model?</p>
-<p><strong>Q20:</strong> Why is understanding data distribution crucial before applying machine learning algorithms?</p>
 </div>
 </div>
 </div>

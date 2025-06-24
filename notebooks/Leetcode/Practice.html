@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Matrix Transformations-checkpoint</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Practice</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7507,112 +7507,137 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
-<!-- End of mermaid configuration --></head>
+<!-- End of mermaid configuration -->
+    <style>
+        /* Force viewport scaling */
+        meta[name="viewport"] {
+          width: device-width;
+          initial-scale: 1.0;
+        }
+        
+        /* Make outputs and code blocks scrollable on small screens */
+        .output_area pre,
+        .output_area table,
+        div.output_html,
+        div.input_area pre,
+        .output_wrapper,
+        .output,
+        .output_scroll {
+          display: block;
+          overflow-x: auto;
+          white-space: pre;
+          max-width: 100%;
+        }
+        
+        /* Prevent horizontal overflow of cells */
+        div.cell {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Make text wrap in markdown */
+        div.text_cell_render {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          white-space: normal;
+        }
+        </style>
+    
+<link rel="stylesheet" href="../dark_theme.css"><script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b3a0a6a-cfc4-4801-81db-bb1182b3cf4a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=15278441-3a3b-4375-a007-3cd2c8ea3536">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Matrix-Transformations">Matrix Transformations<a class="anchor-link" href="#Matrix-Transformations">¶</a></h1><hr/>
-<h2 id="Functions-and-Linear-Transformations">Functions and Linear Transformations<a class="anchor-link" href="#Functions-and-Linear-Transformations">¶</a></h2><p>A linear transformation is a function that maps vectors from one space to another using matrix multiplication. If T is a linear transformation, then:</p>
-<p>$ T(\mathbf{x}) = A\mathbf{x} $</p>
-<ul>
-<li>T is the transformation</li>
-<li>A is an $m \times n$ matrix</li>
-<li>x is a vector in $ \mathbb{R}^n $</li>
-<li>The result is a vector in $\mathbb{R}^m$</li>
-</ul>
-<p>A transformation is linear if it satisfies:</p>
-<ul>
-<li>Additivity: $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$</li>
-<li>Homogeneity: $T(c\mathbf{u}) = cT(\mathbf{u})$</li>
-</ul>
+<h2 id="1.-Two-Sum">1. Two Sum<a class="anchor-link" href="#1.-Two-Sum">¶</a></h2><p>easy</p>
+<p>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>You can return the answer in any order.</p>
+<p>Example 1:</p>
+<p>Input: nums = [2,7,11,15], target = 9 <br/>
+Output: [0,1] <br/>
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1]. \</p>
+<p>Example 2:</p>
+<p>Input: nums = [3,2,4], target = 6 <br/>
+Output: [1,2]</p>
+<p>Example 3:</p>
+<p>Input: nums = [3,3], target = 6 <br/>
+Output: [0,1]</p>
+<p>Constraints:</p>
+<p>2 &lt;= nums.length &lt;= 104<br/>
+-109 &lt;= nums[i] &lt;= 109<br/>
+-109 &lt;= target &lt;= 109<br/>
+Only one valid answer exists.</p>
+<p>class Solution:<br/>
+    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</p>
 <hr/>
-<h2 id="Linear-Transformation-Examples">Linear Transformation Examples<a class="anchor-link" href="#Linear-Transformation-Examples">¶</a></h2><p>Let’s say we have:</p>
-<p>A = $\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 3 \end{bmatrix}$, $\quad \mathbf{x} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$</p>
-<p>Then the transformation $T(\mathbf{x}) = A\mathbf{x}$ becomes:</p>
-<p>$T(\mathbf{x})$ =<br/>
-$\begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 3 \end{bmatrix}$
-$\begin{bmatrix} 1 \\ 2 \end{bmatrix}$</p>
-<p>|<br/>
-V</p>
-<p>$\begin{bmatrix}
-2 \cdot 1 + 0 \cdot 2 \\
-0 \cdot 1 + 3 \cdot 2
-\end{bmatrix}$</p>
-<p>|<br/>
-V</p>
-<p>$\begin{bmatrix}
-2 \\
-6
-\end{bmatrix}$</p>
-<p>The original vector [1, 2] has been stretched — 2x in the x-direction and 3x in the y-direction.</p>
-<hr/>
-<h2 id="Transformations-and-Matrix-Multiplication">Transformations and Matrix Multiplication<a class="anchor-link" href="#Transformations-and-Matrix-Multiplication">¶</a></h2><p>Matrix multiplication is the process of applying a linear transformation.</p>
-<p>If:</p>
-<p>$A = \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}, \quad
-\mathbf{x} = \begin{bmatrix} x \\ y \end{bmatrix}$</p>
-<p>Then:</p>
-<p>$A\mathbf{x} =
-\begin{bmatrix}
-a \cdot x + b \cdot y \\
-c \cdot x + d \cdot y
-\end{bmatrix}$</p>
-<p>You’re combining the rows of the matrix with the elements of the vector using the dot product.</p>
-<hr/>
-<h2 id="Inverse-Functions-and-Transformations">Inverse Functions and Transformations<a class="anchor-link" href="#Inverse-Functions-and-Transformations">¶</a></h2><p>A transformation $T(\mathbf{x}) = A\mathbf{x}$ is invertible if there’s a matrix $A^{-1}$ such that:</p>
-<p>$A^{-1}(A\mathbf{x}) = \mathbf{x}$</p>
-<p>That means: applying the inverse transformation undoes the original transformation.</p>
-<p>Conditions for an inverse:</p>
-<ul>
-<li>The matrix must be square (n $\times$ n)</li>
-<li>The matrix must have a non-zero determinant</li>
-</ul>
-<hr/>
-<h2 id="Finding-Inverses-and-Determinants">Finding Inverses and Determinants<a class="anchor-link" href="#Finding-Inverses-and-Determinants">¶</a></h2><p>For a 2x2 matrix:</p>
-<p>A = $\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}$</p>
-<ul>
-<li>The determinant is:</li>
-</ul>
-<p>$\text{det}(A) = ad - bc$</p>
-<ul>
-<li>The inverse is:</li>
-</ul>
-<p>$A^{-1} = \frac{1}{ad - bc}$
-$\begin{bmatrix}
-d &amp; -b \\
--c &amp; a
-\end{bmatrix}$</p>
-<p>⚠️ If $\text{det}(A) = 0$, then A has no inverse.</p>
-<hr/>
-<h2 id="More-Determinant-Depth">More Determinant Depth<a class="anchor-link" href="#More-Determinant-Depth">¶</a></h2><p>The determinant gives you:</p>
-<ul>
-<li>Whether a matrix is invertible</li>
-<li>How the transformation scales space</li>
-</ul>
-<p>If:</p>
-<ul>
-<li>$\text{det}(A) &gt; 0$: transformation preserves orientation</li>
-<li>$\text{det}(A) &lt; 0$: orientation is flipped</li>
-<li>$\text{det}(A) = 0$: matrix “flattens” space (dimension is reduced)</li>
-</ul>
-<p>For larger matrices, determinants are computed via cofactor expansion or row reduction (not covered here).</p>
-<hr/>
-<h2 id="Transpose-of-a-Matrix">Transpose of a Matrix<a class="anchor-link" href="#Transpose-of-a-Matrix">¶</a></h2><p>The transpose of a matrix flips rows and columns.</p>
-<p>If:</p>
-<p>$A = \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}$</p>
-<p>Then:</p>
-<p>$A^T = \begin{bmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{bmatrix}$</p>
-<p>Properties of transpose:</p>
-<ul>
-<li>$(A^T)^T = A$</li>
-<li>$(A + B)^T = A^T + B^T$</li>
-<li>$(AB)^T = B^T A^T$</li>
-</ul>
-<p>Transpose is useful in machine learning when switching between row and column vector representations.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=da7bdf0d-257b-4a64-87d8-1c0aa9c6f47b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">target</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
+                    <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">target</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=353fcdd9-3d59-41d8-9eb2-c0a6f16d8421">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">twoSum</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>(0, 4)</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=bdeb261f-fdcc-4507-b519-d9f74f58fddd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

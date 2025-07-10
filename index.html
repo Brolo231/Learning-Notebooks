@@ -1,68 +1,117 @@
-<!DOCTYPE html>
-<!--
-  This is the root document for _your_ JupyterLite. Thanks for viewing your source!
-     ___ __   __ _______ __   __ _______ _______ ______   ___     ___ _______ _______
-    |   |  | |  |       |  | |  |       |       |    _ | |   |   |   |       |       |
-    |   |  | |  |    _  |  |_|  |_     _|    ___|   | || |   |   |   |_     _|    ___|
-    |   |  |_|  |   |_| |       | |   | |   |___|   |_||_|   |   |   | |   | |   |___
- ___|   |       |    ___|_     _| |   | |    ___|    __  |   |___|   | |   | |    ___|
-|       |       |   |     |   |   |   | |   |___|   |  | |       |   | |   | |   |___
-|_______|_______|___|     |___|   |___| |_______|___|  |_|_______|___| |___| |_______|
+<!DOCTYPE html><html lang='en'><head>
+<meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Learning Notebooks</title>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
+<style>
+body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+h1 { font-weight: 700; font-size: 2.5rem; }
+.nested a { display: block; margin: 4px 0 4px 1.5rem; font-size: 0.95rem; color: #0d6efd; text-decoration: none; }
+.nested a:hover { text-decoration: underline; }
+.container { max-width: 900px; margin: 0 auto; }
+details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+summary { font-weight: 600; font-size: 1.1rem; cursor: pointer; position: relative; }
+summary::after { content: '▶'; position: absolute; right: 0; transition: transform 0.3s ease; }
+details[open] > summary::after { transform: rotate(90deg); }
+</style>
+</head><body><div class='container mt-5'>
+<h1 class='text-center mb-4'>Learning Notebooks</h1>
+<input type='text' id='searchBox' class='form-control mb-4' placeholder='🔍 Search notebooks...'>
+<details class='mb-4'><summary>📍 Data Scientist Roadmap</summary><div style='margin-top:10px; text-align:center;'>
+<img src='data-science-roadmap.png' alt='Learning Banner' style='width:80%; max-width:800px; border-radius:5px;'>
+</div></details>
+<details>
+<summary>Agile Methodologies</summary>
+<div class='nested'>
+<a href='notebooks/Agile Methodologies/Agile Basics.html' target='_blank' rel='noopener noreferrer'>- Agile basics</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Agile Methodologies/Agile Basics.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+<details>
+<summary>Docker</summary>
+<div class='nested'>
+<a href='notebooks/Docker/Docker Introduction.html' target='_blank' rel='noopener noreferrer'>- Docker introduction</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Docker/Docker Introduction.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+<details>
+<summary>Kaggle</summary>
+<div class='nested'>
+<a href='notebooks/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.html' target='_blank' rel='noopener noreferrer'>- 1. how to use kaggle datasets in jupyter notebook</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Kaggle/2. Extrovert vs Introvert Dataset.html' target='_blank' rel='noopener noreferrer'>- 2. extrovert vs introvert dataset</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Kaggle/2. Extrovert vs Introvert Dataset.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+  <details>
+  <summary>datasets</summary>
+  </details>
+</details>
+<details>
+<summary>Leetcode</summary>
+<div class='nested'>
+<a href='notebooks/Leetcode/Arrays & Strings.html' target='_blank' rel='noopener noreferrer'>- Arrays & strings</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Leetcode/Arrays & Strings.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Hashing & Sets.html' target='_blank' rel='noopener noreferrer'>- Hashing & sets</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Leetcode/Hashing & Sets.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Practice.html' target='_blank' rel='noopener noreferrer'>- Practice</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Leetcode/Practice.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Time complexities.html' target='_blank' rel='noopener noreferrer'>- Time complexities</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Leetcode/Time complexities.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Two Pointers.html' target='_blank' rel='noopener noreferrer'>- Two pointers</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Leetcode/Two Pointers.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+<details>
+<summary>Python</summary>
+<div class='nested'>
+<a href='notebooks/Python/1. Basics.html' target='_blank' rel='noopener noreferrer'>- 1. basics</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Python/1. Basics.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Python/2. Classes.html' target='_blank' rel='noopener noreferrer'>- 2. classes</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Python/2. Classes.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+<details>
+<summary>SQL</summary>
+<div class='nested'>
+<a href='notebooks/SQL/How_To_Run_SQL_in_IPYNB.html' target='_blank' rel='noopener noreferrer'>- How to run sql in ipynb</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/SQL/How_To_Run_SQL_in_IPYNB.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+<details>
+<summary>Terminal</summary>
+<div class='nested'>
+<a href='notebooks/Terminal/GitHub_Terminal.html' target='_blank' rel='noopener noreferrer'>- Github terminal</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Terminal/GitHub_Terminal.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Terminal/Terminal.html' target='_blank' rel='noopener noreferrer'>- Terminal</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Terminal/Terminal.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+<details>
+<summary>Web Development</summary>
+<div class='nested'>
+<a href='notebooks/Web Development/Flask_Simple_Web_App.html' target='_blank' rel='noopener noreferrer'>- Flask simple web app</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='/jupyterlite/lab/index.html?path=notebooks/Web Development/Flask_Simple_Web_App.ipynb' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+</details>
+</div>
+<script>
+document.getElementById('searchBox').addEventListener('input', function () {
+  const filter = this.value.toLowerCase();
+  const notebookItems = document.querySelectorAll('.nested');
+  const folders = document.querySelectorAll('details');
 
-Code: https://github.com/jupyterlite/jupyterlite
-Demo: https://jupyterlite.rtfd.io/en/latest/try
+  // Show/hide notebook links
+  notebookItems.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const match = text.includes(filter);
+    item.style.display = match ? '' : 'none';
+  });
 
-# FILES
-
-Your JupyterLite is structured like this:
-
-    index.html             <---- you are here
-    {:app}/                <---- currently-known: `lab` (semi-required) and `notebook`
-      index.html
-      extensions/
-        {:org}/{:package}/ <---|
-        {:package}/        <---+- federated extensions
-          schema/
-          package.json
-    # TBD
-    files/                 <----- also need to populate `api/contents/`!
-    static/                <----- might save duplication
-      {:app}
-
--->
-<html>
-  <head>
-    <!--
-      # jupyter-config-data
-
-      The JSON in `jupyter-lite.json` is the last that will be loaded by most
-      child `index.html` pages, and every field can be overridden.
-
-      See the recognized schema as described in the documentation:
-
-      - https://jupyterlite.rtfd.io/en/latest/reference/schema.html
-
-      Notes
-        - fields that...
-          - are relative paths values
-            - will have the parent directory of _this_ file appended, accounting
-              for "magic" hosts which redirect to `{:path}index.html` to `{:path}`,
-              with or without a slash
-        - some fields, such as `federated_extensions` will be _added together_
-    -->
-    <script id="jupyter-config-data" type="application/json" data-jupyter-lite-root=".">
-      {}
-    </script>
-    <!--
-      # jupyter-lite-root
-
-      The source of truth for relative path locations. The `.` means _this_
-      is the root, and will redirect to the `appUrl` defined in
-      `.jupyter-lite/#jupyter-config-data`.
-    -->
-    <script type="module">
-      await import('./config-utils.js');
-    </script>
-    <!-- that's it, there shouldn't be anything below here in head! -->
-  </head>
-</html>
+  // Show/hide folders based on nested visibility
+  folders.forEach(folder => {
+    const visibleNested = Array.from(folder.querySelectorAll('.nested')).some(div => div.style.display !== 'none');
+    folder.style.display = visibleNested ? '' : 'none';
+    folder.open = visibleNested && filter.length > 0;  // Auto-expand matching folders
+  });
+});
+</script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>
+</body></html>

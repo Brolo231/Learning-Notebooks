@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Two Pointers</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Reverse Sentence with Grammar Correction</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,100 +7526,46 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a002ba6-8915-4b9c-9ee5-44b13e913c39">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b279af9-a38e-45ea-94fb-49873d18eb85">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Two-Pointers">Two Pointers<a class="anchor-link" href="#Two-Pointers">¶</a></h1><hr/>
-<h2 id="125.-Valid-Palindrome"><a href="https://leetcode.com/problems/valid-palindrome/description/">125. Valid Palindrome</a><a class="anchor-link" href="#125.-Valid-Palindrome">¶</a></h2><p><span style="background-color: lightgreen; color: black;">easy<span></span></span></p>
-<p>A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.</p>
-<p>Given a string s, return true if it is a palindrome, or false otherwise.</p>
-<p>Example 1:</p>
-<p><code>Input: s = "A man, a plan, a canal: Panama"</code><br/>
-<code>Output: true</code> <br/>
-Explanation: "amanaplanacanalpanama" is a palindrome.</p>
-<p>Example 2:</p>
-<p><code>Input: s = "race a car"</code>
-<code>Output: false</code><br/>
-Explanation: "raceacar" is not a palindrome.</p>
-<p>Example 3:</p>
-<p><code>Input: s = " "</code><br/>
-<code>Output: true</code><br/>
-Explanation: s is an empty string "" after removing non-alphanumeric characters. <br/>
-Since an empty string reads the same forward and backward, it is a palindrome.</p>
-<p><code>class Solution:</code><br/>
-<code>def isPalindrome(self, s: str) -&gt; bool:</code></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c4c92a7f-b952-4599-8df5-d2e01f532914">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-
-        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">right</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-            
-        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
-
-            <span class="c1"># while not s[left].isalnum() and left&lt;right:</span>
-            <span class="c1">#     left += 1</span>
-
-            <span class="c1"># while not s[right].isalnum() and left&lt;right:</span>
-            <span class="c1">#     right -= 1</span>
-
-            <span class="c1"># The above code was my original code but was not working with the test case: ".a"</span>
-            <span class="c1"># After asking chatGPT for a solution it gave me the following code below. I was </span>
-            <span class="c1"># confused and thought the above was the same as the below. ChatGPT then explained </span>
-            <span class="c1"># the following: </span>
-            
-            <span class="c1"># In Python, the and operator evaluates from left to right, and stops (short-circuits) </span>
-            <span class="c1"># as soon as it finds a condition that is False.</span>
-            
-            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
-                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-                
-            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
-                <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-            
-            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-                <span class="k">return</span> <span class="kc">False</span>
-            
-            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-
-        <span class="k">return</span> <span class="kc">True</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=65bce0c0-da35-44c7-b5c2-19ed09926034">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>You are given a sentence where the word order has been reversed, and punctuation marks are incorrectly attached to the beginning of words instead of their proper positions. Additionally, the first word is not capitalized, and the original punctuation marks (like ., !, ?) should be moved to the end of the sentence with correct formatting.</p>
+<p>Your task is to:</p>
+<ol>
+<li>Reverse the order of words.</li>
+<li>Move any leading punctuation (like ., !, ?, ,) to the end of the word it belongs to.</li>
+<li>Ensure the resulting sentence starts with a capital letter and ends with the correct punctuation mark (preserved from the original sentence).</li>
+</ol>
+<p>Assumptions:</p>
 <ul>
-<li>s[0] = '.' → not s[0].isalnum() is True</li>
-<li>left &lt; right is also True</li>
-<li>So it enters the loop, and increments left = 1</li>
-<li>Now left == right == 1, but the main loop expects to compare characters, which now doesn’t happen anymore since loop exits (left &lt; right is False)</li>
+<li>The sentence is not empty and ends with valid punctuation at the beginning of the first word.</li>
+<li>Words are separated by exactly one space.</li>
+<li>Punctuation only appears as a leading character on a word (e.g., .Ben), not in the middle or end.</li>
 </ul>
-<p>💥 So you skip checking if "a" is a valid single-character palindrome, which it is.</p>
+<p>Example 1: <br/>
+<code>Input:</code>
+<code>".Ben I'm !Hi"</code>
+Output: <br/>
+<code>"Hi! I'm Ben."</code></p>
+<p>Explanation:</p>
+<ul>
+<li>Reversed input: .Ben I'm !Hi</li>
+<li>Reversed back: Hi! I'm Ben.</li>
+</ul>
+<p>Example 3: <br/>
+<code>Input:</code>
+<code>".you thank ,Hello"</code>
+Output: <br/>
+<code>"Hello, thank you."</code></p>
+<p><code>class Solution():</code> <br/>
+<code>def reverseSentence(sentence: str) -&gt; str:</code></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bfe42b16-9a78-48f4-ad90-f4d8afe96fdf">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fbecd4b1-30e7-4911-ad48-5c9d2f2508b7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7627,8 +7573,31 @@ Since an empty string reads the same forward and backward, it is a palindrome.</
 <div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">isPalindrome</span><span class="p">(</span><span class="s2">".a"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">reverseSentence</span><span class="p">(</span><span class="n">sentence</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+    <span class="n">reverse</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">reverse</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">reverse</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">reverse</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">reverse</span>
+
+    <span class="k">return</span> <span class="n">reverse</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span>
+
+<span class="n">test_cases</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"?day good a such !What"</span><span class="p">,</span>
+    <span class="s2">".Hello"</span><span class="p">,</span>
+    <span class="s2">".end !start ,middle"</span><span class="p">,</span>
+    <span class="s2">".1234 is number favorite My"</span><span class="p">,</span>
+    <span class="s2">"@email my is This"</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">test_cases</span><span class="p">:</span>
+    <span class="n">s</span>
 </pre></div>
 </div>
 </div>
@@ -7638,15 +7607,20 @@ Since an empty string reads the same forward and backward, it is a palindrome.</
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>True</pre>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>?day good a such !What
+.Hello
+.end !start ,middle
+.1234 is number favorite My
+@email my is This
+</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5b16e052-cacc-4db0-a31b-b8351637273c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c3bcbb27-5cf8-4246-a560-5c80c6b5c649">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7655,51 +7629,6 @@ Since an empty string reads the same forward and backward, it is a palindrome.</
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=290189f0-0ea6-42e0-8496-290bac715b9e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<h1 id="ChatGPT-Solution">ChatGPT Solution<a class="anchor-link" href="#ChatGPT-Solution">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1dc753f2-0a0b-4f89-900a-c6515b4c7688">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-        
-        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
-            <span class="c1"># Move left forward if not alphanumeric</span>
-            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
-                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="c1"># Move right backward if not alphanumeric</span>
-            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
-                <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-            
-            <span class="c1"># Compare characters</span>
-            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-                <span class="k">return</span> <span class="kc">False</span>
-            
-            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
-        
-        <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>

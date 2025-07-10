@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Flask_Simple_Web_App</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>GitHub and Git in the Terminal</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,147 +7526,147 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ffc733de-84eb-4a23-b527-4560f8900d64">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b72317b-d508-4d19-b511-2ee6311b097f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="How-to-make-a-simple-flask-web-application">How to make a simple flask web application<a class="anchor-link" href="#How-to-make-a-simple-flask-web-application">¶</a></h1>
+<h1 id="Home-Page"><a href="https://brolo231.github.io/Learning-Notebooks/">Home Page</a><a class="anchor-link" href="#Home-Page">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dffa3452-3e88-41dd-9c5e-1efd5a773ed0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cf0ada9-1d3d-420f-99cb-8a3d9db66775">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="File-structure">File structure<a class="anchor-link" href="#File-structure">¶</a></h2><p><code>flask_app/</code> <br/>
-<code>├── website/</code> <br/>
-<code>│ ├── __init__.py</code> <br/>
-<code>│ ├── views.py</code> <br/>
-<code>│ └── static/</code> <br/>
-<code>│ └── templates/</code> <br/>
-<code>│ └── index.html</code> <br/>
-<code>└── main.py</code> <br/>
-<code>└── requirements.txt</code></p>
+<h1 id="GitHub-&amp;-Git">GitHub &amp; Git<a class="anchor-link" href="#GitHub-&amp;-Git">¶</a></h1><p>Git is a local version control system that tracks changes in files on your computer.</p>
+<h4 id="If-you-havent-already-installed-Git,-install-it:">If you havent already installed Git, install it:<a class="anchor-link" href="#If-you-havent-already-installed-Git,-install-it:">¶</a></h4><pre><code>• Linux (Debian-based): sudo apt install git
+• Mac: brew install git
+• Windows: Download and install Git for Windows
+
+</code></pre>
+<h4 id="Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">Configure Git with your details to ensure commits are linked to GitHub<a class="anchor-link" href="#Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">¶</a></h4><p><code>git config --global user.name "Your Name"</code> <br/>
+<code>git config --global user.email "your_email@example.com"</code></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eba5e65a-93be-4e2e-9566-db7839cdd061">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d8107e-edf9-40c2-b74b-01ab1e061a68">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Install flask </span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>flask
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="GitHub-CLI">GitHub CLI<a class="anchor-link" href="#GitHub-CLI">¶</a></h1><h4 id="The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">The easiest way to interact with GitHub from the terminal is by using the GitHub CLI.<a class="anchor-link" href="#The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">¶</a></h4><p>Ubuntu/Debian: <code>sudo apt install gh</code> <br/>
+Mac (homebrew): <code>brew install gh</code> <br/>
+Windows: Download from GitHub CLI website</p>
+<h4 id="Authenticate-GitHub-CLI:">Authenticate GitHub CLI:<a class="anchor-link" href="#Authenticate-GitHub-CLI:">¶</a></h4><p><code>gh auth login</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Requirement already satisfied: flask in /opt/anaconda3/lib/python3.12/site-packages (3.0.3)
-Requirement already satisfied: Werkzeug&gt;=3.0.0 in /opt/anaconda3/lib/python3.12/site-packages (from flask) (3.0.3)
-Requirement already satisfied: Jinja2&gt;=3.1.2 in /opt/anaconda3/lib/python3.12/site-packages (from flask) (3.1.4)
-Requirement already satisfied: itsdangerous&gt;=2.1.2 in /opt/anaconda3/lib/python3.12/site-packages (from flask) (2.2.0)
-Requirement already satisfied: click&gt;=8.1.3 in /opt/anaconda3/lib/python3.12/site-packages (from flask) (8.1.7)
-Requirement already satisfied: blinker&gt;=1.6.2 in /opt/anaconda3/lib/python3.12/site-packages (from flask) (1.6.2)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/anaconda3/lib/python3.12/site-packages (from Jinja2&gt;=3.1.2-&gt;flask) (2.1.3)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b9adbd05-949e-4726-9a89-7c5614889881">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e351bc58-0ccc-459a-9d1c-3a871ed69018">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># __init__.py</span>
-
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-
-<span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'SECRET_KEY'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'secret_key'</span>
-
-    <span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">website</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">website</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">app</span>
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="1.-List-your-repositories">1. List your repositories<a class="anchor-link" href="#1.-List-your-repositories">¶</a></h2><p><code>gh repo list</code></p>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=27fe07ab-367f-4450-a43c-fbdc5618d9e6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=576bec11-1a0b-4198-8491-4f1566c21fcb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># views.py </span>
-
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">send_from_directory</span>
-
-<span class="n">website</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">'website'</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
-
-<span class="nd">@website</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"POST"</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"&lt;h1&gt;Button May have been clicked&lt;/h1&gt;"</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'index.html'</span><span class="p">)</span>
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.-Check-to-see-if-you're-inside-a-git-repo">2. Check to see if you're inside a git repo<a class="anchor-link" href="#2.-Check-to-see-if-you're-inside-a-git-repo">¶</a></h2><p><code>git status</code></p>
 </div>
 </div>
 </div>
 </div>
-</div># index.html 
-
-
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Flask Modular App&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Welcome to the Modular Flask App&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=69891465-b4bf-43eb-90ea-baf51f7fb221">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3987bb2b-dd55-4b81-b2a3-77c9b5f7ef81">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># main.py </span>
-
-<span class="kn">from</span> <span class="nn">website</span> <span class="kn">import</span> <span class="n">create_app</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">'0.0.0.0'</span><span class="p">)</span>
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3.-Navigate-to-repo-by-cd-into">3. Navigate to repo by cd into<a class="anchor-link" href="#3.-Navigate-to-repo-by-cd-into">¶</a></h2><p><code>cd /path/to/repository</code></p>
+<h4 id="Then-we-can-use-tree--a-to-list-the-full-directory-structure">Then we can use tree -a to list the full directory structure<a class="anchor-link" href="#Then-we-can-use-tree--a-to-list-the-full-directory-structure">¶</a></h4><p><code>tree -a</code></p>
 </div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9264e1cd-9106-436f-832e-e7fb4721a044">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Create-a-repository-from-the-terminal">4. Create a repository from the terminal<a class="anchor-link" href="#4.-Create-a-repository-from-the-terminal">¶</a></h2><ol>
+<li><p>Create a Local Repository <br/>
+<code>mkdir my-new-repo</code> # Create a new folder <br/>
+<code>cd my-new-repo</code> # Navigate into the folder <br/>
+<code>git init</code> # Initialize Git in this folder</p>
+</li>
+<li><p>Add files and make initial commit <br/>
+<code>echo "# My New Repository" &gt;&gt; README.md</code> # Create a README file <br/>
+<code>git add .</code> # Stage all files <br/>
+<code>git commit -m "Initial commit"</code> # Commit the files</p>
+</li>
+<li><p>Create a GitHub Repository from Terminal <br/>
+<code>gh repo create my-new-repo --public --source=. --remote=origin</code> <br/>
+     	• --public → Creates a public repository (use --private for private repos). <br/>
+     	• --source=. → Uses the current directory as the repo. <br/>
+     	• --remote=origin → Adds GitHub as a remote repository.</p>
+</li>
+<li><p>Verify remote URL <br/>
+<code>git remote -v</code> <br/>
+     # This tells us what repository our local git is linked to</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4626fc0-3dfb-4d96-91ee-61deabe56002">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="5.-Push-code-to-github">5. Push code to github<a class="anchor-link" href="#5.-Push-code-to-github">¶</a></h2><p><code>git branch -M main</code> # Rename default branch to 'main' (optional) <br/>
+<code>git push -u origin main</code> # Push the repo to GitHub</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a3906365-93f3-4a0d-be22-65d8506d649a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=faa232c5-603a-46d4-b1fd-cda5d57bf9e0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="6.-Force-push-local-to-github">6. Force push local to github<a class="anchor-link" href="#6.-Force-push-local-to-github">¶</a></h1><p><code>git push -f originb main</code></p>
+<h1 id="7.-Merge-remote-and-local">7. Merge remote and local<a class="anchor-link" href="#7.-Merge-remote-and-local">¶</a></h1><p><em>This command fetches changes from the remote repository and merges them into your local branch.</em></p>
+<p><code>git pull origin main</code></p>
 </div>
 </div>
 </div>

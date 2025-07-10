@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GitHub_Terminal-checkpoint</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>238. Product of Array Except Self - medium</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7507,119 +7507,201 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
-<!-- End of mermaid configuration --></head>
+<!-- End of mermaid configuration -->
+        <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        h1 { font-weight: 700; font-size: 2.5rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        summary { font-weight: 600; font-size: 1.1rem; cursor: pointer; position: relative; padding-right: 20px; }
+        summary::after { content: '▶'; position: absolute; right: 0; transition: transform 0.3s ease; }
+        details[open] > summary::after { transform: rotate(90deg); }
+        .notebook-entry { background: #fff; border: 1px solid #dee2e6; padding: 12px 16px; border-radius: 6px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+        .notebook-entry a { color: #0d6efd; font-weight: 600; font-size: 1rem; text-decoration: none; }
+        .notebook-entry a:hover { text-decoration: underline; }
+        .created-date { margin-left: 20px; font-size: 0.85rem; color: #6c757d; display: flex; align-items: center; }
+        .arrow { margin-right: 6px; color: #6c757d; }
+        </style>
+        
+</head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cf0ada9-1d3d-420f-99cb-8a3d9db66775">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=42d99282-94f5-4c0b-a0e9-de4f23947887">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GitHub-&amp;-Git">GitHub &amp; Git<a class="anchor-link" href="#GitHub-&amp;-Git">¶</a></h1><p>Git is a local version control system that tracks changes in files on your computer.</p>
-<h4 id="If-you-havent-already-installed-Git,-install-it:">If you havent already installed Git, install it:<a class="anchor-link" href="#If-you-havent-already-installed-Git,-install-it:">¶</a></h4><pre><code>• Linux (Debian-based): sudo apt install git
-• Mac: brew install git
-• Windows: Download and install Git for Windows
+<h2 id="238.-Product-of-Array-Except-Self"><a href="https://leetcode.com/problems/product-of-array-except-self/description/">238. Product of Array Except Self</a><a class="anchor-link" href="#238.-Product-of-Array-Except-Self">¶</a></h2><p><span style="background-color: yellow; color: black;">medium<span></span></span></p>
+<p>Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].</p>
+<p>The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.</p>
+<p>You must write an algorithm that runs in O(n) time and without using the division operation.</p>
+<p>Example 1:</p>
+<p><code>Input: nums = [1,2,3,4]</code>
+<code>Output: [24,12,8,6]</code></p>
+<p>Example 2:</p>
+<p><code>Input: nums = [-1,1,0,-3,3]</code>
+<code>Output: [0,0,9,0,0]</code></p>
+<p>Constraints:</p>
+<p>2 &lt;= nums.length &lt;= 105
+-30 &lt;= nums[i] &lt;= 30</p>
+<p>The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer.</p>
+<p><code>class Solution:</code><br/>
+<code>def productExceptSelf(self, nums: List[int]) -&gt; List[int]:</code></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2befe653-eec7-4771-a673-5713816620d1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">idx_answer</span><span class="p">,</span> <span class="n">idx_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="n">idx_answer</span><span class="p">:</span>
+                    <span class="n">answer</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">*=</span> <span class="n">nums</span><span class="p">[</span><span class="n">idx_answer</span><span class="p">]</span>
 
-</code></pre>
-<h4 id="Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">Configure Git with your details to ensure commits are linked to GitHub<a class="anchor-link" href="#Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">¶</a></h4><p><code>git config --global user.name "Your Name"</code> <br/>
-<code>git config --global user.email "your_email@example.com"</code></p>
+        <span class="k">return</span> <span class="n">answer</span>
+            
+        
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">productExceptSelf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d8107e-edf9-40c2-b74b-01ab1e061a68">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[24, 12, 8, 6]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52343c11-e8fb-46b8-85eb-84818320137c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GitHub-CLI">GitHub CLI<a class="anchor-link" href="#GitHub-CLI">¶</a></h1><h4 id="The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">The easiest way to interact with GitHub from the terminal is by using the GitHub CLI.<a class="anchor-link" href="#The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">¶</a></h4><p>Ubuntu/Debian: <code>sudo apt install gh</code> <br/>
-Mac (homebrew): <code>brew install gh</code> <br/>
-Windows: Download from GitHub CLI website</p>
-<h4 id="Authenticate-GitHub-CLI:">Authenticate GitHub CLI:<a class="anchor-link" href="#Authenticate-GitHub-CLI:">¶</a></h4><p><code>gh auth login</code></p>
+<p>ChatGPT Answer:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=778e48b1-8989-4311-8dda-c2d409c5b93f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># O(n) Time, O(1) Extra Space (LeetCode Optimal)</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+        <span class="n">prefix</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">answer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefix</span>
+            <span class="n">prefix</span> <span class="o">*=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">suffix</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">answer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">suffix</span>
+            <span class="n">suffix</span> <span class="o">*=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e351bc58-0ccc-459a-9d1c-3a871ed69018">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1f39cd3-b984-495b-b150-79ba33662ddb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-List-your-repositories">1. List your repositories<a class="anchor-link" href="#1.-List-your-repositories">¶</a></h2><p><code>gh repo list</code></p>
+<h3 id="If-we-could-use-division-it-would-look-as-follows">If we could use division it would look as follows<a class="anchor-link" href="#If-we-could-use-division-it-would-look-as-follows">¶</a></h3><p><strong>❗ What if there are zeros?</strong></p>
+<ul>
+<li>If there’s 1 zero, all positions except the one with zero become 0.</li>
+<li>If there are 2 or more zeros, every product is 0.</li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=576bec11-1a0b-4198-8491-4f1566c21fcb">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2e8e6efa-66c5-4afa-8815-041162a6ba31">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Check-to-see-if-you're-inside-a-git-repo">2. Check to see if you're inside a git repo<a class="anchor-link" href="#2.-Check-to-see-if-you're-inside-a-git-repo">¶</a></h2><p><code>git status</code></p>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">total_product</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">zero_count</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># If more than one zero, result is all zeros</span>
+        <span class="k">if</span> <span class="n">zero_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+        <span class="c1"># Calculate product of all non-zero numbers</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">total_product</span> <span class="o">*=</span> <span class="n">num</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">zero_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_product</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_product</span> <span class="o">//</span> <span class="n">num</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">productExceptSelf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>        <span class="c1"># ➜ [24, 12, 8, 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">productExceptSelf</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>   <span class="c1"># ➜ [0, 0, 9, 0, 0]</span>
+</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3987bb2b-dd55-4b81-b2a3-77c9b5f7ef81">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Navigate-to-repo-by-cd-into">3. Navigate to repo by cd into<a class="anchor-link" href="#3.-Navigate-to-repo-by-cd-into">¶</a></h2><p><code>cd /path/to/repository</code></p>
-<h4 id="Then-we-can-use-tree--a-to-list-the-full-directory-structure">Then we can use tree -a to list the full directory structure<a class="anchor-link" href="#Then-we-can-use-tree--a-to-list-the-full-directory-structure">¶</a></h4><p><code>tree -a</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9264e1cd-9106-436f-832e-e7fb4721a044">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Create-a-repository-from-the-terminal">4. Create a repository from the terminal<a class="anchor-link" href="#4.-Create-a-repository-from-the-terminal">¶</a></h2><ol>
-<li><p>Create a Local Repository <br/>
-<code>mkdir my-new-repo</code> # Create a new folder <br/>
-<code>cd my-new-repo</code> # Navigate into the folder <br/>
-<code>git init</code> # Initialize Git in this folder</p>
-</li>
-<li><p>Add files and make initial commit <br/>
-<code>echo "# My New Repository" &gt;&gt; README.md</code> # Create a README file <br/>
-<code>git add .</code> # Stage all files <br/>
-<code>git commit -m "Initial commit"</code> # Commit the files</p>
-</li>
-<li><p>Create a GitHub Repository from Terminal <br/>
-<code>gh repo create my-new-repo --public --source=. --remote=origin</code> <br/>
-     	• --public → Creates a public repository (use --private for private repos). <br/>
-     	• --source=. → Uses the current directory as the repo. <br/>
-     	• --remote=origin → Adds GitHub as a remote repository.</p>
-</li>
-<li><p>Verify remote URL <br/>
-<code>git remote -v</code> <br/>
-     # This tells us what repository our local git is linked to</p>
-</li>
-</ol>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[24, 12, 8, 6]
+[0, 0, 9, 0, 0]
+</pre>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4626fc0-3dfb-4d96-91ee-61deabe56002">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Push-code-to-github">5. Push code to github<a class="anchor-link" href="#5.-Push-code-to-github">¶</a></h2><p><code>git branch -M main</code> # Rename default branch to 'main' (optional) <br/>
-<code>git push -u origin main</code> # Push the repo to GitHub</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5a915de2-51bb-4d8e-a3dc-27d187784bc2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=de50b2dd-7b2f-4e4f-9cec-bfbbaa35c3fa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

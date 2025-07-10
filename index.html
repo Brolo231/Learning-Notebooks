@@ -5,65 +5,113 @@
 <style>
 body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
 h1 { font-weight: 700; font-size: 2.5rem; }
-summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; padding: 5px 0; }
-details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; transition: all 0.3s ease; }
 .nested a { display: block; margin: 4px 0 4px 1.5rem; font-size: 0.95rem; color: #0d6efd; text-decoration: none; }
 .nested a:hover { text-decoration: underline; }
-a.home-link { font-size: 16px; font-weight: bold; margin-bottom: 1rem; display: inline-block; color: #0d6efd; }
 .container { max-width: 900px; margin: 0 auto; }
-summary { position: relative; list-style: none; }
-summary::after { content: '▶'; font-size: 0.8rem; position: absolute; right: 0; transition: transform 0.3s ease; }
+details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+summary { font-weight: 600; font-size: 1.1rem; cursor: pointer; position: relative; }
+summary::after { content: '▶'; position: absolute; right: 0; transition: transform 0.3s ease; }
 details[open] > summary::after { transform: rotate(90deg); }
-details > *:not(summary) { animation: fadeInSlide 0.3s ease; }
-@keyframes fadeInSlide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head><body><div class='container mt-5'>
 <h1 class='text-center mb-4'>Learning Notebooks</h1>
-<details class='mb-4'><summary style='cursor:pointer;'>📍 Data Scientist Roadmap</summary><div style='margin-top:10px; text-align:center;'>
+<input type='text' id='searchBox' class='form-control mb-4' placeholder='🔍 Search notebooks...'>
+<details class='mb-4'><summary>📍 Data Scientist Roadmap</summary><div style='margin-top:10px; text-align:center;'>
 <img src='data-science-roadmap.png' alt='Learning Banner' style='width:80%; max-width:800px; border-radius:5px;'>
 </div></details>
 <details>
 <summary>Agile Methodologies</summary>
-<div class='nested'><a href='notebooks/Agile Methodologies/Agile Basics.html' target='_blank' rel='noopener noreferrer'>- Agile basics</a></div>
+<div class='nested'>
+<a href='notebooks/Agile Methodologies/Agile Basics.html' target='_blank' rel='noopener noreferrer'>- Agile basics</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Agile Methodologies/Agile Basics.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 <details>
 <summary>Docker</summary>
-<div class='nested'><a href='notebooks/Docker/Docker Introduction.html' target='_blank' rel='noopener noreferrer'>- Docker introduction</a></div>
+<div class='nested'>
+<a href='notebooks/Docker/Docker Introduction.html' target='_blank' rel='noopener noreferrer'>- Docker introduction</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Docker/Docker Introduction.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 <details>
 <summary>Kaggle</summary>
-<div class='nested'><a href='notebooks/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.html' target='_blank' rel='noopener noreferrer'>- 1. how to use kaggle datasets in jupyter notebook</a></div>
-<div class='nested'><a href='notebooks/Kaggle/2. Extrovert vs Introvert Dataset.html' target='_blank' rel='noopener noreferrer'>- 2. extrovert vs introvert dataset</a></div>
+<div class='nested'>
+<a href='notebooks/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.html' target='_blank' rel='noopener noreferrer'>- 1. how to use kaggle datasets in jupyter notebook</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Kaggle/2. Extrovert vs Introvert Dataset.html' target='_blank' rel='noopener noreferrer'>- 2. extrovert vs introvert dataset</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Kaggle/2. Extrovert vs Introvert Dataset.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
   <details>
   <summary>datasets</summary>
   </details>
 </details>
 <details>
 <summary>Leetcode</summary>
-<div class='nested'><a href='notebooks/Leetcode/Arrays & Strings.html' target='_blank' rel='noopener noreferrer'>- Arrays & strings</a></div>
-<div class='nested'><a href='notebooks/Leetcode/Hashing & Sets.html' target='_blank' rel='noopener noreferrer'>- Hashing & sets</a></div>
-<div class='nested'><a href='notebooks/Leetcode/Practice.html' target='_blank' rel='noopener noreferrer'>- Practice</a></div>
-<div class='nested'><a href='notebooks/Leetcode/Time complexities.html' target='_blank' rel='noopener noreferrer'>- Time complexities</a></div>
-<div class='nested'><a href='notebooks/Leetcode/Two Pointers.html' target='_blank' rel='noopener noreferrer'>- Two pointers</a></div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Arrays & Strings.html' target='_blank' rel='noopener noreferrer'>- Arrays & strings</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Leetcode/Arrays & Strings.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Hashing & Sets.html' target='_blank' rel='noopener noreferrer'>- Hashing & sets</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Leetcode/Hashing & Sets.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Practice.html' target='_blank' rel='noopener noreferrer'>- Practice</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Leetcode/Practice.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Time complexities.html' target='_blank' rel='noopener noreferrer'>- Time complexities</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Leetcode/Time complexities.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Leetcode/Two Pointers.html' target='_blank' rel='noopener noreferrer'>- Two pointers</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Leetcode/Two Pointers.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 <details>
 <summary>Python</summary>
-<div class='nested'><a href='notebooks/Python/1. Basics.html' target='_blank' rel='noopener noreferrer'>- 1. basics</a></div>
-<div class='nested'><a href='notebooks/Python/2. Classes.html' target='_blank' rel='noopener noreferrer'>- 2. classes</a></div>
+<div class='nested'>
+<a href='notebooks/Python/1. Basics.html' target='_blank' rel='noopener noreferrer'>- 1. basics</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Python/1. Basics.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Python/2. Classes.html' target='_blank' rel='noopener noreferrer'>- 2. classes</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Python/2. Classes.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 <details>
 <summary>SQL</summary>
-<div class='nested'><a href='notebooks/SQL/How_To_Run_SQL_in_IPYNB.html' target='_blank' rel='noopener noreferrer'>- How to run sql in ipynb</a></div>
+<div class='nested'>
+<a href='notebooks/SQL/How_To_Run_SQL_in_IPYNB.html' target='_blank' rel='noopener noreferrer'>- How to run sql in ipynb</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/SQL/How_To_Run_SQL_in_IPYNB.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 <details>
 <summary>Terminal</summary>
-<div class='nested'><a href='notebooks/Terminal/GitHub_Terminal.html' target='_blank' rel='noopener noreferrer'>- Github terminal</a></div>
-<div class='nested'><a href='notebooks/Terminal/Terminal.html' target='_blank' rel='noopener noreferrer'>- Terminal</a></div>
+<div class='nested'>
+<a href='notebooks/Terminal/GitHub_Terminal.html' target='_blank' rel='noopener noreferrer'>- Github terminal</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Terminal/GitHub_Terminal.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
+<div class='nested'>
+<a href='notebooks/Terminal/Terminal.html' target='_blank' rel='noopener noreferrer'>- Terminal</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Terminal/Terminal.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 <details>
 <summary>Web Development</summary>
-<div class='nested'><a href='notebooks/Web Development/Flask_Simple_Web_App.html' target='_blank' rel='noopener noreferrer'>- Flask simple web app</a></div>
+<div class='nested'>
+<a href='notebooks/Web Development/Flask_Simple_Web_App.html' target='_blank' rel='noopener noreferrer'>- Flask simple web app</a> <span style='color: gray; font-size: 0.85rem;'>🕒 Unknown Date</span><br><a href='https://brolo231.github.io/Learning-Notebooks/jupyterlite/lab/index.html?path=notebooks/Web Development/Flask_Simple_Web_App.html' target='_blank' style='font-size: 0.85rem; color: #198754;'>▶ Run in JupyterLite</a>
+</div>
 </details>
 </div>
+<script>
+document.getElementById('searchBox').addEventListener('input', function () {
+  const filter = this.value.toLowerCase();
+  const notebookItems = document.querySelectorAll('.nested');
+  const folders = document.querySelectorAll('details');
+
+  // Show/hide notebook links
+  notebookItems.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const match = text.includes(filter);
+    item.style.display = match ? '' : 'none';
+  });
+
+  // Show/hide folders based on nested visibility
+  folders.forEach(folder => {
+    const visibleNested = Array.from(folder.querySelectorAll('.nested')).some(div => div.style.display !== 'none');
+    folder.style.display = visibleNested ? '' : 'none';
+    folder.open = visibleNested && filter.length > 0;  // Auto-expand matching folders
+  });
+});
+</script>
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>
 </body></html>

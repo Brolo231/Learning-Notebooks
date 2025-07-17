@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>347. Top K Frequent Elements - medium</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>1. How to setup a simple real time communication socket io web app</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,126 +7526,17 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7db1b455-9089-44a1-8e3c-f6cd1d084fa0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0459621c-b765-405e-b59b-7d5980cea2fd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="347.--Top-K-Frequent-Elements">347.  Top K Frequent Elements<a class="anchor-link" href="#347.--Top-K-Frequent-Elements">¶</a></h1><p>Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.</p>
-<p>Example 1: <br/>
-<code>Input: nums = [1,1,1,2,2,3], k = 2</code> <br/>
-<code>Output: [1,2]</code></p>
-<p>Example 2: <br/>
-<code>Input: nums = [1], k = 1</code><br/>
-<code>Output: [1]</code></p>
-<p>Constraints:
-1 &lt;= nums.length &lt;= 105 <br/>
--104 &lt;= nums[i] &lt;= 104 <br/>
-k is in the range [1, the number of unique elements in the array]. <br/>
-It is guaranteed that the answer is unique.</p>
-<p>Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</p>
-<p><code>class Solution:</code><br/>
-<code>def topKFrequent(self, nums: List[int], k: int) -&gt; List[int]:</code></p>
+<h1 id="flask_socketio">flask_socketio<a class="anchor-link" href="#flask_socketio">¶</a></h1><p>WebSocket communication protocols facilitate the real-time transfer of data between the client and the server.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2616d9d3-199f-4b02-ad1c-2429a9395009">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-
-<span class="c1"># Without collections: </span>
-<span class="c1"># if num not in seen:</span>
-<span class="c1">#     seen[num] = 0</span>
-<span class="c1"># seen[num] += 1</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5663e0b8-fea2-49fc-85c5-1b393ab50725">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">topKFrequent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-
-        <span class="n">seen</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
-            <span class="n">seen</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">seen</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-
-        <span class="c1"># print(list(seen.items()))</span>
-
-        <span class="c1"># for key, value in seen.items():</span>
-            
-        
-
-<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">topKFrequent</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>(1, 3)
-(5, 2)
-(2, 1)
-(3, 3)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c913883d-687b-489c-b5ad-b64b05af460a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">seen</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">seen</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>1</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=24823c2b-d2a3-4620-a283-7581049a61ac">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f6d50bef-49c9-4a14-a743-fadd86380e06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7653,7 +7544,141 @@ It is guaranteed that the answer is unique.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">flask_socketio</span> <span class="kn">import</span> <span class="n">SocketIO</span><span class="p">,</span> <span class="n">emit</span>
+
+<span class="c1"># Initialize the flask web app</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'SECRET_KEY'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'your-secret-key'</span>
+<span class="n">socketio</span> <span class="o">=</span> <span class="n">SocketIO</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">cors_allowed_origins</span><span class="o">=</span><span class="s2">"*"</span><span class="p">)</span>  <span class="c1"># Optional: allow CORS  It prevents your frontend from accidentally leaking data to or accepting data from unknown sources.</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">'index.html'</span><span class="p">)</span>
+
+<span class="c1"># This allows us to have a custom socketio event listener: 'chat_message'</span>
+<span class="nd">@socketio</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">'chat_message'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Chat message received: '</span> <span class="o">+</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="c1"># emit allows us to send this response to a specific socketio event on the frontend</span>
+    <span class="n">emit</span><span class="p">(</span><span class="s1">'chat_response'</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">broadcast</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Custom event sent to frontend</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">socketio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_unsafe_werkzeug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">'0.0.0.0'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cd42d92-d816-4f4b-a110-145b70db23e8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Default-socket-io-event-listener">Default socket io event listener<a class="anchor-link" href="#Default-socket-io-event-listener">¶</a></h3><p><code>@socketio.on('message')</code> <br/>
+<code>def handle_message(msg):</code> <br/>
+<code>print("Message received:", msg)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=355407d2-e622-460f-ab9b-e4fcacd0d744">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Frontend">Frontend<a class="anchor-link" href="#Frontend">¶</a></h2><hr/>
+<p><strong>step 1: Include the Socket.IO client library</strong> <br/>
+<code>&lt;script src="https://cdn.socket.io/4.7.2/socket.io.min.js"&gt;&lt;/script&gt;</code></p>
+<ul>
+<li>This loads the Socket.IO JavaScript client from the official CDN.</li>
+<li>It’s necessary for enabling real-time WebSocket communication with the Flask-SocketIO server.</li>
+</ul>
+<hr/>
+<p><strong>step 2: Connect to the server</strong> <br/>
+<code>const socket = io();</code></p>
+<ul>
+<li>This line automatically attempts to connect to the server that served the page.</li>
+<li>If your server is running on the same origin (<a href="http://localhost:8000">http://localhost:8000</a>), this works automatically.</li>
+<li>If your server is on a different host or port, you must do:</li>
+</ul>
+<p><code>const socket = io("http://localhost:8000");</code></p>
+<hr/>
+<p><strong>step 3: Listen for messages from the server</strong> <br/>
+<code>socket.on('chat_response', function(msg) {</code><br/>
+<code>const li = document.createElement('li');</code><br/>
+<code>li.textContent = msg;</code><br/>
+<code>document.getElementById('messages').appendChild(li);</code><br/>
+<code>});</code></p>
+<ul>
+<li>This sets up a listener for an event called 'chat_response'.</li>
+<li>Whenever the server emits a 'chat_response' message, this function is triggered.</li>
+<li>It adds the received message as a new <li> item in the <ul> with ID messages.</ul></li>
+</li></ul>
+<p>🔁 This is what makes the app real-time: when the server broadcasts a message, all connected clients update instantly.</p>
+<hr/>
+<p><strong>step 4: Send a message to the server</strong> <br/>
+<code>function sendMessage() {</code><br/>
+<code>const input = document.getElementById('message');</code><br/>
+<code>const message = input.value;</code><br/>
+<code>socket.emit('chat_message', message); // Emit to server</code><br/>
+<code>input.value = '';</code><br/>
+<code>}</code></p>
+<ul>
+<li>This function gets triggered when the user clicks the Send button.</li>
+<li>It reads the message from the input field.</li>
+<li>Then it emits an event called 'chat_message' and sends it to the server.</li>
+<li>The server must have a listener for 'chat_message' (usually in your Flask backend), like:</li>
+</ul>
+<p><code>@socketio.on('chat_message')</code><br/>
+<code>def handle_message(msg):</code><br/>
+<code>emit('chat_response', msg, broadcast=True)</code></p>
+<p>🔁 That’s how the message goes from client → server → all clients.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=733082ce-8eb3-427f-9fe4-165bd5b90950">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">&lt;!</span>DOCTYPE<span class="w"> </span>html&gt;
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Chat</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">"https://cdn.socket.io/4.7.2/socket.io.min.js"</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Chat</span> <span class="n">Room</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">ul</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"messages"</span><span class="o">&gt;&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"message"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">"Type your message here"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">button</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">"sendMessage()"</span><span class="o">&gt;</span><span class="n">Send</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+        <span class="n">const</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">io</span><span class="p">();</span>
+
+        <span class="o">//</span> <span class="n">Receive</span> <span class="n">messages</span> <span class="kn">from</span> <span class="nn">the</span> <span class="s1">'chat_response'</span> <span class="n">event</span>
+        <span class="n">socket</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">'chat_response'</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">const</span> <span class="n">li</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">'li'</span><span class="p">);</span>
+            <span class="n">li</span><span class="o">.</span><span class="n">textContent</span> <span class="o">=</span> <span class="n">msg</span><span class="p">;</span>
+            <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'messages'</span><span class="p">)</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="n">function</span> <span class="n">sendMessage</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">const</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'message'</span><span class="p">);</span>
+            <span class="n">const</span> <span class="n">message</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">value</span><span class="p">;</span>
+            <span class="n">socket</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s1">'chat_message'</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>  <span class="o">//</span> <span class="n">Emit</span> <span class="n">custom</span> <span class="n">event</span> <span class="n">to</span> <span class="n">backend</span>
+            <span class="nb">input</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>

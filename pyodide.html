@@ -80,6 +80,15 @@
     <button onclick="resetCodeCache()">🧹 Reset Code Cache</button>
     <pre id="output"></pre>
 
+    <details>
+      <summary>🔍 Search LeetCode Problems</summary>
+      <div style="margin-top: 1rem;">
+        <input id="search-input" type="text" placeholder="Search by title or keyword..." style="padding: 10px; width: 60%; font-size: 16px; border-radius: 6px; border: 1px solid #666; background-color: #2b2b2b; color: white;">
+        <button onclick="searchProblems()">Search</button>
+        <ul id="search-results" style="margin-top: 1rem;"></ul>
+      </div>
+    </details>
+
     <div id="problem-display" style="text-align:left; background:#2b2b2b; padding:1rem; border-radius:6px; margin-bottom:1rem; margin-top:2rem;">
       <h2 id="problem-title">Random LeetCode Problem</h2>
       <p id="problem-description">Click a button below to load a random problem.</p>
@@ -297,6 +306,75 @@ sys.stderr = sys.stdout
         textarea.selectionStart = textarea.selectionEnd = start + 1;
       }
     });
+
+    function searchProblems() {
+  const query = document.getElementById("search-input").value.toLowerCase().trim();
+  const resultsList = document.getElementById("search-results");
+  resultsList.innerHTML = "";
+
+  if (!query || leetcodeData.length === 0) {
+    resultsList.innerHTML = "<li>No search term entered or data not loaded.</li>";
+    return;
+  }
+
+  const results = leetcodeData.filter(
+    item =>
+      item.title.toLowerCase().includes(query) ||
+      (item.description && item.description.toLowerCase().includes(query))
+  ).slice(0, 25); // Limit to 25 results
+
+  if (results.length === 0) {
+    resultsList.innerHTML = "<li>No matches found.</li>";
+    return;
+  }
+
+  for (const result of results) {
+    const li = document.createElement("li");
+    li.innerHTML = `<strong style="color:lightgreen;">${result.title}</strong> - <a style="color: lightblue;" href="#" onclick="showProblemById(${result.id}); return false;">View</a>`;
+    resultsList.appendChild(li);
+  }
+}
+
+function showProblemById(id) {
+  const item = leetcodeData.find(p => p.id === id);
+  if (!item) {
+    document.getElementById("output").textContent = "❌ Problem not found.";
+    return;
+  }
+
+  const { title, description, url, difficulty } = item;
+  const diff = difficulty.toLowerCase();
+
+  let color = "#fff";
+  if (diff === "easy") color = "limegreen";
+  else if (diff === "medium") color = "goldenrod";
+  else if (diff === "hard") color = "tomato";
+
+  function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, function (m) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[m];
+    });
+  }
+
+  let htmlDesc = escapeHtml(description)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>');
+
+  document.getElementById("problem-title").innerHTML =
+    `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f">(View)</a>`;
+  document.getElementById("problem-description").innerHTML = htmlDesc;
+
+  const problemMeta = { id, title, url, description };
+  localStorage.setItem("activeProblemMeta", JSON.stringify(problemMeta));
+}
+
   </script>
 </body>
 </html>

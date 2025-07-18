@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Web Editor</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #container {
+      width: 80%;
+      margin: auto;
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      background-color: #2b2b2b;
+      color: #fff;
+      caret-color: white;
+      font-family: monospace;
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      resize: vertical;
+      white-space: pre;
+      overflow: auto;
+      outline: none;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      background: #333;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 5px;
+      text-align: left;
+      color: #eee;
+    }
+
+    button {
+      margin: 1rem;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    details {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    ul {
+      line-height: 1.6;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>JavaScript Web Editor</h1>
+    <textarea id="code" spellcheck="false">console.log("Hello, JavaScript!");</textarea>
+    <br>
+    <button onclick="runCode()">▶ Run (⌘ + B)</button>
+    <pre id="output"></pre>
+
+    <details>
+      <summary>Keyboard Shortcuts</summary>
+      <ul>
+        <li><b>Cmd + B</b>: Run Code</li>
+        <li><b>Shift + Enter</b>: Insert new line</li>
+        <li><b>Auto close</b>: (, [, {, ', "</li>
+      </ul>
+    </details>
+  </div>
+
+  <script>
+    function runCode() {
+      const output = document.getElementById("output");
+      const code = document.getElementById("code").value;
+      try {
+        const capturedLogs = [];
+        const originalLog = console.log;
+
+        console.log = function (...args) {
+          capturedLogs.push(args.join(" "));
+        };
+
+        // Clear the output
+        output.textContent = "";
+
+        // Run the code
+        new Function(code)();
+
+        // Display logs
+        output.textContent = capturedLogs.join("\n") || "(No output)";
+        console.log = originalLog;
+      } catch (err) {
+        output.textContent = "❌ Error:\n" + err;
+      }
+    }
+
+    const textarea = document.getElementById("code");
+
+    textarea.addEventListener("keydown", function (e) {
+      const val = textarea.value;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+
+      // Tab inserts 4 spaces
+      if (e.key === "Tab") {
+        e.preventDefault();
+        textarea.value = val.substring(0, start) + "    " + val.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start + 4;
+      }
+
+      // Shift + Enter inserts line below
+      else if (e.key === "Enter" && e.shiftKey) {
+        e.preventDefault();
+        const currentLineEnd = val.indexOf("\n", start);
+        const insertPos = currentLineEnd === -1 ? val.length : currentLineEnd;
+        const currentLineStart = val.lastIndexOf("\n", start - 1) + 1;
+        const indentMatch = val.slice(currentLineStart, start).match(/^\s*/);
+        const indent = indentMatch ? indentMatch[0] : "";
+        textarea.value = val.slice(0, insertPos) + "\n" + indent + val.slice(insertPos);
+        textarea.selectionStart = textarea.selectionEnd = insertPos + 1 + indent.length;
+      }
+
+      // Cmd + B runs code
+      else if (e.key.toLowerCase() === "b" && e.metaKey) {
+        e.preventDefault();
+        runCode();
+      }
+
+      // Auto close brackets, quotes, etc.
+      const pairs = {
+        "(": ")",
+        "[": "]",
+        "{": "}",
+        "'": "'",
+        '"': '"'
+      };
+
+      if (pairs[e.key] && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        const closingChar = pairs[e.key];
+        textarea.value = val.substring(0, start) + e.key + closingChar + val.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start + 1;
+      }
+
+      // Skip duplicated closing char
+      const nextChar = val.charAt(start);
+      if (Object.values(pairs).includes(e.key) && nextChar === e.key) {
+        e.preventDefault();
+        textarea.selectionStart = textarea.selectionEnd = start + 1;
+      }
+    });
+  </script>
+</body>
+</html>

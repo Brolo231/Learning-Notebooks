@@ -46,7 +46,7 @@
     }
 
     button {
-      margin: 1rem;
+      margin: 0.5rem;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
@@ -72,33 +72,75 @@
 <body>
   <div id="container">
     <h1>WebAssembly Python</h1>
+
     <textarea id="code" spellcheck="false">print("Hello, WebAssembly!")</textarea>
     <br>
     <button onclick="runCode()">▶ Run (⌘ + B)</button>
+    <button onclick="saveCodeCache()">💾 Save Code to Cache</button>
+    <button onclick="resetCodeCache()">🧹 Reset Code Cache</button>
     <pre id="output"></pre>
 
-    <details>
-      <summary>Keyboard Shortcuts</summary>
-      <ul>
-        <li><b>Cmd + B</b>: Run Code</li>
-        <li><b>Shift + Enter</b>: Insert new line below cursor</li>
-        <li><b>(, [, {, ', "</b>: Auto close with matching character</li>
-        <li><b>Enter after ':'</b>: Auto indent</li>
-        <li><b>Backspace</b>: Reverse indent if on 4 spaces</li>
-      </ul>
-    </details>
+    <div id="problem-display" style="text-align:left; background:#2b2b2b; padding:1rem; border-radius:6px; margin-bottom:1rem; margin-top:2rem;">
+      <h2 id="problem-title">Random LeetCode Problem</h2>
+      <p id="problem-description">Click a button below to load a random problem.</p>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <button onclick="loadProblem('Easy')">🎯 Random Easy</button>
+      <button onclick="loadProblem('Medium')">⚖️ Random Medium</button>
+      <button onclick="loadProblem('Hard')">🔥 Random Hard</button>
+    </div>
   </div>
 
   <script>
     let pyodideReady = false;
+    let leetcodeData = [];
 
     async function main() {
       window.pyodide = await loadPyodide();
-      await pyodide.loadPackage('pandas');
       pyodideReady = true;
+
+      try {
+        const response = await fetch("leetcode_dataset_clean.json");
+        leetcodeData = await response.json();
+      } catch (err) {
+        console.error("❌ Failed to load leetcode_dataset_clean.json", err);
+        document.getElementById("output").textContent = "❌ Failed to load problem dataset.";
+      }
+
+      // Load cached code on startup
+      const saved = localStorage.getItem("userPythonCode");
+      if (saved) {
+        document.getElementById("code").value = saved;
+      }
     }
 
     main();
+
+    function saveCodeCache() {
+      const code = document.getElementById("code").value;
+      localStorage.setItem("userPythonCode", code);
+      alert("✅ Code saved to cache.");
+    }
+
+    function loadSavedCode() {
+      const saved = localStorage.getItem("userPythonCode");
+      if (saved) {
+        document.getElementById("code").value = saved;
+        alert("📋 Last saved code pasted.");
+      } else {
+        alert("⚠️ No saved code found.");
+      }
+    }
+
+    function resetCodeCache() {
+      const confirmReset = confirm("Clear your saved code from browser cache?");
+      if (confirmReset) {
+        localStorage.removeItem("userPythonCode");
+        document.getElementById("code").value = "";
+        alert("🧹 Code cache cleared.");
+      }
+    }
 
     async function runCode() {
       const output = document.getElementById("output");
@@ -112,7 +154,7 @@
 import sys, io
 sys.stdout = io.StringIO()
 sys.stderr = sys.stdout
-`);
+        `);
         const code = document.getElementById("code").value;
         await pyodide.runPythonAsync(code);
         const result = await pyodide.runPythonAsync("sys.stdout.getvalue()");
@@ -122,21 +164,81 @@ sys.stderr = sys.stdout
       }
     }
 
+    async function loadProblem(difficulty) {
+  const output = document.getElementById("output");
+  if (!pyodideReady) {
+    output.textContent = "Loading Pyodide...";
+    return;
+  }
+
+  try {
+    // Filter by difficulty and skip "None"/"none" descriptions
+    const filtered = leetcodeData.filter(
+      item =>
+        item.difficulty.toLowerCase() === difficulty.toLowerCase() &&
+        item.description &&
+        item.description.toLowerCase() !== "none" &&
+        item.description.toLowerCase() !== "sql schema"
+    );
+
+    if (filtered.length === 0) {
+      output.textContent = `❌ No ${difficulty} problems found with valid descriptions.`;
+      return;
+    }
+
+    const row = filtered[Math.floor(Math.random() * filtered.length)];
+    const { id, title, description, url, difficulty: diffRaw } = row;
+    const diff = diffRaw.toLowerCase();
+
+    let color = "#fff";
+    if (diff === "easy") color = "limegreen";
+    else if (diff === "medium") color = "goldenrod";
+    else if (diff === "hard") color = "tomato";
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, function (m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[m];
+      });
+    }
+
+    let htmlDesc = escapeHtml(description)
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>');
+
+    document.getElementById("problem-title").innerHTML =
+      `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f">(View)</a>`;
+
+    document.getElementById("problem-description").innerHTML = htmlDesc;
+
+    // Save current problem metadata to cache
+    const problemMeta = { id, title, url, description };
+    localStorage.setItem("activeProblemMeta", JSON.stringify(problemMeta));
+
+  } catch (err) {
+    output.textContent = "❌ Error loading problem:\n" + err;
+  }
+}
+
     const textarea = document.getElementById("code");
 
-    textarea.addEventListener("keydown", function(e) {
+    textarea.addEventListener("keydown", function (e) {
       const val = textarea.value;
       const start = textarea.selectionStart;
       const end = textarea.selectionEnd;
 
-      // Tab inserts 4 spaces
       if (e.key === "Tab") {
         e.preventDefault();
         textarea.value = val.substring(0, start) + "    " + val.substring(end);
         textarea.selectionStart = textarea.selectionEnd = start + 4;
       }
 
-      // Reverse indent with Backspace
       else if (e.key === "Backspace" && start === end) {
         const before = val.substring(start - 4, start);
         if (before === "    ") {
@@ -146,7 +248,6 @@ sys.stderr = sys.stdout
         }
       }
 
-      // Shift + Enter inserts line below
       else if (e.key === "Enter" && e.shiftKey) {
         e.preventDefault();
         const currentLineEnd = val.indexOf("\n", start);
@@ -158,7 +259,6 @@ sys.stderr = sys.stdout
         textarea.selectionStart = textarea.selectionEnd = insertPos + 1 + indent.length;
       }
 
-      // Auto indent after ":"
       else if (e.key === "Enter") {
         const lineStart = val.lastIndexOf("\n", start - 1) + 1;
         const currentLine = val.slice(lineStart, start);
@@ -171,13 +271,11 @@ sys.stderr = sys.stdout
         textarea.selectionStart = textarea.selectionEnd = start + insert.length;
       }
 
-      // Cmd + B runs code
       else if (e.key.toLowerCase() === "b" && e.metaKey) {
         e.preventDefault();
         runCode();
       }
 
-      // Auto close brackets, quotes, etc.
       const pairs = {
         "(": ")",
         "[": "]",
@@ -193,7 +291,6 @@ sys.stderr = sys.stdout
         textarea.selectionStart = textarea.selectionEnd = start + 1;
       }
 
-      // Skip duplicated closing char
       const nextChar = val.charAt(start);
       if (Object.values(pairs).includes(e.key) && nextChar === e.key) {
         e.preventDefault();

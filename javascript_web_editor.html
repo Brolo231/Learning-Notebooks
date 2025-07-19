@@ -45,7 +45,7 @@
     }
 
     button {
-      margin: 1rem;
+      margin: 0.5rem;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
@@ -74,7 +74,29 @@
     <textarea id="code" spellcheck="false">console.log("Hello, JavaScript!");</textarea>
     <br>
     <button onclick="runCode()">▶ Run (⌘ + B)</button>
+    <button onclick="saveCodeCache()">💾 Save Code to Cache</button>
+    <button onclick="resetCodeCache()">🧹 Reset Code Cache</button>
     <pre id="output"></pre>
+
+    <details>
+      <summary>🔍 Search LeetCode Problems</summary>
+      <div style="margin-top: 1rem;">
+        <input id="search-input" type="text" placeholder="Search by title or keyword..." style="padding: 10px; width: 60%; font-size: 16px; border-radius: 6px; border: 1px solid #666; background-color: #2b2b2b; color: white;">
+        <button onclick="searchProblems()">Search</button>
+        <ul id="search-results" style="margin-top: 1rem;"></ul>
+      </div>
+    </details>
+
+    <div id="problem-display" style="text-align:left; background:#2b2b2b; padding:1rem; border-radius:6px; margin-bottom:1rem; margin-top:2rem;">
+      <h2 id="problem-title">Random LeetCode Problem</h2>
+      <p id="problem-description">Click a button below to load a random problem.</p>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <button onclick="loadProblem('Easy')">🎯 Random Easy</button>
+      <button onclick="loadProblem('Medium')">⚖️ Random Medium</button>
+      <button onclick="loadProblem('Hard')">🔥 Random Hard</button>
+    </div>
 
     <details>
       <summary>Keyboard Shortcuts</summary>
@@ -87,24 +109,21 @@
   </div>
 
   <script>
+    let leetcodeData = [];
+
+    fetch("leetcode_dataset_clean.json")
+      .then(res => res.json())
+      .then(data => leetcodeData = data)
+      .catch(err => document.getElementById("output").textContent = "❌ Failed to load dataset");
+
     function runCode() {
       const output = document.getElementById("output");
       const code = document.getElementById("code").value;
       try {
         const capturedLogs = [];
         const originalLog = console.log;
-
-        console.log = function (...args) {
-          capturedLogs.push(args.join(" "));
-        };
-
-        // Clear the output
-        output.textContent = "";
-
-        // Run the code
+        console.log = (...args) => capturedLogs.push(args.join(" "));
         new Function(code)();
-
-        // Display logs
         output.textContent = capturedLogs.join("\n") || "(No output)";
         console.log = originalLog;
       } catch (err) {
@@ -112,61 +131,150 @@
       }
     }
 
+    function saveCodeCache() {
+      const code = document.getElementById("code").value;
+      localStorage.setItem("userJavaScriptCode", code);
+      alert("✅ Code saved to cache.");
+    }
+
+    function resetCodeCache() {
+      if (confirm("Clear your saved code from browser cache?")) {
+        localStorage.removeItem("userJavaScriptCode");
+        document.getElementById("code").value = "";
+        alert("🧹 Code cache cleared.");
+      }
+    }
+
     const textarea = document.getElementById("code");
+    const saved = localStorage.getItem("userJavaScriptCode");
+    if (saved) textarea.value = saved;
 
     textarea.addEventListener("keydown", function (e) {
-      const val = textarea.value;
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
+  const val = textarea.value;
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
 
-      // Tab inserts 4 spaces
-      if (e.key === "Tab") {
-        e.preventDefault();
-        textarea.value = val.substring(0, start) + "    " + val.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + 4;
+  const pairs = { "(": ")", "[": "]", "{": "}", "'": "'", '"': '"' };
+
+  // Auto-indent block after opening brace
+  if (e.key === "Enter") {
+    const before = val.substring(0, start);
+    const after = val.substring(end);
+    const lineStart = before.lastIndexOf("\n") + 1;
+    const indentMatch = before.slice(lineStart).match(/^\s*/);
+    const indent = indentMatch ? indentMatch[0] : "";
+
+    // If before cursor ends with {, add block indent
+    if (/\{\s*$/.test(before)) {
+      e.preventDefault();
+      const newIndent = indent + "    ";
+      const insert = `\n${newIndent}\n${indent}`;
+      textarea.value = before + insert + after;
+      textarea.selectionStart = textarea.selectionEnd = start + newIndent.length + 1;
+      return;
+    }
+
+    // Shift+Enter: insert line without breaking auto-indent
+    if (e.shiftKey) {
+      e.preventDefault();
+      textarea.value = val.substring(0, start) + "\n" + indent + val.substring(end);
+      textarea.selectionStart = textarea.selectionEnd = start + 1 + indent.length;
+      return;
+    }
+  }
+
+  // Auto-indent with Tab
+  if (e.key === "Tab") {
+    e.preventDefault();
+    textarea.value = val.substring(0, start) + "    " + val.substring(end);
+    textarea.selectionStart = textarea.selectionEnd = start + 4;
+    return;
+  }
+
+  // Smart Backspace (remove 4 spaces)
+  if (e.key === "Backspace" && start === end) {
+    const before = val.substring(start - 4, start);
+    if (before === "    ") {
+      e.preventDefault();
+      textarea.value = val.substring(0, start - 4) + val.substring(end);
+      textarea.selectionStart = textarea.selectionEnd = start - 4;
+    }
+    return;
+  }
+
+  // Cmd+B to run
+  if (e.key.toLowerCase() === "b" && e.metaKey) {
+    e.preventDefault();
+    runCode();
+    return;
+  }
+
+  // Auto-close brackets/quotes
+  if (pairs[e.key] && !e.ctrlKey && !e.metaKey) {
+    e.preventDefault();
+    const closingChar = pairs[e.key];
+    textarea.value = val.substring(0, start) + e.key + closingChar + val.substring(end);
+    textarea.selectionStart = textarea.selectionEnd = start + 1;
+    return;
+  }
+
+  // Skip closing bracket/quote if already present
+  const nextChar = val.charAt(start);
+  if (Object.values(pairs).includes(e.key) && nextChar === e.key) {
+    e.preventDefault();
+    textarea.selectionStart = textarea.selectionEnd = start + 1;
+  }
+});
+
+    function loadProblem(difficulty) {
+      const output = document.getElementById("output");
+      const filtered = leetcodeData.filter(
+        p => p.difficulty.toLowerCase() === difficulty.toLowerCase() &&
+             p.description && !["none", "sql schema"].includes(p.description.toLowerCase())
+      );
+      if (filtered.length === 0) {
+        output.textContent = `❌ No ${difficulty} problems found.`;
+        return;
       }
+      const problem = filtered[Math.floor(Math.random() * filtered.length)];
+      displayProblem(problem);
+    }
 
-      // Shift + Enter inserts line below
-      else if (e.key === "Enter" && e.shiftKey) {
-        e.preventDefault();
-        const currentLineEnd = val.indexOf("\n", start);
-        const insertPos = currentLineEnd === -1 ? val.length : currentLineEnd;
-        const currentLineStart = val.lastIndexOf("\n", start - 1) + 1;
-        const indentMatch = val.slice(currentLineStart, start).match(/^\s*/);
-        const indent = indentMatch ? indentMatch[0] : "";
-        textarea.value = val.slice(0, insertPos) + "\n" + indent + val.slice(insertPos);
-        textarea.selectionStart = textarea.selectionEnd = insertPos + 1 + indent.length;
+    function displayProblem(problem) {
+      const { id, title, description, url, difficulty } = problem;
+      const color = difficulty === "Easy" ? "limegreen" : difficulty === "Medium" ? "goldenrod" : "tomato";
+      const escapeHtml = text => text.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+      const htmlDesc = escapeHtml(description).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+      document.getElementById("problem-title").innerHTML = `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f">(View)</a>`;
+      document.getElementById("problem-description").innerHTML = htmlDesc;
+      localStorage.setItem("activeProblemMeta", JSON.stringify(problem));
+    }
+
+    function searchProblems() {
+      const query = document.getElementById("search-input").value.toLowerCase().trim();
+      const resultsList = document.getElementById("search-results");
+      resultsList.innerHTML = "";
+      if (!query || leetcodeData.length === 0) {
+        resultsList.innerHTML = "<li>No search term entered or data not loaded.</li>";
+        return;
       }
-
-      // Cmd + B runs code
-      else if (e.key.toLowerCase() === "b" && e.metaKey) {
-        e.preventDefault();
-        runCode();
+      const results = leetcodeData.filter(item => item.title.toLowerCase().includes(query) || (item.description && item.description.toLowerCase().includes(query))).slice(0, 25);
+      if (results.length === 0) {
+        resultsList.innerHTML = "<li>No matches found.</li>";
+        return;
       }
-
-      // Auto close brackets, quotes, etc.
-      const pairs = {
-        "(": ")",
-        "[": "]",
-        "{": "}",
-        "'": "'",
-        '"': '"'
-      };
-
-      if (pairs[e.key] && !e.ctrlKey && !e.metaKey) {
-        e.preventDefault();
-        const closingChar = pairs[e.key];
-        textarea.value = val.substring(0, start) + e.key + closingChar + val.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + 1;
+      for (const result of results) {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong style="color:lightgreen;">${result.title}</strong> - <a style="color: lightblue;" href="#" onclick="displayProblemById(${result.id}); return false;">View</a>`;
+        resultsList.appendChild(li);
       }
+    }
 
-      // Skip duplicated closing char
-      const nextChar = val.charAt(start);
-      if (Object.values(pairs).includes(e.key) && nextChar === e.key) {
-        e.preventDefault();
-        textarea.selectionStart = textarea.selectionEnd = start + 1;
-      }
-    });
+    function displayProblemById(id) {
+      const problem = leetcodeData.find(p => p.id === id);
+      if (problem) displayProblem(problem);
+      else document.getElementById("output").textContent = "❌ Problem not found.";
+    }
   </script>
 </body>
 </html>

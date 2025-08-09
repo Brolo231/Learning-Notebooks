@@ -55,5 +55,6 @@
   "02_Data_Analysis/MySQL/00. Database and Tables.html": "2025-08-07",
   "02_Data_Analysis/Pandas/Pandas Project Ideas.html": "2025-08-02",
   "02_Data_Analysis/Pandas/Running CSV with Pyodide Code Editor.html": "2025-08-04",
-  "02_Data_Analysis/MySQL/2. GROUP BY, ORDER BY.html": "2025-08-09"
+  "02_Data_Analysis/MySQL/2. GROUP BY, ORDER BY.html": "2025-08-09",
+  "02_Data_Analysis/MySQL/HAVING.html": "2025-08-09"
 }

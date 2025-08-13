@@ -7532,6 +7532,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<style>
+@media (max-width: 600px) {
+    img[style] { width: 90% !important; }
+}
+</style>
 <h1 id="HAVING">HAVING<a class="anchor-link" href="#HAVING">¶</a></h1><hr/>
 <h3 id="The-having-clause-is-the-equivalent-of-the-where-clause-but-for-gorups-after-aggregation-(GROUP-BY)">The having clause is the equivalent of the where clause but for gorups after aggregation (GROUP BY)<a class="anchor-link" href="#The-having-clause-is-the-equivalent-of-the-where-clause-but-for-gorups-after-aggregation-(GROUP-BY)">¶</a></h3><hr/>
 <h4 id="You-usually-use-HAVING-when-you-want-to-filter-based-on-an-aggregate-function-(e.g.,-SUM,-COUNT,-AVG)">You usually use HAVING when you want to filter based on an aggregate function (e.g., SUM, COUNT, AVG)<a class="anchor-link" href="#You-usually-use-HAVING-when-you-want-to-filter-based-on-an-aggregate-function-(e.g.,-SUM,-COUNT,-AVG)">¶</a></h4><hr/>
@@ -7549,7 +7554,7 @@ a.anchor-link {
 <li>which have an AVG(age) above 40</li>
 </ul>
 <p><strong>Note:</strong> The *<strong>which have an AVG(age) above 40</strong>* refers to the rolled up group of values' average age</p>
-<img alt="No description has been provided for this image" src="static/HAVING_01.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/HAVING_01.png" style="width: 40%; margin: auto;"/>
 <p>The above only shows male because the average age of the female gender was below 40.</p>
 </div>
 </div>

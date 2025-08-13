@@ -7532,6 +7532,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<style>
+@media (max-width: 600px) {
+    img[style] { width: 90% !important; }
+}
+</style>
 <h1 id="GROUP-BY">GROUP BY<a class="anchor-link" href="#GROUP-BY">¶</a></h1><hr/>
 <h4 id="Group-by-rolls-up-rows-that-have-the-same-value-in-one-or-more-columns-so-that-AGGREGATE-functions-can-be-performed-on-each-group-separately">Group by rolls up rows that have the same value in one or more columns so that AGGREGATE functions can be performed on each group separately<a class="anchor-link" href="#Group-by-rolls-up-rows-that-have-the-same-value-in-one-or-more-columns-so-that-AGGREGATE-functions-can-be-performed-on-each-group-separately">¶</a></h4><hr/>
 <p>For the following we are:</p>
@@ -7541,7 +7546,7 @@ a.anchor-link {
 <li>and we're grouping by gender</li>
 </ul>
 <p>Note: Notice that we only get an output of Male and Female. This is because 'male' and 'female' are the only unique values in the gender column. We are rolling up all the values into these unique groups.</p>
-<img alt="No description has been provided for this image" src="static/GROUP_BY_01.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/GROUP_BY_01.png" style="width: 40%; margin: auto;"/>
 <h4 id=""><a class="anchor-link" href="#">¶</a></h4><p>It now makes it easier for us to perform aggregate functions on certain groups based on the other column data.</p>
 <p>For example:</p>
 <ul>
@@ -7549,9 +7554,9 @@ a.anchor-link {
 <li>from employee_demographics</li>
 <li>and we are grouping by gender. (average age for each rolled up group: male and female)</li>
 </ul>
-<img alt="No description has been provided for this image" src="static/GROUP_BY_02.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/GROUP_BY_02.png" style="width: 40%; margin: auto;"/>
 <p><strong>Note:</strong> We can still use aggregate functions without the GROUP BY clause. Note for the following we would not be able to display other columns with it. E.g != AVG(age), gender &lt;- wont work</p>
-<img alt="No description has been provided for this image" src="static/GROUP_BY_03.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/GROUP_BY_03.png" style="width: 40%; margin: auto;"/>
 <hr/>
 <h3 id="Common-aggregate-functions:">Common aggregate functions:<a class="anchor-link" href="#Common-aggregate-functions:">¶</a></h3><table>
 <thead>
@@ -7589,10 +7594,24 @@ a.anchor-link {
 <li>from employee_demographics</li>
 <li>and we are ordering by gender.</li>
 </ul>
-<img alt="No description has been provided for this image" src="static/ORDER_BY_01.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/ORDER_BY_01.png" style="width: 40%; margin: auto;"/>
 <h4 id=""><a class="anchor-link" href="#">¶</a></h4><p><strong>Note:</strong> We can also order by on multiple columns. Lets say we were to order by on gender and then age.</p>
-<img alt="No description has been provided for this image" src="static/ORDER_BY_02.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/ORDER_BY_02.png" style="width: 40%; margin: auto;"/>
 <p><strong>Note:</strong> When ordering by on multiple columns, the order is what gives preference. so if we have gender, age - gender will be ordered by first and then age. The order in which you place columns for order by is important. If we were to order by age first and then gender, ordering by gender second would be redundant as preference for age would be determined.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=fa08056c-caeb-42df-8900-f381f08dd8d1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

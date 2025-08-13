@@ -7532,6 +7532,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<style>
+@media (max-width: 600px) {
+    img[style] { width: 90% !important; }
+}
+</style>
 <h1 id="JOINS">JOINS<a class="anchor-link" href="#JOINS">¶</a></h1><hr/>
 <h4 id="A-JOIN-in-MySQL-combines-rows-from-two-or-more-tables-based-on-a-related-column-between-them.">A JOIN in MySQL combines rows from two or more tables based on a related column between them.<a class="anchor-link" href="#A-JOIN-in-MySQL-combines-rows-from-two-or-more-tables-based-on-a-related-column-between-them.">¶</a></h4><h4 id="The-default-join-in-MySQL-workbench-is-INNER-JOIN">The default join in MySQL workbench is INNER JOIN<a class="anchor-link" href="#The-default-join-in-MySQL-workbench-is-INNER-JOIN">¶</a></h4><hr/>
 <img alt="No description has been provided for this image" src="static/MYSQL_JOINS.png" style="display: flex; width: 60%; margin:auto;"/>
@@ -7601,7 +7606,7 @@ a.anchor-link {
 <code>;</code></p>
 <p><strong>Note:</strong> From the explanation of line 9 above if we had ON sal1.employee_id <strong><span style="color: red;">-</span></strong> 1 = sal2.employee_id instead of '+' then we would need to match values from the right table to the left table where employee_id - 1 = left.employee_id 
 since the first value is 1 in employee_id there is no emoloyee_id with 0 so therefore it is skipped. 2 - 1 = 1 however so employee_id with value 2 will match with employee_id with 1</p>
-<img alt="No description has been provided for this image" src="static/SELF_JOIN_01.png" style="width: 60%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/SELF_JOIN_01.png" style="width: 40%; margin: auto;"/>
 <h4 id=""><a class="anchor-link" href="#">¶</a></h4><hr/>
 <h3 id="MULTIPLE-TABLE-JOINS">MULTIPLE TABLE JOINS<a class="anchor-link" href="#MULTIPLE-TABLE-JOINS">¶</a></h3><hr/>
 <p>We can JOIN multiple tables together</p>

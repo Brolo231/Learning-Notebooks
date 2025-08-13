@@ -7532,6 +7532,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<style>
+@media (max-width: 600px) {
+    img[style] { width: 90% !important; }
+}
+</style>
 <h1 id="LIMIT">LIMIT<a class="anchor-link" href="#LIMIT">¶</a></h1><hr/>
 <h3 id="We-can-use-LIMIT-to-display-the-top-n-number-of-values">We can use LIMIT to display the top <em>n</em> number of values<a class="anchor-link" href="#We-can-use-LIMIT-to-display-the-top-n-number-of-values">¶</a></h3><hr/>
 <p><code>SELECT *</code><br/>
@@ -7539,7 +7544,7 @@ a.anchor-link {
 <code>ORDER BY age DESC</code><br/>
 <code>LIMIT 3</code><br/>
 <code>;</code></p>
-<img alt="No description has been provided for this image" src="static/LIMIT_01.png" style="width: 70%; margin: auto;"/>
+<img alt="No description has been provided for this image" src="static/LIMIT_01.png" style="width: 40%; margin: auto;"/>
 <hr/>
 <p>Additionally, we can use aliasing to give columns a different name/ alias</p>
 <p><code>SELECT gender, AVG(age) AS avg_age</code><br/>
@@ -7547,21 +7552,7 @@ a.anchor-link {
 <code>GROUP BY gender</code><br/>
 <code>ORDER BY avg_age DESC</code><br/>
 <code>;</code></p>
-<img alt="No description has been provided for this image" src="static/ALIAS_01.png" style="width: 70%; margin: auto;"/>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=902f07f6-4f55-4c23-976c-13dc3db49b29">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+<img alt="No description has been provided for this image" src="static/ALIAS_01.png" style="width: 40%; margin: auto;"/>
 </div>
 </div>
 </div>

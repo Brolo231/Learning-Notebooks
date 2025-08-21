@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>6. UNIONS</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>8. CASE</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,132 +7526,55 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba50a805-cc3b-4d0d-89eb-c4221af310a4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=671a111e-d13b-4d5a-84a3-85f32c15de59">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="UNIONS">UNIONS<a class="anchor-link" href="#UNIONS">¶</a></h1><hr/>
-<p>A UNION is used to combine the results of two or more SELECT queries into a single result set.</p>
-<p>What <strong>UNION</strong> Does:</p>
-<ul>
-<li>It stacks results vertically (one query’s rows on top of another’s).</li>
-<li>It only works when the SELECT statements have:<ol>
-<li>The same number of columns</li>
-<li>Compatible data types in each column position</li>
-</ol>
-</li>
-</ul>
-<p>Types of <strong>UNIONS</strong>:</p>
-<ol>
-<li>UNION → combines results and removes duplicates (default behavior).</li>
-<li>UNION ALL → combines results without removing duplicates (faster since no deduplication).</li>
-</ol>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><h4 id="Suppose-we-have-the-following-two-tables:">Suppose we have the following two tables:<a class="anchor-link" href="#Suppose-we-have-the-following-two-tables:">¶</a></h4><p><strong><div style="text-align: center;">customers_2024</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>city</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Alice</td>
-<td>Durban</td>
-</tr>
-<tr>
-<td>2</td>
-<td>John</td>
-<td>Joburg</td>
-</tr>
-</tbody>
-</table>
-<hr style="width: 30%; margin: auto;"/>
-<p><strong><div style="text-align: center;">customers_2025</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>city</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3</td>
-<td>Neo</td>
-<td>Pretoria</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Alice</td>
-<td>Durban</td>
-</tr>
-</tbody>
-</table>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><p>We can perform the following UNION to combine both tables' data</p>
-<p><code>SELECT name, city FROM customers_2024</code><br/>
-<code>UNION</code><br/>
-<code>SELECT name, city FROM customers_2025;</code></p>
-<p><strong><div style="text-align: center;">customers_union</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>city</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alice</td>
-<td>Durban</td>
-</tr>
-<tr>
-<td>John</td>
-<td>Joburg</td>
-</tr>
-<tr>
-<td>Neo</td>
-<td>Pretoria</td>
-</tr>
-<tr>
-<td>Alice</td>
-<td>Durban</td>
-</tr>
-</tbody>
-</table>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><hr/>
-<h4 id="We-can-also-use-UNION-to-combine-results-from-different-conditions-or-even-different-tables,-while-adding-custom-labels-to-categorize-the-rows.">We can also use UNION to combine results from different conditions or even different tables, while adding custom labels to categorize the rows.<a class="anchor-link" href="#We-can-also-use-UNION-to-combine-results-from-different-conditions-or-even-different-tables,-while-adding-custom-labels-to-categorize-the-rows.">¶</a></h4><p><code>SELECT first_name, last_name, 'Old_Man' as label</code><br/>
-<code>FROM employee_demographics</code><br/>
-<code>WHERE age &gt; 40 and gender = 'Male'</code></p>
-<p><code>UNION</code></p>
-<p><code>SELECT first_name, last_name, 'Old_lady' as label</code><br/>
-<code>FROM employee_demographics</code><br/>
-<code>WHERE age &gt; 40 and gender = 'Female'</code></p>
-<p><code>UNION</code></p>
-<p><code>SELECT first_name, last_name, 'Highly Paid Employee' as label</code><br/>
-<code>FROM employee_salary</code><br/>
-<code>WHERE salary &gt; 70000</code></p>
-<p><code>ORDER BY first_name, last_name;</code></p>
-<img alt="No description has been provided for this image" src="static/UNION_01.png" style="display: flex; width: 50%; margin:auto;"/>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=069755b2-5711-44dc-a568-b4d1ab03d3ac">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<h1 id="CASE-Statement">CASE Statement<a class="anchor-link" href="#CASE-Statement">¶</a></h1><hr/>
+<h4 id="The-CASE-statement-in-SQL-is-like-an-if-then-else-logic-inside-your-queries.-It-lets-you-create-new-columns-or-modify-output-based-on-conditions.">The CASE statement in SQL is like an if-then-else logic inside your queries. It lets you create new columns or modify output based on conditions.<a class="anchor-link" href="#The-CASE-statement-in-SQL-is-like-an-if-then-else-logic-inside-your-queries.-It-lets-you-create-new-columns-or-modify-output-based-on-conditions.">¶</a></h4><hr/>
+<h2 id="Syntax">Syntax<a class="anchor-link" href="#Syntax">¶</a></h2><div class="highlight"><pre><span></span><span class="k">CASE</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result1</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result2</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="n">result_if_none_match</span>
+<span class="k">END</span>
 </pre></div>
-</div>
+<hr/>
+<p>Example from parks_and_recreation database:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span>
+<span class="k">CASE</span><span class="w"> </span>
+<span class="w">    </span><span class="c1">-- In this case BETWEEN includes the first and second number placed after (40 and 44 are included)</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">44</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Old'</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">45</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Very Old'</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">'Young'</span>
+<span class="k">END</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="p">;</span>
+</pre></div>
+<img alt="No description has been provided for this image" src="static/CASE_01.png" style="display: flex; width: 80%; margin:auto;"/>
+<p><strong>Note:</strong> We can also label the case statement result column by placing an alias after the <code>END</code> statement</p>
+<hr/>
+<p>We can combine CASE statements with GROUP BY statements to generate useful insights:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">   </span><span class="k">CASE</span><span class="w"> </span>
+<span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Young'</span>
+<span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Middle-aged'</span>
+<span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">'Senior'</span>
+<span class="w">   </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">age_group</span><span class="p">,</span>
+<span class="w">   </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age_group</span><span class="p">;</span>
+</pre></div>
+<img alt="No description has been provided for this image" src="static/CASE_02.png" style="display: flex; width: 50%; margin:auto;"/>
+<hr/>
+<p>We can combine CASE statements with AGGREGATIONS to generate useful insights:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">   </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">gender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Male'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">male_count</span><span class="p">,</span>
+<span class="w">   </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">gender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Female'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">female_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="p">;</span>
+</pre></div>
+<img alt="No description has been provided for this image" src="static/CASE_03.png" style="display: flex; width: 50%; margin:auto;"/>
 </div>
 </div>
 </div>

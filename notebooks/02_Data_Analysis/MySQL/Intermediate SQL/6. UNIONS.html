@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AppleMusicDataAnlysis</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>6. UNIONS</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,100 +7526,118 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32afb74b-58b4-4ae6-8b67-b06fc3828077">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba50a805-cc3b-4d0d-89eb-c4221af310a4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Apple-Music---Exploratory-Data-Analysis">Apple Music - Exploratory Data Analysis<a class="anchor-link" href="#Apple-Music---Exploratory-Data-Analysis">¶</a></h1><hr/>
-<h3 id="Every-year-apple-music-and-spotify-release-their-own-versions-of-their-customer-bases-listening-analytics.">Every year apple music and spotify release their own versions of their customer bases listening analytics.<a class="anchor-link" href="#Every-year-apple-music-and-spotify-release-their-own-versions-of-their-customer-bases-listening-analytics.">¶</a></h3><hr/>
-<h4 id="The-analytics-include:">The analytics include:<a class="anchor-link" href="#The-analytics-include:">¶</a></h4><ul>
-<li>Top artists</li>
-<li>Top songs</li>
-<li>Top genres</li>
-<li>Top artist and song comparisons</li>
-</ul>
-<hr/>
-<p>As someone who listens to music daily, I thought it would be interesting if I could replicate this concept by creating my own data anlysis on my own apple music library using SQL on MySQL Workbench.</p>
-<h2 id="How?">How?<a class="anchor-link" href="#How?">¶</a></h2><p>The apple music library is only accessible through a macbook or windows laptop with the apple music application installed. To access your apple music library dataset you can:</p>
-<ol>
-<li>Open Apple Music</li>
-<li>Select File &gt; Library &gt; Export library</li>
-<li>Save the file</li>
+<h1 id="UNIONS">UNIONS<a class="anchor-link" href="#UNIONS">¶</a></h1><hr/>
+<p>A UNION is used to combine the results of two or more SELECT queries into a single result set.</p>
+<p>What <strong>UNION</strong> Does:</p>
+<ul>
+<li>It stacks results vertically (one query’s rows on top of another’s).</li>
+<li>It only works when the SELECT statements have:<ol>
+<li>The same number of columns</li>
+<li>Compatible data types in each column position</li>
 </ol>
-<p>The following is a simplified overview of what the xml file structure looks like:</p>
-<p>-- Drop down --</p>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
- "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-
-<plist version="1.0">
-<dict>
-<!-- Library Metadata -->
-<key>Major Version</key><integer>1</integer>
-<key>Minor Version</key><integer>1</integer>
-<key>Music Folder</key><string>file://localhost/Users/username/Music/iTunes/iTunes%20Media/</string>
-    ...
-<pre><code>&lt;!-- Tracks Dictionary --&gt;
-&lt;key&gt;Tracks&lt;/key&gt;
-&lt;dict&gt;
-    &lt;!-- Track ID --&gt;
-    &lt;key&gt;1234&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;Track ID&lt;/key&gt;&lt;integer&gt;1234&lt;/integer&gt;
-        &lt;key&gt;Name&lt;/key&gt;&lt;string&gt;Song Title&lt;/string&gt;
-        &lt;key&gt;Artist&lt;/key&gt;&lt;string&gt;Artist Name&lt;/string&gt;
-        &lt;key&gt;Album&lt;/key&gt;&lt;string&gt;Album Name&lt;/string&gt;
-        &lt;key&gt;Total Time&lt;/key&gt;&lt;integer&gt;210000&lt;/integer&gt; &lt;!-- duration in ms --&gt;
-        &lt;key&gt;Play Count&lt;/key&gt;&lt;integer&gt;5&lt;/integer&gt;
-        &lt;key&gt;Date Added&lt;/key&gt;&lt;date&gt;2024-01-01T12:00:00Z&lt;/date&gt;
-        ...
-    &lt;/dict&gt;
-
-    &lt;!-- More tracks --&gt;
-&lt;/dict&gt;
-
-&lt;!-- Playlists --&gt;
-&lt;key&gt;Playlists&lt;/key&gt;
-&lt;array&gt;
-    &lt;dict&gt;
-        &lt;key&gt;Name&lt;/key&gt;&lt;string&gt;Favorites&lt;/string&gt;
-        &lt;key&gt;Playlist ID&lt;/key&gt;&lt;integer&gt;5678&lt;/integer&gt;
-        &lt;key&gt;Playlist Items&lt;/key&gt;
-        &lt;array&gt;
-            &lt;dict&gt;&lt;key&gt;Track ID&lt;/key&gt;&lt;integer&gt;1234&lt;/integer&gt;&lt;/dict&gt;
-            &lt;dict&gt;&lt;key&gt;Track ID&lt;/key&gt;&lt;integer&gt;2345&lt;/integer&gt;&lt;/dict&gt;
-        &lt;/array&gt;
-    &lt;/dict&gt;
-    &lt;!-- More playlists --&gt;
-&lt;/array&gt;
-</code></pre>
-</dict>
-</plist>
-<p>Additionally, MySQL Workbench does not directly support converting xml data into tables. So I asked chatGPT to convert the xml file into csv format to allow easy conversion of csv to database tables. I also only converted the track data rather than the entire dataset to allow for easier data analysis.</p>
-<p>-- dropdown of chatgpt code --
-code
-code
-code</p>
-<h2 id="Data-anlysis">Data anlysis<a class="anchor-link" href="#Data-anlysis">¶</a></h2><p>After converting the xml file to csv format and into mysql workbench data anlysis can be performed:</p>
-<p>Explanation: 
-[SQL code blocks]</p>
-<hr/>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c8f3ca4d-19c6-441d-9c49-d01a50c7ba83">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+</li>
+</ul>
+<p>Types of <strong>UNIONS</strong>:</p>
+<ol>
+<li>UNION → combines results and removes duplicates (default behavior).</li>
+<li>UNION ALL → combines results without removing duplicates (faster since no deduplication).</li>
+</ol>
+<h4 id=""><a class="anchor-link" href="#">¶</a></h4><h4 id="Suppose-we-have-the-following-two-tables:">Suppose we have the following two tables:<a class="anchor-link" href="#Suppose-we-have-the-following-two-tables:">¶</a></h4><p><strong><div style="text-align: center;">customers_2024</div></strong></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>city</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Alice</td>
+<td>Durban</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John</td>
+<td>Joburg</td>
+</tr>
+</tbody>
+</table>
+<hr style="width: 30%; margin: auto;"/>
+<p><strong><div style="text-align: center;">customers_2025</div></strong></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>city</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>Neo</td>
+<td>Pretoria</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Alice</td>
+<td>Durban</td>
+</tr>
+</tbody>
+</table>
+<h4 id=""><a class="anchor-link" href="#">¶</a></h4><p>We can perform the following UNION to combine both tables' data</p>
+<p><code>SELECT name, city FROM customers_2024</code><br/>
+<code>UNION</code><br/>
+<code>SELECT name, city FROM customers_2025;</code></p>
+<p><strong><div style="text-align: center;">customers_union</div></strong></p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>city</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td>Durban</td>
+</tr>
+<tr>
+<td>Brandon</td>
+<td>Joburg</td>
+</tr>
+<tr>
+<td>Neo</td>
+<td>Pretoria</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>Durban</td>
+</tr>
+</tbody>
+</table>
+<h4 id=""><a class="anchor-link" href="#">¶</a></h4><hr/>
+<h4 id="We-can-also-use-UNION-to-combine-results-from-different-conditions-or-even-different-tables,-while-adding-custom-labels-to-categorize-the-rows.">We can also use UNION to combine results from different conditions or even different tables, while adding custom labels to categorize the rows.<a class="anchor-link" href="#We-can-also-use-UNION-to-combine-results-from-different-conditions-or-even-different-tables,-while-adding-custom-labels-to-categorize-the-rows.">¶</a></h4><p><code>SELECT first_name, last_name, 'Old_Man' as label</code><br/>
+<code>FROM employee_demographics</code><br/>
+<code>WHERE age &gt; 40 and gender = 'Male'</code></p>
+<p><code>UNION</code></p>
+<p><code>SELECT first_name, last_name, 'Old_lady' as label</code><br/>
+<code>FROM employee_demographics</code><br/>
+<code>WHERE age &gt; 40 and gender = 'Female'</code></p>
+<p><code>UNION</code></p>
+<p><code>SELECT first_name, last_name, 'Highly Paid Employee' as label</code><br/>
+<code>FROM employee_salary</code><br/>
+<code>WHERE salary &gt; 70000</code></p>
+<p><code>ORDER BY first_name, last_name;</code></p>
+<img alt="No description has been provided for this image" src="static/UNION_01.png" style="display: flex; width: 50%; margin:auto;"/>
 </div>
 </div>
 </div>

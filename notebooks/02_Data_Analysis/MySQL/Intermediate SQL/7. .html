@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>5. JOINS</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>7. </title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,122 +7526,232 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2e2979aa-7b93-485d-9728-36ac638c888c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=795721da-0e92-48d3-b7a6-969b82db6914">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<style>
-@media (max-width: 600px) {
-    img[style] { width: 90% !important; }
-}
-</style>
-<h1 id="JOINS">JOINS<a class="anchor-link" href="#JOINS">¶</a></h1><hr/>
-<h4 id="A-JOIN-in-MySQL-combines-rows-from-two-or-more-tables-based-on-a-related-column-between-them.">A JOIN in MySQL combines rows from two or more tables based on a related column between them.<a class="anchor-link" href="#A-JOIN-in-MySQL-combines-rows-from-two-or-more-tables-based-on-a-related-column-between-them.">¶</a></h4><h4 id="The-default-join-in-MySQL-workbench-is-INNER-JOIN">The default join in MySQL workbench is INNER JOIN<a class="anchor-link" href="#The-default-join-in-MySQL-workbench-is-INNER-JOIN">¶</a></h4><hr/>
-<img alt="No description has been provided for this image" src="static/MYSQL_JOINS.png" style="display: flex; width: 60%; margin:auto;"/>
-<p style="text-align: center;">full join == full outer join</p>
+<h1 id="STRING-FUNCTIONS">STRING FUNCTIONS<a class="anchor-link" href="#STRING-FUNCTIONS">¶</a></h1><hr/>
+<p>Working with strings is an essential part of SQL queries. MySQL provides a wide range of <strong>string functions</strong> to manipulate, extract, search, and format text data.</p>
+<p>This guide covers the most commonly used string functions with <strong>examples, use cases, and syntax</strong>.</p>
+<hr>
+<h2 id="%F0%9F%93%8C-Why-Use-String-Functions?">📌 Why Use String Functions?<a class="anchor-link" href="#%F0%9F%93%8C-Why-Use-String-Functions?">¶</a></h2><ul>
+<li><strong>Data Cleaning</strong> → Trim unwanted spaces, standardize case (e.g., upper/lower).</li>
+<li><strong>Searching &amp; Filtering</strong> → Find substrings, match patterns.</li>
+<li><strong>Formatting Output</strong> → Concatenate fields, replace words, pad strings.</li>
+<li><strong>Analytics</strong> → Extract parts of names, emails, or codes.</li>
+</ul>
 <hr/>
-<p><strong>SYNTAX:</strong></p>
-<p><code>SELECT *</code><br/>
-<code>FROM employee_demographics AS dem</code> <strong>LEFT (first table)</strong><br/>
-<code>INNER JOIN employee_salary AS sal</code> <strong>RIGHT (second table)</strong><br/>
-<code>ON dem.employee_id = sal.employee_id</code><br/>
-<code>;</code></p>
+<h2 id="%F0%9F%94%91-Common-Use-Cases">🔑 Common Use Cases<a class="anchor-link" href="#%F0%9F%94%91-Common-Use-Cases">¶</a></h2><ol>
+<li><p><strong>Standardizing Data</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name_upper</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</pre></div>
+<p>Converts names to uppercase.</p>
+</li>
+<li><p><strong>Extracting Domain from Email</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'@'</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">domain</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+</pre></div>
+<p>Extracts everything after <code>@</code>.</p>
+</li>
+<li><p><strong>Creating Full Names</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">full_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</pre></div>
+<p>Joins two columns with a space.</p>
+</li>
+<li><p><strong>Masking Sensitive Data</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="k">LEFT</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="s1">'****'</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">masked_phone</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">customers</span><span class="p">;</span>
+</pre></div>
+<p>Masks part of a phone number.</p>
+</li>
+</ol>
 <hr/>
-<h3 id="An-INNER-JOIN">An <strong>INNER JOIN</strong><a class="anchor-link" href="#An-INNER-JOIN">¶</a></h3><hr/>
-<ul>
-<li>Only returns rows where there’s a match in both tables.</li>
-<li>If no match exists, that row won’t appear in the result.</li>
-</ul>
-<p>In the following we are:</p>
-<ul>
-<li>selecting everything</li>
-<li>from employee_demographics with an alias of "dem",</li>
-<li>inner joining employee_demogrpahics as "sal"</li>
-<li>on the employee_id (column with similar/matching data)</li>
-</ul>
-<p><code>SELECT *</code><br/>
-<code>FROM employee_demographics AS dem</code><br/>
-<code>INNER JOIN employee_salary AS sal</code> <br/>
-<code>ON dem.employee_id = sal.employee_id</code><br/>
-<code>;</code></p>
-<p><strong>Note:</strong> Ron Swanson with employee_id value "2" does not appear in the output. This is because an Inner Join only joins/ outputs selected data on values that appear in both tables. So in employee_salary Ron Swanson is there and has an employee_id of "2" but he does not appear employee_demographics.</p>
-<img alt="No description has been provided for this image" src="static/INNER_JOIN_01.png" style="width: 90%; margin: auto;"/>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><hr/>
-<h3 id="OUTER-JOINS---LEFT-and-RIGHT">OUTER JOINS - <strong>LEFT</strong> and <strong>RIGHT</strong><a class="anchor-link" href="#OUTER-JOINS---LEFT-and-RIGHT">¶</a></h3><hr/>
-<p>A <strong>LEFT JOIN</strong> is going to take everything from the left table, even if there are no matches in the right table, and return any matches from the right table. Vice versa for <strong>RIGHT JOIN</strong></p>
-<p>We are:</p>
-<ul>
-<li>selecting everything</li>
-<li>from employee_demographics as 'dem'</li>
-<li>outer right joining on employee_salary as 'sal'</li>
-<li>on the common column - employee_id</li>
-</ul>
-<p><code>SELECT *</code><br/>
-<code>FROM employee_demographics AS dem</code><br/>
-<code>RIGHT JOIN employee_salary AS sal</code><br/>
-<code>ON dem.employee_id = sal.employee_id</code><br/>
-<code>;</code></p>
-<p><strong>Note:</strong> Previously we did an INNER JOIN on these tables (only returning rows with matching employee_id in both tables) and noticed that ron swanson was excluded from the output because he did not have an employee_id in both tables. Now that we are doing an OUTER RIGHT JOIN (right join is everything from right table and then matching values from left table on employee_id) he now appears in the output</p>
-<img alt="No description has been provided for this image" src="static/OUTER_RIGHT_JOIN_01.png" style="width: 90%; margin: auto;"/>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><hr/>
-<h3 id="SELF-JOIN">SELF JOIN<a class="anchor-link" href="#SELF-JOIN">¶</a></h3><hr/>
-<p>A self join is when you join the same table to itself.</p>
-<p><strong>Line 9 explained: (ON sal1.employee_id + 1 = sal2.employee_id)</strong></p>
-<ul>
-<li>ON sal1.employee_id + 1 = sal2.employee_id</li>
-<li>The join condition: for each row in sal1, find the row in sal2 whose employee_id equals sal1.employee_id + 1.</li>
-<li>Practically, that pairs id 1 → 2, 2 → 3, etc. If there is no employee_id exactly one greater, that sal1 row is excluded (because it’s an inner join).</li>
-</ul>
-<p><code>SELECT sal1.first_name AS secret_santa,</code><br/>
-<code>sal1.last_name as secret_santa,</code><br/>
-<code>sal1.employee_id,</code><br/>
-<code>sal2.first_name as emp_name,</code><br/>
-<code>sal2.last_name as emp_surname,</code><br/>
-<code>sal2.employee_id</code><br/>
-<code>FROM employee_salary AS sal1</code><br/>
-<code>JOIN employee_salary AS sal2</code><br/>
-<code>ON sal1.employee_id + 1 = sal2.employee_id</code><br/>
-<code>;</code></p>
-<p><strong>Note:</strong> From the explanation of line 9 above if we had ON sal1.employee_id <strong><span style="color: red;">-</span></strong> 1 = sal2.employee_id instead of '+' then we would need to match values from the right table to the left table where employee_id - 1 = left.employee_id 
-since the first value is 1 in employee_id there is no emoloyee_id with 0 so therefore it is skipped. 2 - 1 = 1 however so employee_id with value 2 will match with employee_id with 1</p>
-<img alt="No description has been provided for this image" src="static/SELF_JOIN_01.png" style="width: 40%; margin: auto;"/>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><hr/>
-<h3 id="FULL-JOIN">FULL JOIN<a class="anchor-link" href="#FULL-JOIN">¶</a></h3><hr/>
-<p>In MySQL, there is no built-in FULL OUTER JOIN (unlike SQL Server, PostgreSQL, or Oracle).
-But you can <strong>simulate</strong> it using a combination of LEFT JOIN, RIGHT JOIN, and UNION.</p>
-<p><code>SELECT dem.first_name, dem.last_name, sal.occupation, dem.age</code><br/>
-<code>FROM employee_demographics AS dem</code><br/>
-<code>LEFT JOIN employee_salary AS sal</code><br/>
-<code>ON dem.employee_id = sal.employee_id</code></p>
-<p><code>UNION</code></p>
-<p><code>SELECT dem.first_name, dem.last_name, sal.occupation, dem.age</code><br/>
-<code>FROM employee_demographics AS dem</code><br/>
-<code>RIGHT JOIN employee_salary AS sal</code><br/>
-<code>ON dem.employee_id = sal.employee_id</code></p>
-<img alt="No description has been provided for this image" src="static/FULL_JOIN_01.png" style="width: 50%; margin: auto;"/>
+<h2 id="%F0%9F%93%8B-MySQL-String-Functions-Reference-Table">📋 MySQL String Functions Reference Table<a class="anchor-link" href="#%F0%9F%93%8B-MySQL-String-Functions-Reference-Table">¶</a></h2><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LENGTH()</strong></td>
+<td><code>LENGTH(str)</code></td>
+<td>Returns the length of a string in bytes.</td>
+</tr>
+<tr>
+<td><strong>CHAR_LENGTH() / CHARACTER_LENGTH()</strong></td>
+<td><code>CHAR_LENGTH(str)</code></td>
+<td>Returns the number of characters in a string (differs from LENGTH for multi-byte).</td>
+</tr>
+<tr>
+<td><strong>CONCAT()</strong></td>
+<td><code>CONCAT(str1, str2, …)</code></td>
+<td>Joins multiple strings together.</td>
+</tr>
+<tr>
+<td><strong>CONCAT_WS()</strong></td>
+<td><code>CONCAT_WS(separator, str1, str2, …)</code></td>
+<td>Concatenates with a separator.</td>
+</tr>
+<tr>
+<td><strong>UPPER() / UCASE()</strong></td>
+<td><code>UPPER(str)</code></td>
+<td>Converts string to uppercase.</td>
+</tr>
+<tr>
+<td><strong>LOWER() / LCASE()</strong></td>
+<td><code>LOWER(str)</code></td>
+<td>Converts string to lowercase.</td>
+</tr>
+<tr>
+<td><strong>LEFT()</strong></td>
+<td><code>LEFT(str, len)</code></td>
+<td>Returns the leftmost <code>len</code> characters.</td>
+</tr>
+<tr>
+<td><strong>RIGHT()</strong></td>
+<td><code>RIGHT(str, len)</code></td>
+<td>Returns the rightmost <code>len</code> characters.</td>
+</tr>
+<tr>
+<td><strong>SUBSTRING() / SUBSTR()</strong></td>
+<td><code>SUBSTRING(str, pos, len)</code></td>
+<td>Extracts part of a string starting at <code>pos</code>.</td>
+</tr>
+<tr>
+<td><strong>SUBSTRING_INDEX()</strong></td>
+<td><code>SUBSTRING_INDEX(str, delim, count)</code></td>
+<td>Returns substring before/after a delimiter.</td>
+</tr>
+<tr>
+<td><strong>LPAD()</strong></td>
+<td><code>LPAD(str, len, padstr)</code></td>
+<td>Pads the left side of string to a given length.</td>
+</tr>
+<tr>
+<td><strong>RPAD()</strong></td>
+<td><code>RPAD(str, len, padstr)</code></td>
+<td>Pads the right side of string to a given length.</td>
+</tr>
+<tr>
+<td><strong>TRIM()</strong></td>
+<td><code>TRIM(str)</code></td>
+<td>Removes leading and trailing spaces.</td>
+</tr>
+<tr>
+<td><strong>LTRIM()</strong></td>
+<td><code>LTRIM(str)</code></td>
+<td>Removes spaces on the left side.</td>
+</tr>
+<tr>
+<td><strong>RTRIM()</strong></td>
+<td><code>RTRIM(str)</code></td>
+<td>Removes spaces on the right side.</td>
+</tr>
+<tr>
+<td><strong>REPLACE()</strong></td>
+<td><code>REPLACE(str, from_str, to_str)</code></td>
+<td>Replaces all occurrences of a substring.</td>
+</tr>
+<tr>
+<td><strong>INSERT()</strong></td>
+<td><code>INSERT(str, pos, len, newstr)</code></td>
+<td>Replaces part of a string starting at position <code>pos</code>.</td>
+</tr>
+<tr>
+<td><strong>REVERSE()</strong></td>
+<td><code>REVERSE(str)</code></td>
+<td>Reverses the characters in a string.</td>
+</tr>
+<tr>
+<td><strong>LOCATE() / POSITION() / INSTR()</strong></td>
+<td><code>LOCATE(substr, str)</code></td>
+<td>Returns the position of the first occurrence.</td>
+</tr>
+<tr>
+<td><strong>FIELD()</strong></td>
+<td><code>FIELD(str, str1, str2, …)</code></td>
+<td>Returns index of str in list.</td>
+</tr>
+<tr>
+<td><strong>FIND_IN_SET()</strong></td>
+<td><code>FIND_IN_SET(str, strlist)</code></td>
+<td>Finds position of a string within a comma-separated list.</td>
+</tr>
+<tr>
+<td><strong>ELT()</strong></td>
+<td><code>ELT(N, str1, str2, …)</code></td>
+<td>Returns string at position N in list.</td>
+</tr>
+<tr>
+<td><strong>MAKE_SET()</strong></td>
+<td><code>MAKE_SET(bits, str1, str2, …)</code></td>
+<td>Returns set of strings based on bits.</td>
+</tr>
+<tr>
+<td><strong>REPEAT()</strong></td>
+<td><code>REPEAT(str, count)</code></td>
+<td>Repeats a string multiple times.</td>
+</tr>
+<tr>
+<td><strong>SPACE()</strong></td>
+<td><code>SPACE(N)</code></td>
+<td>Returns a string of N spaces.</td>
+</tr>
+<tr>
+<td><strong>HEX()</strong></td>
+<td><code>HEX(str)</code></td>
+<td>Returns hex representation.</td>
+</tr>
+<tr>
+<td><strong>UNHEX()</strong></td>
+<td><code>UNHEX(str)</code></td>
+<td>Converts hex back to characters.</td>
+</tr>
+<tr>
+<td><strong>QUOTE()</strong></td>
+<td><code>QUOTE(str)</code></td>
+<td>Escapes special characters for SQL.</td>
+</tr>
+</tbody>
+</table>
 <hr/>
-<h3 id="MULTIPLE-TABLE-JOINS">MULTIPLE TABLE JOINS<a class="anchor-link" href="#MULTIPLE-TABLE-JOINS">¶</a></h3><hr/>
-<p>We can JOIN multiple tables together</p>
-<p>We are:</p>
-<ul>
-<li>selecting everything</li>
-<li>from employee_dem as dem</li>
-<li>inner joining semployee_sal as sal</li>
-<li>on employee_id</li>
-<li>then joining parks_departments as dep</li>
-<li>on the related column dept_id from employee_salary</li>
-</ul>
-<p><strong>Note:</strong> Even though department id is not included in employee_demographics it is included in employee_salary so we can join a third table together with this relation.</p>
-<p><code>SELECT *</code><br/>
-<code>FROM employee_demographics AS dem</code><br/>
-<code>INNER JOIN employee_salary as sal</code><br/>
-<code>ON dem.employee_id = sal.employee_id</code><br/>
-<code>INNER JOIN parks_departments as dep</code><br/>
-<code>ON dep.department_id = sal.dept_id</code><br/>
-<code>;</code></p>
-<img alt="No description has been provided for this image" src="static/MULTIPLE_JOINS.png" style="width: 90%; margin: auto;"/>
+<h2 id="%E2%9C%85-Example-Queries">✅ Example Queries<a class="anchor-link" href="#%E2%9C%85-Example-Queries">¶</a></h2><p><strong>1. Cleaning up names (remove spaces &amp; capitalize):</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="k">UPPER</span><span class="p">(</span><span class="k">TRIM</span><span class="p">(</span><span class="n">first_name</span><span class="p">)),</span><span class="w"> </span><span class="s1">' '</span><span class="p">,</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="k">TRIM</span><span class="p">(</span><span class="n">last_name</span><span class="p">)))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">clean_name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</pre></div>
+<p><strong>2. Extracting first 3 letters of a code:</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">product_code</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span>
+</pre></div>
+<p><strong>3. Replacing words in a sentence:</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">(</span><span class="s1">'I love Java'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Java'</span><span class="p">,</span><span class="w"> </span><span class="s1">'MySQL'</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">result</span><span class="p">;</span>
+<span class="c1">-- Output: "I love MySQL"</span>
+</pre></div>
+<p><strong>4. Splitting emails into username and domain:</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">  </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'@'</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">username</span><span class="p">,</span>
+<span class="w">  </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'@'</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">domain</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+</pre></div>
+<hr/>
+<p>✨ With these string functions, you can clean, format, and manipulate text data efficiently in MySQL.</p>
+</hr></div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=74caa21b-335f-4dea-849d-c7b490bbee1b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

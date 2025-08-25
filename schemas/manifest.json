@@ -1,0 +1,6 @@
+{
+  "schemas": [
+    {"name": "sales", "tables": ["customers.csv", "orders.csv", "items.csv"]},
+    {"name": "hr",    "tables": ["employees.csv", "departments.csv"]}
+  ]
+}

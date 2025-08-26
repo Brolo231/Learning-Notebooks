@@ -15,10 +15,10 @@
         /* NEW: SQL toolbar (mobile only) */
     .sql-toolbar {
       display: none; /* hidden by default */
-      position: fixed;
+      position: sticky;
       bottom: 0; /* above keyboard on mobile */
-      left: 0;
-      right: 0;
+      top: 0;
+      bottom: auto;
       background: #171a21;
       border-top: 1px solid #232836;
       padding: 6px;
@@ -148,6 +148,7 @@
   </style>
 </head>
 <body>
+
 <div class="app">
   <header>
     <h1>SQL Editor (MySQL-style) — CSV Schemas in Browser</h1>
@@ -169,6 +170,28 @@
         <button id="btnExplain" class="ghost" style="display: none;">Show loaded tables</button>
         <button id="btnReload" class="ghost">Reload Schemas</button>
       </div>
+
+      <!-- NEW: SQL Quick Command Toolbar -->
+<div class="sql-toolbar" id="sqlToolbar">
+  <button>SELECT</button>
+  <button>*</button>
+  <button>FROM</button>
+  <button>WHERE</button>
+  <button>(</button>
+  <button>)</button>
+  <button>"</button>
+  <button>'</button>
+  <button>JOIN</button>
+  <button>GROUP BY</button>
+  <button>ORDER BY</button>
+  <button>LIMIT</button>
+  <button>INSERT</button>
+  <button>UPDATE</button>
+  <button>DELETE</button>
+  <button>CREATE TABLE</button>
+  <button>DROP TABLE</button>
+</div>
+
       <div class="result" id="result"></div>
       <div class="status" id="status"></div>
     </section>
@@ -216,27 +239,6 @@
   </div>
 
   <footer>Runs fully client-side. MySQL formatting; SQLite execution via <code>sql.js</code>.</footer>
-</div>
-
-<!-- NEW: SQL Quick Command Toolbar -->
-<div class="sql-toolbar" id="sqlToolbar">
-  <button>SELECT</button>
-  <button>*</button>
-  <button>FROM</button>
-  <button>WHERE</button>
-  <button>(</button>
-  <button>)</button>
-  <button>"</button>
-  <button>'</button>
-  <button>JOIN</button>
-  <button>GROUP BY</button>
-  <button>ORDER BY</button>
-  <button>LIMIT</button>
-  <button>INSERT</button>
-  <button>UPDATE</button>
-  <button>DELETE</button>
-  <button>CREATE TABLE</button>
-  <button>DROP TABLE</button>
 </div>
 
 

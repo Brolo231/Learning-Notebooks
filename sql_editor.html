@@ -53,7 +53,7 @@
     }
     html, body { height: 100%; }
     body { margin: 0; background: var(--bg); color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     .app { display: grid; grid-template-rows: auto 1fr auto; gap: 10px; height: 100%; }
     header { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
     header h1 { font-size: 16px; margin: 0; font-weight: 600; letter-spacing: .2px; }
@@ -154,7 +154,7 @@
     <div class="spacer"></div>
     <div class="row">
       <select id="schemaSelect" title="Available Schemas"></select>
-      <label class="row" style="gap:6px; display: none;">
+      <label class="row" style="gap:6px; display: hidden;">
       </label>
       <button id="btnFormat" class="ghost">Format <span class="kbd">Ctrl/⌘</span> + <span class="kbd">Shift</span> + <span class="kbd">F</span></button>
       <button id="btnRun" class="primary">Run <span class="kbd">Ctrl/⌘</span> + <span class="kbd">Enter</span></button>
@@ -303,26 +303,28 @@ function initEditor(){
     }
   });
 
-  CM.setValue(""); // empty start
-
   const toolbar = document.getElementById("sqlToolbar");
+  const cmWrapper = CM.getWrapperElement();
 
-  // Show/hide toolbar
-  CM.on("focus", () => { toolbar.style.display = "flex"; });
-  CM.on("blur", () => {
-    // Delay hiding so button clicks can still run
+  function showToolbar() {
+    toolbar.style.display = "flex";
+  }
+  function hideToolbar() {
     setTimeout(() => {
       if (!toolbar.matches(":hover")) {
         toolbar.style.display = "none";
       }
     }, 150);
-  });
+  }
 
-  // Insert commands when clicked
+  CM.on("focus", showToolbar);
+  CM.on("blur", hideToolbar);
+  cmWrapper.addEventListener("click", showToolbar);
+
   toolbar.querySelectorAll("button").forEach(btn => {
     btn.addEventListener("mousedown", e => {
-      e.preventDefault();            // stop button click from stealing focus
-      CM.focus();                    // restore editor focus
+      e.preventDefault();
+      CM.focus();
       CM.replaceSelection(btn.textContent + " ");
     });
   });

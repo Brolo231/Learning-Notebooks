@@ -12,6 +12,41 @@
 
   <!-- Minimal styling -->
   <style>
+        /* NEW: SQL toolbar (mobile only) */
+    .sql-toolbar {
+      display: none; /* hidden by default */
+      position: fixed;
+      bottom: 0; /* above keyboard on mobile */
+      left: 0;
+      right: 0;
+      background: #171a21;
+      border-top: 1px solid #232836;
+      padding: 6px;
+      overflow-x: auto;
+      white-space: nowrap;
+      z-index: 9999;
+    }
+
+    .sql-toolbar button {
+      background: #0f131a;
+      border: 1px solid #232836;
+      color: #e6e6e6;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      margin-right: 6px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .sql-toolbar button:active {
+      background: #4f8cff;
+      color: white;
+    }
+
+    @media (min-width: 1025px) {
+      .sql-toolbar { display: none !important; } /* hide on desktop */
+    }
     :root {
       --bg: #0f1115; --panel: #171a21; --muted: #9aa4b2; --text: #e6e6e6;
       --accent: #4f8cff; --border: #232836; --ok: #2ecc71; --warn: #ffb020; --err: #ff5c5c;
@@ -183,6 +218,28 @@
   <footer>Runs fully client-side. MySQL formatting; SQLite execution via <code>sql.js</code>.</footer>
 </div>
 
+<!-- NEW: SQL Quick Command Toolbar -->
+<div class="sql-toolbar" id="sqlToolbar">
+  <button>SELECT</button>
+  <button>*</button>
+  <button>FROM</button>
+  <button>WHERE</button>
+  <button>(</button>
+  <button>)</button>
+  <button>"</button>
+  <button>'</button>
+  <button>JOIN</button>
+  <button>GROUP BY</button>
+  <button>ORDER BY</button>
+  <button>LIMIT</button>
+  <button>INSERT</button>
+  <button>UPDATE</button>
+  <button>DELETE</button>
+  <button>CREATE TABLE</button>
+  <button>DROP TABLE</button>
+</div>
+
+
 <!-- Libraries (order matters) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
 <script>
@@ -231,23 +288,45 @@
     db = new SQLModule.Database();
   }
 
-  function initEditor(){
-    CM = CodeMirror.fromTextArea(document.getElementById('editor'), {
-      mode: 'text/x-sql',
-      theme: 'neo',
-      lineNumbers: true,
-      autofocus: true,
-      indentUnit: 2,
-      extraKeys: {
-        'Ctrl-Enter': runQuery,
-        'Cmd-Enter': runQuery,
-        'Ctrl-Shift-F': formatSQL,
-        'Cmd-Shift-F': formatSQL
+function initEditor(){
+  CM = CodeMirror.fromTextArea(document.getElementById('editor'), {
+    mode: 'text/x-sql',
+    theme: 'neo',
+    lineNumbers: true,
+    autofocus: true,
+    indentUnit: 2,
+    extraKeys: {
+      'Ctrl-Enter': runQuery,
+      'Cmd-Enter': runQuery,
+      'Ctrl-Shift-F': formatSQL,
+      'Cmd-Shift-F': formatSQL
+    }
+  });
+
+  CM.setValue(""); // empty start
+
+  const toolbar = document.getElementById("sqlToolbar");
+
+  // Show/hide toolbar
+  CM.on("focus", () => { toolbar.style.display = "flex"; });
+  CM.on("blur", () => {
+    // Delay hiding so button clicks can still run
+    setTimeout(() => {
+      if (!toolbar.matches(":hover")) {
+        toolbar.style.display = "none";
       }
+    }, 150);
+  });
+
+  // Insert commands when clicked
+  toolbar.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("mousedown", e => {
+      e.preventDefault();            // stop button click from stealing focus
+      CM.focus();                    // restore editor focus
+      CM.replaceSelection(btn.textContent + " ");
     });
-    CM.setValue(`
-`);
-  }
+  });
+}
 
 function bindUI(){
   $('#btnRun').addEventListener('click', runQuery);

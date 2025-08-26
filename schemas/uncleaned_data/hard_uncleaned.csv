@@ -1,0 +1,6 @@
+Record,Notes
+"1; John Doe ; 29 ; New-York, USA","Likes pizza, watches football"
+"2; Jane Smith ; twenty five ; London,UK",N/A
+"3; Mike, O'Neil; 32 ;; Paris ; France",Multiple; hobbies: reading; traveling
+corrupted_row_without_delimiters,Corrupted data
+5; Anna ; 27/08/1995 ; Berlin ; Germany ; ExtraField,DOB format inconsistent

@@ -38,6 +38,27 @@
     .schema-list summary { cursor: pointer; padding: 8px 10px; font-weight: 600; }
     .schema-list .tables { padding: 0 10px 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
     .schema-list .pill { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; margin: 3px 6px 0 0; color: #d6e4ff; background: #0b0f16; }
+    .tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: #0f131a;
+}
+.tab-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+}
+.tab-btn.active {
+  background: var(--panel);
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent);
+}
+.tab-panels {
+  padding: 10px;
+}
     .result {
   padding: 10px;
   max-height: 60vh;      /* Limit vertical height to 60% of viewport */
@@ -224,8 +245,7 @@
         'Cmd-Shift-F': formatSQL
       }
     });
-    CM.setValue(`-- Try me! After schemas load, run a query like:
--- SELECT * FROM sales.orders LIMIT 5;
+    CM.setValue(`
 `);
   }
 
@@ -377,24 +397,83 @@ function preprocessQuery(sql) {
   return sql;
 }
 
-  function runQuery(){
-    const raw = CM.getValue();
-    const sql = preprocessQuery(raw);
-    try {
-      const res = db.exec(sql); // array of result sets
-      let rows = [];
-      if(res.length){
-        const last = res[res.length-1];
-        rows = packRows(last.columns, last.values);
-      }
-      renderTable(rows);
-      setStatus(`OK • ${rows.length} row(s)`, 'ok');
-    } catch (e){
-      console.error(e);
-      resultEl().innerHTML = '';
-      setStatus(e.message, 'err');
+  // ------- Query execution with multiple result sets -------
+function runQuery() {
+  const raw = CM.getValue();
+  const sql = preprocessQuery(raw);
+
+  try {
+    const results = db.exec(sql); // array of result sets
+    if (!results.length) {
+      renderResults([]);
+      setStatus(`OK • No result sets`, 'ok');
+      return;
     }
+
+    // Pack all results into row objects
+    const packed = results.map(r => packRows(r.columns, r.values));
+    renderResults(packed);
+    setStatus(`OK • ${results.length} result set(s)`, 'ok');
+  } catch (e) {
+    console.error(e);
+    resultEl().innerHTML = '';
+    setStatus(e.message, 'err');
   }
+}
+
+function renderResults(resultSets) {
+  if (!resultSets || !resultSets.length) {
+    resultEl().innerHTML = '<div class="hint">(No rows)</div>';
+    return;
+  }
+
+  // Build tab headers
+  let tabsHtml = '<div class="tabs">';
+  resultSets.forEach((_, i) => {
+    tabsHtml += `<button class="tab-btn" data-idx="${i}">Result ${i + 1}</button>`;
+  });
+  tabsHtml += '</div>';
+
+  // Build content panels
+  let panelsHtml = '<div class="tab-panels">';
+  resultSets.forEach((rows, i) => {
+    panelsHtml += `<div class="tab-panel" data-idx="${i}" style="display:${i===0?'block':'none'};">`;
+    panelsHtml += renderTableHtml(rows);
+    panelsHtml += '</div>';
+  });
+  panelsHtml += '</div>';
+
+  resultEl().innerHTML = tabsHtml + panelsHtml;
+
+  // Bind tab switching
+  resultEl().querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.idx;
+      // hide all panels
+      resultEl().querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+      // deactivate all tabs
+      resultEl().querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      // show selected
+      resultEl().querySelector(`.tab-panel[data-idx="${idx}"]`).style.display = 'block';
+      btn.classList.add('active');
+    });
+  });
+
+  // Set first tab active
+  const firstTab = resultEl().querySelector('.tab-btn');
+  if (firstTab) firstTab.classList.add('active');
+}
+
+function renderTableHtml(rows) {
+  if (!rows || !rows.length) return '<div class="hint">(No rows)</div>';
+  const cols = Object.keys(rows[0]);
+  let html = '<table><thead><tr>' + cols.map(c => `<th>${escapeHtml(c)}</th>`).join('') + '</tr></thead><tbody>';
+  for (const r of rows) {
+    html += '<tr>' + cols.map(c => `<td>${escapeHtml(String(r[c] ?? ''))}</td>`).join('') + '</tr>';
+  }
+  html += '</tbody></table>';
+  return html;
+}
 
   function packRows(cols, values){
     return values.map(v => Object.fromEntries(v.map((val,i)=>[cols[i], val])));

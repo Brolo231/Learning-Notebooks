@@ -1,0 +1,119 @@
+[
+  {
+    "id": 3,
+    "title": "Parks and Recreation - Average salary by department",
+    "difficulty": "Beginner",
+    "tags": ["aggregations", "group-by", "joins"],
+    "promptMarkdown": "Find the **average salary** of employees in each department. Use `employee_salary` joined with `parks_departments`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT d.department_name, AVG(s.salary) AS avg_salary\nFROM employee_salary s\nJOIN parks_departments d ON s.dept_id = d.department_id\nGROUP BY d.department_name\nORDER BY avg_salary DESC;\n```"
+  },
+  {
+    "id": 4,
+    "title": "Parks and Recreation - Employees over 40",
+    "difficulty": "Beginner",
+    "tags": ["filtering", "where"],
+    "promptMarkdown": "List all employees from `employee_demographics` who are **older than 40**.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT employee_id, first_name, last_name, age\nFROM employee_demographics\nWHERE age > 40;\n```"
+  },
+  {
+    "id": 5,
+    "title": "Parks and Recreation - Highest paid employee per department",
+    "difficulty": "Intermediate",
+    "tags": ["joins", "window", "ranking"],
+    "promptMarkdown": "Find the **highest paid employee** in each department. Use `employee_salary` and `parks_departments`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT first_name, last_name, d.department_name, salary\nFROM (\n  SELECT s.*, RANK() OVER(PARTITION BY dept_id ORDER BY salary DESC) AS rnk\n  FROM employee_salary s\n) s\nJOIN parks_departments d ON s.dept_id = d.department_id\nWHERE rnk = 1;\n```"
+  },
+  {
+    "id": 6,
+    "title": "Parks and Recreation - Gender distribution",
+    "difficulty": "Beginner",
+    "tags": ["group-by", "count"],
+    "promptMarkdown": "Count the number of employees by **gender** from `employee_demographics`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT gender, COUNT(*) AS total\nFROM employee_demographics\nGROUP BY gender;\n```"
+  },
+  {
+    "id": 7,
+    "title": "Parks and Recreation - Average age by occupation",
+    "difficulty": "Intermediate",
+    "tags": ["aggregations", "joins"],
+    "promptMarkdown": "Find the **average age** of employees in each occupation. Use both `employee_demographics` and `employee_salary`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT s.occupation, AVG(d.age) AS avg_age\nFROM employee_salary s\nJOIN employee_demographics d ON s.employee_id = d.employee_id\nGROUP BY s.occupation\nORDER BY avg_age DESC;\n```"
+  },
+  {
+    "id": 8,
+    "title": "Parks and Recreation - Birthdays by month",
+    "difficulty": "Intermediate",
+    "tags": ["date", "group-by"],
+    "promptMarkdown": "Count how many employees have birthdays in each month from `employee_demographics`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT strftime('%m', birth_date) AS birth_month, COUNT(*) AS total\nFROM employee_demographics\nGROUP BY birth_month\nORDER BY birth_month;\n```"
+  },
+  {
+    "id": 9,
+    "title": "Electric Vehicles Analytics – Vehicles with battery health below 80%",
+    "difficulty": "Beginner",
+    "tags": ["filtering", "where"],
+    "promptMarkdown": "List all vehicles from `electric_vehicles` that have **Battery_Health_% below 80**.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Battery_Health_%\nFROM electric_vehicles\nWHERE Battery_Health_% < 80;\n```"
+  },
+  {
+    "id": 10,
+    "title": "Electric Vehicles Analytics – Average range per vehicle type",
+    "difficulty": "Intermediate",
+    "tags": ["aggregations", "group-by"],
+    "promptMarkdown": "Find the **average range (Range_km)** for each `Vehicle_Type`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Vehicle_Type, AVG(Range_km) AS avg_range\nFROM electric_vehicles\nGROUP BY Vehicle_Type;\n```"
+  },
+  {
+    "id": 11,
+    "title": "Electric Vehicles Analytics – Vehicles with charging time under 2 hours",
+    "difficulty": "Beginner",
+    "tags": ["filtering", "where"],
+    "promptMarkdown": "Show all vehicles with a `Charging_Time_hr` of less than 2.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Charging_Time_hr\nFROM electric_vehicles\nWHERE Charging_Time_hr < 2;\n```"
+  },
+  {
+    "id": 12,
+    "title": "Electric Vehicles Analytics – Top 5 vehicles with highest resale value",
+    "difficulty": "Intermediate",
+    "tags": ["order-by", "limit"],
+    "promptMarkdown": "Get the **top 5 vehicles** by `Resale_Value_USD`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Resale_Value_USD\nFROM electric_vehicles\nORDER BY Resale_Value_USD DESC\nLIMIT 5;\n```"
+  },
+  {
+    "id": 13,
+    "title": "Electric Vehicles Analytics – Total CO2 saved by region",
+    "difficulty": "Intermediate",
+    "tags": ["aggregations", "group-by"],
+    "promptMarkdown": "Calculate the total `CO2_Saved_tons` for each region.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Region, SUM(CO2_Saved_tons) AS total_saved\nFROM electric_vehicles\nGROUP BY Region;\n```"
+  },
+  {
+    "id": 14,
+    "title": "Electric Vehicles Analytics – Vehicles with acceleration faster than 5 seconds",
+    "difficulty": "Beginner",
+    "tags": ["filtering", "where"],
+    "promptMarkdown": "List all vehicles that accelerate from 0–100 km/h in **under 5 seconds**.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Acceleration_0_100_kmh_sec\nFROM electric_vehicles\nWHERE Acceleration_0_100_kmh_sec < 5;\n```"
+  },
+  {
+    "id": 15,
+    "title": "Electric Vehicles Analytics – Average monthly charging cost by usage type",
+    "difficulty": "Intermediate",
+    "tags": ["aggregations", "group-by"],
+    "promptMarkdown": "Find the **average Monthly_Charging_Cost_USD** by `Usage_Type`.",
+    "starterSQL": "-- Write your query here\nSELECT ...",
+    "answerMarkdown": "```sql\nSELECT Usage_Type, AVG(Monthly_Charging_Cost_USD) AS avg_cost\nFROM electric_vehicles\nGROUP BY Usage_Type;\n```"
+  }
+]

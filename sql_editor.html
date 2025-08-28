@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Web SQL Editor (MySQL-like) — CSV Schemas</title>
+  <title>Web SQL Editor (MySQL-like) — CSV Schemas + Practice</title>
 
   <!-- CodeMirror styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/neo.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
 
-  <!-- Minimal styling -->
+  <!-- Minimal styling.. -->
   <style>
-        /* NEW: SQL toolbar (mobile only) */
+    /* NEW: SQL toolbar (mobile only) */
     .sql-toolbar {
       display: none; /* hidden by default */
       position: sticky;
@@ -39,21 +39,18 @@
       flex-shrink: 0;
     }
 
-    .sql-toolbar button:active {
-      background: #4f8cff;
-      color: white;
-    }
+    .sql-toolbar button:active { background: #4f8cff; color: white; }
 
-    @media (min-width: 1025px) {
-      .sql-toolbar { display: none !important; } /* hide on desktop */
-    }
+    @media (min-width: 1025px) { .sql-toolbar { display: none !important; } }
+
     :root {
       --bg: #0f1115; --panel: #171a21; --muted: #9aa4b2; --text: #e6e6e6;
       --accent: #4f8cff; --border: #232836; --ok: #2ecc71; --warn: #ffb020; --err: #ff5c5c;
     }
     html, body { height: 100%; }
     body { margin: 0; background: var(--bg); color: var(--text);
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+
     .app { display: grid; grid-template-rows: auto 1fr auto; gap: 10px; height: 100%; }
     header { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
     header h1 { font-size: 16px; margin: 0; font-weight: 600; letter-spacing: .2px; }
@@ -62,101 +59,72 @@
     button { cursor: pointer; }
     button.primary { background: var(--accent); border-color: transparent; color: #fff; }
     button.ghost { background: transparent; }
+
     .main { display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; padding: 0 14px 14px 14px; }
     .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
     .panel .title { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+
     .editor-wrap { position: relative; height: 360px; border-bottom: 1px solid var(--border); }
     .CodeMirror { height: 100%; font-size: 13px; background: #10131a; color: #eaf2ff; border-radius: 0; }
     .actions { display: flex; gap: 8px; padding: 10px; border-bottom: 1px solid var(--border); }
+
     .schema-list { padding: 10px; overflow: auto; max-height: 240px; }
     .schema-list details { background: #0f131a; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
     .schema-list summary { cursor: pointer; padding: 8px 10px; font-weight: 600; }
     .schema-list .tables { padding: 0 10px 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
     .schema-list .pill { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; margin: 3px 6px 0 0; color: #d6e4ff; background: #0b0f16; }
-    .tabs {
-  display: flex;
-  border-bottom: 1px solid var(--border);
-  background: #0f131a;
-}
-.tab-btn {
-  padding: 6px 12px;
-  border: none;
-  background: transparent;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 13px;
-}
-.tab-btn.active {
-  background: var(--panel);
-  border-bottom: 2px solid var(--accent);
-  color: var(--accent);
-}
-.tab-panels {
-  padding: 10px;
-}
-    .result {
-  padding: 10px;
-  max-height: 60vh;      /* Limit vertical height to 60% of viewport */
-  overflow: auto;         /* Enable scrolling both vertically and horizontally */
-  white-space: nowrap;    /* Keep table content from wrapping internally */
-}
 
-.result table {
-  width: max-content;     /* Table takes width based on content, enabling horizontal scroll */
-  min-width: 100%;        /* Ensure it doesn’t shrink too small */
-  border-collapse: collapse;
-}
+    .tabs { display: flex; border-bottom: 1px solid var(--border); background: #0f131a; }
+    .tab-btn { padding: 6px 12px; border: none; background: transparent; color: var(--text); cursor: pointer; font-size: 13px; }
+    .tab-btn.active { background: var(--panel); border-bottom: 2px solid var(--accent); color: var(--accent); }
+    .tab-panels { padding: 10px; }
+
+    .result { padding: 10px; max-height: 60vh; overflow: auto; white-space: nowrap; }
+    .result table { width: max-content; min-width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; }
     th { position: sticky; top: 0; background: #0f131a; }
+
     .status { padding: 8px 12px; border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
     .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid; }
     .ok { color: var(--ok); border-color: var(--ok); }
     .warn { color: var(--warn); border-color: var(--warn); }
     .err { color: var(--err); border-color: var(--err); }
+
     footer { padding: 8px 14px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); background: #0f131a; }
     .hint { color: var(--muted); font-size: 12px; }
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #0f131a; border: 1px solid var(--border); padding: 2px 6px; border-radius: 6px; }
     .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    /* PRACTICE PANEL */
+    .practice-controls { display: flex; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--border); align-items: center; flex-wrap: wrap; }
+    .practice-list { padding: 8px 10px; overflow: auto; max-height: 320px; }
+    .q-card { border: 1px solid var(--border); background: #0f131a; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .q-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; cursor: pointer; }
+    .q-title { font-weight: 600; }
+    .q-meta { font-size: 11px; color: var(--muted); }
+    .q-body { display: none; padding: 10px; border-top: 1px solid var(--border); }
+    .q-actions { display: flex; gap: 8px; margin-top: 8px; }
+    .tag { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 0 8px; font-size: 11px; margin-right: 6px; color: #d6e4ff; background: #0b0f16; }
+    .answer { display: none; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
+
     /* Main responsive adjustments */
-@media (max-width: 1024px) {
-  .main {
-    grid-template-columns: 1fr; /* stack panels vertically */
-    gap: 8px;
-    padding: 0 8px 8px 8px;
-  }
-
-  .panel {
-    border-radius: 10px;
-    overflow-x: auto; /* allow horizontal scroll if needed */
-  }
-
-  .editor-wrap {
-    height: 300px; /* smaller editor height on tablets/phones */
-  }
-
-  .actions button,
-  .row select,
-  .row input[type="checkbox"] + label {
-    font-size: 12px;
-    padding: 6px 8px;
-  }
-
-  header h1 {
-    font-size: 14px;
-  }
-}
+    @media (max-width: 1024px) {
+      .main { grid-template-columns: 1fr; gap: 8px; padding: 0 8px 8px 8px; }
+      .panel { border-radius: 10px; overflow-x: auto; }
+      .editor-wrap { height: 300px; }
+      .actions button, .row select, .row input[type="checkbox"] + label { font-size: 12px; padding: 6px 8px; }
+      header h1 { font-size: 14px; }
+      .practice-list { max-height: 400px; }
+    }
   </style>
 </head>
 <body>
-
 <div class="app">
   <header>
     <h1>SQL Editor (MySQL-style) — CSV Schemas in Browser</h1>
     <div class="spacer"></div>
     <div class="row">
       <select id="schemaSelect" title="Available Schemas"></select>
-      <label class="row" style="gap:6px; display: hidden;">
-      </label>
       <button id="btnFormat" class="ghost">Format <span class="kbd">Ctrl/⌘</span> + <span class="kbd">Shift</span> + <span class="kbd">F</span></button>
       <button id="btnRun" class="primary">Run <span class="kbd">Ctrl/⌘</span> + <span class="kbd">Enter</span></button>
     </div>
@@ -172,26 +140,13 @@
       </div>
 
       <!-- NEW: SQL Quick Command Toolbar -->
-<div class="sql-toolbar" id="sqlToolbar">
-  <button>SELECT</button>
-  <button>*</button>
-  <button>FROM</button>
-  <button>WHERE</button>
-  <button>;</button>
-  <button>JOIN</button>
-  <button>LIMIT</button>
-  <button>(</button>
-  <button>)</button>
-  <button>"</button>
-  <button>'</button>
-  <button>GROUP BY</button>
-  <button>ORDER BY</button>
-  <button>INSERT</button>
-  <button>UPDATE</button>
-  <button>DELETE</button>
-  <button>CREATE TABLE</button>
-  <button>DROP TABLE</button>
-</div>
+      <div class="sql-toolbar" id="sqlToolbar">
+        <button>SELECT</button><button>*</button><button>FROM</button><button>WHERE</button>
+        <button>(</button><button>)</button><button>"</button><button>'</button>
+        <button>JOIN</button><button>GROUP BY</button><button>ORDER BY</button><button>LIMIT</button>
+        <button>INSERT</button><button>UPDATE</button><button>DELETE</button>
+        <button>CREATE TABLE</button><button>DROP TABLE</button>
+      </div>
 
       <div class="result" id="result"></div>
       <div class="status" id="status"></div>
@@ -200,61 +155,63 @@
     <aside class="panel">
       <div class="title"><span>Schemas & Tables</span><span id="metaCount" class="hint"></span></div>
       <div class="schema-list" id="schemaMeta"></div>
-      <div class="title"><span>Notes</span></div>
-<div class="schema-list">
-  <p class="hint">
-    Tables are loaded from CSV files located under the <code>/schemas</code> directory. Each schema has its own folder, and each CSV file in that folder becomes a table. For example:
-  </p>
-  <ul class="hint">
-    <li><code>/schemas/sales/customers.csv</code> → table <code>sales.customers</code></li>
-    <li><code>/schemas/hr/employees.csv</code> → table <code>hr.employees</code></li>
-  </ul>
 
-  <p class="hint">
-    The <code>manifest.json</code> under <code>/schemas</code> defines which schemas exist and which CSV tables belong to each schema. Example:
-  </p>
-  <pre class="hint" style="white-space:pre-wrap;">
-{
+      <div class="title"><span>Notes</span></div>
+      <div class="schema-list">
+        <p class="hint">Tables are loaded from CSV files located under the <code>/schemas</code> directory. Each schema has its own folder, and each CSV file in that folder becomes a table. For example:</p>
+        <ul class="hint">
+          <li><code>/schemas/sales/customers.csv</code> → table <code>sales.customers</code></li>
+          <li><code>/schemas/hr/employees.csv</code> → table <code>hr.employees</code></li>
+        </ul>
+        <p class="hint">The <code>manifest.json</code> under <code>/schemas</code> defines which schemas exist and which CSV tables belong to each schema. Example:</p>
+<pre class="hint" style="white-space:pre-wrap;">{
   "schemas": [
     {"name": "sales", "tables": ["customers.csv", "orders.csv", "items.csv"]},
     {"name": "hr",    "tables": ["employees.csv", "departments.csv"]}
   ]
-}
-  </pre>
+}</pre>
+        <p class="hint">CSV rules:
+        <ul>
+          <li>First row must contain column headers.</li>
+          <li>Files are automatically ingested into the SQL database on page load.</li>
+          <li>Query tables using <code>schema.table</code> notation (e.g., <code>SELECT * FROM sales.orders</code>).</li>
+          <li>Bare table names resolve to the currently active schema.</li>
+        </ul></p>
+        <p class="hint">Whenever you add new tables to a schema folder, update <code>manifest.json</code> to include them. Click “Reload Schemas” after changes.</p>
+      </div>
 
-  <p class="hint">
-    CSV rules:
-    <ul>
-      <li>First row must contain column headers.</li>
-      <li>Files are automatically ingested into the SQL database on page load.</li>
-      <li>Query tables using <code>schema.table</code> notation (e.g., <code>SELECT * FROM sales.orders</code>).</li>
-      <li>Bare table names resolve to the currently active schema.</li>
-    </ul>
-  </p>
-
-  <p class="hint">
-    Whenever you add new tables to a schema folder, you should update <code>manifest.json</code> to include the new CSV files. The system will automatically load all tables listed in the manifest when the page starts or when you click “Reload Schemas”.
-  </p>
-</div>
+      <!-- NEW: Practice Questions Panel -->
+      <div class="title"><span>Practice Questions</span><span id="pqCount" class="hint"></span></div>
+      <div class="practice-controls">
+        <input id="pqSearch" type="search" placeholder="Search title or tags" />
+        <select id="pqDifficulty">
+          <option value="">All difficulties</option>
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+        <select id="pqTag">
+          <option value="">All tags</option>
+        </select>
+        <button id="pqReload" class="ghost">Reload</button>
+      </div>
+      <div id="practiceList" class="practice-list"></div>
     </aside>
   </div>
 
-  <footer>Runs fully client-side. MySQL formatting; SQLite execution via <code>sql.js</code>.</footer>
+  <footer>Runs fully client-side. MySQL formatting; SQLite execution via <code>sql.js</code>. Practice loaded from <code>practice.json</code> in this directory.</footer>
 </div>
-
 
 <!-- Libraries (order matters) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
-<script>
-  // For sql.js to find the wasm on the same CDN version
-  window.initSqlJsConfig = { locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/${f}` };
-</script>
+<script>window.initSqlJsConfig = { locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/${f}` };</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sql-formatter/15.4.8/sql-formatter.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
+<!-- Lightweight markdown renderer for practice content -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
   // ------- Globals -------
@@ -266,15 +223,23 @@
   const CATALOG = {};
   let ACTIVE_SCHEMA = null;
 
+  // Practice store
+  let PRACTICE = [];
+  let PRACTICE_FILTERED = [];
+
   const $ = sel => document.querySelector(sel);
   const statusEl = () => $('#status');
   const resultEl = () => $('#result');
   const schemaMetaEl = () => $('#schemaMeta');
   const schemaSelect = () => $('#schemaSelect');
-  const autoFormatBox = () => $('#autoFormat');
   const metaCount = () => $('#metaCount');
 
-  // ------- Boot -------
+  const pqSearch = () => $('#pqSearch');
+  const pqDifficulty = () => $('#pqDifficulty');
+  const pqTag = () => $('#pqTag');
+  const pqList = () => $('#practiceList');
+  const pqCount = () => $('#pqCount');
+
   window.addEventListener('DOMContentLoaded', () => { main().catch(e => setStatus(e.message, 'err')); });
 
   async function main(){
@@ -282,328 +247,303 @@
     initEditor();
     bindUI();
     await loadSchemasFromManifest();
+    await loadPractice();
     setStatus('Ready. Try: SELECT * FROM sales.orders LIMIT 5;', 'ok');
   }
 
-  async function initSql(){
-    // initSqlJs is provided by sql-wasm.js
-    SQLModule = await initSqlJs(window.initSqlJsConfig || {});
-    db = new SQLModule.Database();
-  }
+  async function initSql(){ SQLModule = await initSqlJs(window.initSqlJsConfig || {}); db = new SQLModule.Database(); }
 
-function initEditor(){
-  CM = CodeMirror.fromTextArea(document.getElementById('editor'), {
-    mode: 'text/x-sql',
-    theme: 'neo',
-    lineNumbers: true,
-    autofocus: true,
-    indentUnit: 2,
-    extraKeys: {
-      'Ctrl-Enter': runQuery,
-      'Cmd-Enter': runQuery,
-      'Ctrl-Shift-F': formatSQL,
-      'Cmd-Shift-F': formatSQL
-    }
-  });
-
-  const toolbar = document.getElementById("sqlToolbar");
-  const cmWrapper = CM.getWrapperElement();
-
-  function showToolbar() {
-    toolbar.style.display = "flex";
-  }
-  function hideToolbar() {
-    setTimeout(() => {
-      if (!toolbar.matches(":hover")) {
-        toolbar.style.display = "none";
-      }
-    }, 150);
-  }
-
-  CM.on("focus", showToolbar);
-  CM.on("blur", hideToolbar);
-  cmWrapper.addEventListener("click", showToolbar);
-
-  toolbar.querySelectorAll("button").forEach(btn => {
-    btn.addEventListener("mousedown", e => {
-      e.preventDefault();
-      CM.focus();
-      CM.replaceSelection(btn.textContent + " ");
+  function initEditor(){
+    CM = CodeMirror.fromTextArea(document.getElementById('editor'), {
+      mode: 'text/x-sql', theme: 'neo', lineNumbers: true, autofocus: true, indentUnit: 2,
+      extraKeys: { 'Ctrl-Enter': runQuery, 'Cmd-Enter': runQuery, 'Ctrl-Shift-F': formatSQL, 'Cmd-Shift-F': formatSQL }
     });
-  });
-}
 
-function bindUI(){
-  $('#btnRun').addEventListener('click', runQuery);
-  $('#btnFormat').addEventListener('click', formatSQL);
-  $('#btnExplain').addEventListener('click', showLoadedTables);
-  $('#btnReload').addEventListener('click', loadSchemasFromManifest);
-  $('#schemaSelect').addEventListener('change', e => {
-    ACTIVE_SCHEMA = e.target.value;
-    renderMeta();
-    setStatus('Active schema: ' + ACTIVE_SCHEMA, 'warn');
-  });
-}
+    const toolbar = document.getElementById('sqlToolbar');
+    const cmWrapper = CM.getWrapperElement();
+    function showToolbar(){ toolbar.style.display = 'flex'; }
+    function hideToolbar(){ setTimeout(()=>{ if(!toolbar.matches(':hover')) toolbar.style.display = 'none'; }, 150); }
+    CM.on('focus', showToolbar); CM.on('blur', hideToolbar); cmWrapper.addEventListener('click', showToolbar);
+    toolbar.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('mousedown', e => { e.preventDefault(); CM.focus(); CM.replaceSelection(btn.textContent + ' '); });
+    });
+  }
+
+  function bindUI(){
+    $('#btnRun').addEventListener('click', runQuery);
+    $('#btnFormat').addEventListener('click', formatSQL);
+    $('#btnExplain').addEventListener('click', showLoadedTables);
+    $('#btnReload').addEventListener('click', loadSchemasFromManifest);
+    $('#schemaSelect').addEventListener('change', e => { ACTIVE_SCHEMA = e.target.value; renderMeta(); setStatus('Active schema: ' + ACTIVE_SCHEMA, 'warn'); });
+
+    // Practice controls
+    $('#pqReload').addEventListener('click', loadPractice);
+    pqSearch().addEventListener('input', renderPracticeFiltered);
+    pqDifficulty().addEventListener('change', renderPracticeFiltered);
+    pqTag().addEventListener('change', renderPracticeFiltered);
+  }
 
   // ------- Schema loading & switching -------
-async function loadSchemasFromManifest() {
-  clearCatalog();
-  setStatus('Loading manifest...', 'warn');
+  async function loadSchemasFromManifest() {
+    clearCatalog();
+    setStatus('Loading manifest...', 'warn');
 
-  let manifest;
-  try {
-    const res = await fetch('schemas/manifest.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('No /schemas/manifest.json found');
-    manifest = await res.json();
-  } catch (e) {
-    setStatus('No manifest at /schemas/manifest.json. See Notes for an example.', 'err');
-    renderSchemaDropdown([]);
-    renderSchemaMeta();
-    return;
-  }
-
-  const schemas = manifest.schemas || [];
-  if (!schemas.length) {
-    setStatus('Manifest has no schemas.', 'err');
-    return;
-  }
-
-  // Load each schema
-  for (const sch of schemas) {
-    const sname = sanitize(sch.name);
-    CATALOG[sname] = { tables: {} };
-
-    for (const file of sch.tables) {
-      const tnameRaw = file.replace(/\.csv$/i, '');
-      const tname = sanitize(tnameRaw);
-      await ingestCsvAsTable(sname, tname, `schemas/${encodeURIComponent(sch.name)}/${encodeURIComponent(file)}`);
-    }
-  }
-
-  // Set first schema as active by default
-  ACTIVE_SCHEMA = sanitize(schemas[0].name);
-  renderSchemaDropdown(Object.keys(CATALOG));
-  renderSchemaMeta();
-  setStatus(`Loaded ${Object.keys(CATALOG).length} schemas. Active: ${ACTIVE_SCHEMA}`, 'ok');
-}
-
-function clearCatalog() {
-  if (db) db.close();
-  db = new SQLModule.Database();
-  for (const k in CATALOG) delete CATALOG[k];
-}
-
-function renderSchemaDropdown(schemaNames) {
-  schemaSelect().innerHTML = schemaNames
-    .map(s => `<option value="${s}" ${s === ACTIVE_SCHEMA ? 'selected' : ''}>${s}</option>`);
-}
-
-// Update schema meta display
-function renderSchemaMeta() {
-  const parts = [];
-  let tableCount = 0;
-
-  for (const [schema, info] of Object.entries(CATALOG)) {
-    const openAttr = schema === ACTIVE_SCHEMA ? 'open' : '';
-    parts.push(`<details ${openAttr}><summary>${schema}</summary><div class="tables">`);
-    for (const t of Object.keys(info.tables)) {
-      const meta = info.tables[t];
-      parts.push(`<div class="pill" title="${schema}.${t}\n${meta.columns.join(', ')}">${t}</div>`);
-      tableCount++;
-    }
-    parts.push('</div></details>');
-  }
-
-  schemaMetaEl().innerHTML = parts.join('');
-  metaCount().textContent = `${Object.keys(CATALOG).length} schemas • ${tableCount} tables`;
-}
-
-// Schema selection change
-schemaSelect().addEventListener('change', e => {
-  ACTIVE_SCHEMA = e.target.value;
-  renderSchemaMeta();
-  setStatus(`Active schema: ${ACTIVE_SCHEMA}`, 'warn');
-});
-
-// Ingest CSV as table
-async function ingestCsvAsTable(schema, table, url) {
-  try {
-    setStatus(`Loading ${schema}.${table} ...`, 'warn');
-
-    const csv = await fetch(url, { cache: 'no-store' }).then(r=>{
-      if(!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
-      return r.text();
-    });
-
-    const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
-    const cols = parsed.meta.fields.map(sanitize);
-    const fullName = `${schema}__${table}`;
-    const colDefs = cols.map(c=>`\`${c}\` TEXT`).join(', ');
-    db.run(`CREATE TABLE IF NOT EXISTS \`${fullName}\` (${colDefs});`);
-
-    if(parsed.data.length){
-      const placeholders = cols.map(()=>'?').join(',');
-      const sql = `INSERT INTO \`${fullName}\` (${cols.map(c=>`\`${c}\``).join(',')}) VALUES (${placeholders});`;
-      const stmt = db.prepare(sql);
-      for(const r of parsed.data){
-        stmt.run(cols.map(c=>String(r[c] ?? '')));
-      }
-      stmt.free();
-    }
-
-    CATALOG[schema].tables[table] = { fullName, columns: cols };
-    setStatus(`Loaded ${schema}.${table} (${parsed.data.length} rows)`, 'ok');
-  } catch(e){
-    console.warn(`Failed to load ${schema}.${table}: ${e.message}`);
-    setStatus(`Warning: ${schema}.${table} failed to load`, 'warn');
-  }
-}
-
-// ------- Query preprocessing -------
-function preprocessQuery(sql) {
-  if (!ACTIVE_SCHEMA) return sql;
-
-  // Replace schema.table references
-  for (const [schema, info] of Object.entries(CATALOG)) {
-    for (const t of Object.keys(info.tables)) {
-      const regex = new RegExp(`\\b${schema}\\.${t}\\b`, 'g');
-      sql = sql.replace(regex, info.tables[t].fullName);
-    }
-  }
-
-  // Replace bare table names only for ACTIVE_SCHEMA
-  const activeTables = CATALOG[ACTIVE_SCHEMA] ? Object.keys(CATALOG[ACTIVE_SCHEMA].tables) : [];
-  for (const t of activeTables) {
-    const regex = new RegExp(`\\b${t}\\b`, 'g');
-    sql = sql.replace(regex, CATALOG[ACTIVE_SCHEMA].tables[t].fullName);
-  }
-
-  return sql;
-}
-
-  // ------- Query execution with multiple result sets -------
-function runQuery() {
-  const raw = CM.getValue();
-  const sql = preprocessQuery(raw);
-
-  try {
-    const results = db.exec(sql); // array of result sets
-    if (!results.length) {
-      renderResults([]);
-      setStatus(`OK • No result sets`, 'ok');
+    let manifest;
+    try {
+      const res = await fetch('schemas/manifest.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('No /schemas/manifest.json found');
+      manifest = await res.json();
+    } catch (e) {
+      setStatus('No manifest at /schemas/manifest.json. See Notes for an example.', 'err');
+      renderSchemaDropdown([]); renderSchemaMeta();
       return;
     }
 
-    // Pack all results into row objects
-    const packed = results.map(r => packRows(r.columns, r.values));
-    renderResults(packed);
-    setStatus(`OK • ${results.length} result set(s)`, 'ok');
-  } catch (e) {
-    console.error(e);
-    resultEl().innerHTML = '';
-    setStatus(e.message, 'err');
-  }
-}
+    const schemas = manifest.schemas || [];
+    if (!schemas.length) { setStatus('Manifest has no schemas.', 'err'); return; }
 
-function renderResults(resultSets) {
-  if (!resultSets || !resultSets.length) {
-    resultEl().innerHTML = '<div class="hint">(No rows)</div>';
-    return;
-  }
-
-  // Build tab headers
-  let tabsHtml = '<div class="tabs">';
-  resultSets.forEach((_, i) => {
-    tabsHtml += `<button class="tab-btn" data-idx="${i}">Result ${i + 1}</button>`;
-  });
-  tabsHtml += '</div>';
-
-  // Build content panels
-  let panelsHtml = '<div class="tab-panels">';
-  resultSets.forEach((rows, i) => {
-    panelsHtml += `<div class="tab-panel" data-idx="${i}" style="display:${i===0?'block':'none'};">`;
-    panelsHtml += renderTableHtml(rows);
-    panelsHtml += '</div>';
-  });
-  panelsHtml += '</div>';
-
-  resultEl().innerHTML = tabsHtml + panelsHtml;
-
-  // Bind tab switching
-  resultEl().querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = btn.dataset.idx;
-      // hide all panels
-      resultEl().querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
-      // deactivate all tabs
-      resultEl().querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      // show selected
-      resultEl().querySelector(`.tab-panel[data-idx="${idx}"]`).style.display = 'block';
-      btn.classList.add('active');
-    });
-  });
-
-  // Set first tab active
-  const firstTab = resultEl().querySelector('.tab-btn');
-  if (firstTab) firstTab.classList.add('active');
-}
-
-function renderTableHtml(rows) {
-  if (!rows || !rows.length) return '<div class="hint">(No rows)</div>';
-  const cols = Object.keys(rows[0]);
-  let html = '<table><thead><tr>' + cols.map(c => `<th>${escapeHtml(c)}</th>`).join('') + '</tr></thead><tbody>';
-  for (const r of rows) {
-    html += '<tr>' + cols.map(c => `<td>${escapeHtml(String(r[c] ?? ''))}</td>`).join('') + '</tr>';
-  }
-  html += '</tbody></table>';
-  return html;
-}
-
-  function packRows(cols, values){
-    return values.map(v => Object.fromEntries(v.map((val,i)=>[cols[i], val])));
-  }
-
-  function renderTable(rows){
-    if(!rows || rows.length===0){ resultEl().innerHTML = '<div class="hint">(No rows)</div>'; return; }
-    const cols = Object.keys(rows[0]);
-    let html = '<table><thead><tr>' + cols.map(c=>`<th>${escapeHtml(c)}</th>`).join('') + '</tr></thead><tbody>';
-    for(const r of rows){
-      html += '<tr>' + cols.map(c=>`<td>${escapeHtml(String(r[c] ?? ''))}</td>`).join('') + '</tr>';
+    for (const sch of schemas) {
+      const sname = sanitize(sch.name);
+      CATALOG[sname] = { tables: {} };
+      for (const file of sch.tables) {
+        const tnameRaw = file.replace(/\.csv$/i, '');
+        const tname = sanitize(tnameRaw);
+        await ingestCsvAsTable(sname, tname, `schemas/${encodeURIComponent(sch.name)}/${encodeURIComponent(file)}`);
+      }
     }
-    html += '</tbody></table>';
-    resultEl().innerHTML = html;
+
+    ACTIVE_SCHEMA = sanitize(schemas[0].name);
+    renderSchemaDropdown(Object.keys(CATALOG));
+    renderSchemaMeta();
+    setStatus(`Loaded ${Object.keys(CATALOG).length} schemas. Active: ${ACTIVE_SCHEMA}`, 'ok');
   }
 
-  // ------- Utilities -------
-  function setStatus(msg, kind='ok'){
-    statusEl().innerHTML = `<span class="badge ${kind}">${kind.toUpperCase()}</span> <span>${escapeHtml(String(msg))}</span>`;
+  function clearCatalog(){ if (db) db.close(); db = new SQLModule.Database(); for (const k in CATALOG) delete CATALOG[k]; }
+
+  function renderSchemaDropdown(schemaNames){ schemaSelect().innerHTML = schemaNames.map(s => `<option value="${s}" ${s===ACTIVE_SCHEMA?'selected':''}>${s}</option>`).join(''); }
+
+  function renderSchemaMeta(){
+    const parts = []; let tableCount = 0;
+    for (const [schema, info] of Object.entries(CATALOG)) {
+      const openAttr = schema === ACTIVE_SCHEMA ? 'open' : '';
+      parts.push(`<details ${openAttr}><summary>${schema}</summary><div class="tables">`);
+      for (const t of Object.keys(info.tables)) { const meta = info.tables[t]; parts.push(`<div class="pill" title="${schema}.${t}\n${meta.columns.join(', ')}">${t}</div>`); tableCount++; }
+      parts.push('</div></details>');
+    }
+    schemaMetaEl().innerHTML = parts.join('');
+    metaCount().textContent = `${Object.keys(CATALOG).length} schemas • ${tableCount} tables`;
   }
 
-  function escapeHtml(s){
-    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+  async function ingestCsvAsTable(schema, table, url){
+    try {
+      setStatus(`Loading ${schema}.${table} ...`, 'warn');
+      const csv = await fetch(url, { cache: 'no-store' }).then(r=>{ if(!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`); return r.text(); });
+      const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+      const cols = parsed.meta.fields.map(sanitize);
+      const fullName = `${schema}__${table}`;
+      const colDefs = cols.map(c=>`\`${c}\` TEXT`).join(', ');
+      db.run(`CREATE TABLE IF NOT EXISTS \`${fullName}\` (${colDefs});`);
+      if(parsed.data.length){
+        const placeholders = cols.map(()=>'?').join(',');
+        const sql = `INSERT INTO \`${fullName}\` (${cols.map(c=>`\`${c}\``).join(',')}) VALUES (${placeholders});`;
+        const stmt = db.prepare(sql);
+        for(const r of parsed.data){ stmt.run(cols.map(c=>String(r[c] ?? ''))); }
+        stmt.free();
+      }
+      CATALOG[schema].tables[table] = { fullName, columns: cols };
+      setStatus(`Loaded ${schema}.${table} (${parsed.data.length} rows)`, 'ok');
+    } catch(e){ console.warn(`Failed to load ${schema}.${table}: ${e.message}`); setStatus(`Warning: ${schema}.${table} failed to load`, 'warn'); }
   }
 
+  // ------- Query preprocessing & execution -------
+  function preprocessQuery(sql){
+    if (!ACTIVE_SCHEMA) return sql;
+    for (const [schema, info] of Object.entries(CATALOG)) {
+      for (const t of Object.keys(info.tables)) {
+        const regex = new RegExp(`\\b${schema}\\.${t}\\b`, 'g');
+        sql = sql.replace(regex, info.tables[t].fullName);
+      }
+    }
+    const activeTables = CATALOG[ACTIVE_SCHEMA] ? Object.keys(CATALOG[ACTIVE_SCHEMA].tables) : [];
+    for (const t of activeTables) { const regex = new RegExp(`\\b${t}\\b`, 'g'); sql = sql.replace(regex, CATALOG[ACTIVE_SCHEMA].tables[t].fullName); }
+    return sql;
+  }
+
+  function runQuery(){
+    const raw = CM.getValue();
+    const sql = preprocessQuery(raw);
+    try {
+      const results = db.exec(sql);
+      if (!results.length) { renderResults([]); setStatus('OK • No result sets', 'ok'); return; }
+      const packed = results.map(r => packRows(r.columns, r.values));
+      renderResults(packed);
+      setStatus(`OK • ${results.length} result set(s)`, 'ok');
+    } catch (e) { console.error(e); resultEl().innerHTML = ''; setStatus(e.message, 'err'); }
+  }
+
+  function renderResults(resultSets){
+    if (!resultSets || !resultSets.length) { resultEl().innerHTML = '<div class="hint">(No rows)</div>'; return; }
+    let tabsHtml = '<div class="tabs">';
+    resultSets.forEach((_, i) => { tabsHtml += `<button class="tab-btn" data-idx="${i}">Result ${i+1}</button>`; });
+    tabsHtml += '</div>';
+    let panelsHtml = '<div class="tab-panels">';
+    resultSets.forEach((rows, i) => { panelsHtml += `<div class="tab-panel" data-idx="${i}" style="display:${i===0?'block':'none'};">` + renderTableHtml(rows) + '</div>'; });
+    panelsHtml += '</div>';
+    resultEl().innerHTML = tabsHtml + panelsHtml;
+    resultEl().querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.dataset.idx;
+        resultEl().querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+        resultEl().querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        resultEl().querySelector(`.tab-panel[data-idx="${idx}"]`).style.display = 'block';
+        btn.classList.add('active');
+      });
+    });
+    const firstTab = resultEl().querySelector('.tab-btn'); if (firstTab) firstTab.classList.add('active');
+  }
+
+  function renderTableHtml(rows){
+    if (!rows || !rows.length) return '<div class="hint">(No rows)</div>';
+    const cols = Object.keys(rows[0]);
+    let html = '<table><thead><tr>' + cols.map(c => `<th>${escapeHtml(c)}</th>`).join('') + '</tr></thead><tbody>';
+    for (const r of rows) { html += '<tr>' + cols.map(c => `<td>${escapeHtml(String(r[c] ?? ''))}</td>`).join('') + '</tr>'; }
+    html += '</tbody></table>'; return html;
+  }
+
+  function packRows(cols, values){ return values.map(v => Object.fromEntries(v.map((val,i)=>[cols[i], val]))); }
+
+  function setStatus(msg, kind='ok'){ statusEl().innerHTML = `<span class="badge ${kind}">${kind.toUpperCase()}</span> <span>${escapeHtml(String(msg))}</span>`; }
+  function escapeHtml(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); }
   function sanitize(s){ return String(s).replace(/[^A-Za-z0-9_]/g, '_'); }
 
   function formatSQL(){
-    try{
-      const formatted = sqlFormatter.format(CM.getValue(), { language: 'mysql', uppercase: true });
-      CM.setValue(formatted);
-      setStatus('Formatted (MySQL style).', 'ok');
-    }catch(e){
-      setStatus('Format error: '+e.message, 'err');
-    }
+    try { const formatted = sqlFormatter.format(CM.getValue(), { language: 'mysql', uppercase: true }); CM.setValue(formatted); setStatus('Formatted (MySQL style).', 'ok'); }
+    catch(e){ setStatus('Format error: '+e.message, 'err'); }
   }
 
   function showLoadedTables(){
     const lines = [];
     for(const [schema, info] of Object.entries(CATALOG)){
       lines.push(`-- ${schema}`);
-      for(const [t, meta] of Object.entries(info.tables)){
-        lines.push(`--   ${t} (${meta.columns.join(', ')})`);
-      }
+      for(const [t, meta] of Object.entries(info.tables)){ lines.push(`--   ${t} (${meta.columns.join(', ')})`); }
     }
     CM.replaceSelection(lines.join('\n') + '\n');
+  }
+
+  // ------- PRACTICE: load & render from practice.json -------
+  async function loadPractice(){
+    try {
+      const res = await fetch('practice.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('practice.json not found');
+      const json = await res.json();
+      PRACTICE = Array.isArray(json) ? json : (json.questions || []);
+      renderPracticeFiltered();
+      setStatus(`Loaded ${PRACTICE.length} practice question(s)`, 'ok');
+    } catch (e) {
+      PRACTICE = []; renderPracticeFiltered();
+      setStatus('No practice.json found in project root. Create one (see example in docs below).', 'warn');
+    }
+  }
+
+    function renderPracticeFiltered(){
+    const q = (pqSearch().value || '').toLowerCase();
+    const diff = pqDifficulty().value || '';
+    const tag = pqTag().value || '';
+
+    // Build tag options from all questions
+    const tags = new Set();
+    PRACTICE.forEach(p => (p.tags || []).forEach(t => tags.add(t)));
+    const currentTag = pqTag().value;
+    pqTag().innerHTML = '<option value="">All tags</option>' +
+      Array.from(tags).sort().map(t =>
+        `<option ${currentTag===t?'selected':''}>${t}</option>`).join('');
+
+    // Apply filters
+    PRACTICE_FILTERED = PRACTICE.filter(p =>
+      (!q || (p.title||'').toLowerCase().includes(q) ||
+             (p.tags||[]).some(t => t.toLowerCase().includes(q))) &&
+      (!diff || p.difficulty === diff) &&
+      (!tag || (p.tags||[]).includes(tag))
+    );
+
+    pqCount().textContent = `${PRACTICE_FILTERED.length} shown`;
+    pqList().innerHTML = PRACTICE_FILTERED.map(renderPracticeCard).join('');
+
+    // Hook up expand/reveal/insert/copy events
+    pqList().querySelectorAll('.q-card').forEach(card => {
+      const id = card.dataset.id;
+      const q = PRACTICE_FILTERED.find(x => String(x.id)===id);
+
+      card.querySelector('.q-head').addEventListener('click', () => {
+        const body = card.querySelector('.q-body');
+        body.style.display = body.style.display==='block' ? 'none' : 'block';
+      });
+
+      const insertBtn = card.querySelector('.insert');
+      if (insertBtn) insertBtn.addEventListener('click', () => {
+        if (q.starterSQL) CM.setValue(q.starterSQL);
+      });
+
+      const revealBtn = card.querySelector('.reveal');
+      if (revealBtn) revealBtn.addEventListener('click', () => {
+        const ans = card.querySelector('.answer');
+        ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+      });
+
+      const copyBtn = card.querySelector('.copy');
+      if (copyBtn) copyBtn.addEventListener('click', () => {
+        if (q.answerMarkdown) {
+          navigator.clipboard.writeText(q.answerMarkdown);
+          setStatus('Answer copied to clipboard.', 'ok');
+        }
+      });
+    });
+  }
+
+  function renderPracticeCard(p){
+    return `
+      <div class="q-card" data-id="${p.id}">
+        <div class="q-head">
+          <div class="q-title">${escapeHtml(p.title || 'Untitled')}</div>
+          <div class="q-meta">${escapeHtml(p.difficulty || '')}</div>
+        </div>
+        <div class="q-body">
+          <div class="prompt">${marked.parse(p.promptMarkdown || '')}</div>
+          <div class="tags">${(p.tags||[]).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>
+          <div class="q-actions">
+            ${p.starterSQL ? '<button class="insert">Insert starter</button>' : ''}
+            ${p.answerMarkdown ? '<button class="reveal">Reveal answer</button><button class="copy">Copy answer</button>' : ''}
+          </div>
+          ${p.answerMarkdown ? `<div class="answer">${marked.parse(p.answerMarkdown)}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }
+  function onInsertStarter(e){
+    const id = e.currentTarget.dataset.id;
+    const item = PRACTICE.find(x => String(x.id) === String(id));
+    if (!item || !item.starterSQL) return;
+    CM.focus();
+    const current = CM.getValue();
+    CM.setValue((current ? current + '\n\n' : '') + item.starterSQL + '\n');
+    setStatus(`Inserted starter for #${id}`, 'ok');
+  }
+
+  function onRevealAnswer(e){
+    const id = e.currentTarget.dataset.id;
+    const el = document.getElementById('ans-' + id);
+    if (!el) return;
+    const visible = el.style.display === 'block';
+    el.style.display = visible ? 'none' : 'block';
+    e.currentTarget.textContent = visible ? 'Reveal answer' : 'Hide answer';
+  }
+
+  async function onCopyAnswer(e){
+    const id = e.currentTarget.dataset.id;
+    const item = PRACTICE.find(x => String(x.id) === String(id));
+    if (!item || !item.answerMarkdown) return;
+    try { await navigator.clipboard.writeText(item.answerMarkdown); setStatus(`Answer copied for #${id}`, 'ok'); }
+    catch { setStatus('Clipboard copy failed', 'warn'); }
   }
 </script>
 </body>

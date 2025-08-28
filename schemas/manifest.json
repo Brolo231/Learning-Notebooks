@@ -1,6 +1,6 @@
 {
   "schemas": [
-    {"name": "ev_dataset", "tables": ["eletric_vehicle_analytics.csv"]},
+    {"name": "ev_dataset", "tables": ["electric_vehicle_analytics.csv"]},
     {"name": "sales", "tables": ["customers.csv", "orders.csv", "items.csv"]},
     {"name": "hr",    "tables": ["employees.csv", "departments.csv"]},
     {"name": "parks_and_recreation", "tables": ["employee_demographics.csv", "employee_salary.csv", "parks_departments.csv"]},

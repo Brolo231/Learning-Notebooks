@@ -10,13 +10,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/neo.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
 
-  <!-- Minimal styling.. -->
+  <!-- Minimal styling -->
   <style>
-    /* NEW: SQL toolbar (mobile only) */
+    /* SQL toolbar (mobile only) */
     .sql-toolbar {
       display: none; /* hidden by default */
       position: sticky;
-      bottom: 0; /* above keyboard on mobile */
       top: 0;
       bottom: auto;
       background: #171a21;
@@ -39,80 +38,378 @@
       flex-shrink: 0;
     }
 
-    .sql-toolbar button:active { background: #4f8cff; color: white; }
+    .sql-toolbar button:active {
+      background: #4f8cff;
+      color: white;
+    }
 
-    @media (min-width: 1025px) { .sql-toolbar { display: none !important; } }
+    @media (min-width: 1025px) {
+      .sql-toolbar {
+        display: none !important;
+      }
+    }
 
     :root {
-      --bg: #0f1115; --panel: #171a21; --muted: #9aa4b2; --text: #e6e6e6;
-      --accent: #4f8cff; --border: #232836; --ok: #2ecc71; --warn: #ffb020; --err: #ff5c5c;
+      --bg: #0f1115;
+      --panel: #171a21;
+      --muted: #9aa4b2;
+      --text: #e6e6e6;
+      --accent: #4f8cff;
+      --border: #232836;
+      --ok: #2ecc71;
+      --warn: #ffb020;
+      --err: #ff5c5c;
     }
-    html, body { height: 100%; }
-    body { margin: 0; background: var(--bg); color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
 
-    .app { display: grid; grid-template-rows: auto 1fr auto; gap: 10px; height: 100%; }
-    header { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
-    header h1 { font-size: 16px; margin: 0; font-weight: 600; letter-spacing: .2px; }
-    header .spacer { flex: 1; }
-    select, button, input[type="checkbox"] + label { background: #11151c; color: var(--text); border: 1px solid var(--border); padding: 8px 10px; border-radius: 10px; font-size: 13px; }
-    button { cursor: pointer; }
-    button.primary { background: var(--accent); border-color: transparent; color: #fff; }
-    button.ghost { background: transparent; }
+    html, body {
+      height: 100%;
+    }
 
-    .main { display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; padding: 0 14px 14px 14px; }
-    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
-    .panel .title { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+                   "Apple Color Emoji", "Segoe UI Emoji";
+    }
 
-    .editor-wrap { position: relative; height: 360px; border-bottom: 1px solid var(--border); }
-    .CodeMirror { height: 100%; font-size: 13px; background: #10131a; color: #eaf2ff; border-radius: 0; }
-    .actions { display: flex; gap: 8px; padding: 10px; border-bottom: 1px solid var(--border); }
+    .app {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+      height: 100%;
+    }
 
-    .schema-list { padding: 10px; overflow: auto; max-height: 240px; }
-    .schema-list details { background: #0f131a; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; }
-    .schema-list summary { cursor: pointer; padding: 8px 10px; font-weight: 600; }
-    .schema-list .tables { padding: 0 10px 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
-    .schema-list .pill { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; margin: 3px 6px 0 0; color: #d6e4ff; background: #0b0f16; }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-    .tabs { display: flex; border-bottom: 1px solid var(--border); background: #0f131a; }
-    .tab-btn { padding: 6px 12px; border: none; background: transparent; color: var(--text); cursor: pointer; font-size: 13px; }
-    .tab-btn.active { background: var(--panel); border-bottom: 2px solid var(--accent); color: var(--accent); }
-    .tab-panels { padding: 10px; }
+    header h1 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
 
-    .result { padding: 10px; max-height: 60vh; overflow: auto; white-space: nowrap; }
-    .result table { width: max-content; min-width: 100%; border-collapse: collapse; }
-    th, td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; }
-    th { position: sticky; top: 0; background: #0f131a; }
+    header .spacer {
+      flex: 1;
+    }
 
-    .status { padding: 8px 12px; border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid; }
+    select, button, input[type="checkbox"] + label {
+      background: #11151c;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    button.ghost {
+      background: transparent;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 12px;
+      padding: 0 14px 14px 14px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel .title {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .editor-wrap {
+      position: relative;
+      height: 360px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .CodeMirror {
+      height: 100%;
+      font-size: 13px;
+      background: #10131a;
+      color: #eaf2ff;
+      border-radius: 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schema-list {
+      padding: 10px;
+      overflow: auto;
+      max-height: 240px;
+    }
+
+    .schema-list details {
+      background: #0f131a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .schema-list summary {
+      cursor: pointer;
+      padding: 8px 10px;
+      font-weight: 600;
+    }
+
+    .schema-list .tables {
+      padding: 0 10px 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .schema-list .pill {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 1px 8px;
+      margin: 3px 6px 0 0;
+      color: #d6e4ff;
+      background: #0b0f16;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: #0f131a;
+    }
+
+    .tab-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .tab-btn.active {
+      background: var(--panel);
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .tab-panels {
+      padding: 10px;
+    }
+
+    .result {
+      padding: 10px;
+      max-height: 60vh;
+      overflow: auto;
+      white-space: nowrap;
+    }
+
+    .result table {
+      width: max-content;
+      min-width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #0f131a;
+    }
+
+    .status {
+      padding: 8px 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid;
+    }
+
     .ok { color: var(--ok); border-color: var(--ok); }
     .warn { color: var(--warn); border-color: var(--warn); }
     .err { color: var(--err); border-color: var(--err); }
 
-    footer { padding: 8px 14px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); background: #0f131a; }
+    footer {
+      padding: 8px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+      background: #0f131a;
+    }
+
     .hint { color: var(--muted); font-size: 12px; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #0f131a; border: 1px solid var(--border); padding: 2px 6px; border-radius: 6px; }
-    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: #0f131a;
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
     /* PRACTICE PANEL */
-    .practice-controls { display: flex; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--border); align-items: center; flex-wrap: wrap; }
-    .practice-list { padding: 8px 10px; overflow: auto; max-height: 320px; }
-    .q-card { border: 1px solid var(--border); background: #0f131a; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-    .q-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; cursor: pointer; }
-    .q-title { font-weight: 600; }
-    .q-meta { font-size: 11px; color: var(--muted); }
-    .q-body { display: none; padding: 10px; border-top: 1px solid var(--border); }
-    .q-actions { display: flex; gap: 8px; margin-top: 8px; }
-    .tag { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 0 8px; font-size: 11px; margin-right: 6px; color: #d6e4ff; background: #0b0f16; }
-    .answer { display: none; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
+    .practice-list {
+      padding: 8px 10px;
+      overflow-y: auto;
+      max-height: 320px;
+    }
 
-    /* Main responsive adjustments */
+    .q-card {
+      border: 1px solid var(--border);
+      background: #12151c;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .q-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .q-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      cursor: pointer;
+      background: #171a21;
+      transition: background 0.2s ease;
+    }
+
+    .q-head:hover { background: #1f2330; }
+    .q-title { font-weight: 600; font-size: 14px; }
+    .q-meta { font-size: 12px; color: var(--muted); }
+
+    .q-body {
+      display: none;
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      background: #0f1118;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 11px;
+      color: #d6e4ff;
+      background: #0b0f16;
+      white-space: nowrap;
+    }
+
+    .q-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .q-actions button {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: #1a1e28;
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .q-actions button:hover { background: #2a2f3a; }
+
+    .answer {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      border-top: 1px dashed var(--border);
+      background: #1c1f28;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
-      .main { grid-template-columns: 1fr; gap: 8px; padding: 0 8px 8px 8px; }
+      .main {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 0 8px 8px 8px;
+      }
       .panel { border-radius: 10px; overflow-x: auto; }
       .editor-wrap { height: 300px; }
-      .actions button, .row select, .row input[type="checkbox"] + label { font-size: 12px; padding: 6px 8px; }
+      .actions button, .row select, .row input[type="checkbox"] + label {
+        font-size: 12px;
+        padding: 6px 8px;
+      }
       header h1 { font-size: 14px; }
       .practice-list { max-height: 400px; }
     }
@@ -125,7 +422,6 @@
     <div class="spacer"></div>
     <div class="row">
       <select id="schemaSelect" title="Available Schemas"></select>
-      <button id="btnFormat" class="ghost">Format <span class="kbd">Ctrl/⌘</span> + <span class="kbd">Shift</span> + <span class="kbd">F</span></button>
       <button id="btnRun" class="primary">Run <span class="kbd">Ctrl/⌘</span> + <span class="kbd">Enter</span></button>
     </div>
   </header>
@@ -155,30 +451,6 @@
     <aside class="panel">
       <div class="title"><span>Schemas & Tables</span><span id="metaCount" class="hint"></span></div>
       <div class="schema-list" id="schemaMeta"></div>
-
-      <div class="title"><span>Notes</span></div>
-      <div class="schema-list">
-        <p class="hint">Tables are loaded from CSV files located under the <code>/schemas</code> directory. Each schema has its own folder, and each CSV file in that folder becomes a table. For example:</p>
-        <ul class="hint">
-          <li><code>/schemas/sales/customers.csv</code> → table <code>sales.customers</code></li>
-          <li><code>/schemas/hr/employees.csv</code> → table <code>hr.employees</code></li>
-        </ul>
-        <p class="hint">The <code>manifest.json</code> under <code>/schemas</code> defines which schemas exist and which CSV tables belong to each schema. Example:</p>
-<pre class="hint" style="white-space:pre-wrap;">{
-  "schemas": [
-    {"name": "sales", "tables": ["customers.csv", "orders.csv", "items.csv"]},
-    {"name": "hr",    "tables": ["employees.csv", "departments.csv"]}
-  ]
-}</pre>
-        <p class="hint">CSV rules:
-        <ul>
-          <li>First row must contain column headers.</li>
-          <li>Files are automatically ingested into the SQL database on page load.</li>
-          <li>Query tables using <code>schema.table</code> notation (e.g., <code>SELECT * FROM sales.orders</code>).</li>
-          <li>Bare table names resolve to the currently active schema.</li>
-        </ul></p>
-        <p class="hint">Whenever you add new tables to a schema folder, update <code>manifest.json</code> to include them. Click “Reload Schemas” after changes.</p>
-      </div>
 
       <!-- NEW: Practice Questions Panel -->
       <div class="title"><span>Practice Questions</span><span id="pqCount" class="hint"></span></div>
@@ -271,7 +543,6 @@
 
   function bindUI(){
     $('#btnRun').addEventListener('click', runQuery);
-    $('#btnFormat').addEventListener('click', formatSQL);
     $('#btnExplain').addEventListener('click', showLoadedTables);
     $('#btnReload').addEventListener('click', loadSchemasFromManifest);
     $('#schemaSelect').addEventListener('change', e => { ACTIVE_SCHEMA = e.target.value; renderMeta(); setStatus('Active schema: ' + ACTIVE_SCHEMA, 'warn'); });
@@ -446,59 +717,74 @@
   }
 
     function renderPracticeFiltered(){
-    const q = (pqSearch().value || '').toLowerCase();
-    const diff = pqDifficulty().value || '';
-    const tag = pqTag().value || '';
+  const q = (pqSearch().value || '').toLowerCase();
+  const diff = pqDifficulty().value || '';
+  const tag = pqTag().value || '';
 
-    // Build tag options from all questions
-    const tags = new Set();
-    PRACTICE.forEach(p => (p.tags || []).forEach(t => tags.add(t)));
-    const currentTag = pqTag().value;
-    pqTag().innerHTML = '<option value="">All tags</option>' +
-      Array.from(tags).sort().map(t =>
-        `<option ${currentTag===t?'selected':''}>${t}</option>`).join('');
+  // Extract all tags
+  const tags = new Set();
+  PRACTICE.forEach(p => (p.tags || []).forEach(t => tags.add(t)));
+  const currentTag = pqTag().value;
+  pqTag().innerHTML = '<option value="">All tags</option>' +
+    Array.from(tags).sort().map(t =>
+      `<option ${currentTag===t?'selected':''}>${t}</option>`).join('');
 
-    // Apply filters
-    PRACTICE_FILTERED = PRACTICE.filter(p =>
-      (!q || (p.title||'').toLowerCase().includes(q) ||
-             (p.tags||[]).some(t => t.toLowerCase().includes(q))) &&
-      (!diff || p.difficulty === diff) &&
-      (!tag || (p.tags||[]).includes(tag))
-    );
+  // Filter
+  PRACTICE_FILTERED = PRACTICE.filter(p =>
+    (!q || (p.title||'').toLowerCase().includes(q) ||
+           (p.tags||[]).some(t => t.toLowerCase().includes(q))) &&
+    (!diff || p.difficulty === diff) &&
+    (!tag || (p.tags||[]).includes(tag))
+  );
 
-    pqCount().textContent = `${PRACTICE_FILTERED.length} shown`;
-    pqList().innerHTML = PRACTICE_FILTERED.map(renderPracticeCard).join('');
-
-    // Hook up expand/reveal/insert/copy events
-    pqList().querySelectorAll('.q-card').forEach(card => {
-      const id = card.dataset.id;
-      const q = PRACTICE_FILTERED.find(x => String(x.id)===id);
-
-      card.querySelector('.q-head').addEventListener('click', () => {
-        const body = card.querySelector('.q-body');
-        body.style.display = body.style.display==='block' ? 'none' : 'block';
-      });
-
-      const insertBtn = card.querySelector('.insert');
-      if (insertBtn) insertBtn.addEventListener('click', () => {
-        if (q.starterSQL) CM.setValue(q.starterSQL);
-      });
-
-      const revealBtn = card.querySelector('.reveal');
-      if (revealBtn) revealBtn.addEventListener('click', () => {
-        const ans = card.querySelector('.answer');
-        ans.style.display = ans.style.display==='block' ? 'none' : 'block';
-      });
-
-      const copyBtn = card.querySelector('.copy');
-      if (copyBtn) copyBtn.addEventListener('click', () => {
-        if (q.answerMarkdown) {
-          navigator.clipboard.writeText(q.answerMarkdown);
-          setStatus('Answer copied to clipboard.', 'ok');
-        }
-      });
-    });
+  // Group by schema
+  const grouped = {};
+  for (const p of PRACTICE_FILTERED) {
+    const schema = p.schema || "unspecified";
+    if (!grouped[schema]) grouped[schema] = [];
+    grouped[schema].push(p);
   }
+
+  pqCount().textContent = `${PRACTICE_FILTERED.length} shown`;
+
+  // Render grouped by schema
+  pqList().innerHTML = Object.entries(grouped).map(([schema, qs]) => `
+    <details>
+      <summary><strong>${escapeHtml(schema)}</strong> — ${qs.length} question(s)</summary>
+      ${qs.map(renderPracticeCard).join('')}
+    </details>
+  `).join('');
+
+  // Hook up buttons
+  pqList().querySelectorAll('.q-card').forEach(card => {
+    const id = card.dataset.id;
+    const q = PRACTICE_FILTERED.find(x => String(x.id)===id);
+
+    card.querySelector('.q-head').addEventListener('click', () => {
+      const body = card.querySelector('.q-body');
+      body.style.display = body.style.display==='block' ? 'none' : 'block';
+    });
+
+    const insertBtn = card.querySelector('.insert');
+    if (insertBtn) insertBtn.addEventListener('click', () => {
+      if (q.starterSQL) CM.setValue(q.starterSQL);
+    });
+
+    const revealBtn = card.querySelector('.reveal');
+    if (revealBtn) revealBtn.addEventListener('click', () => {
+      const ans = card.querySelector('.answer');
+      ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+    });
+
+    const copyBtn = card.querySelector('.copy');
+    if (copyBtn) copyBtn.addEventListener('click', () => {
+      if (q.answerMarkdown) {
+        navigator.clipboard.writeText(q.answerMarkdown);
+        setStatus('Answer copied to clipboard.', 'ok');
+      }
+    });
+  });
+}
 
   function renderPracticeCard(p){
     return `

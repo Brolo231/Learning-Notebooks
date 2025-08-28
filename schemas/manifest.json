@@ -4,6 +4,7 @@
     {"name": "sales", "tables": ["customers.csv", "orders.csv", "items.csv"]},
     {"name": "hr",    "tables": ["employees.csv", "departments.csv"]},
     {"name": "parks_and_recreation", "tables": ["employee_demographics.csv", "employee_salary.csv", "parks_departments.csv"]},
+    {"name": "famous_art", "tables": ["artist.csv", "canvas_size.csv", "image_link.csv", "museum_hours.csv", "museum.csv", "product_size.csv", "subject.csv", "work.csv"]},
     {"name": "uncleaned_data",    "tables": ["easy_uncleaned.csv", "medium_uncleaned.csv", "hard_uncleaned.csv"]}
   ]
 }

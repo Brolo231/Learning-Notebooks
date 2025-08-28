@@ -1,119 +1,289 @@
-[
-  {
-    "id": 3,
-    "title": "Parks and Recreation - Average salary by department",
-    "difficulty": "Beginner",
-    "tags": ["aggregations", "group-by", "joins"],
-    "promptMarkdown": "Find the **average salary** of employees in each department. Use `employee_salary` joined with `parks_departments`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT d.department_name, AVG(s.salary) AS avg_salary\nFROM employee_salary s\nJOIN parks_departments d ON s.dept_id = d.department_id\nGROUP BY d.department_name\nORDER BY avg_salary DESC;\n```"
-  },
-  {
-    "id": 4,
-    "title": "Parks and Recreation - Employees over 40",
-    "difficulty": "Beginner",
-    "tags": ["filtering", "where"],
-    "promptMarkdown": "List all employees from `employee_demographics` who are **older than 40**.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT employee_id, first_name, last_name, age\nFROM employee_demographics\nWHERE age > 40;\n```"
-  },
-  {
-    "id": 5,
-    "title": "Parks and Recreation - Highest paid employee per department",
-    "difficulty": "Intermediate",
-    "tags": ["joins", "window", "ranking"],
-    "promptMarkdown": "Find the **highest paid employee** in each department. Use `employee_salary` and `parks_departments`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT first_name, last_name, d.department_name, salary\nFROM (\n  SELECT s.*, RANK() OVER(PARTITION BY dept_id ORDER BY salary DESC) AS rnk\n  FROM employee_salary s\n) s\nJOIN parks_departments d ON s.dept_id = d.department_id\nWHERE rnk = 1;\n```"
-  },
-  {
-    "id": 6,
-    "title": "Parks and Recreation - Gender distribution",
-    "difficulty": "Beginner",
-    "tags": ["group-by", "count"],
-    "promptMarkdown": "Count the number of employees by **gender** from `employee_demographics`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT gender, COUNT(*) AS total\nFROM employee_demographics\nGROUP BY gender;\n```"
-  },
-  {
-    "id": 7,
-    "title": "Parks and Recreation - Average age by occupation",
-    "difficulty": "Intermediate",
-    "tags": ["aggregations", "joins"],
-    "promptMarkdown": "Find the **average age** of employees in each occupation. Use both `employee_demographics` and `employee_salary`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT s.occupation, AVG(d.age) AS avg_age\nFROM employee_salary s\nJOIN employee_demographics d ON s.employee_id = d.employee_id\nGROUP BY s.occupation\nORDER BY avg_age DESC;\n```"
-  },
-  {
-    "id": 8,
-    "title": "Parks and Recreation - Birthdays by month",
-    "difficulty": "Intermediate",
-    "tags": ["date", "group-by"],
-    "promptMarkdown": "Count how many employees have birthdays in each month from `employee_demographics`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT strftime('%m', birth_date) AS birth_month, COUNT(*) AS total\nFROM employee_demographics\nGROUP BY birth_month\nORDER BY birth_month;\n```"
-  },
-  {
-    "id": 9,
-    "title": "Electric Vehicles Analytics – Vehicles with battery health below 80%",
-    "difficulty": "Beginner",
-    "tags": ["filtering", "where"],
-    "promptMarkdown": "List all vehicles from `electric_vehicles` that have **Battery_Health_% below 80**.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Battery_Health_%\nFROM electric_vehicles\nWHERE Battery_Health_% < 80;\n```"
-  },
-  {
-    "id": 10,
-    "title": "Electric Vehicles Analytics – Average range per vehicle type",
-    "difficulty": "Intermediate",
-    "tags": ["aggregations", "group-by"],
-    "promptMarkdown": "Find the **average range (Range_km)** for each `Vehicle_Type`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Vehicle_Type, AVG(Range_km) AS avg_range\nFROM electric_vehicles\nGROUP BY Vehicle_Type;\n```"
-  },
-  {
-    "id": 11,
-    "title": "Electric Vehicles Analytics – Vehicles with charging time under 2 hours",
-    "difficulty": "Beginner",
-    "tags": ["filtering", "where"],
-    "promptMarkdown": "Show all vehicles with a `Charging_Time_hr` of less than 2.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Charging_Time_hr\nFROM electric_vehicles\nWHERE Charging_Time_hr < 2;\n```"
-  },
-  {
-    "id": 12,
-    "title": "Electric Vehicles Analytics – Top 5 vehicles with highest resale value",
-    "difficulty": "Intermediate",
-    "tags": ["order-by", "limit"],
-    "promptMarkdown": "Get the **top 5 vehicles** by `Resale_Value_USD`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Resale_Value_USD\nFROM electric_vehicles\nORDER BY Resale_Value_USD DESC\nLIMIT 5;\n```"
-  },
-  {
-    "id": 13,
-    "title": "Electric Vehicles Analytics – Total CO2 saved by region",
-    "difficulty": "Intermediate",
-    "tags": ["aggregations", "group-by"],
-    "promptMarkdown": "Calculate the total `CO2_Saved_tons` for each region.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Region, SUM(CO2_Saved_tons) AS total_saved\nFROM electric_vehicles\nGROUP BY Region;\n```"
-  },
-  {
-    "id": 14,
-    "title": "Electric Vehicles Analytics – Vehicles with acceleration faster than 5 seconds",
-    "difficulty": "Beginner",
-    "tags": ["filtering", "where"],
-    "promptMarkdown": "List all vehicles that accelerate from 0–100 km/h in **under 5 seconds**.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Acceleration_0_100_kmh_sec\nFROM electric_vehicles\nWHERE Acceleration_0_100_kmh_sec < 5;\n```"
-  },
-  {
-    "id": 15,
-    "title": "Electric Vehicles Analytics – Average monthly charging cost by usage type",
-    "difficulty": "Intermediate",
-    "tags": ["aggregations", "group-by"],
-    "promptMarkdown": "Find the **average Monthly_Charging_Cost_USD** by `Usage_Type`.",
-    "starterSQL": "-- Write your query here\nSELECT ...",
-    "answerMarkdown": "```sql\nSELECT Usage_Type, AVG(Monthly_Charging_Cost_USD) AS avg_cost\nFROM electric_vehicles\nGROUP BY Usage_Type;\n```"
-  }
-]
+{
+  "schemas": [
+    { "name": "parks", "description": "Parks and Recreation employee and department data" },
+    { "name": "ev", "description": "Electric Vehicles Analytics dataset" },
+    { "name": "famous_art", "description": "Famous artworks, artists, museums, and related data" }
+  ],
+  "questions": [
+    {
+      "id": 3,
+      "schema": "parks",
+      "title": "Average salary by department",
+      "difficulty": "Beginner",
+      "tags": ["aggregations", "group-by", "joins"],
+      "promptMarkdown": "Find the **average salary** of employees in each department. Use `employee_salary` joined with `parks_departments`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT d.department_name, AVG(s.salary) AS avg_salary\nFROM employee_salary s\nJOIN parks_departments d ON s.dept_id = d.department_id\nGROUP BY d.department_name\nORDER BY avg_salary DESC;\n```"
+    },
+    {
+      "id": 4,
+      "schema": "parks",
+      "title": "Employees over 40",
+      "difficulty": "Beginner",
+      "tags": ["filtering", "where"],
+      "promptMarkdown": "List all employees from `employee_demographics` who are **older than 40**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT employee_id, first_name, last_name, age\nFROM employee_demographics\nWHERE age > 40;\n```"
+    },
+    {
+      "id": 5,
+      "schema": "parks",
+      "title": "Highest paid employee per department",
+      "difficulty": "Intermediate",
+      "tags": ["joins", "window", "ranking"],
+      "promptMarkdown": "Find the **highest paid employee** in each department. Use `employee_salary` and `parks_departments`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT first_name, last_name, d.department_name, salary\nFROM (\n  SELECT s.*, RANK() OVER(PARTITION BY dept_id ORDER BY salary DESC) AS rnk\n  FROM employee_salary s\n) s\nJOIN parks_departments d ON s.dept_id = d.department_id\nWHERE rnk = 1;\n```"
+    },
+    {
+      "id": 6,
+      "schema": "parks",
+      "title": "Gender distribution",
+      "difficulty": "Beginner",
+      "tags": ["group-by", "count"],
+      "promptMarkdown": "Count the number of employees by **gender** from `employee_demographics`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT gender, COUNT(*) AS total\nFROM employee_demographics\nGROUP BY gender;\n```"
+    },
+    {
+      "id": 7,
+      "schema": "parks",
+      "title": "Average age by occupation",
+      "difficulty": "Intermediate",
+      "tags": ["aggregations", "joins"],
+      "promptMarkdown": "Find the **average age** of employees in each occupation. Use both `employee_demographics` and `employee_salary`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT s.occupation, AVG(d.age) AS avg_age\nFROM employee_salary s\nJOIN employee_demographics d ON s.employee_id = d.employee_id\nGROUP BY s.occupation\nORDER BY avg_age DESC;\n```"
+    },
+    {
+      "id": 8,
+      "schema": "parks",
+      "title": "Birthdays by month",
+      "difficulty": "Intermediate",
+      "tags": ["date", "group-by"],
+      "promptMarkdown": "Count how many employees have birthdays in each month from `employee_demographics`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT strftime('%m', birth_date) AS birth_month, COUNT(*) AS total\nFROM employee_demographics\nGROUP BY birth_month\nORDER BY birth_month;\n```"
+    },
+    {
+      "id": 9,
+      "schema": "ev",
+      "title": "Vehicles with battery health below 80%",
+      "difficulty": "Beginner",
+      "tags": ["filtering", "where"],
+      "promptMarkdown": "List all vehicles from `electric_vehicles` that have **Battery_Health_% below 80**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Battery_Health_%\nFROM electric_vehicles\nWHERE Battery_Health_% < 80;\n```"
+    },
+    {
+      "id": 10,
+      "schema": "ev",
+      "title": "Average range per vehicle type",
+      "difficulty": "Intermediate",
+      "tags": ["aggregations", "group-by"],
+      "promptMarkdown": "Find the **average range (Range_km)** for each `Vehicle_Type`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Vehicle_Type, AVG(Range_km) AS avg_range\nFROM electric_vehicles\nGROUP BY Vehicle_Type;\n```"
+    },
+    {
+      "id": 11,
+      "schema": "ev",
+      "title": "Vehicles with charging time under 2 hours",
+      "difficulty": "Beginner",
+      "tags": ["filtering", "where"],
+      "promptMarkdown": "Show all vehicles with a `Charging_Time_hr` of less than 2.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Charging_Time_hr\nFROM electric_vehicles\nWHERE Charging_Time_hr < 2;\n```"
+    },
+    {
+      "id": 12,
+      "schema": "ev",
+      "title": "Top 5 vehicles with highest resale value",
+      "difficulty": "Intermediate",
+      "tags": ["order-by", "limit"],
+      "promptMarkdown": "Get the **top 5 vehicles** by `Resale_Value_USD`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Resale_Value_USD\nFROM electric_vehicles\nORDER BY Resale_Value_USD DESC\nLIMIT 5;\n```"
+    },
+    {
+      "id": 13,
+      "schema": "ev",
+      "title": "Total CO2 saved by region",
+      "difficulty": "Intermediate",
+      "tags": ["aggregations", "group-by"],
+      "promptMarkdown": "Calculate the total `CO2_Saved_tons` for each region.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Region, SUM(CO2_Saved_tons) AS total_saved\nFROM electric_vehicles\nGROUP BY Region;\n```"
+    },
+    {
+      "id": 14,
+      "schema": "ev",
+      "title": "Vehicles with acceleration faster than 5 seconds",
+      "difficulty": "Beginner",
+      "tags": ["filtering", "where"],
+      "promptMarkdown": "List all vehicles that accelerate from 0–100 km/h in **under 5 seconds**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Vehicle_ID, Make, Model, Acceleration_0_100_kmh_sec\nFROM electric_vehicles\nWHERE Acceleration_0_100_kmh_sec < 5;\n```"
+    },
+    {
+      "id": 15,
+      "schema": "ev",
+      "title": "Average monthly charging cost by usage type",
+      "difficulty": "Intermediate",
+      "tags": ["aggregations", "group-by"],
+      "promptMarkdown": "Find the **average Monthly_Charging_Cost_USD** by `Usage_Type`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT Usage_Type, AVG(Monthly_Charging_Cost_USD) AS avg_cost\nFROM electric_vehicles\nGROUP BY Usage_Type;\n```"
+    },
+    {
+      "id": 22,
+      "schema": "famous_art",
+      "title": "List all artworks with artist full name",
+      "difficulty": "Beginner",
+      "tags": ["joins"],
+      "promptMarkdown": "List all artworks along with the **full name of their artist**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT w.name AS artwork_name, a.full_name AS artist_name\nFROM work w\nJOIN artist a ON w.artist_id = a.artist_id;\n```"
+    },
+    {
+      "id": 23,
+      "schema": "famous_art",
+      "title": "Artworks by nationality",
+      "difficulty": "Beginner",
+      "tags": ["filtering", "joins"],
+      "promptMarkdown": "Find all artworks where the **artist nationality** is 'Italian'.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT w.name AS artwork_name, a.full_name AS artist_name, a.nationality\nFROM work w\nJOIN artist a ON w.artist_id = a.artist_id\nWHERE a.nationality = 'Italian';\n```"
+    },
+    {
+      "id": 24,
+      "schema": "famous_art",
+      "title": "Artworks with multiple subjects",
+      "difficulty": "Intermediate",
+      "tags": ["joins", "group-by", "having"],
+      "promptMarkdown": "Find artworks that have **more than one subject**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT w.name, COUNT(s.subject) AS subject_count\nFROM work w\nJOIN subject s ON w.work_id = s.work_id\nGROUP BY w.name\nHAVING COUNT(s.subject) > 1;\n```"
+    },
+    {
+      "id": 25,
+      "schema": "famous_art",
+      "title": "Top 5 largest canvases",
+      "difficulty": "Intermediate",
+      "tags": ["joins", "order-by", "limit"],
+      "promptMarkdown": "Get the top 5 artworks by **canvas size (width * height)**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT w.name, c.width * c.height AS area\nFROM work w\nJOIN product_size ps ON w.work_id = ps.work_id\nJOIN canvas_size c ON ps.size_id = c.size_id\nORDER BY area DESC\nLIMIT 5;\n```"
+    },
+    {
+      "id": 26,
+      "schema": "famous_art",
+      "title": "Average sale price per artist",
+      "difficulty": "Advanced",
+      "tags": ["joins", "aggregations", "group-by"],
+      "promptMarkdown": "Calculate the **average sale price** of artworks for each artist.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT a.full_name, AVG(ps.sale_price) AS avg_sale_price\nFROM product_size ps\nJOIN work w ON ps.work_id = w.work_id\nJOIN artist a ON w.artist_id = a.artist_id\nGROUP BY a.full_name\nORDER BY avg_sale_price DESC;\n```"
+    },
+    {
+      "id": 27,
+      "schema": "famous_art",
+      "title": "Museum hours on Monday",
+      "difficulty": "Beginner",
+      "tags": ["filtering"],
+      "promptMarkdown": "List all museums with their **opening and closing times on Monday**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT m.name, mh.open, mh.close\nFROM museum_hours mh\nJOIN musuem m ON mh.museum_id = m.museum_id\nWHERE mh.day = 'Monday';\n```"
+    },
+    {
+      "id": 28,
+      "schema": "famous_art",
+      "title": "Artists and number of artworks",
+      "difficulty": "Intermediate",
+      "tags": ["joins", "aggregations", "group-by"],
+      "promptMarkdown": "Count the **number of artworks per artist**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT a.full_name, COUNT(w.work_id) AS total_artworks\nFROM artist a\nJOIN work w ON a.artist_id = w.artist_id\nGROUP BY a.full_name\nORDER BY total_artworks DESC;\n```"
+    },
+    {
+      "id": 29,
+      "schema": "famous_art",
+      "title": "Artworks with subject 'Portrait'",
+      "difficulty": "Beginner",
+      "tags": ["joins", "filtering"],
+      "promptMarkdown": "Find all artworks that have **'Portrait'** as a subject.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT w.name AS artwork_name, a.full_name AS artist_name\nFROM work w\nJOIN subject s ON w.work_id = s.work_id\nJOIN artist a ON w.artist_id = a.artist_id\nWHERE s.subject = 'Portrait';\n```"
+    },
+    {
+      "id": 30,
+      "schema": "famous_art",
+      "title": "Top 3 most expensive artworks per artist",
+      "difficulty": "Advanced",
+      "tags": ["joins", "window", "ranking"],
+      "promptMarkdown": "Find the **top 3 most expensive artworks** for each artist based on `sale_price`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT full_name AS artist_name, artwork_name, sale_price\nFROM (\n  SELECT a.full_name, w.name AS artwork_name, ps.sale_price,\n         RANK() OVER(PARTITION BY a.artist_id ORDER BY ps.sale_price DESC) AS rnk\n  FROM artist a\n  JOIN work w ON a.artist_id = w.artist_id\n  JOIN product_size ps ON w.work_id = ps.work_id\n) sub\nWHERE rnk <= 3\nORDER BY artist_name, sale_price DESC;\n```"
+    },
+    {
+      "id": 31,
+      "schema": "famous_art",
+      "title": "Artists with artworks in multiple museums",
+      "difficulty": "Advanced",
+      "tags": ["joins", "group-by", "having"],
+      "promptMarkdown": "Find artists who have artworks in **more than one museum**.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT a.full_name, COUNT(DISTINCT w.museum_id) AS museum_count\nFROM artist a\nJOIN work w ON a.artist_id = w.artist_id\nGROUP BY a.full_name\nHAVING COUNT(DISTINCT w.museum_id) > 1\nORDER BY museum_count DESC;\n```"
+    },
+    {
+      "id": 32,
+      "schema": "famous_art",
+      "title": "Average artwork price by style",
+      "difficulty": "Advanced",
+      "tags": ["joins", "aggregations", "group-by"],
+      "promptMarkdown": "Calculate the **average sale price** of artworks for each `style`.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT style, AVG(ps.sale_price) AS avg_sale_price\nFROM work w\nJOIN product_size ps ON w.work_id = ps.work_id\nGROUP BY style\nORDER BY avg_sale_price DESC;\n```"
+    },
+    {
+      "id": 33,
+      "schema": "famous_art",
+      "title": "Artists with artworks over 200 years old",
+      "difficulty": "Advanced",
+      "tags": ["joins", "filtering", "date-calculation"],
+      "promptMarkdown": "List artists who have at least one artwork that is over **200 years old** based on birth year or style period.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT DISTINCT a.full_name\nFROM artist a\nJOIN work w ON a.artist_id = w.artist_id\nWHERE a.birth <= strftime('%Y','now','-200 years');\n```"
+    },
+    {
+      "id": 34,
+      "schema": "famous_art",
+      "title": "Museums with the highest total artwork sales",
+      "difficulty": "Advanced",
+      "tags": ["joins", "aggregations", "group-by"],
+      "promptMarkdown": "Find the **total sale value** of artworks for each museum and rank them.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT m.name AS museum_name, SUM(ps.sale_price) AS total_sales\nFROM musuem m\nJOIN work w ON m.museum_id = w.museum_id\nJOIN product_size ps ON w.work_id = ps.work_id\nGROUP BY m.name\nORDER BY total_sales DESC;\n```"
+    },
+    {
+      "id": 35,
+      "schema": "famous_art",
+      "title": "Artists who never had artworks sold below $1000",
+      "difficulty": "Advanced",
+      "tags": ["joins", "filtering", "aggregations", "having"],
+      "promptMarkdown": "Find all artists whose **every artwork** has a sale price of at least $1000.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT a.full_name\nFROM artist a\nJOIN work w ON a.artist_id = w.artist_id\nJOIN product_size ps ON w.work_id = ps.work_id\nGROUP BY a.full_name\nHAVING MIN(ps.sale_price) >= 1000\nORDER BY a.full_name;\n```"
+    },
+    {
+      "id": 36,
+      "schema": "famous_art",
+      "title": "Most common subject per artist",
+      "difficulty": "Advanced",
+      "tags": ["joins", "aggregations", "group-by", "window"],
+      "promptMarkdown": "Find the **most common subject** for each artist.",
+      "starterSQL": "-- Write your query here\nSELECT ...",
+      "answerMarkdown": "```sql\nSELECT artist_name, subject\nFROM (\n  SELECT a.full_name AS artist_name, s.subject,\n         RANK() OVER(PARTITION BY a.artist_id ORDER BY COUNT(*) DESC) AS rnk\n  FROM artist a\n  JOIN work w ON a.artist_id = w.artist_id\n  JOIN subject s ON w.work_id = s.work_id\n  GROUP BY a.artist_id, s.subject\n) sub\nWHERE rnk = 1\nORDER BY artist_name;\n```"
+    }    
+  ]
+}

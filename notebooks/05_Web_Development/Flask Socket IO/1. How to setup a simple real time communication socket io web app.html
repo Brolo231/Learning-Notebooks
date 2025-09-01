@@ -7616,8 +7616,9 @@ a.anchor-link {
 <ul>
 <li>This sets up a listener for an event called 'chat_response'.</li>
 <li>Whenever the server emits a 'chat_response' message, this function is triggered.</li>
-<li>It adds the received message as a new <li> item in the <ul> with ID messages.</ul></li>
-</li></ul>
+<li>It adds the received message as a new li item in the ul with ID messages.</li>
+<li><strong><div style="color: red;"> msg is passed the value sent from the backend</div></strong></li>
+</ul>
 <p>🔁 This is what makes the app real-time: when the server broadcasts a message, all connected clients update instantly.</p>
 <hr/>
 <p><strong>step 4: Send a message to the server</strong> <br/>

@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>7. String Functions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>011 Window Functions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,218 +7526,75 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=795721da-0e92-48d3-b7a6-969b82db6914">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=363417c5-0eac-4b9c-90b6-cdfc233c9157">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="STRING-FUNCTIONS">STRING FUNCTIONS<a class="anchor-link" href="#STRING-FUNCTIONS">¶</a></h1><hr/>
-<p>Working with strings is an essential part of SQL queries. MySQL provides a wide range of <strong>string functions</strong> to manipulate, extract, search, and format text data.</p>
-<p>This guide covers the most commonly used string functions with <strong>examples, use cases, and syntax</strong>.</p>
-<hr>
-<h2 id="%F0%9F%93%8C-Why-Use-String-Functions?">📌 Why Use String Functions?<a class="anchor-link" href="#%F0%9F%93%8C-Why-Use-String-Functions?">¶</a></h2><ul>
-<li><strong>Data Cleaning</strong> → Trim unwanted spaces, standardize case (e.g., upper/lower).</li>
-<li><strong>Searching &amp; Filtering</strong> → Find substrings, match patterns.</li>
-<li><strong>Formatting Output</strong> → Concatenate fields, replace words, pad strings.</li>
-<li><strong>Analytics</strong> → Extract parts of names, emails, or codes.</li>
+<style>
+@media (max-width: 600px) {
+    img[style] { width: 90% !important; }
+}
+</style>
+<h1 id="Window-Functions">Window Functions<a class="anchor-link" href="#Window-Functions">¶</a></h1><hr/>
+<h3 id="A-window-function-performs-a-calculation-across-a-set-of-rows-that-are-related-to-the-current-row,-without-collapsing-them-into-a-single-result-(like-GROUP-BY-would).">A window function performs a calculation across a set of rows that are related to the current row, without collapsing them into a single result (like GROUP BY would).<a class="anchor-link" href="#A-window-function-performs-a-calculation-across-a-set-of-rows-that-are-related-to-the-current-row,-without-collapsing-them-into-a-single-result-(like-GROUP-BY-would).">¶</a></h3><br/>
+We can think of it as <span style="color: lightgreen;">**“Perform an aggregate (like SUM, AVG, ROW_NUMBER) but keep all rows visible.”**</span>
+<hr/>
+<h4 id="Syntax:"><strong>Syntax:</strong><a class="anchor-link" href="#Syntax:">¶</a></h4><div class="highlight"><pre><span></span><span class="n">function_name</span><span class="p">(</span><span class="k">column</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">expr</span>
+<span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">expr</span>
+<span class="p">)</span>
+</pre></div>
+<hr/>
+<p>The following:</p>
+<ul>
+<li>selects gender, average salary over everything</li>
 </ul>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">()</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
+</pre></div>
+<p>What this tells us is that all the men and women make an average salary of 56090.9091</p>
+<img alt="No description has been provided for this image" src="static/OVER_01.png" style="display: flex; width: 40%; margin:auto;"/>
+<br/>
 <hr/>
-<h2 id="%F0%9F%94%91-Common-Use-Cases">🔑 Common Use Cases<a class="anchor-link" href="#%F0%9F%94%91-Common-Use-Cases">¶</a></h2><ol>
-<li><p><strong>Standardizing Data</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name_upper</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+<br/>
+<p>Now, we are partitioning by gender so that we get the average based on the unique sets of values under each gender value</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">gender</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
 </pre></div>
-<p>Converts names to uppercase.</p>
-</li>
-<li><p><strong>Extracting Domain from Email</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'@'</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">domain</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+<p>What this tells us is that all the men make a combined avg salary of 57428.5714 and all the women make  a combined avg salary of 53750.0000</p>
+<p><img alt="No description has been provided for this image" src="static/OVER_02.png" style="display: flex; width: 40%; margin:auto;"/><br/></p>
+<h4 id="We-can-also-use-window-functions-to-clearly-show-rolling-totals:">We can also use window functions to clearly show rolling totals:<a class="anchor-link" href="#We-can-also-use-window-functions-to-clearly-show-rolling-totals:">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">gender</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
 </pre></div>
-<p>Extracts everything after <code>@</code>.</p>
-</li>
-<li><p><strong>Creating Full Names</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">full_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+<p><img alt="No description has been provided for this image" src="static/OVER_03.png" style="display: flex; width: 90%; margin:auto;"/><br/></p>
+<p><br/><hr/><br/></p>
+<p>We can also use ROW_NUMBER() to generate an ordered list of numbers:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">()</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
 </pre></div>
-<p>Joins two columns with a space.</p>
-</li>
-<li><p><strong>Masking Sensitive Data</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="k">LEFT</span><span class="p">(</span><span class="n">phone</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="s1">'****'</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">masked_phone</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">customers</span><span class="p">;</span>
-</pre></div>
-<p>Masks part of a phone number.</p>
-</li>
-</ol>
-<hr/>
-<h2 id="%F0%9F%93%8B-MySQL-String-Functions-Reference-Table">📋 MySQL String Functions Reference Table<a class="anchor-link" href="#%F0%9F%93%8B-MySQL-String-Functions-Reference-Table">¶</a></h2><table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Syntax</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>LENGTH()</strong></td>
-<td><code>LENGTH(str)</code></td>
-<td>Returns the length of a string in bytes.</td>
-</tr>
-<tr>
-<td><strong>CHAR_LENGTH() / CHARACTER_LENGTH()</strong></td>
-<td><code>CHAR_LENGTH(str)</code></td>
-<td>Returns the number of characters in a string (differs from LENGTH for multi-byte).</td>
-</tr>
-<tr>
-<td><strong>CONCAT()</strong></td>
-<td><code>CONCAT(str1, str2, …)</code></td>
-<td>Joins multiple strings together.</td>
-</tr>
-<tr>
-<td><strong>CONCAT_WS()</strong></td>
-<td><code>CONCAT_WS(separator, str1, str2, …)</code></td>
-<td>Concatenates with a separator.</td>
-</tr>
-<tr>
-<td><strong>UPPER() / UCASE()</strong></td>
-<td><code>UPPER(str)</code></td>
-<td>Converts string to uppercase.</td>
-</tr>
-<tr>
-<td><strong>LOWER() / LCASE()</strong></td>
-<td><code>LOWER(str)</code></td>
-<td>Converts string to lowercase.</td>
-</tr>
-<tr>
-<td><strong>LEFT()</strong></td>
-<td><code>LEFT(str, len)</code></td>
-<td>Returns the leftmost <code>len</code> characters.</td>
-</tr>
-<tr>
-<td><strong>RIGHT()</strong></td>
-<td><code>RIGHT(str, len)</code></td>
-<td>Returns the rightmost <code>len</code> characters.</td>
-</tr>
-<tr>
-<td><strong>SUBSTRING() / SUBSTR()</strong></td>
-<td><code>SUBSTRING(str, pos, len)</code></td>
-<td>Extracts part of a string starting at <code>pos</code>.</td>
-</tr>
-<tr>
-<td><strong>SUBSTRING_INDEX()</strong></td>
-<td><code>SUBSTRING_INDEX(str, delim, count)</code></td>
-<td>Returns substring before/after a delimiter.</td>
-</tr>
-<tr>
-<td><strong>LPAD()</strong></td>
-<td><code>LPAD(str, len, padstr)</code></td>
-<td>Pads the left side of string to a given length.</td>
-</tr>
-<tr>
-<td><strong>RPAD()</strong></td>
-<td><code>RPAD(str, len, padstr)</code></td>
-<td>Pads the right side of string to a given length.</td>
-</tr>
-<tr>
-<td><strong>TRIM()</strong></td>
-<td><code>TRIM(str)</code></td>
-<td>Removes leading and trailing spaces.</td>
-</tr>
-<tr>
-<td><strong>LTRIM()</strong></td>
-<td><code>LTRIM(str)</code></td>
-<td>Removes spaces on the left side.</td>
-</tr>
-<tr>
-<td><strong>RTRIM()</strong></td>
-<td><code>RTRIM(str)</code></td>
-<td>Removes spaces on the right side.</td>
-</tr>
-<tr>
-<td><strong>REPLACE()</strong></td>
-<td><code>REPLACE(str, from_str, to_str)</code></td>
-<td>Replaces all occurrences of a substring.</td>
-</tr>
-<tr>
-<td><strong>INSERT()</strong></td>
-<td><code>INSERT(str, pos, len, newstr)</code></td>
-<td>Replaces part of a string starting at position <code>pos</code>.</td>
-</tr>
-<tr>
-<td><strong>REVERSE()</strong></td>
-<td><code>REVERSE(str)</code></td>
-<td>Reverses the characters in a string.</td>
-</tr>
-<tr>
-<td><strong>LOCATE() / POSITION() / INSTR()</strong></td>
-<td><code>LOCATE(substr, str)</code></td>
-<td>Returns the position of the first occurrence.</td>
-</tr>
-<tr>
-<td><strong>FIELD()</strong></td>
-<td><code>FIELD(str, str1, str2, …)</code></td>
-<td>Returns index of str in list.</td>
-</tr>
-<tr>
-<td><strong>FIND_IN_SET()</strong></td>
-<td><code>FIND_IN_SET(str, strlist)</code></td>
-<td>Finds position of a string within a comma-separated list.</td>
-</tr>
-<tr>
-<td><strong>ELT()</strong></td>
-<td><code>ELT(N, str1, str2, …)</code></td>
-<td>Returns string at position N in list.</td>
-</tr>
-<tr>
-<td><strong>MAKE_SET()</strong></td>
-<td><code>MAKE_SET(bits, str1, str2, …)</code></td>
-<td>Returns set of strings based on bits.</td>
-</tr>
-<tr>
-<td><strong>REPEAT()</strong></td>
-<td><code>REPEAT(str, count)</code></td>
-<td>Repeats a string multiple times.</td>
-</tr>
-<tr>
-<td><strong>SPACE()</strong></td>
-<td><code>SPACE(N)</code></td>
-<td>Returns a string of N spaces.</td>
-</tr>
-<tr>
-<td><strong>HEX()</strong></td>
-<td><code>HEX(str)</code></td>
-<td>Returns hex representation.</td>
-</tr>
-<tr>
-<td><strong>UNHEX()</strong></td>
-<td><code>UNHEX(str)</code></td>
-<td>Converts hex back to characters.</td>
-</tr>
-<tr>
-<td><strong>QUOTE()</strong></td>
-<td><code>QUOTE(str)</code></td>
-<td>Escapes special characters for SQL.</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="%E2%9C%85-Example-Queries">✅ Example Queries<a class="anchor-link" href="#%E2%9C%85-Example-Queries">¶</a></h2><p><strong>1. Cleaning up names (remove spaces &amp; capitalize):</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="k">UPPER</span><span class="p">(</span><span class="k">TRIM</span><span class="p">(</span><span class="n">first_name</span><span class="p">)),</span><span class="w"> </span><span class="s1">' '</span><span class="p">,</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="k">TRIM</span><span class="p">(</span><span class="n">last_name</span><span class="p">)))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">clean_name</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
-</pre></div>
-<p><strong>2. Extracting first 3 letters of a code:</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">product_code</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span>
-</pre></div>
-<p><strong>3. Replacing words in a sentence:</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">(</span><span class="s1">'I love Java'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Java'</span><span class="p">,</span><span class="w"> </span><span class="s1">'MySQL'</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">result</span><span class="p">;</span>
-<span class="c1">-- Output: "I love MySQL"</span>
-</pre></div>
-<p><strong>4. Splitting emails into username and domain:</strong></p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
-<span class="w">  </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'@'</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">username</span><span class="p">,</span>
-<span class="w">  </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'@'</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">domain</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
-</pre></div>
-<hr/>
-</hr></div>
+<p><img alt="No description has been provided for this image" src="static/OVER_04.png" style="display: flex; width: 40%; margin:auto;"/><br/></p>
+<p><strong>and</strong> we can still use <strong>PARTION BY</strong> together with <strong>ROW_NUMBER()</strong></p>
+<p><img alt="No description has been provided for this image" src="static/OVER_05.png" style="display: flex; width: 40%; margin:auto;"/><br/></p>
+<p><br/><hr/><br/></p>
+<p><strong>Additional Note:</strong> Rank is another function that is used similarily to ROW_NUMBER(). However, rank is used to 'rank' / 'order by' unique values and taking account of duplicate/ similar values whereas ROW_NUMBER() ignores duplicate values and continues to incrememnt its values. For example</p>
+<p><strong>Note:</strong> Rank will skip the value that it is duplicating the value for whereas dense rank continues the incrementation without skipping a number placement</p>
+<p><img alt="No description has been provided for this image" src="static/OVER_06.png" style="display: flex; width: 60%; margin:auto;"/><br/></p>
+</div>
 </div>
 </div>
 </div>

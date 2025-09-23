@@ -199,14 +199,20 @@
     }
 
     .schema-list .pill {
-      display: inline-block;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 1px 8px;
-      margin: 3px 6px 0 0;
-      color: #d6e4ff;
-      background: #0b0f16;
-    }
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin: 3px 6px 0 0;
+  color: #d6e4ff;
+  background: #0b0f16;
+  cursor: pointer; /* <- makes it a pointer on hover */
+  transition: background 0.2s ease;
+}
+
+.schema-list .pill:hover {
+  background: #1a1e28; /* optional: subtle hover effect */
+}
 
     .tabs {
       display: flex;
@@ -545,8 +551,11 @@
     $('#btnRun').addEventListener('click', runQuery);
     $('#btnExplain').addEventListener('click', showLoadedTables);
     $('#btnReload').addEventListener('click', loadSchemasFromManifest);
-    $('#schemaSelect').addEventListener('change', e => { ACTIVE_SCHEMA = e.target.value; renderMeta(); setStatus('Active schema: ' + ACTIVE_SCHEMA, 'warn'); });
-
+    $('#schemaSelect').addEventListener('change', e => {
+  ACTIVE_SCHEMA = e.target.value;
+  renderSchemaMeta(); // Re-render to open the correct schema
+  setStatus('Active schema: ' + ACTIVE_SCHEMA, 'warn');
+});
     // Practice controls
     $('#pqReload').addEventListener('click', loadPractice);
     pqSearch().addEventListener('input', renderPracticeFiltered);
@@ -594,16 +603,45 @@
   function renderSchemaDropdown(schemaNames){ schemaSelect().innerHTML = schemaNames.map(s => `<option value="${s}" ${s===ACTIVE_SCHEMA?'selected':''}>${s}</option>`).join(''); }
 
   function renderSchemaMeta(){
-    const parts = []; let tableCount = 0;
-    for (const [schema, info] of Object.entries(CATALOG)) {
-      const openAttr = schema === ACTIVE_SCHEMA ? 'open' : '';
-      parts.push(`<details ${openAttr}><summary>${schema}</summary><div class="tables">`);
-      for (const t of Object.keys(info.tables)) { const meta = info.tables[t]; parts.push(`<div class="pill" title="${schema}.${t}\n${meta.columns.join(', ')}">${t}</div>`); tableCount++; }
-      parts.push('</div></details>');
+  const parts = [];
+  let tableCount = 0;
+
+  for (const [schema, info] of Object.entries(CATALOG)) {
+    // Only open the active schema
+    const openAttr = schema === ACTIVE_SCHEMA ? 'open' : '';
+    parts.push(`<details ${openAttr}><summary>${schema}</summary><div class="tables">`);
+
+    for (const t of Object.keys(info.tables)) {
+      const meta = info.tables[t];
+      parts.push(`<div class="pill" title="${schema}.${t}\n${meta.columns.join(', ')}" data-schema="${schema}" data-table="${t}">${t}</div>`);
+      tableCount++;
     }
-    schemaMetaEl().innerHTML = parts.join('');
-    metaCount().textContent = `${Object.keys(CATALOG).length} schemas • ${tableCount} tables`;
+
+    parts.push('</div></details>');
   }
+
+  schemaMetaEl().innerHTML = parts.join('');
+  metaCount().textContent = `${Object.keys(CATALOG).length} schemas • ${tableCount} tables`;
+
+  // Add click handlers for table pills
+  schemaMetaEl().querySelectorAll('.pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const schema = pill.dataset.schema;
+      const table = pill.dataset.table;
+      ACTIVE_SCHEMA = schema;
+
+      // Update dropdown and re-render meta to open correct schema
+      renderSchemaDropdown(Object.keys(CATALOG));
+      renderSchemaMeta();
+
+      // Insert SELECT * INTO editor
+      const fullName = CATALOG[schema].tables[table].fullName;
+      CM.setValue(`SELECT *\nFROM ${fullName};`);
+      CM.focus();
+      setStatus(`Inserted SELECT * FROM ${schema}.${table}`, 'ok');
+    });
+  });
+}
 
   async function ingestCsvAsTable(schema, table, url){
     try {

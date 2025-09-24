@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>00. Database and Tables</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>010. Number Functions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,129 +7508,130 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-        h1 { font-weight: 700; font-size: 2.5rem; }
-        .container { max-width: 900px; margin: 0 auto; }
-        details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        summary { font-weight: 600; font-size: 1.1rem; cursor: pointer; position: relative; padding-right: 20px; }
-        summary::after { content: '▶'; position: absolute; right: 0; transition: transform 0.3s ease; }
-        details[open] > summary::after { transform: rotate(90deg); }
-        .notebook-entry { background: #fff; border: 1px solid #dee2e6; padding: 12px 16px; border-radius: 6px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
-        .notebook-entry a { color: #0d6efd; font-weight: 600; font-size: 1rem; text-decoration: none; }
-        .notebook-entry a:hover { text-decoration: underline; }
-        .created-date { margin-left: 20px; font-size: 0.85rem; color: #6c757d; display: flex; align-items: center; }
-        .arrow { margin-right: 6px; color: #6c757d; }
+            body { @apply bg-gray-50 font-sans; }
+            .container { @apply max-w-4xl mx-auto px-4; }
+            details { @apply mb-4 bg-white rounded-lg p-4 shadow-sm; }
+            summary { @apply font-semibold text-lg cursor-pointer relative pr-6 text-blue-600; }
+            summary::after { content: '▶'; @apply absolute right-0 transition-transform duration-300; }
+            details[open] > summary::after { @apply rotate-90; }
+            .notebook-entry { @apply bg-white border border-gray-200 p-4 rounded-md mb-2 shadow-sm; }
+            .notebook-entry a { @apply text-gray-800 font-semibold text-base no-underline hover:text-blue-600; }
+            .created-date { @apply ml-4 text-sm text-gray-500 flex items-center; }
+            .arrow { @apply mr-2 text-gray-400; }
         </style>
-        
+    
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f81d24a8-dbac-45b0-bd2e-6988e02db9db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39a326ad-8bd7-4f6d-b3bb-5a0160ac857c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="MySQL-Learning">MySQL Learning<a class="anchor-link" href="#MySQL-Learning">¶</a></h1><hr/>
-<h3 id="The-following-notebooks:">The following notebooks:<a class="anchor-link" href="#The-following-notebooks:">¶</a></h3><ol>
-<li>Beginner SQl,</li>
-<li>Intermediate SQL</li>
-<li>Advanced SQL</li>
-</ol>
-<h3>are structured around <a href="https://www.youtube.com/watch?v=rGx1QNdYzvs&amp;list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF" target="_blank">Alex the Analyst's Data Analyst Bootcamp </a></h3>
+<h1 id="Number-Functions">Number Functions<a class="anchor-link" href="#Number-Functions">¶</a></h1><hr/>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ROUND()</strong></td>
+<td><code>ROUND(num, decimals)</code></td>
+<td>Rounds number to given decimal places.</td>
+</tr>
+<tr>
+<td><strong>TRUNCATE()</strong></td>
+<td><code>TRUNCATE(num, decimals)</code></td>
+<td>Cuts off decimals without rounding.</td>
+</tr>
+<tr>
+<td><strong>CEIL() / CEILING()</strong></td>
+<td><code>CEIL(num)</code></td>
+<td>Rounds number up to the nearest integer.</td>
+</tr>
+<tr>
+<td><strong>FLOOR()</strong></td>
+<td><code>FLOOR(num)</code></td>
+<td>Rounds number down to the nearest integer.</td>
+</tr>
+<tr>
+<td><strong>ABS()</strong></td>
+<td><code>ABS(num)</code></td>
+<td>Returns absolute value.</td>
+</tr>
+<tr>
+<td><strong>MOD()</strong></td>
+<td><code>MOD(num, divisor)</code></td>
+<td>Returns remainder of division.</td>
+</tr>
+<tr>
+<td><strong>FORMAT()</strong></td>
+<td><code>FORMAT(num, decimals)</code></td>
+<td>Formats number with commas and decimals.</td>
+</tr>
+<tr>
+<td><strong>POWER() / POW()</strong></td>
+<td><code>POWER(num, exp)</code></td>
+<td>Raises number to a power.</td>
+</tr>
+<tr>
+<td><strong>SQRT()</strong></td>
+<td><code>SQRT(num)</code></td>
+<td>Square root of a number.</td>
+</tr>
+<tr>
+<td><strong>EXP()</strong></td>
+<td><code>EXP(num)</code></td>
+<td>Returns e^num.</td>
+</tr>
+<tr>
+<td><strong>LOG() / LN()</strong></td>
+<td><code>LOG(num)</code></td>
+<td>Natural logarithm.</td>
+</tr>
+<tr>
+<td><strong>LOG10()</strong></td>
+<td><code>LOG10(num)</code></td>
+<td>Base-10 logarithm.</td>
+</tr>
+<tr>
+<td><strong>RAND()</strong></td>
+<td><code>RAND()</code></td>
+<td>Returns a random float between 0 and 1.</td>
+</tr>
+<tr>
+<td><strong>SIGN()</strong></td>
+<td><code>SIGN(num)</code></td>
+<td>Returns -1, 0, or 1 depending on sign.</td>
+</tr>
+</tbody>
+</table>
 <hr/>
-<h4 id="The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">The introductory MySQL videos cover the database and database tables that will be used throughout the MySQL course content:<a class="anchor-link" href="#The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">¶</a></h4><hr/>
-<h2 id="Database-Schema:-Parks_and_Recreation">Database Schema: Parks_and_Recreation<a class="anchor-link" href="#Database-Schema:-Parks_and_Recreation">¶</a></h2><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_demographics</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT (PK)</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>age</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>VARCHAR(10)</td>
-</tr>
-<tr>
-<td>birth_date</td>
-<td>DATE</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_salary</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>occupation</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>salary</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>dept_id</td>
-<td>INT</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: parks_departments</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>department_id</td>
-<td>INT (AI, PK)</td>
-</tr>
-<tr>
-<td>department_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2>
+<h3>Example Queries: <br/></h3>
+<h4 id="1.-Rounding-salaries-to-2-decimals:">1. Rounding salaries to 2 decimals:<a class="anchor-link" href="#1.-Rounding-salaries-to-2-decimals:">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rounded_salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_salary</span><span class="p">;</span>
+</pre></div>
+<h4 id="2.-Truncating-without-rounding-(drop-extra-decimals):">2. Truncating without rounding (drop extra decimals):<a class="anchor-link" href="#2.-Truncating-without-rounding-(drop-extra-decimals):">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">(</span><span class="mi">123</span><span class="p">.</span><span class="mi">4567</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">truncated</span><span class="p">;</span>
+<span class="c1">-- Output: 123.45</span>
+</pre></div>
+<h4 id="3.-Converting-negative-values-to-positive:">3. Converting negative values to positive:<a class="anchor-link" href="#3.-Converting-negative-values-to-positive:">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">ABS</span><span class="p">(</span><span class="o">-</span><span class="mi">2500</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">absolute_value</span><span class="p">;</span>
+<span class="c1">-- Output: 2500</span>
+</pre></div>
+<h4 id="4.-Formatting-for-readability-(commas-+-decimals):">4. Formatting for readability (commas + decimals):<a class="anchor-link" href="#4.-Formatting-for-readability-(commas-+-decimals):">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">FORMAT</span><span class="p">(</span><span class="mi">1234567</span><span class="p">.</span><span class="mi">891</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">formatted_number</span><span class="p">;</span>
+<span class="c1">-- Output: "1,234,567.89"</span>
+</pre></div>
+<h4 id="5.-Using-random-numbers-(e.g.,-for-sampling):">5. Using random numbers (e.g., for sampling):<a class="anchor-link" href="#5.-Using-random-numbers-(e.g.,-for-sampling):">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">RAND</span><span class="p">()</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">random_value</span><span class="p">;</span>
+</pre></div>
+<h4 id="6.-Ceiling-vs-Floor:">6. Ceiling vs Floor:<a class="anchor-link" href="#6.-Ceiling-vs-Floor:">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CEIL</span><span class="p">(</span><span class="mi">12</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ceil_val</span><span class="p">,</span><span class="w"> </span><span class="n">FLOOR</span><span class="p">(</span><span class="mi">12</span><span class="p">.</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">floor_val</span><span class="p">;</span>
+<span class="c1">-- Output: ceil_val = 13, floor_val = 12</span>
+</pre></div>
 </div>
 </div>
 </div>

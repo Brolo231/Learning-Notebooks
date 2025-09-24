@@ -86,5 +86,19 @@
   "02_Data_Analysis/MySQL/1. Begginer SQL/3. HAVING.html": "1755122572",
   "02_Data_Analysis/MySQL/1. Begginer SQL/4. LIMIT and ALIASING.html": "1755122558",
   "02_Data_Analysis/MySQL/1. Begginer SQL/1. WHERE, LIKE.html": "1755122483",
-  "02_Data_Analysis/MySQL/1. Begginer SQL/2. GROUP BY, ORDER BY.html": "1755122577"
+  "02_Data_Analysis/MySQL/1. Begginer SQL/2. GROUP BY, ORDER BY.html": "1755122577",
+  "02_Data_Analysis/MySQL/3. Advanced SQL/012. CTE - Common table expression.html": "1758638231",
+  "02_Data_Analysis/MySQL/3. Advanced SQL/013. Temp Tables.html": "1758640500",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /005. JOINS.html": "1756749528",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /008. CASE.html": "1756749559",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /011. Window Functions.html": "1756758945",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /007. String Functions.html": "1756749550",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /010. Number Functions.html": "1756758940",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /006. UNIONS.html": "1756749540",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /009. SUBQUERIES.html": "1756749568",
+  "02_Data_Analysis/MySQL/4. SQL Cleaning Techniques/SQL Cleaning Techniques.html": "1758711013",
+  "../Notebooks/02_Data_Analysis/Data Analysis Roadmap.html": "1758733028",
+  "../Notebooks/02_Data_Analysis/MySQL/SQL roadmap.html": "1758733067",
+  "../Notebooks/02_Data_Analysis/MySQL/00. Database and Tables.html": "1758733219",
+  "../Notebooks/02_Data_Analysis/MySQL/4. SQL Cleaning Techniques/SQL Cleaning Techniques.html": "1758733331"
 }

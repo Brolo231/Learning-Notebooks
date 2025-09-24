@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>00. Database and Tables</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>013. Temp Tables</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,111 +7526,47 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f81d24a8-dbac-45b0-bd2e-6988e02db9db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4087220b-212a-46d4-83f0-371063748e90">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="MySQL-Learning">MySQL Learning<a class="anchor-link" href="#MySQL-Learning">¶</a></h1><hr/>
-<h3 id="The-following-notebooks:">The following notebooks:<a class="anchor-link" href="#The-following-notebooks:">¶</a></h3><ol>
-<li>Beginner SQl,</li>
-<li>Intermediate SQL</li>
-<li>Advanced SQL</li>
-</ol>
-<h3>are structured around <a href="https://www.youtube.com/watch?v=rGx1QNdYzvs&amp;list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF" target="_blank">Alex the Analyst's Data Analyst Bootcamp </a></h3>
+<h1 id="Temp-Tables">Temp Tables<a class="anchor-link" href="#Temp-Tables">¶</a></h1><hr/>
+<p>A temporary table is a table that exists only during the session in which it is created. It is automatically dropped when:</p>
+<ul>
+<li>The database session ends, or</li>
+<li>The connection to the MySQL server is closed.</li>
+</ul>
+<p>Temporary tables are useful for storing intermediate results that you need to manipulate before saving them permanently.</p>
+<p><strong>Note:</strong> You have to highlight and run the temp table query for it to initialize</p>
 <hr/>
-<h4 id="The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">The introductory MySQL videos cover the database and database tables that will be used throughout the MySQL course content:<a class="anchor-link" href="#The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">¶</a></h4><hr/>
-<h2 id="Database-Schema:-Parks_and_Recreation">Database Schema: Parks_and_Recreation<a class="anchor-link" href="#Database-Schema:-Parks_and_Recreation">¶</a></h2><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_demographics</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT (PK)</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>age</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>VARCHAR(10)</td>
-</tr>
-<tr>
-<td>birth_date</td>
-<td>DATE</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_salary</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>occupation</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>salary</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>dept_id</td>
-<td>INT</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: parks_departments</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>department_id</td>
-<td>INT (AI, PK)</td>
-</tr>
-<tr>
-<td>department_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TEMPORARY</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">temp_table</span>
+<span class="p">(</span>
+<span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="n">surname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">temp_table</span>
+<span class="k">VALUES</span><span class="p">(</span>
+<span class="s1">'ben'</span><span class="p">,</span><span class="w"> </span><span class="s1">'leslie'</span>
+<span class="p">);</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">temp_table</span><span class="p">;</span>
+</pre></div>
+<p><strong>Note:</strong> Under schemas, no table was created called 'temp_table'. It only exists in this session (can be called as many times during session) and will be deleted when the session ends or the server is closed.</p>
+<p><img alt="No description has been provided for this image" src="static/TEMP_01.png" style="display: flex; width: 60%; margin:auto;"/><br/></p>
+<hr/>
+<h4 id="The-next-method-of-using-temp-tables-is-as-follows;">The next method of using temp tables is as follows;<a class="anchor-link" href="#The-next-method-of-using-temp-tables-is-as-follows;">¶</a></h4><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TEMPORARY</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">salary_above_50k</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_salary</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">salary_above_50k</span><span class="p">;</span>
+</pre></div>
+<p><img alt="No description has been provided for this image" src="static/TEMP_02.png" style="display: flex; width: 60%; margin:auto;"/><br/></p>
 </div>
 </div>
 </div>

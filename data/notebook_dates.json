@@ -44,5 +44,15 @@
   "02_Data_Analysis/Pandas/Pandas Project Ideas.html": "1754158782",
   "02_Data_Analysis/Pandas/Running CSV with Pyodide Code Editor.html": "1754293242",
   "05_Web_Development/Flask Basics/How to create a simple web app with Flask.html": "1752155792",
-  "05_Web_Development/Flask Socket IO/1. How to setup a simple real time communication socket io web app.html": "1752784145"
+  "05_Web_Development/Flask Socket IO/1. How to setup a simple real time communication socket io web app.html": "1752784145",
+  "02_Data_Analysis/MySQL/3. Advanced SQL/012. CTE - Common table expression.html": "1758638231",
+  "02_Data_Analysis/MySQL/3. Advanced SQL/013. Temp Tables.html": "1758640500",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /005. JOINS.html": "1756749528",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /008. CASE.html": "1756749559",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /011. Window Functions.html": "1756758945",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /007. String Functions.html": "1756749550",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /010. Number Functions.html": "1756758940",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /006. UNIONS.html": "1756749540",
+  "02_Data_Analysis/MySQL/2 Intermediate SQL /009. SUBQUERIES.html": "1756749568",
+  "02_Data_Analysis/MySQL/4. SQL Cleaning Techniques/SQL Cleaning Techniques.html": "1758711013"
 }

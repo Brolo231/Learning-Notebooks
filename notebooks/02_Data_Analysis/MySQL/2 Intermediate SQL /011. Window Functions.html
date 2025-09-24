@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>00. Database and Tables</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>011. Window Functions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,111 +7526,74 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f81d24a8-dbac-45b0-bd2e-6988e02db9db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=363417c5-0eac-4b9c-90b6-cdfc233c9157">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="MySQL-Learning">MySQL Learning<a class="anchor-link" href="#MySQL-Learning">¶</a></h1><hr/>
-<h3 id="The-following-notebooks:">The following notebooks:<a class="anchor-link" href="#The-following-notebooks:">¶</a></h3><ol>
-<li>Beginner SQl,</li>
-<li>Intermediate SQL</li>
-<li>Advanced SQL</li>
-</ol>
-<h3>are structured around <a href="https://www.youtube.com/watch?v=rGx1QNdYzvs&amp;list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF" target="_blank">Alex the Analyst's Data Analyst Bootcamp </a></h3>
+<style>
+@media (max-width: 600px) {
+    img[style] { width: 90% !important; }
+}
+</style>
+<h1 id="Window-Functions">Window Functions<a class="anchor-link" href="#Window-Functions">¶</a></h1><hr/>
+<h3 id="A-window-function-performs-a-calculation-across-a-set-of-rows-that-are-related-to-the-current-row,-without-collapsing-them-into-a-single-result-(like-GROUP-BY-would).">A window function performs a calculation across a set of rows that are related to the current row, without collapsing them into a single result (like GROUP BY would).<a class="anchor-link" href="#A-window-function-performs-a-calculation-across-a-set-of-rows-that-are-related-to-the-current-row,-without-collapsing-them-into-a-single-result-(like-GROUP-BY-would).">¶</a></h3><br/>
+We can think of it as <span style="color: lightgreen;">**“Perform an aggregate (like SUM, AVG, ROW_NUMBER) but keep all rows visible.”**</span>
 <hr/>
-<h4 id="The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">The introductory MySQL videos cover the database and database tables that will be used throughout the MySQL course content:<a class="anchor-link" href="#The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">¶</a></h4><hr/>
-<h2 id="Database-Schema:-Parks_and_Recreation">Database Schema: Parks_and_Recreation<a class="anchor-link" href="#Database-Schema:-Parks_and_Recreation">¶</a></h2><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_demographics</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT (PK)</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>age</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>VARCHAR(10)</td>
-</tr>
-<tr>
-<td>birth_date</td>
-<td>DATE</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_salary</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>occupation</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>salary</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>dept_id</td>
-<td>INT</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: parks_departments</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>department_id</td>
-<td>INT (AI, PK)</td>
-</tr>
-<tr>
-<td>department_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2>
+<h4 id="Syntax:"><strong>Syntax:</strong><a class="anchor-link" href="#Syntax:">¶</a></h4><div class="highlight"><pre><span></span><span class="n">function_name</span><span class="p">(</span><span class="k">column</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">expr</span>
+<span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">expr</span>
+<span class="p">)</span>
+</pre></div>
+<hr/>
+<p>The following:</p>
+<ul>
+<li>selects gender, average salary over everything</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">()</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
+</pre></div>
+<p>What this tells us is that all the men and women make an average salary of 56090.9091</p>
+<img alt="No description has been provided for this image" src="static/OVER_01.png" style="display: flex; width: 40%; margin:auto;"/>
+<br/>
+<hr/>
+<br/>
+<p>Now, we are partitioning by gender so that we get the average based on the unique sets of values under each gender value</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="w"> </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">gender</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
+</pre></div>
+<p>What this tells us is that all the men make a combined avg salary of 57428.5714 and all the women make  a combined avg salary of 53750.0000</p>
+<p><img alt="No description has been provided for this image" src="static/OVER_02.png" style="display: flex; width: 40%; margin:auto;"/><br/></p>
+<h4 id="We-can-also-use-window-functions-to-clearly-show-rolling-totals:">We can also use window functions to clearly show rolling totals:<a class="anchor-link" href="#We-can-also-use-window-functions-to-clearly-show-rolling-totals:">¶</a></h4><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">gender</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
+</pre></div>
+<p><img alt="No description has been provided for this image" src="static/OVER_03.png" style="display: flex; width: 90%; margin:auto;"/><br/></p>
+<p><br/><hr/><br/></p>
+<p>We can also use ROW_NUMBER() to generate an ordered list of numbers:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">gender</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">()</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dem</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">employee_salary</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sal</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">dem</span><span class="p">.</span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sal</span><span class="p">.</span><span class="n">employee_id</span>
+<span class="p">;</span>
+</pre></div>
+<p><img alt="No description has been provided for this image" src="static/OVER_04.png" style="display: flex; width: 40%; margin:auto;"/><br/></p>
+<p><strong>and</strong> we can still use <strong>PARTION BY</strong> together with <strong>ROW_NUMBER()</strong></p>
+<p><img alt="No description has been provided for this image" src="static/OVER_05.png" style="display: flex; width: 40%; margin:auto;"/><br/></p>
+<p><br/><hr/><br/></p>
+<p><strong>Additional Note:</strong> Rank is another function that is used similarily to ROW_NUMBER(). However, rank is used to 'rank' / 'order by' unique values and taking account of duplicate/ similar values whereas ROW_NUMBER() ignores duplicate values and continues to incrememnt its values. For example</p>
+<p><strong>Note:</strong> Rank will skip the value that it is duplicating the value for whereas dense rank continues the incrementation without skipping a number placement</p>
+<p><img alt="No description has been provided for this image" src="static/OVER_06.png" style="display: flex; width: 60%; margin:auto;"/><br/></p>
 </div>
 </div>
 </div>

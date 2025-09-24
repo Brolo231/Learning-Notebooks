@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>00. Database and Tables</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>SQL Cleaning Techniques</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,111 +7526,103 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f81d24a8-dbac-45b0-bd2e-6988e02db9db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5f5b6396-17fb-4165-81ad-cf9f0e3c1d96">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="MySQL-Learning">MySQL Learning<a class="anchor-link" href="#MySQL-Learning">¶</a></h1><hr/>
-<h3 id="The-following-notebooks:">The following notebooks:<a class="anchor-link" href="#The-following-notebooks:">¶</a></h3><ol>
-<li>Beginner SQl,</li>
-<li>Intermediate SQL</li>
-<li>Advanced SQL</li>
-</ol>
-<h3>are structured around <a href="https://www.youtube.com/watch?v=rGx1QNdYzvs&amp;list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF" target="_blank">Alex the Analyst's Data Analyst Bootcamp </a></h3>
+<h1 id="%F0%9F%94%8D-Why-Data-Cleaning-Matters">🔍 Why Data Cleaning Matters<a class="anchor-link" href="#%F0%9F%94%8D-Why-Data-Cleaning-Matters">¶</a></h1><hr/>
+<h4 id="Before-diving-into-SQL%E2%80%99s-prowess,-let%E2%80%99s-understand-why-data-cleaning-is-non-negotiable:">Before diving into SQL’s prowess, let’s understand why data cleaning is non-negotiable:<a class="anchor-link" href="#Before-diving-into-SQL%E2%80%99s-prowess,-let%E2%80%99s-understand-why-data-cleaning-is-non-negotiable:">¶</a></h4><p><strong>🎯 Accuracy:</strong> Clean data ensures that analyses are based on correct information, leading to valid conclusions. <br/>
+<strong>⚡ Efficiency:</strong> It reduces processing time, making data workflows smoother and faster. <br/>
+<strong>💡 Decision-Making:</strong> Reliable data drives better strategic decisions, minimizing risks and maximizing opportunities.</p>
 <hr/>
-<h4 id="The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">The introductory MySQL videos cover the database and database tables that will be used throughout the MySQL course content:<a class="anchor-link" href="#The-introductory-MySQL-videos-cover-the-database-and-database-tables-that-will-be-used-throughout-the-MySQL-course-content:">¶</a></h4><hr/>
-<h2 id="Database-Schema:-Parks_and_Recreation">Database Schema: Parks_and_Recreation<a class="anchor-link" href="#Database-Schema:-Parks_and_Recreation">¶</a></h2><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_demographics</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT (PK)</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>age</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>VARCHAR(10)</td>
-</tr>
-<tr>
-<td>birth_date</td>
-<td>DATE</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: employee_salary</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>employee_id</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>occupation</td>
-<td>VARCHAR(50)</td>
-</tr>
-<tr>
-<td>salary</td>
-<td>INT</td>
-</tr>
-<tr>
-<td>dept_id</td>
-<td>INT</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2><p><strong><div style="text-align: center;">Table: parks_departments</div></strong></p>
-<table>
-<thead>
-<tr>
-<th>Column Name</th>
-<th>Data Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>department_id</td>
-<td>INT (AI, PK)</td>
-</tr>
-<tr>
-<td>department_name</td>
-<td>VARCHAR(50)</td>
-</tr>
-</tbody>
-</table>
-<h2 id=""><a class="anchor-link" href="#">¶</a></h2>
+<h3 id="%E2%9C%85-Best-Practices-for-Data-Cleaning-with-SQL">✅ Best Practices for Data Cleaning with SQL<a class="anchor-link" href="#%E2%9C%85-Best-Practices-for-Data-Cleaning-with-SQL">¶</a></h3><ol>
+<li>🔐 Back Up Your Data: Always work on a copy to prevent accidental data loss.</li>
+<li>🗒️ Document Changes: Keep a log of all cleaning steps for reproducibility.</li>
+<li>🔄 Iterative Cleaning: Data cleaning is rarely a one-time process; continuously refine your data.</li>
+<li>🤖 Automate with Scripts: Use stored procedures and scripts to automate repetitive cleaning tasks.</li>
+<li>📈 Monitor Data Quality: Set up real-time dashboards to track data health.</li>
+</ol>
+<hr/>
+<h3 id="1.-%F0%9F%97%91%EF%B8%8F-Removing-Duplicates">1. 🗑️ Removing Duplicates<a class="anchor-link" href="#1.-%F0%9F%97%91%EF%B8%8F-Removing-Duplicates">¶</a></h3><p>Duplicate records can distort analysis. Using ROW_NUMBER() or DISTINCT, SQL effortlessly identifies and eliminates these redundancies:</p>
+<div class="highlight"><pre><span></span><span class="k">WITH</span><span class="w"> </span><span class="n">RankedData</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span>
+<span class="w">          </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column_to_check_duplicates</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rn</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span>
+<span class="p">)</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">RankedData</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rn</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+<hr/>
+<h3 id="2.%E2%9D%93-Handling-Missing-Values">2.❓ Handling Missing Values<a class="anchor-link" href="#2.%E2%9D%93-Handling-Missing-Values">¶</a></h3><p>Missing data can skew results. SQL offers strategies like imputation or deletion:</p>
+<h4 id="%F0%9F%9A%AB-Removing-Rows-with-NULLs:">🚫 Removing Rows with NULLs:<a class="anchor-link" href="#%F0%9F%9A%AB-Removing-Rows-with-NULLs:">¶</a></h4><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span><span class="w"> </span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">column_with_missing</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</pre></div>
+<br/>
+<hr style="width: 50%; margin: auto;"/>
+<br/>
+<h4 id="%F0%9F%A7%AE-Imputation-with-Average:">🧮 Imputation with Average:<a class="anchor-link" href="#%F0%9F%A7%AE-Imputation-with-Average:">¶</a></h4><p><strong>COALESCE temporarily fills NULL values during a query without modifying the table.</strong></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">column_with_missing</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">column_with_missing</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="n">ROUND</span><span class="p">((</span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">column_with_missing</span><span class="p">)</span><span class="w"> </span>
+<span class="w">                       </span><span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span><span class="w"> </span>
+<span class="w">                       </span><span class="k">WHERE</span><span class="w"> </span><span class="n">column_with_missing</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span>
+<span class="w">       </span><span class="k">AS</span><span class="w"> </span><span class="n">filled_value</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span><span class="p">;</span>
+</pre></div>
+<br/>
+<hr style="width: 50%; margin: auto;"/>
+<br/>
+<h4 id="UPDATE-permanently-replaces-NULL-values-with-the-column%E2%80%99s-average.">UPDATE permanently replaces NULL values with the column’s average.<a class="anchor-link" href="#UPDATE-permanently-replaces-NULL-values-with-the-column%E2%80%99s-average.">¶</a></h4><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">your_table</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">column_with_missing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">column_with_missing</span><span class="p">)</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">your_table</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">column_with_missing</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">column_with_missing</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</pre></div>
+<hr/>
+<h3 id="3.-%F0%9F%94%A4-Standardizing-Data-Formats">3. 🔤 Standardizing Data Formats<a class="anchor-link" href="#3.-%F0%9F%94%A4-Standardizing-Data-Formats">¶</a></h3><p>Inconsistent data formats can be problematic. SQL functions like UPPER(), LOWER(), TRIM(), and CAST() help standardize data:</p>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">your_table</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">name_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="k">TRIM</span><span class="p">(</span><span class="n">name_column</span><span class="p">));</span>
+</pre></div>
+<hr/>
+<h3 id="4.-%F0%9F%93%9D-Correcting-Inaccurate-Data">4. 📝 Correcting Inaccurate Data<a class="anchor-link" href="#4.-%F0%9F%93%9D-Correcting-Inaccurate-Data">¶</a></h3><p>Using CASE WHEN statements, SQL allows conditional updates to rectify incorrect entries:</p>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">your_table</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CASE</span>
+<span class="w">  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Actve'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Active'</span>
+<span class="w">  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Inactve'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Inactive'</span>
+<span class="w">  </span><span class="k">ELSE</span><span class="w"> </span><span class="n">status</span>
+<span class="k">END</span><span class="p">;</span>
+</pre></div>
+<hr/>
+<h3 id=""><a class="anchor-link" href="#">¶</a></h3><h3 id="5.%F0%9F%94%92-Validating-Data-Integrity">5.🔒 Validating Data Integrity<a class="anchor-link" href="#5.%F0%9F%94%92-Validating-Data-Integrity">¶</a></h3><p>SQL constraints (like PRIMARY KEY, FOREIGN KEY, CHECK, and UNIQUE) enforce data validity right at the database level, preventing dirty data from entering in the first place 🚧.</p>
+<br/>
+<hr/>
+<br/>
+<h1 style="text-align: center;"> 🎯 Advanced Data Cleaning Techniques </h1>
+<hr/>
+<h3 id="%F0%9F%94%84-Pivoting-and-Unpivoting-Data:-Transform-datasets-for-better-analysis-using-PIVOT-and-UNPIVOT.">🔄 Pivoting and Unpivoting Data: Transform datasets for better analysis using PIVOT and UNPIVOT.<a class="anchor-link" href="#%F0%9F%94%84-Pivoting-and-Unpivoting-Data:-Transform-datasets-for-better-analysis-using-PIVOT-and-UNPIVOT.">¶</a></h3><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">department</span><span class="p">,</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="n">revenue</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">sales_data</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">SourceTable</span>
+<span class="n">PIVOT</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SUM</span><span class="p">(</span><span class="n">revenue</span><span class="p">)</span>
+<span class="w">  </span><span class="k">FOR</span><span class="w"> </span><span class="k">month</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">([</span><span class="n">Jan</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="n">Feb</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="n">Mar</span><span class="p">])</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">PivotTable</span><span class="p">;</span>
+</pre></div>
+<hr/>
+<h3 id="%F0%9F%93%8A-Using-Window-Functions:-Analyze-data-trends-and-identify-anomalies-with-functions-like-LAG(),-LEAD(),-and-RANK().">📊 Using Window Functions: Analyze data trends and identify anomalies with functions like LAG(), LEAD(), and RANK().<a class="anchor-link" href="#%F0%9F%93%8A-Using-Window-Functions:-Analyze-data-trends-and-identify-anomalies-with-functions-like-LAG(),-LEAD(),-and-RANK().">¶</a></h3><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span>
+<span class="w">       </span><span class="n">LAG</span><span class="p">(</span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span>
+<span class="w">                  </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="nb">date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Previous_Sales</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">sales_data</span><span class="p">;</span>
+</pre></div>
+<hr/>
+<h3 id="%F0%9F%A7%B9-Regular-Expressions-(REGEX):-SQL%E2%80%99s-REGEXP_REPLACE-and-REGEXP_LIKE-functions-are-powerful-for-pattern-matching-and-text-cleaning.">🧹 Regular Expressions (REGEX): SQL’s REGEXP_REPLACE and REGEXP_LIKE functions are powerful for pattern matching and text cleaning.<a class="anchor-link" href="#%F0%9F%A7%B9-Regular-Expressions-(REGEX):-SQL%E2%80%99s-REGEXP_REPLACE-and-REGEXP_LIKE-functions-are-powerful-for-pattern-matching-and-text-cleaning.">¶</a></h3><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">REGEXP_REPLACE</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">'[^a-zA-Z0-9@._]'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Cleaned_Email</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+</pre></div>
 </div>
 </div>
 </div>

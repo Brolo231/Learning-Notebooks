@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Case Studies</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>014. Stored Procedures</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,59 +7526,57 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=298c940a-81d4-41d8-ac2a-22ff210b9754">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=119c4d2d-8684-4fcf-ac5d-05717c4caf0d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Case-Studies-(AI-generated)">Case Studies (AI generated)<a class="anchor-link" href="#Case-Studies-(AI-generated)">¶</a></h1><hr/>
-<h2 id="Case-Study-1:-Retail-Store-Chain">Case Study 1: Retail Store Chain<a class="anchor-link" href="#Case-Study-1:-Retail-Store-Chain">¶</a></h2><p><strong>Scenario:</strong>
-You are working as a junior data analyst for FreshMart, a regional grocery store chain with 15 branches across the country. Recently, management has noticed that profits are flat despite an increase in overall sales. They suspect issues like inventory management, seasonal promotions, or regional performance differences. FreshMart collects data on sales, customer loyalty cards, supplier deliveries, and promotions.</p>
-<h4 id="Tasks-/-Exercises:">Tasks / Exercises:<a class="anchor-link" href="#Tasks-/-Exercises:">¶</a></h4><ol>
-<li>Generate 5 business questions related to competitor performance in the region (e.g., pricing, promotions, market share).</li>
-</ol>
-<textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;">
-</textarea>
+<h1 id="Stored-Prodcedures">Stored Prodcedures<a class="anchor-link" href="#Stored-Prodcedures">¶</a></h1><hr/>
+<h4 id="Stored-procedures-are-way-of-storing-your-sql-code-so-that-you-can-reuse-it.">Stored procedures are way of storing your sql code so that you can reuse it.<a class="anchor-link" href="#Stored-procedures-are-way-of-storing-your-sql-code-so-that-you-can-reuse-it.">¶</a></h4><hr/>
+<h3 id="%E2%9C%85-Syntax">✅ Syntax<a class="anchor-link" href="#%E2%9C%85-Syntax">¶</a></h3><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procedure_name</span><span class="p">()</span>
+<span class="w">    </span><span class="n">query_statements</span>
+<span class="p">;</span>
+</pre></div>
+<p>Then we need to <em>call</em> the stored procdure to you use:</p>
+<div class="highlight"><pre><span></span><span class="k">CALL</span><span class="w"> </span><span class="n">procedure_name</span><span class="p">();</span>
+</pre></div>
+<hr/>
+<p>When creating stored procedures, it is likely that you will need multiple queries to be stored in the procedure. In this case we can make use of <code>DELIMITER</code></p>
+<div class="highlight"><pre><span></span><span class="k">DELIMITER</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">stored_procedure</span><span class="p">()</span>
+<span class="k">BEGIN</span><span class="w"> </span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">employee_salary</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">employee_salary</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000</span><span class="p">;</span>
+<span class="k">END</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</pre></div>
+<hr/>
+<p>We can also use a <em>parameter</em> together with stored procedures which acts as a variable when we pass an argument to the stored procedure when we call it:</p>
+<p>For the following we are:</p>
 <ol>
-<li>Create 3 possible data sources that could help investigate why sales are not translating into higher profits.</li>
+<li>Creating a stored procedure that accepts a parameter emp_id_param</li>
+<li>the parameter's data type has to be declared - INT</li>
+<li>we pass the parameter variable in a condition in the query</li>
+<li>when we call the stored procedure we pass our value (In this case we assume we know that we want employee id 1, we just want the salary for that specific person)</li>
 </ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="2">
-<li>Write 2 hypotheses explaining the gap between sales growth and stagnant profits.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="3">
-<li>Identify at least 3 key metrics that would help FreshMart monitor store performance.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="4">
-<li>Suggest 1 short-term and 1 long-term analysis project that could address profitability concerns.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<p><br/><hr/><br/></p>
-<h2 id="Case-Study-2:-E-commerce-Website">Case Study 2: E-commerce Website<a class="anchor-link" href="#Case-Study-2:-E-commerce-Website">¶</a></h2><p><strong>Scenario:</strong>
-You join the analytics team at ShopEase, an e-commerce company specializing in electronics and fashion. The company tracks user behavior (clicks, search queries, cart activity), but cart abandonment rates are high. Marketing believes it’s due to shipping costs, while the product team thinks the website design is confusing. Customers have also complained about late deliveries.</p>
-<h4 id="Tasks-/-Exercises:">Tasks / Exercises:<a class="anchor-link" href="#Tasks-/-Exercises:">¶</a></h4><ol>
-<li>Generate 5 analytical questions related to cart abandonment (factors, trends, customer segments).</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="2">
-<li>List 3 potential KPIs to measure checkout success and conversion.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="3">
-<li>Draft 2 survey or feedback questions you would recommend sending to customers to gather qualitative data.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="4">
-<li>Identify 3 possible root causes of cart abandonment that could be tested with data.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
-<ol start="5">
-<li>Propose a basic A/B test design the company could run to validate if shipping costs affect abandonment.</li>
-</ol>
-<p><textarea style="color: green; min-width: 60%; max-width: 60%;  min-height: 10rem; margin: auto; display: block;"></textarea></p>
+<div class="highlight"><pre><span></span><span class="k">DELIMITER</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">stored_procedure</span><span class="p">(</span><span class="n">emp_id_param</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<span class="k">BEGIN</span><span class="w"> </span>
+
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">salary</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">employee_salary</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emp_id_param</span><span class="p">;</span>
+
+<span class="k">END</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</pre></div>
+<p>CALL stored_procedure(1);</p>
 </div>
 </div>
 </div>

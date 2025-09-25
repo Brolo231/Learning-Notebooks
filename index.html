@@ -80,6 +80,9 @@ details details summary {
 <details>
 <summary>02_Data_Analysis</summary>
   <details>
+  <summary>Database Design</summary>
+  </details>
+  <details>
   <summary>Introduction to Data Analytics</summary>
 
             <div class='notebook-entry'>
@@ -96,7 +99,7 @@ details details summary {
 
             <div class='notebook-entry'>
                 <a href='notebooks/02_Data_Analysis/Introduction to Data Analytics/Case Studies.html' target='_blank' rel='noopener noreferrer'>📓 Case studies</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 31 Aug 2025</div>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 25 Sep 2025</div>
             </div>
             
 
@@ -230,6 +233,12 @@ details details summary {
                 <div class='created-date'><span class='arrow'>&#x21B3;</span> 23 Sep 2025</div>
             </div>
             
+
+            <div class='notebook-entry'>
+                <a href='notebooks/02_Data_Analysis/MySQL/3. Advanced SQL/014. Stored Procedures.html' target='_blank' rel='noopener noreferrer'>📓 014. stored procedures</a>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 25 Sep 2025</div>
+            </div>
+            
       <details>
       <summary>static</summary>
       </details>
@@ -246,13 +255,13 @@ details details summary {
 
             <div class='notebook-entry'>
                 <a href='notebooks/02_Data_Analysis/MySQL/00. Database and Tables.html' target='_blank' rel='noopener noreferrer'>📓 00. database and tables</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 07 Aug 2025</div>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
             </div>
             
 
             <div class='notebook-entry'>
                 <a href='notebooks/02_Data_Analysis/MySQL/SQL roadmap.html' target='_blank' rel='noopener noreferrer'>📓 Sql roadmap</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Aug 2025</div>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
             </div>
             
   </details>
@@ -274,7 +283,7 @@ details details summary {
 
             <div class='notebook-entry'>
                 <a href='notebooks/02_Data_Analysis/Data Analysis Roadmap.html' target='_blank' rel='noopener noreferrer'>📓 Data analysis roadmap</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Aug 2025</div>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
             </div>
             
 </details>
@@ -488,10 +497,10 @@ document.getElementById('searchBox').addEventListener('input', function () {
     folder.open = visibleNested && filter.length > 0;
   });
 });
-const last30DaysLabels = ["Aug 26", "Aug 27", "Aug 28", "Aug 29", "Aug 30", "Aug 31", "Sep 01", "Sep 02", "Sep 03", "Sep 04", "Sep 05", "Sep 06", "Sep 07", "Sep 08", "Sep 09", "Sep 10", "Sep 11", "Sep 12", "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24"];
-const last30DaysCounts = [1, 0, 0, 2, 0, 6, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 5];
+const last30DaysLabels = ["Aug 27", "Aug 28", "Aug 29", "Aug 30", "Aug 31", "Sep 01", "Sep 02", "Sep 03", "Sep 04", "Sep 05", "Sep 06", "Sep 07", "Sep 08", "Sep 09", "Sep 10", "Sep 11", "Sep 12", "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25"];
+const last30DaysCounts = [0, 0, 0, 0, 5, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 5];
 const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const monthDaysCounts = [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 5, 0, 0, 0, 0, 0, 0];
+const monthDaysCounts = [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 5, 0, 0, 0, 0, 0];
 window.addEventListener('DOMContentLoaded', () => {
   const ctxBar = document.getElementById('barChart').getContext('2d');
   new Chart(ctxBar, {

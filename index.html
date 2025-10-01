@@ -239,6 +239,12 @@ details details summary {
                 <div class='created-date'><span class='arrow'>&#x21B3;</span> 25 Sep 2025</div>
             </div>
             
+
+            <div class='notebook-entry'>
+                <a href='notebooks/02_Data_Analysis/MySQL/3. Advanced SQL/015. Triggers and Events.html' target='_blank' rel='noopener noreferrer'>📓 015. triggers and events</a>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Oct 2025</div>
+            </div>
+            
       <details>
       <summary>static</summary>
       </details>
@@ -249,6 +255,15 @@ details details summary {
             <div class='notebook-entry'>
                 <a href='notebooks/02_Data_Analysis/MySQL/4. SQL Cleaning Techniques/SQL Cleaning Techniques.html' target='_blank' rel='noopener noreferrer'>📓 Sql cleaning techniques</a>
                 <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
+            </div>
+            
+    </details>
+    <details>
+    <summary>5. Table Operations </summary>
+
+            <div class='notebook-entry'>
+                <a href='notebooks/02_Data_Analysis/MySQL/5. Table Operations /001. Intorduction to DDL.html' target='_blank' rel='noopener noreferrer'>📓 001. intorduction to ddl</a>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 27 Sep 2025</div>
             </div>
             
     </details>
@@ -497,10 +512,10 @@ document.getElementById('searchBox').addEventListener('input', function () {
     folder.open = visibleNested && filter.length > 0;
   });
 });
-const last30DaysLabels = ["Aug 27", "Aug 28", "Aug 29", "Aug 30", "Aug 31", "Sep 01", "Sep 02", "Sep 03", "Sep 04", "Sep 05", "Sep 06", "Sep 07", "Sep 08", "Sep 09", "Sep 10", "Sep 11", "Sep 12", "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25"];
-const last30DaysCounts = [0, 0, 0, 0, 5, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 5];
-const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const monthDaysCounts = [14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 5, 0, 0, 0, 0, 0];
+const last30DaysLabels = ["Sep 02", "Sep 03", "Sep 04", "Sep 05", "Sep 06", "Sep 07", "Sep 08", "Sep 09", "Sep 10", "Sep 11", "Sep 12", "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01"];
+const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 5, 0, 1, 0, 0, 0, 1];
+const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+const monthDaysCounts = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 window.addEventListener('DOMContentLoaded', () => {
   const ctxBar = document.getElementById('barChart').getContext('2d');
   new Chart(ctxBar, {

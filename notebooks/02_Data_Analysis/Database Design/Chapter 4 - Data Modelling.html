@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 1 - Before the Advent of Database Systems</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 4 - Data Modelling</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,107 +7526,110 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd11a359-d561-4762-8c46-f2e727751299">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59191382-516e-4c10-896a-c722429e768d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Before-the-advent-of-database-systems">Before the advent of database systems<a class="anchor-link" href="#Before-the-advent-of-database-systems">¶</a></h1><p><strong>Before modern databases, organizations used file-based systems to manage data. Each department or application maintained its own data files, often independently. Over time, this approach led to major inefficiencies and management issues, prompting the shift to the database approach.</strong></p>
-<hr/>
-<h2 id="%F0%9F%97%83%EF%B8%8F-File-Based-System">🗃️ File-Based System<a class="anchor-link" href="#%F0%9F%97%83%EF%B8%8F-File-Based-System">¶</a></h2><p>A file-based system stores data in separate files, each manipulated by specific application programs developed for individual departments (e.g., banking systems handling accounts, loans, and statements).</p>
-<p><strong>❌ Disadvantages</strong></p>
-<ol>
-<li><p>Data Redundancy – Same information stored in multiple places, leading to wasted space and inconsistencies.</p>
-</li>
-<li><p>Data Isolation – Data scattered across files makes retrieval difficult for new applications.</p>
-</li>
-<li><p>Integrity Problems – Maintaining consistent and correct data is challenging due to hard-coded constraints in applications.</p>
-</li>
-<li><p>Security Problems – Inconsistent and ad-hoc access controls make enforcing privileges difficult.</p>
-</li>
-<li><p>Concurrency Access Issues – Files are often locked when in use, preventing simultaneous access by multiple users.</p>
-</li>
-</ol>
-<hr/>
-<h2 id="%F0%9F%92%BE-Database-Approach">💾 Database Approach<a class="anchor-link" href="#%F0%9F%92%BE-Database-Approach">¶</a></h2><p><strong>The database approach emerged to solve these issues by centralizing data management through database management software (DBMS).</strong></p>
+<h1 id="What-is-Data-Modelling?">What is Data Modelling?<a class="anchor-link" href="#What-is-Data-Modelling?">¶</a></h1><h4 id="Data-modelling-is-the-first-step-in-database-design.">Data modelling is the first step in database design.<a class="anchor-link" href="#Data-modelling-is-the-first-step-in-database-design.">¶</a></h4><hr/>
+<p>It’s a high-level, abstract phase (conceptual design) where the goal is to describe:</p>
 <ul>
-<li>Provides structured, efficient storage, manipulation, and retrieval of data.</li>
-<li>Supports business operations, including tracking customers, employees, orders, and products.</li>
-<li>Enables concurrent multi-user access, data integrity, and security control.</li>
+<li>The data in the database (e.g., students, lecturers, courses).</li>
+<li>The relationships between data (e.g., lecturers teach courses).</li>
+<li>The constraints on the data (e.g., student numbers have 8 digits).</li>
 </ul>
+<p>The result is a conceptual representation of the database that ensures all user requirements are captured before implementation.</p>
 <hr/>
-<h2 id="%F0%9F%93%8A-The-Meaning-of-Data">📊 The Meaning of Data<a class="anchor-link" href="#%F0%9F%93%8A-The-Meaning-of-Data">¶</a></h2><ul>
-<li>Data are factual pieces of information — such as measurements, statistics, or attributes of people, places, or events.</li>
-<li>Can be stored in various forms: spreadsheets, ledgers, lists, or databases.</li>
-<li>A database provides a powerful, mechanical means to organize, search, retrieve, and process information efficiently.</li>
-</ul>
+<h2 id="Steps-in-Database-Design">Steps in Database Design<a class="anchor-link" href="#Steps-in-Database-Design">¶</a></h2><ol>
+<li>Data Modelling – Defines entities, relationships, and constraints conceptually.</li>
+<li>Logical Design – Converts the conceptual model into a DBMS-specific structure.</li>
+<li>Physical Design – Defines how data is actually stored, organized, and accessed.</li>
+</ol>
+<p>Each step moves from abstract (conceptual) to detailed (physical).</p>
 <hr/>
-<h2 id="%F0%9F%94%91-Key-Terms">🔑 Key Terms<a class="anchor-link" href="#%F0%9F%94%91-Key-Terms">¶</a></h2><ul>
-<li>Concurrency: Database’s ability to allow multiple users to access the same record simultaneously.</li>
-<li>Data Element: A single fact or piece of information.</li>
-<li>Data Inconsistency: Conflicts between different copies of the same data.</li>
-<li>Data Isolation: Determines when and how data changes become visible to other users or systems.</li>
-<li>Data Integrity: Ensures data is correct and consistent.</li>
-<li>Data Redundancy: Occurs when a field needs to be updated in multiple places.</li>
-<li>Database Approach: Centralized management of organizational data.</li>
-<li>Database Management Software: Tool for storing, manipulating, and retrieving data efficiently.</li>
-<li>File-Based System: System where application programs manage their own data files independently.</li>
-</ul>
-<br/>
+<h4 id="Database-design-progresses-through-four-abstraction-levels,-from-most-general-to-most-specific:">Database design progresses through four abstraction levels, from most general to most specific:<a class="anchor-link" href="#Database-design-progresses-through-four-abstraction-levels,-from-most-general-to-most-specific:">¶</a></h4><table>
+<thead>
+<tr>
+<th><strong>Level</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Key Points</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>External Model</strong></td>
+<td>The user’s view of the database</td>
+<td>- Represents individual department views (e.g., HR vs Sales)<br/>- Each department has its own external schema</td>
+</tr>
+<tr>
+<td><strong>Conceptual Model</strong></td>
+<td>The overall community view</td>
+<td>- Shows the logical structure of the entire database<br/>- Includes entities, relationships, constraints, and business rules<br/>- Independent of hardware and DBMS</td>
+</tr>
+<tr>
+<td><strong>Internal Model</strong></td>
+<td>The database as seen by the DBMS</td>
+<td>- Maps the conceptual model into DBMS structures<br/>- Includes tables, keys, and constraints<br/>- Examples: Relational, Network, Hierarchical models</td>
+</tr>
+<tr>
+<td><strong>Physical Model</strong></td>
+<td>The actual storage structure</td>
+<td>- Focuses on performance, storage, and access methods<br/>- Defines how data is stored on disk (e.g., indexing, compression, encryption)</td>
+</tr>
+</tbody>
+</table>
 <hr/>
-<br/>
-<div style="text-align: center; font-size: 2rem; color: rgb(255, 105, 97);">EXERCISE 1 - Pg 12</div>
+<div style="text-align: center; font-size: 2rem; color: rgb(255, 105, 97);">EXERCISE 4 - Pg 22</div>
 <ol>
-<li>Discuss each of the following terms:<ul>
-<li>1.1 data</li>
-<li>1.2 field</li>
-<li>1.3 record</li>
-<li>1.4 file</li>
-</ul>
-</li>
+<li>Describe the purpose of a conceptual design.</li>
 </ol>
 <div style="color: lightgreen;">
-    1.1) Data are raw facts or figures collected for reference, analysis, or processing. <br/>
-    1.2) A field is an attribute (or column) of a record that stores values and generally has a specific data type <br/>
-    1.3) A record is a collection of related fields that describe one entity.
-Example: Name, Age, Height → “John”, 23, 178.3 <br/>
-    1.4) A file is a collection of related records stored together as a single unit, often representing a dataset.
 </div>
 <ol start="2">
-<li>What is data redundancy?</li>
+<li>How is a conceptual design different from a logical design?</li>
 </ol>
 <div style="color: lightgreen;">
-    Data redundancy occurs when the same information is stored in multiple places, causing duplication and inconsistencies when data is updated.
 </div>
 <ol start="3">
-<li>Discuss the disadvantages of file-based systems.</li>
+<li>What is an external model?</li>
 </ol>
 <div style="color: lightgreen;">
-    File-based systems can lead to data isolation, redundancy, reduced data integrity, and poor data quality. 
 </div>
 <ol start="4">
-<li>Explain the difference between data and information.</li>
+<li>What is a conceptual model?</li>
 </ol>
 <div style="color: lightgreen;">
-    Data are raw, unprocessed facts, while information is processed data that provides meaning or insight. 
 </div>
 <ol start="5">
-<li>Use Figure 1.2 (below) to answer the following questions.<ul>
-<li>5.1 In the table, how many records does the file contain?</li>
-<li>5.2 How many fields are there per record?</li>
-<li>5.3 What problem would you encounter if you wanted to produce a listing by city?</li>
-<li>5.4 How would you solve this problem by altering the file structure?</li>
-</ul>
-</li>
+<li>What is an internal model?</li>
 </ol>
-<img alt="Exercise 1.png Missing" src="static/exercise_1.png"/>
 <div style="color: lightgreen;">
-    5.1) 7 <br/>
-    5.2) 5 <br/>
-    5.3) The city is stored inside the MANAGER_ADDRESS field along with the street and postal code, meaning it’s not separated as its own field. This makes it difficult to sort or filter data by city. <br/>
-    5.4) Add a separate CITY field (and possibly STATE and POSTAL_CODE fields) to store city data individually.
-This would allow sorting and searching by city without affecting other address details.
+</div>
+<ol start="6">
+<li>What is a physical model?</li>
+</ol>
+<div style="color: lightgreen;">
+</div>
+<ol start="7">
+<li>Which model does the database administrator work with?</li>
+</ol>
+<div style="color: lightgreen;">
+</div>
+<ol start="8">
+<li>Which model does the end user work with?</li>
+</ol>
+<div style="color: lightgreen;">
+</div>
+<ol start="9">
+<li>What is logical data independence?</li>
+</ol>
+<div style="color: lightgreen;">
+</div>
+<ol start="10">
+<li>What is physical data independence?</li>
+</ol>
+<div style="color: lightgreen;">
 </div>
 </div>
 </div>

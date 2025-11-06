@@ -2,244 +2,467 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Python in WebAssembly</title>
+  <title>Python Interactive Learning + LeetCode</title>
   <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e1e;
-      color: white;
+      color: #e0e0e0;
       text-align: center;
       padding: 2rem;
+      line-height: 1.6;
     }
-
     #container {
-      width: 80%;
+      width: 90%;
+      max-width: 1200px;
       margin: auto;
     }
 
+    /* === LeetCode Section (Enhanced but Clean) === */
     textarea {
-      width: 100%;
-      height: 300px;
-      background-color: #2b2b2b;
-      color: #fff;
-      caret-color: white;
-      font-family: monospace;
+      width: 100%; height: 300px;
+      background-color: #2b2b2b; color: #fff;
+      font-family: 'Fira Code', 'Courier New', monospace;
       font-size: 16px;
-      padding: 10px;
-      border: 1px solid #444;
-      border-radius: 6px;
-      resize: vertical;
-      white-space: pre;
-      overflow: auto;
-      outline: none;
+      padding: 16px; border: 2px solid #444;
+      border-radius: 12px; resize: vertical;
+      white-space: pre; overflow: auto; outline: none;
+      caret-color: #00ffaa;
     }
-
     pre {
-      white-space: pre-wrap;
-      background: #333;
-      padding: 1rem;
-      margin-top: 1rem;
-      border-radius: 5px;
-      text-align: left;
-      color: #eee;
+      white-space: pre-wrap; background: #2d2d2d;
+      padding: 1.5rem; margin-top: 1rem;
+      border-radius: 12px; text-align: left; color: #eee;
+      border-left: 4px solid #00cc99;
     }
-
     button {
-      margin: 0.5rem;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
+      margin: 0.5rem; padding: 12px 24px; font-size: 16px; cursor: pointer;
+      border: none; border-radius: 50px; font-weight: 600;
     }
 
-    details {
-      margin-top: 1rem;
+    /* === Learning Mode - Your Beautiful Design === */
+    #learning-section {
+      display: none;
+      background: #252525;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid #333;
+    }
+
+    .topic-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+
+    .topic-btn {
+      background: linear-gradient(135deg, #0066cc, #0044aa);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,102,204,0.3);
+    }
+    .topic-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,102,204,0.5);
+    }
+
+    #topic-info {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #00cc99;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #1a1a1a;
+      border-radius: 12px;
+      border-left: 5px solid #00cc99;
+    }
+
+    .progress {
+      background: #2d2d2d;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      border: 1px solid #444;
+    }
+    .progress-bar {
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00cc99, #00ffaa);
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+    .progress-text {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    .completed { color: #00ffaa; }
+    .remaining { color: #ffcc00; }
+
+    #lesson-content {
+      background: #2d2d2d;
+      padding: 2rem;
+      border-radius: 16px;
+      margin: 2rem 0;
+      border: 1px solid #444;
+      min-height: 300px;
+    }
+
+    .question-title {
+      font-size: 1.8em;
+      margin: 0 0 1rem 0;
+      color: #00ccff;
+      font-weight: 700;
+    }
+
+    .meta {
+      background: #333;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      display: inline-block;
+      font-size: 0.9em;
+      margin: 0.5rem 0.5rem 1.5rem;
+      border: 1px solid #555;
+    }
+    .difficulty { background: #cc4400; }
+    .type { background: #0066aa; }
+
+    .content {
+      font-size: 1.15em;
+      line-height: 1.8;
+      margin: 1.5rem 0;
+      color: #ddd;
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      margin: 12px 0;
+      background: #3a3a3a;
+      border: 2px solid #555;
+      border-radius: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .option-btn:hover {
+      background: #4a4a4a;
+      border-color: #777;
+      transform: translateX(8px);
+    }
+    .correct {
+      background: #006400 !important;
+      border-color: #00ff00 !important;
+      color: white;
+    }
+    .incorrect {
+      background: #8B0000 !important;
+      border-color: #ff4444 !important;
+    }
+
+    input#fill-answer {
+      width: 100%;
+      max-width: 600px;
+      padding: 16px;
+      font-size: 1.1em;
+      background: #333;
+      border: 2px solid #555;
+      border-radius: 12px;
+      color: white;
+    }
+
+    textarea#code-exercise {
+      width: 100%;
+      height: 240px;
+      background: #1e1e1e;
+      color: #fff;
+      border: 2px solid #444;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 15px;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00cc99, #00aa88);
+      color: white;
+      padding: 16px 32px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,204,153,0.4);
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,204,153,0.6);
+    }
+
+    .btn-secondary {
+      background: #444;
+      color: white;
+      padding: 14px 28px;
+      border: 2px solid #666;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: #555;
+      border-color: #888;
+    }
+
+    .completion-message {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.5em;
+      color: #00ffaa;
+    }
+
+    /* LeetCode Specific */
+    #search-input {
+      padding: 14px;
+      width: 60%;
+      max-width: 500px;
+      font-size: 16px;
+      border-radius: 50px;
+      border: 2px solid #555;
+      background: #333;
+      color: white;
+    }
+    #search-results {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      text-align: left;
+      background: #2d2d2d;
+      border-radius: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    #search-results li {
+      padding: 12px 16px;
+      border-bottom: 1px solid #444;
+    }
+    #search-results li:hover {
+      background: #3a3a3a;
+    }
+    #problem-display {
+      background: #2d2d2d;
+      padding: 2rem;
+      border-radius: 16px;
+      margin: 2rem 0;
+      border: 1px solid #444;
       text-align: left;
     }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    ul {
-      line-height: 1.6;
-      margin-left: 20px;
+    #problem-display code {
+      background: #1a1a1a;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      color: #00ffaa;
     }
   </style>
 </head>
 <body>
   <div id="container">
-    <h1>WebAssembly Python</h1>
+    <h1>Interactive Python Learning + LeetCode</h1>
+    <button class="btn-primary" onclick="toggleMode()">Switch Mode</button>
 
-    <textarea id="code" spellcheck="false">print("Hello, WebAssembly!")</textarea>
-    <br>
-    <button onclick="runCode()">▶ Run (⌘ + B)</button>
-    <button onclick="saveCodeCache()">💾 Save Code to Cache</button>
-    <button onclick="resetCodeCache()">🧹 Reset Code Cache</button>
-    <pre id="output"></pre>
+    <!-- LeetCode Editor (Now Fully Featured) -->
+    <div id="leetcode-section">
+      <textarea id="code" spellcheck="false">print("Hello from Pyodide!")</textarea><br>
+      <button class="btn-primary" onclick="runCode()">Run Code (Ctrl+B)</button>
+      <button onclick="saveCodeCache()">Save Code</button>
+      <button onclick="resetCodeCache()">Clear Cache</button>
+      <pre id="output"></pre>
 
-    <details>
-      <summary>🔍 Search LeetCode Problems</summary>
-      <div style="margin-top: 1rem;">
-        <input id="search-input" type="text" placeholder="Search by title or keyword..." style="padding: 10px; width: 60%; font-size: 16px; border-radius: 6px; border: 1px solid #666; background-color: #2b2b2b; color: white;">
-        <button onclick="searchProblems()">Search</button>
-        <ul id="search-results" style="margin-top: 1rem;"></ul>
+      <details style="margin-top: 2rem;">
+        <summary style="cursor: pointer; font-size: 1.3em; font-weight: bold;">Search LeetCode Problems</summary>
+        <div style="margin-top: 1rem; text-align: center;">
+          <input id="search-input" type="text" placeholder="Search by title or keyword...">
+          <button class="btn-primary" onclick="searchProblems()">Search</button>
+          <ul id="search-results"></ul>
+        </div>
+      </details>
+
+      <div id="problem-display">
+        <h2 id="problem-title">Random LeetCode Problem</h2>
+        <p id="problem-description">Click a button below to load a random problem.</p>
       </div>
-    </details>
 
-    <div id="problem-display" style="text-align:left; background:#2b2b2b; padding:1rem; border-radius:6px; margin-bottom:1rem; margin-top:2rem;">
-      <h2 id="problem-title">Random LeetCode Problem</h2>
-      <p id="problem-description">Click a button below to load a random problem.</p>
+      <div class="action-buttons">
+        <button class="btn-primary" onclick="loadProblem('Easy')">Random Easy</button>
+        <button class="btn-primary" onclick="loadProblem('Medium')">Random Medium</button>
+        <button class="btn-primary" onclick="loadProblem('Hard')">Random Hard</button>
+      </div>
     </div>
 
-    <div style="margin-bottom: 1rem;">
-      <button onclick="loadProblem('Easy')">🎯 Random Easy</button>
-      <button onclick="loadProblem('Medium')">⚖️ Random Medium</button>
-      <button onclick="loadProblem('Hard')">🔥 Random Hard</button>
+    <!-- Learning Mode - Your Stunning Design -->
+    <div id="learning-section">
+      <h2>Python Learning Mode</h2>
+
+      <div class="topic-buttons">
+        <button class="topic-btn" onclick="loadLearningTopic('numpy')">NumPy Mastery</button>
+        <button class="topic-btn" onclick="loadLearningTopic('pandas')">Pandas Power</button>
+        <button class="topic-btn" onclick="loadLearningTopic('matplotlib')">Matplotlib Magic</button>
+      </div>
+
+      <div id="topic-info"></div>
+      <div class="progress" id="progress-info"></div>
+
+      <div id="lesson-content">
+        <p style="color:#888; font-size:1.2em;">Select a topic above to begin your learning journey</p>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-primary" onclick="nextRandomQuestion()">Next Question</button>
+        <button class="btn-secondary" onclick="restartTopic()">Restart Topic</button>
+      </div>
     </div>
   </div>
 
   <script>
+    let mode = "leetcode";
     let pyodideReady = false;
     let leetcodeData = [];
+    let learningData = null;
+    let shuffledIndices = [];
+    let currentIndex = 0;
+    let answered = new Set();
+    let currentTopic = "";
 
+    // Pyodide Setup
     async function main() {
       window.pyodide = await loadPyodide();
-      
-      await pyodide.loadPackage("pandas");
-      
+      await pyodide.loadPackage(["numpy", "pandas", "matplotlib"]);
       pyodideReady = true;
+      console.log("Pyodide ready!");
 
+      // Load LeetCode dataset
       try {
         const response = await fetch("leetcode_dataset_clean.json");
         leetcodeData = await response.json();
+        console.log("LeetCode dataset loaded:", leetcodeData.length, "problems");
       } catch (err) {
-        console.error("❌ Failed to load leetcode_dataset_clean.json", err);
-        document.getElementById("output").textContent = "❌ Failed to load problem dataset.";
+        console.error("Failed to load leetcode_dataset_clean.json", err);
       }
 
-      // Load cached code on startup
+      // Load saved code
       const saved = localStorage.getItem("userPythonCode");
-      if (saved) {
-        document.getElementById("code").value = saved;
-      }
+      if (saved) document.getElementById("code").value = saved;
     }
-
     main();
 
-    function saveCodeCache() {
-      const code = document.getElementById("code").value;
-      localStorage.setItem("userPythonCode", code);
-      alert("✅ Code saved to cache.");
+    function toggleMode() {
+      mode = mode === "leetcode" ? "learning" : "leetcode";
+      document.getElementById("leetcode-section").style.display = mode === "leetcode" ? "block" : "none";
+      document.getElementById("learning-section").style.display = mode === "learning" ? "block" : "none";
     }
 
-    function loadSavedCode() {
-      const saved = localStorage.getItem("userPythonCode");
-      if (saved) {
-        document.getElementById("code").value = saved;
-        alert("📋 Last saved code pasted.");
-      } else {
-        alert("⚠️ No saved code found.");
-      }
-    }
-
-    function resetCodeCache() {
-      const confirmReset = confirm("Clear your saved code from browser cache?");
-      if (confirmReset) {
-        localStorage.removeItem("userPythonCode");
-        document.getElementById("code").value = "";
-        alert("🧹 Code cache cleared.");
-      }
-    }
-
-    async function runCode() {
-      const output = document.getElementById("output");
-      if (!pyodideReady) {
-        output.textContent = "Loading Pyodide...";
+    // === LeetCode Functions ===
+    async function loadProblem(difficulty) {
+      if (!pyodideReady || leetcodeData.length === 0) {
+        document.getElementById("output").textContent = "Loading...";
         return;
       }
 
-      try {
-        await pyodide.runPythonAsync(`
-import sys, io
-sys.stdout = io.StringIO()
-sys.stderr = sys.stdout
-        `);
-        const code = document.getElementById("code").value;
-        await pyodide.runPythonAsync(code);
-        const result = await pyodide.runPythonAsync("sys.stdout.getvalue()");
-        output.textContent = result || "(No output)";
-      } catch (err) {
-        output.textContent = "❌ Error:\n" + err;
+      const filtered = leetcodeData.filter(item =>
+        item.difficulty?.toLowerCase() === difficulty.toLowerCase() &&
+        item.description && !["none", "sql schema"].includes(item.description.toLowerCase())
+      );
+
+      if (filtered.length === 0) {
+        document.getElementById("problem-description").innerHTML = `No ${difficulty} problems found.`;
+        return;
       }
+
+      const row = filtered[Math.floor(Math.random() * filtered.length)];
+      displayProblem(row);
     }
 
-    async function loadProblem(difficulty) {
-  const output = document.getElementById("output");
-  if (!pyodideReady) {
-    output.textContent = "Loading Pyodide...";
-    return;
-  }
+    function displayProblem(row) {
+      const { id, title, description, url, difficulty } = row;
+      const diff = difficulty.toLowerCase();
+      const color = diff === "easy" ? "limegreen" : diff === "medium" ? "goldenrod" : "tomato";
 
-  try {
-    // Filter by difficulty and skip "None"/"none" descriptions
-    const filtered = leetcodeData.filter(
-      item =>
-        item.difficulty.toLowerCase() === difficulty.toLowerCase() &&
-        item.description &&
-        item.description.toLowerCase() !== "none" &&
-        item.description.toLowerCase() !== "sql schema"
-    );
+      function escapeHtml(text) {
+        return text
+          .replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m])
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\n\n/g, '<br><br>')
+          .replace(/\n/g, '<br>');
+      }
 
-    if (filtered.length === 0) {
-      output.textContent = `❌ No ${difficulty} problems found with valid descriptions.`;
-      return;
+      const htmlDesc = escapeHtml(description);
+
+      document.getElementById("problem-title").innerHTML =
+        `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f; margin-left:10px;">(View on LeetCode)</a>`;
+
+      document.getElementById("problem-description").innerHTML = htmlDesc;
+
+      localStorage.setItem("activeProblemMeta", JSON.stringify({ id, title, url, description }));
     }
 
-    const row = filtered[Math.floor(Math.random() * filtered.length)];
-    const { id, title, description, url, difficulty: diffRaw } = row;
-    const diff = diffRaw.toLowerCase();
+    function searchProblems() {
+      const query = document.getElementById("search-input").value.toLowerCase().trim();
+      const resultsList = document.getElementById("search-results");
+      resultsList.innerHTML = "";
 
-    let color = "#fff";
-    if (diff === "easy") color = "limegreen";
-    else if (diff === "medium") color = "goldenrod";
-    else if (diff === "hard") color = "tomato";
+      if (!query) {
+        resultsList.innerHTML = "<li>Type a keyword to search...</li>";
+        return;
+      }
 
-    function escapeHtml(text) {
-      return text.replace(/[&<>"']/g, function (m) {
-        return {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;'
-        }[m];
+      const results = leetcodeData
+        .filter(item =>
+          item.title.toLowerCase().includes(query) ||
+          (item.description && item.description.toLowerCase().includes(query))
+        )
+        .slice(0, 25);
+
+      if (results.length === 0) {
+        resultsList.innerHTML = "<li>No matches found.</li>";
+        return;
+      }
+
+      results.forEach(result => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong style="color:#00ffaa;">${result.title}</strong> -
+                        <a href="#" onclick="displayProblem(${JSON.stringify(result).split('"').join('&quot;')}); return false;" style="color:#66f;">View Problem</a>`;
+        resultsList.appendChild(li);
       });
     }
 
-    let htmlDesc = escapeHtml(description)
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\n\n/g, '<br><br>')
-      .replace(/\n/g, '<br>');
-
-    document.getElementById("problem-title").innerHTML =
-      `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f">(View)</a>`;
-
-    document.getElementById("problem-description").innerHTML = htmlDesc;
-
-    // Save current problem metadata to cache
-    const problemMeta = { id, title, url, description };
-    localStorage.setItem("activeProblemMeta", JSON.stringify(problemMeta));
-
-  } catch (err) {
-    output.textContent = "❌ Error loading problem:\n" + err;
-  }
-}
-
+    // Smart Editor Features
     const textarea = document.getElementById("code");
-
     textarea.addEventListener("keydown", function (e) {
       const val = textarea.value;
       const start = textarea.selectionStart;
@@ -250,134 +473,236 @@ sys.stderr = sys.stdout
         textarea.value = val.substring(0, start) + "    " + val.substring(end);
         textarea.selectionStart = textarea.selectionEnd = start + 4;
       }
-
-      else if (e.key === "Backspace" && start === end) {
-        const before = val.substring(start - 4, start);
-        if (before === "    ") {
-          e.preventDefault();
-          textarea.value = val.substring(0, start - 4) + val.substring(end);
-          textarea.selectionStart = textarea.selectionEnd = start - 4;
-        }
-      }
-
-      else if (e.key === "Enter" && e.shiftKey) {
-        e.preventDefault();
-        const currentLineEnd = val.indexOf("\n", start);
-        const insertPos = currentLineEnd === -1 ? val.length : currentLineEnd;
-        const currentLineStart = val.lastIndexOf("\n", start - 1) + 1;
-        const indentMatch = val.slice(currentLineStart, start).match(/^\s*/);
-        const indent = indentMatch ? indentMatch[0] : "";
-        textarea.value = val.slice(0, insertPos) + "\n" + indent + val.slice(insertPos);
-        textarea.selectionStart = textarea.selectionEnd = insertPos + 1 + indent.length;
-      }
-
       else if (e.key === "Enter") {
-        const lineStart = val.lastIndexOf("\n", start - 1) + 1;
-        const currentLine = val.slice(lineStart, start);
-        const indentMatch = currentLine.match(/^\s*/);
-        const indent = indentMatch ? indentMatch[0] : "";
-        const extraIndent = currentLine.trim().endsWith(":") ? "    " : "";
         e.preventDefault();
-        const insert = "\n" + indent + extraIndent;
+        const lineStart = val.lastIndexOf("\n", start - 1) + 1;
+        const indent = val.slice(lineStart, start).match(/^\s*/)?.[0] || "";
+        const extra = val.slice(lineStart, start).trim().endsWith(":") ? "    " : "";
+        const insert = "\n" + indent + extra;
         textarea.value = val.substring(0, start) + insert + val.substring(end);
         textarea.selectionStart = textarea.selectionEnd = start + insert.length;
       }
-
-      else if (e.key.toLowerCase() === "b" && e.metaKey) {
+      else if (e.key === "Backspace" && start === end && val.substring(start - 4, start) === "    ") {
+        e.preventDefault();
+        textarea.value = val.substring(0, start - 4) + val.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start - 4;
+      }
+      else if (e.metaKey && e.key === "b") {
         e.preventDefault();
         runCode();
       }
 
-      const pairs = {
-        "(": ")",
-        "[": "]",
-        "{": "}",
-        "'": "'",
-        '"': '"'
-      };
-
+      const pairs = { "(": ")", "[": "]", "{": "}", "'": "'", '"': '"' };
       if (pairs[e.key] && !e.ctrlKey && !e.metaKey) {
         e.preventDefault();
-        const closingChar = pairs[e.key];
-        textarea.value = val.substring(0, start) + e.key + closingChar + val.substring(end);
+        textarea.value = val.substring(0, start) + e.key + pairs[e.key] + val.substring(end);
         textarea.selectionStart = textarea.selectionEnd = start + 1;
       }
+    });
 
-      const nextChar = val.charAt(start);
-      if (Object.values(pairs).includes(e.key) && nextChar === e.key) {
+    // === Learning Mode Functions (Unchanged) ===
+    async function loadLearningTopic(topic) {
+      currentTopic = topic;
+      const container = document.getElementById("lesson-content");
+      container.innerHTML = `<p style="color:#00cc99;">Loading ${topic} lessons...</p>`;
+
+      try {
+        const res = await fetch(`${topic}_lessons.json`);
+        if (!res.ok) throw new Error("File not found");
+        learningData = await res.json();
+
+        shuffledIndices = Array.from({length: learningData.lessons.length}, (_, i) => i);
+        shuffledIndices.sort(() => Math.random() - 0.5);
+
+        answered = new Set();
+        currentIndex = 0;
+
+        document.getElementById("topic-info").innerHTML = `
+          <strong>${learningData.topic || topic.toUpperCase()} Lessons Loaded Successfully!</strong><br>
+          <span style="color:#aaa;">${learningData.lessons.length} interactive questions • Random order • Gamified learning</span>
+        `;
+        updateProgress();
+        nextRandomQuestion();
+      } catch (err) {
+        container.innerHTML = `
+          <div style="background:#400; padding:1.5rem; border-radius:12px; border-left:5px solid #f44;">
+            <strong>Failed to load ${topic}_lessons.json</strong><br><br>
+            Run: <code style="background:#000;padding:8px;">python -m http.server 8000</code><br><br>
+            Then visit: <strong>http://localhost:8000</strong>
+          </div>
+        `;
+      }
+    }
+
+    function nextRandomQuestion() {
+      if (!learningData) return;
+
+      while (currentIndex < shuffledIndices.length) {
+        const idx = shuffledIndices[currentIndex];
+        if (!answered.has(idx)) {
+          showQuestion(idx);
+          return;
+        }
+        currentIndex++;
+      }
+
+      document.getElementById("lesson-content").innerHTML = `
+        <div class="completion-message">
+          <h2>Congratulations! You've mastered ${currentTopic.toUpperCase()}!</h2>
+          <p>You've completed all ${learningData.lessons.length} questions.</p>
+          <button class="btn-primary" onclick="restartTopic()" style="font-size:1.3em; padding:18px 40px;">
+            Play Again with New Order
+          </button>
+        </div>
+      `;
+      updateProgress();
+    }
+
+    function showQuestion(idx) {
+      const q = learningData.lessons[idx];
+      let html = `
+        <div class="question-title">${q.title}</div>
+        <div>
+          <span class="meta difficulty">${q.difficulty || "Medium"}</span>
+          <span class="meta type">${q.type.replace('_', ' ')}</span>
+        </div>
+        <div class="content">${q.content || ""}</div>
+      `;
+
+      if (q.type === "multiple_choice") {
+        html += `<p><strong>${q.question}</strong></p>`;
+        q.options.forEach((opt, i) => {
+          html += `<button class="option-btn" onclick="checkAnswer(${idx}, ${i})">${opt}</button>`;
+        });
+      } else if (q.type === "fill_blank") {
+        html += `<p><strong>${q.question}</strong></p>
+          <input id="fill-answer" placeholder="Type your answer here..." />
+          <br><br><button onclick="checkAnswer(${idx})" class="btn-primary">Submit Answer</button>`;
+      } else if (q.type === "code") {
+        html += `<p><strong>${q.question}</strong></p>
+          <textarea id="code-exercise">${q.template || ""}</textarea><br><br>
+          <button onclick="runExercise()" class="btn-primary">Run Code</button>
+          <button onclick="markCodeComplete(${idx})" class="btn-primary">Mark as Done</button>`;
+      }
+
+      document.getElementById("lesson-content").innerHTML = html;
+      updateProgress();
+    }
+
+    function checkAnswer(qIdx, selected = null) {
+      const q = learningData.lessons[qIdx];
+      answered.add(qIdx);
+
+      if (q.type === "multiple_choice") {
+        document.querySelectorAll(".option-btn").forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === q.answer) btn.classList.add("correct");
+          if (i === selected && i !== q.answer) btn.classList.add("incorrect");
+        });
+      } else if (q.type === "fill_blank") {
+        const ans = document.getElementById("fill-answer").value.trim();
+        const correct = ans.toLowerCase() === q.answer.toLowerCase();
+        alert(correct ? "Correct!" : `Incorrect! Answer: ${q.answer}`);
+      }
+
+      updateProgress();
+      setTimeout(() => {
+        currentIndex++;
+        nextRandomQuestion();
+      }, 1800);
+    }
+
+    function markCodeComplete(idx) {
+      answered.add(idx);
+      updateProgress();
+      alert("Great job! Code exercise completed.");
+      currentIndex++;
+      nextRandomQuestion();
+    }
+
+    function restartTopic() {
+      if (confirm(`Restart ${currentTopic.toUpperCase()} with a fresh random order?`)) {
+        shuffledIndices.sort(() => Math.random() - 0.5);
+        answered = new Set();
+        currentIndex = 0;
+        updateProgress();
+        nextRandomQuestion();
+      }
+    }
+
+    function updateProgress() {
+      if (!learningData) return;
+      const done = answered.size;
+      const total = learningData.lessons.length;
+      const percent = total > 0 ? (done / total) * 100 : 0;
+
+      document.getElementById("progress-info").innerHTML = `
+        <div class="progress">
+          <div class="progress-text">
+            Progress: <span class="completed">${done}</span> / ${total} completed
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:${percent}%"></div>
+          </div>
+          <p><span class="remaining">${total - done}</span> questions remaining</p>
+        </div>
+      `;
+    }
+
+    async function runExercise() {
+      if (!pyodideReady) return alert("Pyodide is still loading...");
+      const code = document.getElementById("code-exercise").value;
+      const pre = document.createElement("pre");
+      pre.style.margin = "1.5rem 0";
+      pre.style.padding = "1rem";
+      pre.style.background = "#1a1a1a";
+      pre.style.borderRadius = "8px";
+      pre.style.borderLeft = "4px solid #00cc99";
+
+      try {
+        await pyodide.runPythonAsync(`
+import sys, io
+sys.stdout = io.StringIO()
+        `);
+        await pyodide.runPythonAsync(code);
+        const output = pyodide.runPython("sys.stdout.getvalue()");
+        pre.textContent = output || "(No output)";
+        pre.style.color = "#00ffaa";
+      } catch (err) {
+        pre.textContent = "Error: " + err.message;
+        pre.style.color = "#ff6b6b";
+      }
+      document.getElementById("lesson-content").appendChild(pre);
+    }
+
+    // LeetCode Run Code
+    async function runCode() {
+      const output = document.getElementById("output");
+      if (!pyodideReady) return output.textContent = "Loading Pyodide...";
+      try {
+        await pyodide.runPythonAsync(`
+import sys, io
+sys.stdout = io.StringIO()
+sys.stderr = sys.stdout
+        `);
+        await pyodide.runPythonAsync(document.getElementById("code").value);
+        const result = pyodide.runPython("sys.stdout.getvalue()");
+        output.textContent = result || "(No output)";
+      } catch (err) {
+        output.textContent = "Error:\n" + err.message;
+      }
+    }
+
+    function saveCodeCache() { localStorage.setItem("userPythonCode", document.getElementById("code").value); alert("Code saved!"); }
+    function resetCodeCache() { localStorage.removeItem("userPythonCode"); document.getElementById("code").value = ""; alert("Cache cleared!"); }
+
+    // Ctrl+B shortcut
+    document.addEventListener("keydown", e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "b") {
         e.preventDefault();
-        textarea.selectionStart = textarea.selectionEnd = start + 1;
+        mode === "leetcode" ? runCode() : runExercise();
       }
     });
-
-    function searchProblems() {
-  const query = document.getElementById("search-input").value.toLowerCase().trim();
-  const resultsList = document.getElementById("search-results");
-  resultsList.innerHTML = "";
-
-  if (!query || leetcodeData.length === 0) {
-    resultsList.innerHTML = "<li>No search term entered or data not loaded.</li>";
-    return;
-  }
-
-  const results = leetcodeData.filter(
-    item =>
-      item.title.toLowerCase().includes(query) ||
-      (item.description && item.description.toLowerCase().includes(query))
-  ).slice(0, 25); // Limit to 25 results
-
-  if (results.length === 0) {
-    resultsList.innerHTML = "<li>No matches found.</li>";
-    return;
-  }
-
-  for (const result of results) {
-    const li = document.createElement("li");
-    li.innerHTML = `<strong style="color:lightgreen;">${result.title}</strong> - <a style="color: lightblue;" href="#" onclick="showProblemById(${result.id}); return false;">View</a>`;
-    resultsList.appendChild(li);
-  }
-}
-
-function showProblemById(id) {
-  const item = leetcodeData.find(p => p.id === id);
-  if (!item) {
-    document.getElementById("output").textContent = "❌ Problem not found.";
-    return;
-  }
-
-  const { title, description, url, difficulty } = item;
-  const diff = difficulty.toLowerCase();
-
-  let color = "#fff";
-  if (diff === "easy") color = "limegreen";
-  else if (diff === "medium") color = "goldenrod";
-  else if (diff === "hard") color = "tomato";
-
-  function escapeHtml(text) {
-    return text.replace(/[&<>"']/g, function (m) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[m];
-    });
-  }
-
-  let htmlDesc = escapeHtml(description)
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
-
-  document.getElementById("problem-title").innerHTML =
-    `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f">(View)</a>`;
-  document.getElementById("problem-description").innerHTML = htmlDesc;
-
-  const problemMeta = { id, title, url, description };
-  localStorage.setItem("activeProblemMeta", JSON.stringify(problemMeta));
-}
-
   </script>
 </body>
 </html>

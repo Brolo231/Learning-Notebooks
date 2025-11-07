@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Python in WebAssembly</title>
+  <title>Python in WebAssembly + Matplotlib + LeetCode</title>
   <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
   <style>
     body {
@@ -12,12 +12,7 @@
       text-align: center;
       padding: 2rem;
     }
-
-    #container {
-      width: 80%;
-      margin: auto;
-    }
-
+    #container { width: 80%; margin: auto; }
     textarea {
       width: 100%;
       height: 300px;
@@ -34,7 +29,6 @@
       overflow: auto;
       outline: none;
     }
-
     pre {
       white-space: pre-wrap;
       background: #333;
@@ -44,41 +38,50 @@
       text-align: left;
       color: #eee;
     }
-
+    #plot img {
+      margin-top: 1rem;
+      border: 1px solid #666;
+      border-radius: 6px;
+      max-width: 100%;
+      background-color: white;
+    }
     button {
       margin: 0.5rem;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
     }
-
-    details {
-      margin-top: 1rem;
-      text-align: left;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    ul {
-      line-height: 1.6;
-      margin-left: 20px;
-    }
+    details { margin-top: 1rem; text-align: left; }
+    summary { cursor: pointer; font-weight: bold; font-size: 16px; }
+    ul { line-height: 1.6; margin-left: 20px; }
+    #problem-display { text-align:left; background:#2b2b2b; padding:1rem; border-radius:6px; margin-bottom:1rem; margin-top:2rem; }
   </style>
 </head>
 <body>
   <div id="container">
-    <h1>WebAssembly Python</h1>
+    <h1>WebAssembly Python + Matplotlib + LeetCode</h1>
 
-    <textarea id="code" spellcheck="false">print("Hello, WebAssembly!")</textarea>
+    <textarea id="code" spellcheck="false">
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.plot(x, y, color='limegreen', linewidth=2)
+plt.title("Sine Wave Example")
+plt.xlabel("X values")
+plt.ylabel("sin(X)")
+plt.grid(True)
+    </textarea>
     <br>
     <button onclick="runCode()">▶ Run (⌘ + B)</button>
-    <button onclick="saveCodeCache()">💾 Save Code to Cache</button>
-    <button onclick="resetCodeCache()">🧹 Reset Code Cache</button>
-    <pre id="output"></pre>
+    <button onclick="saveCodeCache()">💾 Save Code</button>
+    <button onclick="resetCodeCache()">🧹 Reset</button>
+
+    <pre id="output">(Program output will appear here)</pre>
+    <h3>Plots:</h3>
+    <div id="plot"></div>
 
     <details>
       <summary>🔍 Search LeetCode Problems</summary>
@@ -89,242 +92,122 @@
       </div>
     </details>
 
-    <div id="problem-display" style="text-align:left; background:#2b2b2b; padding:1rem; border-radius:6px; margin-bottom:1rem; margin-top:2rem;">
+    <div id="problem-display">
       <h2 id="problem-title">Random LeetCode Problem</h2>
       <p id="problem-description">Click a button below to load a random problem.</p>
     </div>
 
-    <div style="margin-bottom: 1rem;">
+    <div>
       <button onclick="loadProblem('Easy')">🎯 Random Easy</button>
       <button onclick="loadProblem('Medium')">⚖️ Random Medium</button>
       <button onclick="loadProblem('Hard')">🔥 Random Hard</button>
     </div>
   </div>
 
-  <script>
-    let pyodideReady = false;
-    let leetcodeData = [];
+<script>
+let pyodideReady = false;
+let leetcodeData = [];
 
-    async function main() {
-      window.pyodide = await loadPyodide();
-      
-      await pyodide.loadPackage("pandas");
-      
-      pyodideReady = true;
-
-      try {
-        const response = await fetch("leetcode_dataset_clean.json");
-        leetcodeData = await response.json();
-      } catch (err) {
-        console.error("❌ Failed to load leetcode_dataset_clean.json", err);
-        document.getElementById("output").textContent = "❌ Failed to load problem dataset.";
-      }
-
-      // Load cached code on startup
-      const saved = localStorage.getItem("userPythonCode");
-      if (saved) {
-        document.getElementById("code").value = saved;
-      }
-    }
-
-    main();
-
-    function saveCodeCache() {
-      const code = document.getElementById("code").value;
-      localStorage.setItem("userPythonCode", code);
-      alert("✅ Code saved to cache.");
-    }
-
-    function loadSavedCode() {
-      const saved = localStorage.getItem("userPythonCode");
-      if (saved) {
-        document.getElementById("code").value = saved;
-        alert("📋 Last saved code pasted.");
-      } else {
-        alert("⚠️ No saved code found.");
-      }
-    }
-
-    function resetCodeCache() {
-      const confirmReset = confirm("Clear your saved code from browser cache?");
-      if (confirmReset) {
-        localStorage.removeItem("userPythonCode");
-        document.getElementById("code").value = "";
-        alert("🧹 Code cache cleared.");
-      }
-    }
-
-    async function runCode() {
-      const output = document.getElementById("output");
-      if (!pyodideReady) {
-        output.textContent = "Loading Pyodide...";
-        return;
-      }
-
-      try {
-        await pyodide.runPythonAsync(`
-import sys, io
-sys.stdout = io.StringIO()
-sys.stderr = sys.stdout
-        `);
-        const code = document.getElementById("code").value;
-        await pyodide.runPythonAsync(code);
-        const result = await pyodide.runPythonAsync("sys.stdout.getvalue()");
-        output.textContent = result || "(No output)";
-      } catch (err) {
-        output.textContent = "❌ Error:\n" + err;
-      }
-    }
-
-    async function loadProblem(difficulty) {
-  const output = document.getElementById("output");
-  if (!pyodideReady) {
-    output.textContent = "Loading Pyodide...";
-    return;
-  }
+async function main() {
+  window.pyodide = await loadPyodide();
+  await pyodide.loadPackage(["matplotlib", "numpy", "pandas"]);
+  pyodideReady = true;
 
   try {
-    // Filter by difficulty and skip "None"/"none" descriptions
-    const filtered = leetcodeData.filter(
-      item =>
-        item.difficulty.toLowerCase() === difficulty.toLowerCase() &&
-        item.description &&
-        item.description.toLowerCase() !== "none" &&
-        item.description.toLowerCase() !== "sql schema"
-    );
-
-    if (filtered.length === 0) {
-      output.textContent = `❌ No ${difficulty} problems found with valid descriptions.`;
-      return;
-    }
-
-    const row = filtered[Math.floor(Math.random() * filtered.length)];
-    const { id, title, description, url, difficulty: diffRaw } = row;
-    const diff = diffRaw.toLowerCase();
-
-    let color = "#fff";
-    if (diff === "easy") color = "limegreen";
-    else if (diff === "medium") color = "goldenrod";
-    else if (diff === "hard") color = "tomato";
-
-    function escapeHtml(text) {
-      return text.replace(/[&<>"']/g, function (m) {
-        return {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;'
-        }[m];
-      });
-    }
-
-    let htmlDesc = escapeHtml(description)
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\n\n/g, '<br><br>')
-      .replace(/\n/g, '<br>');
-
-    document.getElementById("problem-title").innerHTML =
-      `<span style="color:${color}; font-weight:bold;">#${id} - ${title}</span> <a href="${url}" target="_blank" style="color:#66f">(View)</a>`;
-
-    document.getElementById("problem-description").innerHTML = htmlDesc;
-
-    // Save current problem metadata to cache
-    const problemMeta = { id, title, url, description };
-    localStorage.setItem("activeProblemMeta", JSON.stringify(problemMeta));
-
+    const response = await fetch("leetcode_dataset_clean.json");
+    leetcodeData = await response.json();
   } catch (err) {
-    output.textContent = "❌ Error loading problem:\n" + err;
+    console.error("❌ Failed to load dataset", err);
+    document.getElementById("output").textContent = "❌ Failed to load problem dataset.";
+  }
+
+  const saved = localStorage.getItem("userPythonCode");
+  if (saved) document.getElementById("code").value = saved;
+}
+
+main();
+
+function saveCodeCache() {
+  const code = document.getElementById("code").value;
+  localStorage.setItem("userPythonCode", code);
+  alert("✅ Code saved to cache.");
+}
+
+function resetCodeCache() {
+  if (confirm("Clear saved code?")) {
+    localStorage.removeItem("userPythonCode");
+    document.getElementById("code").value = "";
+    alert("🧹 Cache cleared.");
   }
 }
 
-    const textarea = document.getElementById("code");
+async function runCode() {
+  const output = document.getElementById("output");
+  const plotDiv = document.getElementById("plot");
+  plotDiv.innerHTML = "";
+  if (!pyodideReady) { output.textContent = "Loading Pyodide..."; return; }
 
-    textarea.addEventListener("keydown", function (e) {
-      const val = textarea.value;
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
+  const code = document.getElementById("code").value;
 
-      if (e.key === "Tab") {
-        e.preventDefault();
-        textarea.value = val.substring(0, start) + "    " + val.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + 4;
-      }
+  try {
+    await pyodide.runPythonAsync(`
+import sys, io, base64, matplotlib
+matplotlib.use("AGG")
+import matplotlib.pyplot as plt
+sys.stdout = io.StringIO()
+sys.stderr = sys.stdout
+    `);
 
-      else if (e.key === "Backspace" && start === end) {
-        const before = val.substring(start - 4, start);
-        if (before === "    ") {
-          e.preventDefault();
-          textarea.value = val.substring(0, start - 4) + val.substring(end);
-          textarea.selectionStart = textarea.selectionEnd = start - 4;
-        }
-      }
+    await pyodide.runPythonAsync(code);
 
-      else if (e.key === "Enter" && e.shiftKey) {
-        e.preventDefault();
-        const currentLineEnd = val.indexOf("\n", start);
-        const insertPos = currentLineEnd === -1 ? val.length : currentLineEnd;
-        const currentLineStart = val.lastIndexOf("\n", start - 1) + 1;
-        const indentMatch = val.slice(currentLineStart, start).match(/^\s*/);
-        const indent = indentMatch ? indentMatch[0] : "";
-        textarea.value = val.slice(0, insertPos) + "\n" + indent + val.slice(insertPos);
-        textarea.selectionStart = textarea.selectionEnd = insertPos + 1 + indent.length;
-      }
+    const textOutput = await pyodide.runPythonAsync("sys.stdout.getvalue()");
+    output.textContent = textOutput || "(No output)";
 
-      else if (e.key === "Enter") {
-        const lineStart = val.lastIndexOf("\n", start - 1) + 1;
-        const currentLine = val.slice(lineStart, start);
-        const indentMatch = currentLine.match(/^\s*/);
-        const indent = indentMatch ? indentMatch[0] : "";
-        const extraIndent = currentLine.trim().endsWith(":") ? "    " : "";
-        e.preventDefault();
-        const insert = "\n" + indent + extraIndent;
-        textarea.value = val.substring(0, start) + insert + val.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + insert.length;
-      }
+    const imgs = await pyodide.runPythonAsync(`
+import matplotlib.pyplot as plt, io, base64
+imgs = []
+for i in plt.get_fignums():
+    buf = io.BytesIO()
+    plt.figure(i).savefig(buf, format='png', bbox_inches='tight')
+    plt.close(i)
+    buf.seek(0)
+    imgs.append("data:image/png;base64," + base64.b64encode(buf.read()).decode())
+imgs
+    `);
 
-      else if (e.key.toLowerCase() === "b" && e.metaKey) {
-        e.preventDefault();
-        runCode();
-      }
+    for (const src of imgs) {
+      const img = document.createElement("img");
+      img.src = src;
+      plotDiv.appendChild(img);
+    }
 
-      const pairs = {
-        "(": ")",
-        "[": "]",
-        "{": "}",
-        "'": "'",
-        '"': '"'
-      };
+  } catch(err) {
+    output.textContent = "❌ Error:\n" + err;
+  }
+}
 
-      if (pairs[e.key] && !e.ctrlKey && !e.metaKey) {
-        e.preventDefault();
-        const closingChar = pairs[e.key];
-        textarea.value = val.substring(0, start) + e.key + closingChar + val.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + 1;
-      }
+// Run with ⌘+B
+document.getElementById("code").addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() === "b" && e.metaKey) {
+    e.preventDefault();
+    runCode();
+  }
+});
 
-      const nextChar = val.charAt(start);
-      if (Object.values(pairs).includes(e.key) && nextChar === e.key) {
-        e.preventDefault();
-        textarea.selectionStart = textarea.selectionEnd = start + 1;
-      }
-    });
-
-    function searchProblems() {
+// --- LeetCode Problem Functions ---
+function searchProblems() {
   const query = document.getElementById("search-input").value.toLowerCase().trim();
   const resultsList = document.getElementById("search-results");
   resultsList.innerHTML = "";
-
   if (!query || leetcodeData.length === 0) {
     resultsList.innerHTML = "<li>No search term entered or data not loaded.</li>";
     return;
   }
-
   const results = leetcodeData.filter(
     item =>
       item.title.toLowerCase().includes(query) ||
       (item.description && item.description.toLowerCase().includes(query))
-  ).slice(0, 25); // Limit to 25 results
+  ).slice(0, 25);
 
   if (results.length === 0) {
     resultsList.innerHTML = "<li>No matches found.</li>";
@@ -338,6 +221,29 @@ sys.stderr = sys.stdout
   }
 }
 
+async function loadProblem(difficulty) {
+  const output = document.getElementById("output");
+  if (!pyodideReady) { output.textContent = "Loading Pyodide..."; return; }
+
+  try {
+    const filtered = leetcodeData.filter(
+      item =>
+        item.difficulty.toLowerCase() === difficulty.toLowerCase() &&
+        item.description &&
+        item.description.toLowerCase() !== "none" &&
+        item.description.toLowerCase() !== "sql schema"
+    );
+    if (filtered.length === 0) {
+      output.textContent = `❌ No ${difficulty} problems found with valid descriptions.`;
+      return;
+    }
+    const row = filtered[Math.floor(Math.random() * filtered.length)];
+    showProblemById(row.id);
+  } catch (err) {
+    output.textContent = "❌ Error loading problem:\n" + err;
+  }
+}
+
 function showProblemById(id) {
   const item = leetcodeData.find(p => p.id === id);
   if (!item) {
@@ -347,7 +253,6 @@ function showProblemById(id) {
 
   const { title, description, url, difficulty } = item;
   const diff = difficulty.toLowerCase();
-
   let color = "#fff";
   if (diff === "easy") color = "limegreen";
   else if (diff === "medium") color = "goldenrod";
@@ -355,13 +260,7 @@ function showProblemById(id) {
 
   function escapeHtml(text) {
     return text.replace(/[&<>"']/g, function (m) {
-      return {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[m];
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
     });
   }
 
@@ -377,7 +276,6 @@ function showProblemById(id) {
   const problemMeta = { id, title, url, description };
   localStorage.setItem("activeProblemMeta", JSON.stringify(problemMeta));
 }
-
-  </script>
+</script>
 </body>
 </html>

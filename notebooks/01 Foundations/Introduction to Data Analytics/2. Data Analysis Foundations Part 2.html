@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>1. What is Data Analytics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2. Data Analysis Foundations Part 2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,267 +7526,155 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9931c6ed-e300-426f-bcf7-9607abb724f9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=67a43408-34d1-4358-9e5a-57315f6bf4e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="What-is-Data-Analytics?">What is Data Analytics?<a class="anchor-link" href="#What-is-Data-Analytics?">¶</a></h1><hr/>
-<p>Data analytics is the practice of examining raw data to uncover patterns, trends, and insights that support decision-making. It can involve simple descriptive analysis (summarizing what happened), diagnostic analysis (understanding why it happened), predictive analysis (forecasting what will happen), and prescriptive analysis (recommending actions).</p>
-<p>While advanced analytics often requires data scientists, modern platforms provide tools such as natural language queries and automated insights that empower business users as well. Data analytics is closely related to business intelligence (BI), which focuses on reporting and visualization, but analytics goes further by applying statistical, computational, and sometimes machine learning techniques to generate forward-looking insight</p>
+<h1 id="Part-2:-Deepening-Your-Data-Analysis-Foundations"><strong>Part 2: Deepening Your Data Analysis Foundations</strong><a class="anchor-link" href="#Part-2:-Deepening-Your-Data-Analysis-Foundations">¶</a></h1><p>This section expands on further concepts from part 1</p>
 <hr/>
-<h2 id="Understanding-the-nature-of-Data">Understanding the nature of Data<a class="anchor-link" href="#Understanding-the-nature-of-Data">¶</a></h2><hr/>
-<p>Data is the central element of data analytics. Everything an analyst does revolves around turning raw data into meaningful insight, and eventually into knowledge that can support real-world decisions.</p>
-<h4 id="When-data-becomes-information">When data becomes information<a class="anchor-link" href="#When-data-becomes-information">¶</a></h4><ul>
-<li>Data represents recorded events—anything that can be measured, categorized, or observed.</li>
-<li>Raw data itself has limited use. Once collected, cleaned, and analyzed, data transforms into information, revealing patterns that help us understand what happened, why it happened, or what may happen next.</li>
+<h2 id="1.-Data-Quality-&amp;-Data-Integrity"><strong>1. Data Quality &amp; Data Integrity</strong><a class="anchor-link" href="#1.-Data-Quality-&amp;-Data-Integrity">¶</a></h2><p>High-quality data is the foundation of reliable analytics. Poor data leads to incorrect insights, weak models, and bad business decisions.</p>
+<h3 id="Key-Dimensions-of-Data-Quality"><strong>Key Dimensions of Data Quality</strong><a class="anchor-link" href="#Key-Dimensions-of-Data-Quality">¶</a></h3><ul>
+<li><strong>Accuracy</strong> – Is the data correct and error-free?</li>
+<li><strong>Completeness</strong> – Are all required fields and records present?</li>
+<li><strong>Consistency</strong> – Does the data agree across systems and time?</li>
+<li><strong>Validity</strong> – Does the data follow rules (formats, ranges, types)?</li>
+<li><strong>Uniqueness</strong> – No duplicates where there should be unique records.</li>
+<li><strong>Timeliness</strong> – Is the data up-to-date and relevant for analysis?</li>
 </ul>
-<p>⸻</p>
-<h4 id="When-information-becomes-knowledge">When information becomes knowledge<a class="anchor-link" href="#When-information-becomes-knowledge">¶</a></h4><ul>
-<li>Information turns into knowledge when it forms consistent rules, models, or principles that deepen our understanding of a system.</li>
-<li>Knowledge is what enable the data analyst to:<ul>
-<li>explain mechanisms</li>
-<li>make predictions</li>
-<li>recommend actions confidently</li>
+<h3 id="Why-It-Matters"><strong>Why It Matters</strong><a class="anchor-link" href="#Why-It-Matters">¶</a></h3><ul>
+<li>Bad data → misleading insights</li>
+<li>Incorrect metrics → poor decision-making</li>
+<li>Models fail → financial or operational risk increases</li>
 </ul>
-</li>
-</ul>
-<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
-<h2 id="Types-of-Data">Types of Data<a class="anchor-link" href="#Types-of-Data">¶</a></h2><p>Data can be broken down into two main categories:</p>
-<h3 id="1.-Categorical-Data">1. Categorical Data<a class="anchor-link" href="#1.-Categorical-Data">¶</a></h3><ul>
-<li>Nominal → categories with no intrinsic order (e.g., gender, product type, city).</li>
-<li>Ordinal → categories with a defined order (e.g., satisfaction rating, education level).</li>
-</ul>
-<h3 id="2.-Numerical-Data">2. Numerical Data<a class="anchor-link" href="#2.-Numerical-Data">¶</a></h3><ul>
-<li>Discrete → countable values with gaps between them (e.g., number of students, number of purchases).</li>
-<li>Continuous → measurable values that can take any value in a range (e.g., height, temperature, time).</li>
-</ul>
-<h4 id="Understanding-data-types-is-crucial-because:">Understanding data types is crucial because:<a class="anchor-link" href="#Understanding-data-types-is-crucial-because:">¶</a></h4><ul>
-<li>It determines which statistical methods to use,</li>
-<li>Which visualizations apply,</li>
-<li>And how data must be cleaned and transformed.</li>
-</ul>
-<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
-<h3 id="Quantitative-and-Qualitative-Data-Analysis">Quantitative and Qualitative Data Analysis<a class="anchor-link" href="#Quantitative-and-Qualitative-Data-Analysis">¶</a></h3><hr/>
-Data analysis always depends on the nature of the data. Different data types require different analytical approaches.
-<h4 id="Quantitative-Data-Analysis">Quantitative Data Analysis<a class="anchor-link" href="#Quantitative-Data-Analysis">¶</a></h4><ul>
-<li><p>Quantitative analysis deals with data that is numerical or categorical—data that can be counted, measured, or logically ordered.</p>
-</li>
-<li><p>Because quantitative data contains inherent structure (categories, counts, mathematical relationships), analysts can:</p>
-<ul>
-<li>apply statistical methods,</li>
-<li>build mathematical models,</li>
-<li>generate objective conclusions,</li>
-<li>and create quantitative predictions.</li>
-</ul>
-</li>
-<li><p>Examples of quantitative data:</p>
-<ul>
-<li>numbers (age, income, temperature),</li>
-<li>survey ratings,</li>
-<li>categories that can be encoded.</li>
-</ul>
-</li>
-<li><p>Quantitative analysis is highly valuable because:</p>
-<ul>
-<li>it supports reproducible, objective insights,</li>
-<li>results can be statistically validated,</li>
-<li>it enables predictive modeling using machine learning.</li>
-</ul>
-</li>
-</ul>
-<p>⸻</p>
-<h4 id="Qualitative-Data-Analysis">Qualitative Data Analysis<a class="anchor-link" href="#Qualitative-Data-Analysis">¶</a></h4><ul>
-<li><p>Qualitative analysis deals with non-numeric, unstructured data, such as:</p>
-<ul>
-<li>text (interviews, reviews),</li>
-<li>audio recordings,</li>
-<li>images,</li>
-<li>videos,</li>
-<li>open-ended survey responses.</li>
-</ul>
-</li>
-<li><p>Since qualitative data does not have an obvious structure, analysts must use specialized, sometimes ad hoc techniques, such as:</p>
-<ul>
-<li>content analysis,</li>
-<li>thematic coding,</li>
-<li>sentiment analysis,</li>
-<li>natural language processing (NLP).</li>
-</ul>
-</li>
-</ul>
-<p>Qualitative analysis:</p>
-<ul>
-<li>often includes interpretation,</li>
-<li>may produce subjective insights,</li>
-<li>can handle complex systems that cannot be measured numerically (e.g., human behavior, social phenomena),</li>
-<li>helps uncover context and meaning that numbers alone cannot provide.</li>
-</ul>
-<h4 id="Both-qualitative-and-quantitative-approaches-are-essential.">Both qualitative and quantitative approaches are essential.<a class="anchor-link" href="#Both-qualitative-and-quantitative-approaches-are-essential.">¶</a></h4><ul>
-<li>Quantitative answers “how much?”</li>
-<li>Qualitative answers “why?” and “how?”</li>
-</ul>
-<h4 id="Together,-they-provide-a-complete-understanding-of-a-problem.">Together, they provide a complete understanding of a problem.<a class="anchor-link" href="#Together,-they-provide-a-complete-understanding-of-a-problem.">¶</a></h4><hr/>
-<h2 id="Data-Analytics-vs.-Big-Data-vs.-Data-Science">Data Analytics vs. Big Data vs. Data Science<a class="anchor-link" href="#Data-Analytics-vs.-Big-Data-vs.-Data-Science">¶</a></h2><hr/>
-<p>These three terms are often used together, but they are not the same thing. Here’s how they connect:</p>
-<h4 id="--Big-Data">- Big Data<a class="anchor-link" href="#--Big-Data">¶</a></h4><p>Big data refers to the massive amounts of information being created every second—from databases, IoT devices, social media, emails, and more. The role of big data is to provide the raw material. You can think of it as the fuel that powers analytics. The more data available, the richer the insights you can gain.</p>
-<h4 id="--Data-Analytics">- Data Analytics<a class="anchor-link" href="#--Data-Analytics">¶</a></h4><p>Data analytics is the process of examining data to find patterns, trends, and insights that help businesses make better decisions. It turns big data into something useful—like an engine that runs on the fuel of big data. Analytics can be descriptive (what happened), diagnostic (why it happened), predictive (what might happen), or prescriptive (what to do next).</p>
-<h4 id="--Data-Science">- Data Science<a class="anchor-link" href="#--Data-Science">¶</a></h4><p>Data science is the broader field that studies how to work with data to generate meaning. Data scientists often design the models, algorithms, and advanced techniques that make analytics more powerful. You can think of the data scientist as the mechanic or engineer who builds and tunes the analytics engine.</p>
 <hr/>
-<h2 id="The-Four-Main-Types-of-Data-Analytics">The Four Main Types of Data Analytics<a class="anchor-link" href="#The-Four-Main-Types-of-Data-Analytics">¶</a></h2><hr/>
-<h4 id="1.-Descriptive-Analytics-%E2%80%93-What-happened?">1. Descriptive Analytics – What happened?<a class="anchor-link" href="#1.-Descriptive-Analytics-%E2%80%93-What-happened?">¶</a></h4><ul>
-<li>Focuses on summarizing past data: “how many, when, where, and what.”</li>
-<li>Examples: sales reports, website traffic dashboards, monthly marketing performance. \</li>
+<h2 id="2.-Introduction-to-Databases-&amp;-SQL-Foundations"><strong>2. Introduction to Databases &amp; SQL Foundations</strong><a class="anchor-link" href="#2.-Introduction-to-Databases-&amp;-SQL-Foundations">¶</a></h2><p>Most real-world data lives in databases. SQL is the main tool used to extract and manipulate it.</p>
+<h3 id="Relational-Database-Basics"><strong>Relational Database Basics</strong><a class="anchor-link" href="#Relational-Database-Basics">¶</a></h3><ul>
+<li><strong>Tables</strong> – store data in rows and columns.</li>
+<li><strong>Rows</strong> – individual records.</li>
+<li><strong>Columns</strong> – attributes or fields.</li>
+<li><strong>Primary Key</strong> – a unique identifier for each record.</li>
+<li><strong>Foreign Key</strong> – links between tables.</li>
+<li><strong>Relationships</strong> – how tables connect (one-to-many, many-to-many).</li>
 </ul>
-<p>Two kinds:
-    - Canned reports → pre-designed, regularly generated (e.g., monthly ad performance).
-    - Ad hoc reports → custom reports created on the fly for a specific question (e.g., which city engages most with your social media page).</p>
-<p>👉 Think of descriptive analytics as your rearview mirror—it shows where you’ve been.</p>
-<p>⸻</p>
-<h4 id="2.-Diagnostic-Analytics-%E2%80%93-Why-did-it-happen?">2. Diagnostic Analytics – Why did it happen?<a class="anchor-link" href="#2.-Diagnostic-Analytics-%E2%80%93-Why-did-it-happen?">¶</a></h4><ul>
-<li>Digs deeper into past data to find causes and correlations.</li>
-<li>Tools include drill downs, queries, alerts, and data mining. \</li>
+<h3 id="Essential-SQL-Skills"><strong>Essential SQL Skills</strong><a class="anchor-link" href="#Essential-SQL-Skills">¶</a></h3><ul>
+<li>SELECT → choose columns</li>
+<li>WHERE → filter rows</li>
+<li>ORDER BY → sort results</li>
+<li>GROUP BY → aggregate data</li>
+<li>JOIN → combine multiple tables</li>
+<li>COUNT, SUM, AVG, MIN, MAX → summary statistics</li>
 </ul>
-<p>Examples:
-    - A drop in sales → drill down reveals a sales rep was on vacation.
-    - Low staff hours → an alert warns this could reduce closed deals.
-    - Also helps “discover” new insights, like identifying the most qualified job candidate.</p>
-<p>👉 Diagnostic analytics is like a detective, finding the reasons behind events.</p>
-<p>⸻</p>
-<h4 id="3.-Predictive-Analytics-%E2%80%93-What-might-happen?">3. Predictive Analytics – What might happen?<a class="anchor-link" href="#3.-Predictive-Analytics-%E2%80%93-What-might-happen?">¶</a></h4><ul>
-<li>Uses statistical models and machine learning to forecast future outcomes.</li>
-<li>Helps find trends, correlations, and causation.</li>
-<li>Example: Predicting how a Facebook T-shirt ad campaign will perform based on audience age, income, or location.</li>
-<li>Can estimate potential revenue across different target groups.</li>
+<h3 id="Why-SQL-Matters"><strong>Why SQL Matters</strong><a class="anchor-link" href="#Why-SQL-Matters">¶</a></h3><ul>
+<li>Analysts frequently query large datasets</li>
+<li>Required for dashboards, reporting, and machine learning pipelines</li>
 </ul>
-<p>👉 Predictive analytics is your crystal ball, giving a glimpse into possible futures.</p>
-<p>⸻</p>
-<h4 id="4.-Prescriptive-Analytics-%E2%80%93-What-should-we-do?">4. Prescriptive Analytics – What should we do?<a class="anchor-link" href="#4.-Prescriptive-Analytics-%E2%80%93-What-should-we-do?">¶</a></h4><ul>
-<li>The most advanced type—goes beyond prediction to recommend actions.</li>
-<li>Uses AI, big data, and optimization techniques to suggest the best approach. \</li>
-</ul>
-<p>Examples:
-    - Testing different slogans or ad designs to see which performs best.
-    - Recommending the shirt color most likely to appeal to older customers.</p>
-<p>👉 Prescriptive analytics is like a coach, telling you the best move to make.</p>
 <hr/>
-<h2 id="The-Data-Analysis-Process">The Data Analysis Process<a class="anchor-link" href="#The-Data-Analysis-Process">¶</a></h2><hr/>
-Data analysis is a structured process where raw data is transformed into valuable insights. Each stage builds on the one before it:
-<ol>
-<li><p>Problem Definition</p>
-<ul>
-<li>Identify the business question or decision to be made.</li>
+<h2 id="3.-Core-Statistical-Foundations"><strong>3. Core Statistical Foundations</strong><a class="anchor-link" href="#3.-Core-Statistical-Foundations">¶</a></h2><p>Stats is the science behind all analysis. You don’t need heavy math—but you must understand the concepts.</p>
+<h3 id="Descriptive-Statistics"><strong>Descriptive Statistics</strong><a class="anchor-link" href="#Descriptive-Statistics">¶</a></h3><ul>
+<li>Mean, median, mode</li>
+<li>Variance, standard deviation</li>
+<li>Percentiles &amp; quartiles</li>
+<li>Distributions (normal, skewed, uniform)</li>
 </ul>
-</li>
-<li><p>Data Extraction</p>
-<ul>
-<li>Pulling data from databases, APIs, files, or web scraping.</li>
+<h3 id="Inferential-Statistics"><strong>Inferential Statistics</strong><a class="anchor-link" href="#Inferential-Statistics">¶</a></h3><ul>
+<li>Sampling</li>
+<li>Confidence intervals</li>
+<li>Hypothesis testing</li>
+<li>p-values</li>
+<li>Correlation vs causation</li>
 </ul>
-</li>
-<li><p>Data Preparation – Cleaning</p>
-<ul>
-<li>Handling missing values, errors, duplicates, and inconsistencies.</li>
+<h3 id="Why-It-Matters"><strong>Why It Matters</strong><a class="anchor-link" href="#Why-It-Matters">¶</a></h3><ul>
+<li>Helps interpret data correctly</li>
+<li>Avoids false conclusions</li>
+<li>Supports predictive modeling</li>
 </ul>
-</li>
-<li><p>Data Preparation – Transformation</p>
-<ul>
-<li>Changing formats, encoding categories, scaling values, merging datasets, etc.</li>
+<hr/>
+<h2 id="4.-Data-Ethics,-Privacy-&amp;-Governance"><strong>4. Data Ethics, Privacy &amp; Governance</strong><a class="anchor-link" href="#4.-Data-Ethics,-Privacy-&amp;-Governance">¶</a></h2><p>Modern analysts must work responsibly, especially with personal or sensitive data.</p>
+<h3 id="Key-Concepts"><strong>Key Concepts</strong><a class="anchor-link" href="#Key-Concepts">¶</a></h3><ul>
+<li><strong>PII (Personally Identifiable Information)</strong> – name, ID number, address, email</li>
+<li><strong>Data minimization</strong> – only collect what is necessary</li>
+<li><strong>Consent &amp; compliance</strong> – POPIA (SA), GDPR (EU)</li>
+<li><strong>Bias &amp; fairness</strong> – avoid discriminatory algorithms</li>
+<li><strong>Transparency</strong> – explainable insights</li>
 </ul>
-</li>
-<li><p>Data Exploration &amp; Visualization</p>
-<ul>
-<li>Understanding patterns, relationships, anomalies, distributions.</li>
+<h3 id="Why-It-Matters"><strong>Why It Matters</strong><a class="anchor-link" href="#Why-It-Matters">¶</a></h3><ul>
+<li>Protects users</li>
+<li>Prevents legal issues</li>
+<li>Ensures trustworthy data-driven decisions</li>
 </ul>
-</li>
-<li><p>Predictive Modeling</p>
-<ul>
-<li>Building statistical or machine learning models based on the data.</li>
+<hr/>
+<h2 id="5.-Analytical-Thinking-&amp;-Problem-Solving"><strong>5. Analytical Thinking &amp; Problem-Solving</strong><a class="anchor-link" href="#5.-Analytical-Thinking-&amp;-Problem-Solving">¶</a></h2><p>Strong analysis is not only technical—it’s logical and structured.</p>
+<h3 id="How-Analysts-Approach-Problems"><strong>How Analysts Approach Problems</strong><a class="anchor-link" href="#How-Analysts-Approach-Problems">¶</a></h3><ol>
+<li>Define the problem clearly</li>
+<li>Form a hypothesis</li>
+<li>Identify the needed data</li>
+<li>Choose the right metrics</li>
+<li>Analyze patterns and test assumptions</li>
+<li>Present findings clearly</li>
+</ol>
+<h3 id="Common-Metrics-&amp;-KPIs"><strong>Common Metrics &amp; KPIs</strong><a class="anchor-link" href="#Common-Metrics-&amp;-KPIs">¶</a></h3><ul>
+<li>Conversion rate</li>
+<li>Retention rate</li>
+<li>Churn rate</li>
+<li>Average order value</li>
+<li>Customer lifetime value</li>
 </ul>
-</li>
-<li><p>Model Testing &amp; Validation</p>
-<ul>
-<li>Checking whether the model is reliable, accurate, and generalizable.</li>
+<hr/>
+<h2 id="6.-Experiment-Design-&amp;-A/B-Testing"><strong>6. Experiment Design &amp; A/B Testing</strong><a class="anchor-link" href="#6.-Experiment-Design-&amp;-A/B-Testing">¶</a></h2><p>A/B tests help determine whether a change actually improves outcomes.</p>
+<h3 id="Key-Concepts"><strong>Key Concepts</strong><a class="anchor-link" href="#Key-Concepts">¶</a></h3><ul>
+<li>Control group vs treatment group</li>
+<li>Randomization</li>
+<li>Statistical significance</li>
+<li>Confidence level</li>
+<li>Effect size</li>
 </ul>
-</li>
-<li><p>Visualization &amp; Interpretation of Results</p>
-<ul>
-<li>Communicating insights through dashboards, reports, or presentations.</li>
+<h3 id="Uses"><strong>Uses</strong><a class="anchor-link" href="#Uses">¶</a></h3><ul>
+<li>Testing website layouts</li>
+<li>Marketing campaigns</li>
+<li>Product feature performance</li>
 </ul>
-</li>
-<li><p>Deployment</p>
-<ul>
-<li>Implementing the solution in real-world systems or business processes.</li>
+<hr/>
+<h2 id="7.-Practical-Examples"><strong>7. Practical Examples</strong><a class="anchor-link" href="#7.-Practical-Examples">¶</a></h2><p>Below are examples to help apply theory to real data analysis.</p>
+<h3 id="Example:-Cleaning-Data"><strong>Example: Cleaning Data</strong><a class="anchor-link" href="#Example:-Cleaning-Data">¶</a></h3><ul>
+<li>Remove duplicates</li>
+<li>Impute missing values (mean, median, mode)</li>
+<li>Standardize formats (dates, currencies)</li>
+<li>Encode categories (ordinal/nominal)</li>
 </ul>
-</li>
+<h3 id="Example:-Exploratory-Data-Analysis-(EDA)"><strong>Example: Exploratory Data Analysis (EDA)</strong><a class="anchor-link" href="#Example:-Exploratory-Data-Analysis-(EDA)">¶</a></h3><ul>
+<li>Distribution of numerical columns</li>
+<li>Frequency of categories</li>
+<li>Correlation heatmap</li>
+<li>Outlier detection</li>
+</ul>
+<h3 id="Example:-Writing-a-Problem-Statement"><strong>Example: Writing a Problem Statement</strong><a class="anchor-link" href="#Example:-Writing-a-Problem-Statement">¶</a></h3><blockquote>
+<p>"Sales have dropped by 12% in Q3. Identify the primary reasons for the decline and recommend actions to improve Q4 performance."</p>
+</blockquote>
+<h3 id="Mini-Analysis-Plan"><strong>Mini-Analysis Plan</strong><a class="anchor-link" href="#Mini-Analysis-Plan">¶</a></h3><ol>
+<li>Pull sales data from SQL</li>
+<li>Clean and prepare dataset</li>
+<li>Segment sales by region/product/channel</li>
+<li>Visualize performance trends</li>
+<li>Identify anomalies or bottlenecks</li>
+<li>Present recommended actions</li>
 </ol>
 <hr/>
-<h2 id="Knowledge-Domains-of-data-analysis">Knowledge Domains of data analysis<a class="anchor-link" href="#Knowledge-Domains-of-data-analysis">¶</a></h2><hr/>
-<h4 id="Computer-Science">Computer Science<a class="anchor-link" href="#Computer-Science">¶</a></h4><p>Data analysts rely heavily on software, programming, and digital tools. Strong computer science knowledge allows analysts to efficiently manipulate, clean, store, and analyze data.</p>
+<h2 id="Next-Step-After-Part-2"><strong>Next Step After Part 2</strong><a class="anchor-link" href="#Next-Step-After-Part-2">¶</a></h2><p>Once you master this section, you’re ready to learn:</p>
 <ul>
-<li>Programming languages are needed for data manipulation, automation, and building models</li>
-<li>Computer science allows us to understand the various formats that data comes in and needs to be manipulated to.<ul>
-<li>CSV, XLS, JSON, XML</li>
-<li>Databases like SQL and NoSQL</li>
+<li>Python basics</li>
+<li>NumPy</li>
+<li>pandas</li>
+<li>Matplotlib/Seaborn</li>
+<li>Scikit-learn</li>
 </ul>
-</li>
-<li>Data needs to be extracted<ul>
-<li>SQL queries to pull data</li>
-<li>APIs</li>
-<li>Web Scraping</li>
-</ul>
-</li>
-</ul>
-<p>⸻</p>
-<h4 id="Mathematics-and-Stats">Mathematics and Stats<a class="anchor-link" href="#Mathematics-and-Stats">¶</a></h4><p>Math is the foundation of all analytical methods. Statistics explains why certain insights or patterns appear and helps avoid incorrect conclusions.</p>
-<ul>
-<li>Key concepts like:<ul>
-<li>Probability theory</li>
-<li>Bayesian Methods</li>
-<li>Regression Techniques</li>
-<li>Clustering and Unsupervised Learning</li>
-</ul>
-</li>
-<li>Enables 🔼🔽<ul>
-<li>understanding distributions</li>
-<li>making predictions</li>
-<li>Designing experiments</li>
-<li>validate results</li>
-</ul>
-</li>
-</ul>
-<p>Python libraries (NumPy, SciPy, pandas, scikit-learn) reduce complexity but require conceptual understanding.</p>
-<p>⸻</p>
-<h4 id="Machine-learning">Machine learning<a class="anchor-link" href="#Machine-learning">¶</a></h4><p>While classic data analysis helps you describe what happened, machine learning helps you predict, classify, and automate decision-making by learning patterns directly from the data.</p>
-<ul>
-<li>Automates insight discovery - ML algorithms can analyze millions of data points and uncover patterns that are too subtle or complex for manual analysis.</li>
-</ul>
-<p>For Example,
-    - determining which customers will churn
-    - identifying fraudulent transactions
-    - discovering hidden customer segments</p>
-<ul>
-<li>A data analyst must understand<ul>
-<li>How the model works</li>
-<li>How reliable it is</li>
-<li>What the results actually mean</li>
-</ul>
-</li>
-<li>So that the data analyst can communicate the results and insights to stakeholders</li>
-</ul>
-<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
-<h3 id="Key-Takeaway">Key Takeaway<a class="anchor-link" href="#Key-Takeaway">¶</a></h3><pre><code>• Descriptive → what happened (reporting).
-• Diagnostic → why it happened (causes).
-• Predictive → what might happen (forecasting).
-• Prescriptive → what to do about it (recommendations).
-
-</code></pre>
-<p>Together, these four levels of analytics move from looking back → understanding → looking forward → taking action.</p>
-<div style="text-align: center;"><a href="https://quiz-brandonfourie.pythonanywhere.com/topic/4" taregt="_blank"> Ready to take the quiz? Take it 👉 here </a></div>
+<p>And then begin real mini projects.</p>
+<hr/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f697ebea-a932-4864-ba98-790dd9398527">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f6027c44-0270-4414-8d88-80fb5c918d00">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

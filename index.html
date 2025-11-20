@@ -74,20 +74,20 @@ details details summary {
   <summary>Introduction to Data Analytics</summary>
 
             <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Introduction to Data Analytics/1. What is Data Analytics.html' target='_blank' rel='noopener noreferrer'>📓 1. what is data analytics</a>
+                <a href='notebooks/01 Foundations/Introduction to Data Analytics/1. Data Analysis Foundations.html' target='_blank' rel='noopener noreferrer'>📓 1. data analysis foundations</a>
                 <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Nov 2025</div>
             </div>
             
 
             <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Introduction to Data Analytics/2. Key Concepts of Data for a Data Analyst.html' target='_blank' rel='noopener noreferrer'>📓 2. key concepts of data for a data analyst</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 31 Aug 2025</div>
+                <a href='notebooks/01 Foundations/Introduction to Data Analytics/2. Data Analysis Foundations Part 2.html' target='_blank' rel='noopener noreferrer'>📓 2. data analysis foundations part 2</a>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 20 Nov 2025</div>
             </div>
             
 
             <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Introduction to Data Analytics/Case Studies.html' target='_blank' rel='noopener noreferrer'>📓 Case studies</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 25 Sep 2025</div>
+                <a href='notebooks/01 Foundations/Introduction to Data Analytics/3. Key Concepts of Data for a Data Analyst.html' target='_blank' rel='noopener noreferrer'>📓 3. key concepts of data for a data analyst</a>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 31 Aug 2025</div>
             </div>
             
 
@@ -554,10 +554,10 @@ document.getElementById('searchBox').addEventListener('input', function () {
     folder.open = visibleNested && filter.length > 0;
   });
 });
-const last30DaysLabels = ["Oct 18", "Oct 19", "Oct 20", "Oct 21", "Oct 22", "Oct 23", "Oct 24", "Oct 25", "Oct 26", "Oct 27", "Oct 28", "Oct 29", "Oct 30", "Oct 31", "Nov 01", "Nov 02", "Nov 03", "Nov 04", "Nov 05", "Nov 06", "Nov 07", "Nov 08", "Nov 09", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 14", "Nov 15", "Nov 16"];
-const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0];
+const last30DaysLabels = ["Oct 22", "Oct 23", "Oct 24", "Oct 25", "Oct 26", "Oct 27", "Oct 28", "Oct 29", "Oct 30", "Oct 31", "Nov 01", "Nov 02", "Nov 03", "Nov 04", "Nov 05", "Nov 06", "Nov 07", "Nov 08", "Nov 09", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 14", "Nov 15", "Nov 16", "Nov 17", "Nov 18", "Nov 19", "Nov 20"];
+const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1];
 const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const monthDaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const monthDaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 window.addEventListener('DOMContentLoaded', () => {
   const ctxBar = document.getElementById('barChart').getContext('2d');
   new Chart(ctxBar, {

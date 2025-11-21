@@ -84,7 +84,7 @@ details details summary {
 
             <div class='notebook-entry'>
                 <a href='notebooks/01 Foundations/Fundamentals for Data Analysis /3. Working with different file types.html' target='_blank' rel='noopener noreferrer'>📓 3. working with different file types</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 20 Nov 2025</div>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 21 Nov 2025</div>
             </div>
             
 
@@ -116,7 +116,7 @@ details details summary {
 <details>
 <summary>02 Data Handling</summary>
   <details>
-  <summary>Data Visualization</summary>
+  <summary>File Handling </summary>
   </details>
   <details>
   <summary>NumPy</summary>
@@ -142,6 +142,9 @@ details details summary {
 </details>
 <details>
 <summary>03 Data Analysis</summary>
+  <details>
+  <summary>Data Visualization</summary>
+  </details>
   <details>
   <summary>EDA & Cleaning</summary>
   </details>
@@ -400,9 +403,6 @@ details details summary {
   <details>
   <summary>ETL</summary>
   </details>
-  <details>
-  <summary>File Handling </summary>
-  </details>
 </details>
 <details>
 <summary>08 Software Dev Tools</summary>
@@ -567,9 +567,9 @@ document.getElementById('searchBox').addEventListener('input', function () {
   });
 });
 const last30DaysLabels = ["Oct 23", "Oct 24", "Oct 25", "Oct 26", "Oct 27", "Oct 28", "Oct 29", "Oct 30", "Oct 31", "Nov 01", "Nov 02", "Nov 03", "Nov 04", "Nov 05", "Nov 06", "Nov 07", "Nov 08", "Nov 09", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 14", "Nov 15", "Nov 16", "Nov 17", "Nov 18", "Nov 19", "Nov 20", "Nov 21"];
-const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0];
+const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 1];
 const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const monthDaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const monthDaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 window.addEventListener('DOMContentLoaded', () => {
   const ctxBar = document.getElementById('barChart').getContext('2d');
   new Chart(ctxBar, {

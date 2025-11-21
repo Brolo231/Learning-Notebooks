@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>2. Data Analysis Foundations Part 2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2. Key Concepts of Data for a Data Analyst</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7526,165 +7526,55 @@ a.anchor-link {
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=67a43408-34d1-4358-9e5a-57315f6bf4e4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=247e04f1-39cc-4a88-8652-bd18b2c8e656">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Part-2:-Deepening-Your-Data-Analysis-Foundations"><strong>Part 2: Deepening Your Data Analysis Foundations</strong><a class="anchor-link" href="#Part-2:-Deepening-Your-Data-Analysis-Foundations">¶</a></h1><p>This section expands on further concepts from part 1</p>
-<hr/>
-<h2 id="1.-Data-Quality-&amp;-Data-Integrity"><strong>1. Data Quality &amp; Data Integrity</strong><a class="anchor-link" href="#1.-Data-Quality-&amp;-Data-Integrity">¶</a></h2><p>High-quality data is the foundation of reliable analytics. Poor data leads to incorrect insights, weak models, and bad business decisions.</p>
-<h3 id="Key-Dimensions-of-Data-Quality"><strong>Key Dimensions of Data Quality</strong><a class="anchor-link" href="#Key-Dimensions-of-Data-Quality">¶</a></h3><ul>
-<li><strong>Accuracy</strong> – Is the data correct and error-free?</li>
-<li><strong>Completeness</strong> – Are all required fields and records present?</li>
-<li><strong>Consistency</strong> – Does the data agree across systems and time?</li>
-<li><strong>Validity</strong> – Does the data follow rules (formats, ranges, types)?</li>
-<li><strong>Uniqueness</strong> – No duplicates where there should be unique records.</li>
-<li><strong>Timeliness</strong> – Is the data up-to-date and relevant for analysis?</li>
-</ul>
-<h3 id="Why-It-Matters"><strong>Why It Matters</strong><a class="anchor-link" href="#Why-It-Matters">¶</a></h3><ul>
-<li>Bad data → misleading insights</li>
-<li>Incorrect metrics → poor decision-making</li>
-<li>Models fail → financial or operational risk increases</li>
-</ul>
-<hr/>
-<h2 id="2.-Introduction-to-Databases-&amp;-SQL-Foundations"><strong>2. Introduction to Databases &amp; SQL Foundations</strong><a class="anchor-link" href="#2.-Introduction-to-Databases-&amp;-SQL-Foundations">¶</a></h2><p>Most real-world data lives in databases. SQL is the main tool used to extract and manipulate it.</p>
-<h3 id="Relational-Database-Basics"><strong>Relational Database Basics</strong><a class="anchor-link" href="#Relational-Database-Basics">¶</a></h3><ul>
-<li><strong>Tables</strong> – store data in rows and columns.</li>
-<li><strong>Rows</strong> – individual records.</li>
-<li><strong>Columns</strong> – attributes or fields.</li>
-<li><strong>Primary Key</strong> – a unique identifier for each record.</li>
-<li><strong>Foreign Key</strong> – links between tables.</li>
-<li><strong>Relationships</strong> – how tables connect (one-to-many, many-to-many).</li>
-</ul>
-<h3 id="Essential-SQL-Skills"><strong>Essential SQL Skills</strong><a class="anchor-link" href="#Essential-SQL-Skills">¶</a></h3><ul>
-<li>SELECT → choose columns</li>
-<li>WHERE → filter rows</li>
-<li>ORDER BY → sort results</li>
-<li>GROUP BY → aggregate data</li>
-<li>JOIN → combine multiple tables</li>
-<li>COUNT, SUM, AVG, MIN, MAX → summary statistics</li>
-</ul>
-<h3 id="Why-SQL-Matters"><strong>Why SQL Matters</strong><a class="anchor-link" href="#Why-SQL-Matters">¶</a></h3><ul>
-<li>Analysts frequently query large datasets</li>
-<li>Required for dashboards, reporting, and machine learning pipelines</li>
-</ul>
-<hr/>
-<h2 id="3.-Core-Statistical-Foundations"><strong>3. Core Statistical Foundations</strong><a class="anchor-link" href="#3.-Core-Statistical-Foundations">¶</a></h2><p>Stats is the science behind all analysis. You don’t need heavy math—but you must understand the concepts.</p>
-<h3 id="Descriptive-Statistics"><strong>Descriptive Statistics</strong><a class="anchor-link" href="#Descriptive-Statistics">¶</a></h3><ul>
-<li>Mean, median, mode</li>
-<li>Variance, standard deviation</li>
-<li>Percentiles &amp; quartiles</li>
-<li>Distributions (normal, skewed, uniform)</li>
-</ul>
-<h3 id="Inferential-Statistics"><strong>Inferential Statistics</strong><a class="anchor-link" href="#Inferential-Statistics">¶</a></h3><ul>
-<li>Sampling</li>
-<li>Confidence intervals</li>
-<li>Hypothesis testing</li>
-<li>p-values</li>
-<li>Correlation vs causation</li>
-</ul>
-<h3 id="Why-It-Matters"><strong>Why It Matters</strong><a class="anchor-link" href="#Why-It-Matters">¶</a></h3><ul>
-<li>Helps interpret data correctly</li>
-<li>Avoids false conclusions</li>
-<li>Supports predictive modeling</li>
-</ul>
-<hr/>
-<h2 id="4.-Data-Ethics,-Privacy-&amp;-Governance"><strong>4. Data Ethics, Privacy &amp; Governance</strong><a class="anchor-link" href="#4.-Data-Ethics,-Privacy-&amp;-Governance">¶</a></h2><p>Modern analysts must work responsibly, especially with personal or sensitive data.</p>
-<h3 id="Key-Concepts"><strong>Key Concepts</strong><a class="anchor-link" href="#Key-Concepts">¶</a></h3><ul>
-<li><strong>PII (Personally Identifiable Information)</strong> – name, ID number, address, email</li>
-<li><strong>Data minimization</strong> – only collect what is necessary</li>
-<li><strong>Consent &amp; compliance</strong> – POPIA (SA), GDPR (EU)</li>
-<li><strong>Bias &amp; fairness</strong> – avoid discriminatory algorithms</li>
-<li><strong>Transparency</strong> – explainable insights</li>
-</ul>
-<h3 id="Why-It-Matters"><strong>Why It Matters</strong><a class="anchor-link" href="#Why-It-Matters">¶</a></h3><ul>
-<li>Protects users</li>
-<li>Prevents legal issues</li>
-<li>Ensures trustworthy data-driven decisions</li>
-</ul>
-<hr/>
-<h2 id="5.-Analytical-Thinking-&amp;-Problem-Solving"><strong>5. Analytical Thinking &amp; Problem-Solving</strong><a class="anchor-link" href="#5.-Analytical-Thinking-&amp;-Problem-Solving">¶</a></h2><p>Strong analysis is not only technical—it’s logical and structured.</p>
-<h3 id="How-Analysts-Approach-Problems"><strong>How Analysts Approach Problems</strong><a class="anchor-link" href="#How-Analysts-Approach-Problems">¶</a></h3><ol>
-<li>Define the problem clearly</li>
-<li>Form a hypothesis</li>
-<li>Identify the needed data</li>
-<li>Choose the right metrics</li>
-<li>Analyze patterns and test assumptions</li>
-<li>Present findings clearly</li>
-</ol>
-<h3 id="Common-Metrics-&amp;-KPIs"><strong>Common Metrics &amp; KPIs</strong><a class="anchor-link" href="#Common-Metrics-&amp;-KPIs">¶</a></h3><ul>
-<li>Conversion rate</li>
-<li>Retention rate</li>
-<li>Churn rate</li>
-<li>Average order value</li>
-<li>Customer lifetime value</li>
-</ul>
-<hr/>
-<h2 id="6.-Experiment-Design-&amp;-A/B-Testing"><strong>6. Experiment Design &amp; A/B Testing</strong><a class="anchor-link" href="#6.-Experiment-Design-&amp;-A/B-Testing">¶</a></h2><p>A/B tests help determine whether a change actually improves outcomes.</p>
-<h3 id="Key-Concepts"><strong>Key Concepts</strong><a class="anchor-link" href="#Key-Concepts">¶</a></h3><ul>
-<li>Control group vs treatment group</li>
-<li>Randomization</li>
-<li>Statistical significance</li>
-<li>Confidence level</li>
-<li>Effect size</li>
-</ul>
-<h3 id="Uses"><strong>Uses</strong><a class="anchor-link" href="#Uses">¶</a></h3><ul>
-<li>Testing website layouts</li>
-<li>Marketing campaigns</li>
-<li>Product feature performance</li>
-</ul>
-<hr/>
-<h2 id="7.-Practical-Examples"><strong>7. Practical Examples</strong><a class="anchor-link" href="#7.-Practical-Examples">¶</a></h2><p>Below are examples to help apply theory to real data analysis.</p>
-<h3 id="Example:-Cleaning-Data"><strong>Example: Cleaning Data</strong><a class="anchor-link" href="#Example:-Cleaning-Data">¶</a></h3><ul>
-<li>Remove duplicates</li>
-<li>Impute missing values (mean, median, mode)</li>
-<li>Standardize formats (dates, currencies)</li>
-<li>Encode categories (ordinal/nominal)</li>
-</ul>
-<h3 id="Example:-Exploratory-Data-Analysis-(EDA)"><strong>Example: Exploratory Data Analysis (EDA)</strong><a class="anchor-link" href="#Example:-Exploratory-Data-Analysis-(EDA)">¶</a></h3><ul>
-<li>Distribution of numerical columns</li>
-<li>Frequency of categories</li>
-<li>Correlation heatmap</li>
-<li>Outlier detection</li>
-</ul>
-<h3 id="Example:-Writing-a-Problem-Statement"><strong>Example: Writing a Problem Statement</strong><a class="anchor-link" href="#Example:-Writing-a-Problem-Statement">¶</a></h3><blockquote>
-<p>"Sales have dropped by 12% in Q3. Identify the primary reasons for the decline and recommend actions to improve Q4 performance."</p>
-</blockquote>
-<h3 id="Mini-Analysis-Plan"><strong>Mini-Analysis Plan</strong><a class="anchor-link" href="#Mini-Analysis-Plan">¶</a></h3><ol>
-<li>Pull sales data from SQL</li>
-<li>Clean and prepare dataset</li>
-<li>Segment sales by region/product/channel</li>
-<li>Visualize performance trends</li>
-<li>Identify anomalies or bottlenecks</li>
-<li>Present recommended actions</li>
-</ol>
-<hr/>
-<h2 id="Next-Step-After-Part-2"><strong>Next Step After Part 2</strong><a class="anchor-link" href="#Next-Step-After-Part-2">¶</a></h2><p>Once you master this section, you’re ready to learn:</p>
+<h1 id="Key-Concepts-of-Data-for-a-Data-Analyst">Key Concepts of Data for a Data Analyst<a class="anchor-link" href="#Key-Concepts-of-Data-for-a-Data-Analyst">¶</a></h1><hr/>
+<h2 id="1.-Data-Collection-%E2%80%93-Getting-the-data-you-need">1. Data Collection – Getting the data you need<a class="anchor-link" href="#1.-Data-Collection-%E2%80%93-Getting-the-data-you-need">¶</a></h2><p>What it is: Gathering data from different sources such as databases, APIs, surveys, web scraping, IoT devices, or internal company systems. <br/>
+Key Points:</p>
 <ul>
-<li>Python basics</li>
-<li>NumPy</li>
-<li>pandas</li>
-<li>Matplotlib/Seaborn</li>
-<li>Scikit-learn</li>
+<li>Data can be structured (tables, spreadsheets) or unstructured (text, images, logs).</li>
+<li>Collection methods vary: SQL queries, Python scripts, Excel imports, or BI tools.</li>
+<li>Must consider <strong>data quality</strong>, <strong>ethics</strong>, and <strong>privacy</strong> (e.g., GDPR, POPIA).</li>
 </ul>
-<p>And then begin real mini projects.</p>
-<hr/>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f6027c44-0270-4414-8d88-80fb5c918d00">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
+<h2 id="2.-Data-Cleanup-(Data-Wrangling/Preprocessing)-%E2%80%93-Making-data-usable">2. Data Cleanup (Data Wrangling/Preprocessing) – Making data usable<a class="anchor-link" href="#2.-Data-Cleanup-(Data-Wrangling/Preprocessing)-%E2%80%93-Making-data-usable">¶</a></h2><p>What it is: Cleaning raw data so it’s accurate, consistent, and ready for analysis. <br>
+Key Points:</br></p>
+<ul>
+<li>Handle missing values (remove, impute, or fill).</li>
+<li>Fix inconsistencies (date formats, typos, duplicates).</li>
+<li>Detect and handle outliers.</li>
+<li>Ensure data types (numbers, dates, categories) are correct.</li>
+<li>This step can take 60–80% of a data analyst’s time.</li>
+</ul>
+<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
+<h2 id="3.-Exploration-%E2%86%92-Advanced-EDA">3. Exploration → Advanced EDA<a class="anchor-link" href="#3.-Exploration-%E2%86%92-Advanced-EDA">¶</a></h2><ul>
+<li>Learn dimensionality reduction (PCA).</li>
+<li>Feature engineering for ML.</li>
+<li>Interactive exploration with Jupyter &amp; Python.</li>
+</ul>
+<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
+<h2 id="4.%09Visualization-%E2%86%92-Storytelling-&amp;-Dashboards">4.	Visualization → Storytelling &amp; Dashboards<a class="anchor-link" href="#4.%09Visualization-%E2%86%92-Storytelling-&amp;-Dashboards">¶</a></h2><ul>
+<li>Advanced visualization libraries (Plotly, D3.js).</li>
+<li>BI dashboard tools (Power BI, Tableau).</li>
+<li>Data storytelling techniques.</li>
+</ul>
+<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
+<h2 id="5.%09Statistics-%E2%86%92-Advanced-Analytics">5.	Statistics → Advanced Analytics<a class="anchor-link" href="#5.%09Statistics-%E2%86%92-Advanced-Analytics">¶</a></h2><ul>
+<li>Time series analysis (ARIMA, Prophet).</li>
+<li>A/B testing &amp; experimental design.</li>
+<li>Bayesian statistics.</li>
+</ul>
+<p><br/><hr style="width: 60%; margin: auto;"/><br/></p>
+<h2 id="6.%09Machine-Learning-%E2%86%92-Transition-into-Data-Science">6.	Machine Learning → Transition into Data Science<a class="anchor-link" href="#6.%09Machine-Learning-%E2%86%92-Transition-into-Data-Science">¶</a></h2><ul>
+<li>Model evaluation (accuracy, precision, recall, ROC).</li>
+<li>Deployment of ML models.</li>
+<li>Deep learning (PyTorch, TensorFlow).</li>
+<li>MLOps basics (CI/CD for ML).</li>
+</ul>
 </div>
 </div>
 </div>

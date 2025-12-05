@@ -545,22 +545,22 @@ details details summary {
 <details>
 <summary>Udemy Notes</summary>
   <details>
-  <summary>The field of Data science </summary>
+  <summary>Part One - Introduction</summary>
 
             <div class='notebook-entry'>
-                <a href='notebooks/Udemy Notes/The field of Data science /1. What is the difference between Analysis and Analytics.html' target='_blank' rel='noopener noreferrer'>📓 1. what is the difference between analysis and analytics</a>
+                <a href='notebooks/Udemy Notes/Part One - Introduction/1. What is the difference between Analysis and Analytics.html' target='_blank' rel='noopener noreferrer'>📓 1. what is the difference between analysis and analytics</a>
                 <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Nov 2025</div>
             </div>
             
 
             <div class='notebook-entry'>
-                <a href='notebooks/Udemy Notes/The field of Data science /2. Business Analytics, Data Analytics, and Data Science.html' target='_blank' rel='noopener noreferrer'>📓 2. business analytics, data analytics, and data science</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Nov 2025</div>
+                <a href='notebooks/Udemy Notes/Part One - Introduction/2. Business Analytics, Data Analytics, and Data Science.html' target='_blank' rel='noopener noreferrer'>📓 2. business analytics, data analytics, and data science</a>
+                <div class='created-date'><span class='arrow'>&#x21B3;</span> 05 Dec 2025</div>
             </div>
             
 
             <div class='notebook-entry'>
-                <a href='notebooks/Udemy Notes/The field of Data science /3. Data Science infographic.html' target='_blank' rel='noopener noreferrer'>📓 3. data science infographic</a>
+                <a href='notebooks/Udemy Notes/Part One - Introduction/3. Data Science infographic.html' target='_blank' rel='noopener noreferrer'>📓 3. data science infographic</a>
                 <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Nov 2025</div>
             </div>
             
@@ -593,10 +593,10 @@ document.getElementById('searchBox').addEventListener('input', function () {
     folder.open = visibleNested && filter.length > 0;
   });
 });
-const last30DaysLabels = ["Oct 31", "Nov 01", "Nov 02", "Nov 03", "Nov 04", "Nov 05", "Nov 06", "Nov 07", "Nov 08", "Nov 09", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 14", "Nov 15", "Nov 16", "Nov 17", "Nov 18", "Nov 19", "Nov 20", "Nov 21", "Nov 22", "Nov 23", "Nov 24", "Nov 25", "Nov 26", "Nov 27", "Nov 28", "Nov 29"];
-const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3];
-const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const monthDaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0];
+const last30DaysLabels = ["Nov 06", "Nov 07", "Nov 08", "Nov 09", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 14", "Nov 15", "Nov 16", "Nov 17", "Nov 18", "Nov 19", "Nov 20", "Nov 21", "Nov 22", "Nov 23", "Nov 24", "Nov 25", "Nov 26", "Nov 27", "Nov 28", "Nov 29", "Nov 30", "Dec 01", "Dec 02", "Dec 03", "Dec 04", "Dec 05"];
+const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1];
+const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+const monthDaysCounts = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 window.addEventListener('DOMContentLoaded', () => {
   const ctxBar = document.getElementById('barChart').getContext('2d');
   new Chart(ctxBar, {

@@ -1,0 +1,218 @@
+/* ===============================
+   GLOBAL NOTEBOOK THEME
+   =============================== */
+
+:root {
+  --green-dark: #0f3d2e;
+  --green-main: #145a44;
+  --green-light: #1f7a5c;
+  --green-accent: #7fd1b2;
+
+  --bg-main: #eef3f1;
+  --bg-card: #ffffff;
+  --bg-code: #0b2e22;
+
+  --text-main: #1f2933;
+  --text-muted: #6b7280;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-main);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+/* ===============================
+   TOP NAV (HOME + SLIDES)
+   =============================== */
+
+.notebook-top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--green-dark);
+  padding: 12px 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+}
+
+.notebook-top-nav a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   SLIDE CONTROLS
+   =============================== */
+
+.slide-controls {
+  position: sticky;
+  top: 52px;
+  z-index: 90;
+  background: linear-gradient(
+    135deg,
+    var(--green-main),
+    var(--green-dark)
+  );
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.slide-controls button {
+  background: var(--green-accent);
+  color: var(--green-dark);
+  border: none;
+  padding: 8px 16px;
+  margin: 0 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.slide-controls button:hover {
+  filter: brightness(1.05);
+}
+
+#slide-indicator {
+  color: white;
+  font-weight: 600;
+  margin: 0 10px;
+}
+
+/* ===============================
+   SLIDE WRAPPER
+   =============================== */
+
+.slide-wrapper {
+  padding: 28px 16px 80px;
+}
+
+/* ===============================
+   SLIDE CONTENT CARD
+   =============================== */
+
+.slide {
+  display: none;
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  padding: 48px 56px;
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+}
+
+/* ===============================
+   TYPOGRAPHY
+   =============================== */
+
+.slide h1 {
+  font-size: 2.4rem;
+  margin-bottom: 24px;
+  color: var(--green-main);
+}
+
+.slide h2 {
+  font-size: 1.8rem;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: var(--green-main);
+}
+
+.slide h3 {
+  font-size: 1.3rem;
+  margin-top: 26px;
+  margin-bottom: 12px;
+  color: var(--green-light);
+}
+
+.slide p {
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.slide ul {
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+
+.slide li {
+  margin-bottom: 8px;
+}
+
+/* ===============================
+   CODE CELLS
+   =============================== */
+
+pre {
+  background: var(--bg-code);
+  color: #e5f7ef;
+  padding: 18px;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  margin: 24px 0;
+}
+
+code {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ===============================
+   OUTPUT CELLS
+   =============================== */
+
+.output_area,
+.output_subarea {
+  background: #f6faf8;
+  border-left: 4px solid var(--green-accent);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+
+/* ===============================
+   TABLES
+   =============================== */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 24px 0;
+}
+
+th, td {
+  padding: 10px 12px;
+  border: 1px solid #d1e5dd;
+}
+
+th {
+  background: #e6f4ef;
+  font-weight: 700;
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+   =============================== */
+
+@media (max-width: 768px) {
+  .slide {
+    padding: 28px 22px;
+  }
+
+  .slide h1 {
+    font-size: 1.9rem;
+  }
+
+  .slide h2 {
+    font-size: 1.5rem;
+  }
+
+  .slide-controls button {
+    margin: 6px;
+    padding: 8px 12px;
+  }
+}

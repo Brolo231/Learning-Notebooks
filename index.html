@@ -1,643 +1,539 @@
-<!DOCTYPE html><html lang='en'><head>
-<meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>Learning Notebooks</title>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
-<style>
-body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-h1 { font-weight: 700; font-size: 2.5rem; margin-bottom: 1.5rem; }
-
-/* Container */
-.container { max-width: 1000px; margin: 0 auto; }
-
-/* Folder Styles */
-details { margin-bottom: 1rem; background: #fff; border-radius: 8px; padding: 0.8rem 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-summary { font-weight: 700; font-size: 1.2rem; cursor: pointer; position: relative; padding-right: 20px; color: #0d6efd; }
-summary::after { content: '▶'; position: absolute; right: 0; transition: transform 0.3s ease; }
-details[open] > summary::after { transform: rotate(90deg); }
-
-/* Subfolder differentiation */
-details details summary {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #495057;
-}
-
-/* Notebook entries */
-.notebook-entry { 
-    background: #fff; 
-    border: 1px solid #dee2e6; 
-    padding: 12px 16px; 
-    border-radius: 6px; 
-    margin: 8px 0 8px 20px; /* indent under folder */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03); 
-}
-.notebook-entry a { 
-    color: #212529; 
-    font-weight: 600; 
-    font-size: 1rem; 
-    text-decoration: none; 
-}
-.notebook-entry a:hover { color: #0d6efd; }
-
-/* Notebook metadata */
-.created-date { 
-    margin-top: 4px; 
-    font-size: 0.85rem; 
-    color: #6c757d; 
-    display: flex; 
-    align-items: center; 
-}
-.arrow { margin-right: 6px; color: #adb5bd; }
-
-/* Productivity box */
-#productivity { background: #fff; border-radius: 8px; padding: 1rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-#productivity h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-</style>
+<!DOCTYPE html><html><head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>My Learning</title>
+<link rel='stylesheet' href='assets/lms.css'>
 <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-</head><body><div class='container mt-5'>
-<h1 class='text-center mb-4'>Learning Notebooks</h1>
-<div class='text-center mb-4'>
-  <a href='#productivity' class='btn btn-outline-primary btn-sm me-2'>📈 Jump to Productivity</a>
-  <a href='pyodide.html' class='btn btn-outline-primary btn-sm me-2'>🐍 Run Python</a>
-  <a href='sql_editor.html' class='btn btn-outline-primary btn-sm me-2'>📑 Run SQL</a>
-  <a href='javascript_web_editor.html' class='btn btn-outline-primary btn-sm me-2'>👾 Run JavaScript</a>
-  <a href='https://quiz-brandonfourie.pythonanywhere.com/' class='btn btn-outline-primary btn-sm me-2'>🧐 Take a Quiz</a>
+</head><body>
+<nav class='lms-navbar'>
+  <div class='nav-left'><span class='lms-logo'>🎓 My Learning</span></div>
+  <div class='nav-right'>
+    <a href='pyodide.html' class='nav-btn' target='_blank'>🐍 Python Lab</a>
+    <a href='sql_editor.html' class='nav-btn' target='_blank'>📑 SQL Lab</a>
+    <a href='javascript_web_editor.html' class='nav-btn' target='_blank'>👾 JS Lab</a>
+    <a href='https://quiz-brandonfourie.pythonanywhere.com/' class='nav-btn highlight' target='_blank'>🧠 Quizzes</a>
+  </div>
+</nav>
+<header class='lms-hero'><h1>Learning Notebooks</h1></header>
+<main class='lms-container'>
+<input id='searchBox' placeholder='Search courses or lessons...'>
+<details><summary>Data Science </summary>
+<details><summary>Part One - Introduction</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/1. What is the difference between Analysis and Analytics.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">1. what is the difference between analysis and analytics</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/2. Business Analytics, Data Analytics, and Data Science.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">2. business analytics, data analytics, and data science</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/3. Data Science infographic.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">3. data science infographic</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/4. Numerical vs Categorical Data.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">4. numerical vs categorical data</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/5.1 Working with Data - Traditional Data.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">5.1 working with data - traditional data</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/5.2 Working with Data - Big Data.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">5.2 working with data - big data</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Data Science /Part One - Introduction/5.3 Working with Data - Business Intelligence.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">5.3 working with data - business intelligence</span>
+                          </a>
+                        </div>
+                        
 </div>
-<input type='text' id='searchBox' class='form-control mb-4' placeholder='🔍 Search notebooks...'>
-<div style='margin-top:10px; text-align:center;'>
+</details>
+</details>
+<details><summary>Kaggle</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">1. how to use kaggle datasets in jupyter notebook</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Kaggle/2. Extrovert vs Introvert Dataset.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">2. extrovert vs introvert dataset</span>
+                          </a>
+                        </div>
+                        
 </div>
-<details>
-<summary>01 Foundations</summary>
-  <details>
-  <summary>Data Ethics</summary>
-  </details>
-  <details>
-  <summary>Fundamentals for Data Analysis </summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Fundamentals for Data Analysis /1. Data Analysis Foundations.html' target='_blank' rel='noopener noreferrer'>📓 1. data analysis foundations</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Nov 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Fundamentals for Data Analysis /Key Data Analysis Terms.html' target='_blank' rel='noopener noreferrer'>📓 Key data analysis terms</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 31 Aug 2025</div>
-            </div>
-            
-  </details>
-  <details>
-  <summary>Math for Data Analysis</summary>
-  </details>
-  <details>
-  <summary>Python Basics</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Python Basics/1. Basics.html' target='_blank' rel='noopener noreferrer'>📓 1. basics</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 19 Jun 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/01 Foundations/Python Basics/2. Classes.html' target='_blank' rel='noopener noreferrer'>📓 2. classes</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 19 Jun 2025</div>
-            </div>
-            
-  </details>
-  <details>
-  <summary>Statistics</summary>
-  </details>
 </details>
-<details>
-<summary>02 Data Handling</summary>
-  <details>
-  <summary>File Handling </summary>
+<details><summary>Leetcode Practice</summary>
+<details><summary>Leetcode</summary>
+<details><summary>Arrays & Strings</summary>
+<div class='lesson-list'>
 
-            <div class='notebook-entry'>
-                <a href='notebooks/02 Data Handling/File Handling /1. Working with different file types.html' target='_blank' rel='noopener noreferrer'>📓 1. working with different file types</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 21 Nov 2025</div>
-            </div>
-            
-  </details>
-  <details>
-  <summary>NumPy</summary>
-  </details>
-  <details>
-  <summary>Pandas</summary>
-    <details>
-    <summary>Pandas</summary>
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Arrays & Strings/1. Two Sum - easy.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">1. two sum - easy</span>
+                          </a>
+                        </div>
+                        
 
-            <div class='notebook-entry'>
-                <a href='notebooks/02 Data Handling/Pandas/Pandas/Pandas Project Ideas.html' target='_blank' rel='noopener noreferrer'>📓 Pandas project ideas</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 02 Aug 2025</div>
-            </div>
-            
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Arrays & Strings/121. Best time to buy and sell stock - easy.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">121. best time to buy and sell stock - easy</span>
+                          </a>
+                        </div>
+                        
 
-            <div class='notebook-entry'>
-                <a href='notebooks/02 Data Handling/Pandas/Pandas/Running CSV with Pyodide Code Editor.html' target='_blank' rel='noopener noreferrer'>📓 Running csv with pyodide code editor</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 04 Aug 2025</div>
-            </div>
-            
-    </details>
-  </details>
-</details>
-<details>
-<summary>03 Data Analysis</summary>
-  <details>
-  <summary>Data Visualization</summary>
-  </details>
-  <details>
-  <summary>EDA & Cleaning</summary>
-  </details>
-  <details>
-  <summary>Kaggle</summary>
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Arrays & Strings/238. Product of Array Except Self - medium.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">238. product of array except self - medium</span>
+                          </a>
+                        </div>
+                        
 
-            <div class='notebook-entry'>
-                <a href='notebooks/03 Data Analysis/Kaggle/1. How to use kaggle datasets in Jupyter Notebook.html' target='_blank' rel='noopener noreferrer'>📓 1. how to use kaggle datasets in jupyter notebook</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/03 Data Analysis/Kaggle/2. Extrovert vs Introvert Dataset.html' target='_blank' rel='noopener noreferrer'>📓 2. extrovert vs introvert dataset</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Jun 2025</div>
-            </div>
-            
-    <details>
-    <summary>datasets</summary>
-    </details>
-  </details>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/03 Data Analysis/Data Analysis Roadmap.html' target='_blank' rel='noopener noreferrer'>📓 Data analysis roadmap</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
-            </div>
-            
-</details>
-<details>
-<summary>04 Machine Learning</summary>
-  <details>
-  <summary>ML Algorithms</summary>
-  </details>
-  <details>
-  <summary>ML Foundations</summary>
-  </details>
-  <details>
-  <summary>ML Projects</summary>
-  </details>
-  <details>
-  <summary>SciKit Learn</summary>
-  </details>
-</details>
-<details>
-<summary>05 Deep Learning</summary>
-  <details>
-  <summary>DL Projects</summary>
-  </details>
-  <details>
-  <summary>Neural Network Basics</summary>
-  </details>
-  <details>
-  <summary>PyTorch</summary>
-  </details>
-</details>
-<details>
-<summary>06 Databases and SQL</summary>
-  <details>
-  <summary>Database Design</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/Database Design/Chapter 1 - Before the Advent of Database Systems.html' target='_blank' rel='noopener noreferrer'>📓 Chapter 1 - before the advent of database systems</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 09 Oct 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/Database Design/Chapter 2 - Fundamental concepts.html' target='_blank' rel='noopener noreferrer'>📓 Chapter 2 - fundamental concepts</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 09 Oct 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/Database Design/Chapter 3 - Types of Data Models.html' target='_blank' rel='noopener noreferrer'>📓 Chapter 3 - types of data models</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 09 Oct 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/Database Design/Chapter 4 - Data Modelling.html' target='_blank' rel='noopener noreferrer'>📓 Chapter 4 - data modelling</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 09 Oct 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/Database Design/Chapter 5 - Classification of Database Management Systems.html' target='_blank' rel='noopener noreferrer'>📓 Chapter 5 - classification of database management systems</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Oct 2025</div>
-            </div>
-            
-    <details>
-    <summary>static</summary>
-    </details>
-  </details>
-  <details>
-  <summary>MySQL</summary>
-    <details>
-    <summary>1. Begginer SQL</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/1. Begginer SQL/00. Database and Tables.html' target='_blank' rel='noopener noreferrer'>📓 00. database and tables</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> Unknown Date</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/1. Begginer SQL/1. WHERE, LIKE.html' target='_blank' rel='noopener noreferrer'>📓 1. where, like</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Aug 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/1. Begginer SQL/2. GROUP BY, ORDER BY.html' target='_blank' rel='noopener noreferrer'>📓 2. group by, order by</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Aug 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/1. Begginer SQL/3. HAVING.html' target='_blank' rel='noopener noreferrer'>📓 3. having</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Aug 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/1. Begginer SQL/4. LIMIT and ALIASING.html' target='_blank' rel='noopener noreferrer'>📓 4. limit and aliasing</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Aug 2025</div>
-            </div>
-            
-      <details>
-      <summary>static</summary>
-      </details>
-    </details>
-    <details>
-    <summary>2 Intermediate SQL </summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /005. JOINS.html' target='_blank' rel='noopener noreferrer'>📓 005. joins</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /006. UNIONS.html' target='_blank' rel='noopener noreferrer'>📓 006. unions</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /007. String Functions.html' target='_blank' rel='noopener noreferrer'>📓 007. string functions</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /008. CASE.html' target='_blank' rel='noopener noreferrer'>📓 008. case</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /009. SUBQUERIES.html' target='_blank' rel='noopener noreferrer'>📓 009. subqueries</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /010. Number Functions.html' target='_blank' rel='noopener noreferrer'>📓 010. number functions</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /011 Window Functions.html' target='_blank' rel='noopener noreferrer'>📓 011 window functions</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> Unknown Date</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/2 Intermediate SQL /011. Window Functions.html' target='_blank' rel='noopener noreferrer'>📓 011. window functions</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Sep 2025</div>
-            </div>
-            
-      <details>
-      <summary>static</summary>
-      </details>
-    </details>
-    <details>
-    <summary>3. Advanced SQL</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/3. Advanced SQL/012. CTE - Common table expression.html' target='_blank' rel='noopener noreferrer'>📓 012. cte - common table expression</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 23 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/3. Advanced SQL/013. Temp Tables.html' target='_blank' rel='noopener noreferrer'>📓 013. temp tables</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 23 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/3. Advanced SQL/014. Stored Procedures.html' target='_blank' rel='noopener noreferrer'>📓 014. stored procedures</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 25 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/3. Advanced SQL/015. Triggers and Events.html' target='_blank' rel='noopener noreferrer'>📓 015. triggers and events</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 01 Oct 2025</div>
-            </div>
-            
-      <details>
-      <summary>static</summary>
-      </details>
-    </details>
-    <details>
-    <summary>4. SQL Cleaning Techniques</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/4. SQL Cleaning Techniques/SQL Cleaning Techniques.html' target='_blank' rel='noopener noreferrer'>📓 Sql cleaning techniques</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
-            </div>
-            
-    </details>
-    <details>
-    <summary>5. Table Operations </summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/5. Table Operations /001. Intorduction to DDL.html' target='_blank' rel='noopener noreferrer'>📓 001. intorduction to ddl</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 27 Sep 2025</div>
-            </div>
-            
-    </details>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/00. Database and Tables.html' target='_blank' rel='noopener noreferrer'>📓 00. database and tables</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/06 Databases and SQL/MySQL/SQL roadmap.html' target='_blank' rel='noopener noreferrer'>📓 Sql roadmap</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 24 Sep 2025</div>
-            </div>
-            
-  </details>
-</details>
-<details>
-<summary>06 Python for Data Analysis</summary>
-</details>
-<details>
-<summary>07 Data Engineering</summary>
-  <details>
-  <summary>APIs and Automation</summary>
-  </details>
-  <details>
-  <summary>ETL</summary>
-  </details>
-</details>
-<details>
-<summary>08 Software Dev Tools</summary>
-  <details>
-  <summary>Docker</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/08 Software Dev Tools/Docker/Docker Introduction.html' target='_blank' rel='noopener noreferrer'>📓 Docker introduction</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 23 Jun 2025</div>
-            </div>
-            
-  </details>
-  <details>
-  <summary>Terminal</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/08 Software Dev Tools/Terminal/GitHub and Git in the Terminal.html' target='_blank' rel='noopener noreferrer'>📓 Github and git in the terminal</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/08 Software Dev Tools/Terminal/Terminal.html' target='_blank' rel='noopener noreferrer'>📓 Terminal</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 05 Mar 2025</div>
-            </div>
-            
-  </details>
-</details>
-<details>
-<summary>09 Web Development</summary>
-  <details>
-  <summary>Flask </summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/09 Web Development/Flask /How to create a simple web app with Flask.html' target='_blank' rel='noopener noreferrer'>📓 How to create a simple web app with flask</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-  </details>
-  <details>
-  <summary>Flask Socket IO</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/09 Web Development/Flask Socket IO/1. How to setup a simple real time communication socket io web app.html' target='_blank' rel='noopener noreferrer'>📓 1. how to setup a simple real time communication socket io web app</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 17 Jul 2025</div>
-            </div>
-            
-  </details>
-</details>
-<details>
-<summary>10 Computer Science Practice</summary>
-  <details>
-  <summary>Leetcode</summary>
-    <details>
-    <summary>Arrays & Strings</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Arrays & Strings/1. Two Sum - easy.html' target='_blank' rel='noopener noreferrer'>📓 1. two sum - easy</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Arrays & Strings/121. Best time to buy and sell stock - easy.html' target='_blank' rel='noopener noreferrer'>📓 121. best time to buy and sell stock - easy</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Arrays & Strings/238. Product of Array Except Self - medium.html' target='_blank' rel='noopener noreferrer'>📓 238. product of array except self - medium</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Arrays & Strings/3. Longest Substring without repeating characters - medium.html' target='_blank' rel='noopener noreferrer'>📓 3. longest substring without repeating characters - medium</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-    </details>
-    <details>
-    <summary>Custom Problems</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Custom Problems/Anagrams in a string sentence.html' target='_blank' rel='noopener noreferrer'>📓 Anagrams in a string sentence</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 11 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Custom Problems/Reverse Sentence with Grammar Correction.html' target='_blank' rel='noopener noreferrer'>📓 Reverse sentence with grammar correction</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-    </details>
-    <details>
-    <summary>Hashing & Sets</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Hashing & Sets/217. Contains Duplicate - easy.html' target='_blank' rel='noopener noreferrer'>📓 217. contains duplicate - easy</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Hashing & Sets/242. Valid Anagram - easy.html' target='_blank' rel='noopener noreferrer'>📓 242. valid anagram - easy</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Hashing & Sets/347. Top K Frequent Elements - medium.html' target='_blank' rel='noopener noreferrer'>📓 347. top k frequent elements - medium</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 14 Jul 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Hashing & Sets/49. Group Anagrams - medium.html' target='_blank' rel='noopener noreferrer'>📓 49. group anagrams - medium</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-    </details>
-    <details>
-    <summary>Two Pointers</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Two Pointers/125. Valid Palindrome - easy.html' target='_blank' rel='noopener noreferrer'>📓 125. valid palindrome - easy</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-    </details>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/10 Computer Science Practice/Leetcode/Time complexities.html' target='_blank' rel='noopener noreferrer'>📓 Time complexities</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 10 Jul 2025</div>
-            </div>
-            
-  </details>
-</details>
-<details>
-<summary>Udemy Notes</summary>
-  <details>
-  <summary>Part One - Introduction</summary>
-
-            <div class='notebook-entry'>
-                <a href='notebooks/Udemy Notes/Part One - Introduction/1. What is the difference between Analysis and Analytics.html' target='_blank' rel='noopener noreferrer'>📓 1. what is the difference between analysis and analytics</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Nov 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/Udemy Notes/Part One - Introduction/2. Business Analytics, Data Analytics, and Data Science.html' target='_blank' rel='noopener noreferrer'>📓 2. business analytics, data analytics, and data science</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 05 Dec 2025</div>
-            </div>
-            
-
-            <div class='notebook-entry'>
-                <a href='notebooks/Udemy Notes/Part One - Introduction/3. Data Science infographic.html' target='_blank' rel='noopener noreferrer'>📓 3. data science infographic</a>
-                <div class='created-date'><span class='arrow'>&#x21B3;</span> 29 Nov 2025</div>
-            </div>
-            
-    <details>
-    <summary>static</summary>
-    </details>
-  </details>
-</details>
-<hr class='my-5'>
-<div id='productivity'>
-<h2 class='text-center mb-4'>📈 Productivity Overview</h2>
-<div class='mb-4' style='height:300px;'><canvas id='barChart'></canvas></div>
-<h5 class='text-center'>🗓️ Updates This Month</h5>
-<div style='height:180px;' id='calendar-section'><canvas id='calendarHeatmap'></canvas></div>
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Arrays & Strings/3. Longest Substring without repeating characters - medium.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">3. longest substring without repeating characters - medium</span>
+                          </a>
+                        </div>
+                        
 </div>
+</details>
+<details><summary>Custom Problems</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Custom Problems/Anagrams in a string sentence.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Anagrams in a string sentence</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Custom Problems/Reverse Sentence with Grammar Correction.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Reverse sentence with grammar correction</span>
+                          </a>
+                        </div>
+                        
 </div>
-<script>
-document.getElementById('searchBox').addEventListener('input', function () {
-  const filter = this.value.toLowerCase();
-  const notebookItems = document.querySelectorAll('.notebook-entry');
-  const folders = document.querySelectorAll('details');
-  notebookItems.forEach(item => {
-    const text = item.textContent.toLowerCase();
-    const match = text.includes(filter);
-    item.style.display = match ? '' : 'none';
-  });
-  folders.forEach(folder => {
-    const visibleNested = Array.from(folder.querySelectorAll('.notebook-entry')).some(div => div.style.display !== 'none');
-    folder.style.display = visibleNested ? '' : 'none';
-    folder.open = visibleNested && filter.length > 0;
-  });
-});
-const last30DaysLabels = ["Nov 06", "Nov 07", "Nov 08", "Nov 09", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 14", "Nov 15", "Nov 16", "Nov 17", "Nov 18", "Nov 19", "Nov 20", "Nov 21", "Nov 22", "Nov 23", "Nov 24", "Nov 25", "Nov 26", "Nov 27", "Nov 28", "Nov 29", "Nov 30", "Dec 01", "Dec 02", "Dec 03", "Dec 04", "Dec 05"];
-const last30DaysCounts = [0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1];
-const monthDaysLabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-const monthDaysCounts = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-window.addEventListener('DOMContentLoaded', () => {
-  const ctxBar = document.getElementById('barChart').getContext('2d');
-  new Chart(ctxBar, {
-    type: 'bar',
-    data: {
-      labels: last30DaysLabels,
-      datasets: [{
-        label: 'Notebooks Updated',
-        data: last30DaysCounts,
-        backgroundColor: 'rgba(13, 110, 253, 0.7)',
-        borderRadius: 4
-      }]
-    },
-    options: {
-      scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
-      plugins: { legend: { display: false } },
-      responsive: true,
-      maintainAspectRatio: false
-    }
-  });
-  const ctxHeatmap = document.getElementById('calendarHeatmap').getContext('2d');
-  new Chart(ctxHeatmap, {
-    type: 'bar',
-    data: {
-      labels: monthDaysLabels,
-      datasets: [{
-        label: 'Updates This Month',
-        data: monthDaysCounts,
-        backgroundColor: monthDaysCounts.map(c => c === 0 ? 'rgba(220,220,220,0.5)' : 'rgba(25, 135, 84, 0.8)'),
-        borderRadius: 4
-      }]
-    },
-    options: {
-      scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
-      plugins: { legend: { display: false } },
-      responsive: true,
-      maintainAspectRatio: false
-    }
-  });
-});
-</script>
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>
+</details>
+<details><summary>Hashing & Sets</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Hashing & Sets/217. Contains Duplicate - easy.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">217. contains duplicate - easy</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Hashing & Sets/242. Valid Anagram - easy.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">242. valid anagram - easy</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Hashing & Sets/347. Top K Frequent Elements - medium.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">347. top k frequent elements - medium</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Hashing & Sets/49. Group Anagrams - medium.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">49. group anagrams - medium</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>Two Pointers</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Two Pointers/125. Valid Palindrome - easy.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">125. valid palindrome - easy</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Leetcode Practice/Leetcode/Time complexities.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Time complexities</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+</details>
+<details><summary>MySQL</summary>
+<details><summary>1. Begginer SQL</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/1. Begginer SQL/00. Database and Tables.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">00. database and tables</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/1. Begginer SQL/1. WHERE, LIKE.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">1. where, like</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/1. Begginer SQL/2. GROUP BY, ORDER BY.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">2. group by, order by</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/1. Begginer SQL/3. HAVING.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">3. having</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/1. Begginer SQL/4. LIMIT and ALIASING.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">4. limit and aliasing</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>2 Intermediate SQL </summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /005. JOINS.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">005. joins</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /006. UNIONS.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">006. unions</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /007. String Functions.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">007. string functions</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /008. CASE.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">008. case</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /009. SUBQUERIES.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">009. subqueries</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /010. Number Functions.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">010. number functions</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /011 Window Functions.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">011 window functions</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/2 Intermediate SQL /011. Window Functions.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">011. window functions</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>3. Advanced SQL</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/3. Advanced SQL/012. CTE - Common table expression.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">012. cte - common table expression</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/3. Advanced SQL/013. Temp Tables.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">013. temp tables</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/3. Advanced SQL/014. Stored Procedures.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">014. stored procedures</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/3. Advanced SQL/015. Triggers and Events.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">015. triggers and events</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>4. SQL Cleaning Techniques</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/4. SQL Cleaning Techniques/SQL Cleaning Techniques.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Sql cleaning techniques</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>5. Table Operations </summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/5. Table Operations /001. Intorduction to DDL.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">001. intorduction to ddl</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/00. Database and Tables.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">00. database and tables</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/MySQL/SQL roadmap.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Sql roadmap</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>Python</summary>
+<details><summary>core_python_fundamentals</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Python/core_python_fundamentals/01_variables_and_types.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">01 variables and types</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Python/core_python_fundamentals/02_numbers_strings_booleans.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">02 numbers strings booleans</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Python/core_python_fundamentals/03_input_output.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">03 input output</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Python/core_python_fundamentals/04_control_flow_if_loops.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">04 control flow if loops</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Python/core_python_fundamentals/05_basic_error_handling.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">05 basic error handling</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+</details>
+<details><summary>Terminal</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Terminal/GitHub and Git in the Terminal.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Github and git in the terminal</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Terminal/Terminal.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Terminal</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<details><summary>Test</summary>
+<div class='lesson-list'>
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Test/Test pages.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Test pages</span>
+                          </a>
+                        </div>
+                        
+
+                        <div class="lesson-item">
+                          <a class="lesson-link" href="notebooks/Test/Untitled.html" target="_blank">
+                            <span class="lesson-icon">📘</span>
+                            <span class="lesson-title">Untitled</span>
+                          </a>
+                        </div>
+                        
+</div>
+</details>
+<section id='productivity'>
+<h2>📈 Activity (Last 30 Days)</h2>
+<div class='chart-wrapper large-chart'>
+<canvas id='activityChart'></canvas>
+</div>
+</section>
+</main>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const ctx = document.getElementById("activityChart");
+      if (!ctx) return;
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Nov 19", "Nov 20", "Nov 21", "Nov 22", "Nov 23", "Nov 24", "Nov 25", "Nov 26", "Nov 27", "Nov 28", "Nov 29", "Nov 30", "Dec 01", "Dec 02", "Dec 03", "Dec 04", "Dec 05", "Dec 06", "Dec 07", "Dec 08", "Dec 09", "Dec 10", "Dec 11", "Dec 12", "Dec 13", "Dec 14", "Dec 15", "Dec 16", "Dec 17", "Dec 18"],
+          datasets: [{
+            label: "Notebooks Updated",
+            data: [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8],
+            backgroundColor: "#1f7a5c",
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { precision: 0 }
+            }
+          }
+        }
+      });
+    });
+    </script>
+    
 </body></html>

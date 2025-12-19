@@ -7508,8 +7508,9 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
+
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
@@ -7586,69 +7587,5 @@ a.anchor-link {
 </div>
 </div>
 </main>
-<div class='slide-container'>
-<section class='slide'><h2 id="Syntax">Syntax<a class="anchor-link" href="#Syntax">¶</a></h2><div class="highlight"><pre><span></span><span class="k">CASE</span>
-<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result1</span>
-<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result2</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="n">result_if_none_match</span>
-<span class="k">END</span>
-</pre></div>
-<hr/>
-<p>Example from parks_and_recreation database:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span>
-<span class="k">CASE</span><span class="w"> </span>
-<span class="w">    </span><span class="c1">-- In this case BETWEEN includes the first and second number placed after (40 and 44 are included)</span>
-<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">44</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Old'</span>
-<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">45</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Very Old'</span>
-<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">'Young'</span>
-<span class="k">END</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="p">;</span>
-</pre></div>
-<img alt="No description has been provided for this image" src="static/CASE_01.png" style="display: flex; width: 80%; margin:auto;"/>
-<p><strong>Note:</strong> We can also label the case statement result column by placing an alias after the <code>END</code> statement</p>
-<hr/>
-<p>We can combine CASE statements with GROUP BY statements to generate useful insights:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
-<span class="w">   </span><span class="k">CASE</span><span class="w"> </span>
-<span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Young'</span>
-<span class="w">      </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Middle-aged'</span>
-<span class="w">      </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">'Senior'</span>
-<span class="w">   </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">age_group</span><span class="p">,</span>
-<span class="w">   </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age_group</span><span class="p">;</span>
-</pre></div>
-<img alt="No description has been provided for this image" src="static/CASE_02.png" style="display: flex; width: 50%; margin:auto;"/>
-<hr/>
-<p>We can combine CASE statements with AGGREGATIONS to generate useful insights:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span>
-<span class="w">   </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">gender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Male'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">male_count</span><span class="p">,</span>
-<span class="w">   </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">gender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Female'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">female_count</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">employee_demographics</span><span class="p">;</span>
-</pre></div>
-<img alt="No description has been provided for this image" src="static/CASE_03.png" style="display: flex; width: 50%; margin:auto;"/>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5d67b374-e837-464c-99a7-efcb181d298d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
 </body>
-</html>
-</section>
-</div></body>
 </html>

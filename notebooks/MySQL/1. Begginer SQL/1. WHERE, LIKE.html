@@ -7508,8 +7508,9 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
+
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
@@ -7605,111 +7606,7 @@ To ensure case-insensitive matching, use the LOWER() function on both sides of t
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=62a0a26e-8832-45ee-8422-0af897f9c3b5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<div class='slide-container'>
-<section class='slide'><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p>We can also filter with multiple conditions:</p>
-<ul>
-<li>Selecting everything from the employee_salary table</li>
-<li>with the condition that salary must be greater than or equal to 50,000 and dept_id must be equal to 1</li>
-</ul>
-<img alt="No description has been provided for this image" src="static/WHERE_02.png" style="width: 40%; margin: auto;"/>
-</section>
-<section class='slide'><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p>Additionally, we can incorporate parentheses into our conditions:</p>
-<ul>
-<li>By using parentheses, you explicitly group conditions, making your logic clear and accurate.</li>
-<li>you control the order of evaluation, just like in math.</li>
-</ul>
-<img alt="No description has been provided for this image" src="static/WHERE_03.png" style="width: 40%; margin: auto;"/>
-</section>
-<section class='slide'><h2 id=""><a class="anchor-link" href="#">¶</a></h2><hr/>
-<h1 id="LIKE">LIKE<a class="anchor-link" href="#LIKE">¶</a></h1><hr/>
-<h4 id="The-LIKE-clause-is-used-in-a-WHERE-condition-to-search-for-a-specified-pattern-in-a-column-(usually-text-or-VARCHAR-fields).">The LIKE clause is used in a WHERE condition to search for a specified pattern in a column (usually text or VARCHAR fields).<a class="anchor-link" href="#The-LIKE-clause-is-used-in-a-WHERE-condition-to-search-for-a-specified-pattern-in-a-column-(usually-text-or-VARCHAR-fields).">¶</a></h4><hr/>
-<p><strong>✅ Syntax:</strong></p>
-<p><code>SELECT column1, column2</code><br/>
-<code>FROM table_name</code><br/>
-<code>WHERE column_name LIKE 'pattern';</code></p>
-<hr/>
-<p><strong>🔡 SQL Wildcards Used with <code>LIKE</code></strong></p>
-<table>
-<thead>
-<tr>
-<th>Wildcard</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>%</code></td>
-<td>Any number of characters, including 0</td>
-</tr>
-<tr>
-<td><code>_</code></td>
-<td>Exactly one character</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<p><strong>Note:</strong></p>
-<p>MySQL table values can be case-sensitive, depending on the column’s collation settings. <br/>
-To ensure case-insensitive matching, use the LOWER() function on both sides of the comparison.</p>
-<ul>
-<li>The following returns all occupations that contain the word 'manager' regardless if it is Manager, MaNaGeR, or Assistant Manager</li>
-</ul>
-<p><code>SELECT *</code><br/>
-<code>FROM employee_salary</code><br/>
-<code>WHERE LOWER(occupation) LIKE '%manager%';</code></p>
-<hr/>
-<h4 id=""><a class="anchor-link" href="#">¶</a></h4><p>We are:</p>
-<ul>
-<li>Querying everything</li>
-<li>from employee_salary</li>
-<li>where the first_name value contains 'on' regardless of the position, leading or trailing characters.</li>
-</ul>
-<img alt="No description has been provided for this image" src="static/LIKE_01.png" style="width: 40%; margin: auto;"/>
-</section>
-<section class='slide'><h2 id=""><a class="anchor-link" href="#">¶</a></h2><p>Or we can:</p>
-<ul>
-<li>Query first and last name</li>
-<li>from employee_salary</li>
-<li>where first_name starts with an 'a' and has to have 2 characters after it. ( _ 1, _ 2)</li>
-</ul>
-<img alt="No description has been provided for this image" src="static/LIKE_02.png" style="width: 40%; margin: auto;"/>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=62a0a26e-8832-45ee-8422-0af897f9c3b5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </main>
 </body>
-</html>
-</section>
-</div></body>
 </html>

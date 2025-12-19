@@ -7508,8 +7508,9 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
+
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
@@ -7568,57 +7569,5 @@ a.anchor-link {
 </div>
 </div>
 </main>
-<div class='slide-container'>
-<section class='slide'><h2 id="Triggers">Triggers<a class="anchor-link" href="#Triggers">¶</a></h2><p><strong>A trigger in MySQL is a database object that automatically executes (fires) a set of SQL statements in response to certain events on a specific table.</strong></p>
-<h4 id="%F0%9F%94%B9-Why-Use-Triggers?">🔹 Why Use Triggers?<a class="anchor-link" href="#%F0%9F%94%B9-Why-Use-Triggers?">¶</a></h4><ul>
-<li>Enforce business rules automatically.</li>
-<li>Keep audit logs of changes.</li>
-<li>Validate or transform data before saving.</li>
-<li>Automatically update related records.</li>
-</ul>
-<hr/>
-<h4 id="%F0%9F%94%B9-Syntax">🔹 Syntax<a class="anchor-link" href="#%F0%9F%94%B9-Syntax">¶</a></h4><div class="highlight"><pre><span></span><span class="n">DELIMETER</span><span class="w"> </span><span class="err">$$</span>
-<span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">trigger_name</span>
-<span class="n">timing</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table_name</span>
-<span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
-<span class="k">BEGIN</span>
-<span class="w">    </span><span class="c1">-- SQL statements go here;</span>
-<span class="k">END</span><span class="err">$$</span>
-</pre></div>
-<p>DELIMETER ;</p>
-<ul>
-<li><em>timing</em> → BEFORE or AFTER</li>
-<li><em>event</em> → INSERT, UPDATE, or DELETE</li>
-<li><em>FOR EACH ROW</em> → The trigger runs for each row affected.</li>
-</ul>
-<hr/>
-<h4 id="A-real-world-example-would-be-to-update-one-table-after-inserting-values-in-another-table:"><strong>A real world example would be to update one table after inserting values in another table:</strong><a class="anchor-link" href="#A-real-world-example-would-be-to-update-one-table-after-inserting-values-in-another-table:">¶</a></h4><p>The follwoing:</p>
-<ul>
-<li>creates a trigger name 'upd_emp_dem'</li>
-<li>triggers it when an insertion into employee_salary is done</li>
-<li>inserts values into employee_demographics</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="k">DELIMITER</span><span class="w"> </span><span class="err">$$</span>
-<span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">upd_emp_dem</span>
-<span class="w">    </span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">employee_salary</span>
-<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
-<span class="k">BEGIN</span>
-<span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">employee_demographics</span><span class="w"> </span><span class="p">(</span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">)</span>
-<span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="k">NEW</span><span class="p">.</span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">last_name</span><span class="p">);</span>
-<span class="k">END</span><span class="w"> </span><span class="err">$$</span>
-<span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-</pre></div>
-<br/>
-<div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">employee_salary</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">occupation</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="n">dept_id</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</main>
 </body>
-</html>
-</section>
-</div></body>
 </html>

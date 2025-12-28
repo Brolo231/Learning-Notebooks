@@ -10,7 +10,7 @@
 
   --bg-main: #eef3f1;
   --bg-card: #ffffff;
-  --bg-code: #0b2e22;
+  --bg-code: #ADD0B3;
 
   --text-main: #1f2933;
   --text-muted: #6b7280;
@@ -141,6 +141,13 @@ body {
 
 .slide li {
   margin-bottom: 8px;
+}
+
+p code, li code {
+  background: #ADD0B3;
+  color: #0f3d2e;
+  padding: 2px 6px;
+  font-family: "SF Mono", Consolas, monospace;
 }
 
 /* ===============================

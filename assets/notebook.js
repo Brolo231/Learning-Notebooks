@@ -28,3 +28,26 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") nextSlide();
   if (e.key === "ArrowLeft") prevSlide();
 });
+
+let startX = 0;
+
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
+  if (startX - endX > 60) nextSlide();
+  if (endX - startX > 60) prevSlide();
+});
+
+document.addEventListener("click", e => {
+  const link = e.target.closest("a[href^='#']");
+  if (!link) return;
+
+  const target = document.querySelector(link.getAttribute("href"));
+  if (!target) return;
+
+  e.preventDefault();
+  target.scrollIntoView({ behavior: "smooth" });
+});

@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 01.1 - Examples</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 03 - Introducing Lists</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7513,164 +7513,126 @@ a.anchor-link {
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ca317267-0614-47f9-99ff-3b2bb22d0d61">
+
+<nav class="notebook-top-nav">
+  <a href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
+</nav>
+
+<div class="slide-wrapper">
+  <div class="slide-controls">
+    <button onclick="prevSlide()">⬅</button>
+    <span id="slide-indicator"></span>
+    <button onclick="nextSlide()">➡</button>
+  </div>
+  <section class='slide'><main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4fd4fa18-6edf-4bd3-a319-8e44b17eff2f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="String-methods">String methods<a class="anchor-link" href="#String-methods">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7cbbd575-c105-4a79-9c61-35e39dc4329b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># title() method example</span>
+<h1 id="Python-Lists">Python Lists<a class="anchor-link" href="#Python-Lists">¶</a></h1><hr/>
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
+<li>Pg 2: What is a List?</li>
+<li>Pg 3: Accessing elements in a list</li>
+<li>Pg 4: Modifying Elements in a List</li>
+<li>Pg 5: Removing Elements from a list</li>
+<li>Pg 6: Organizing a list</li>
+</ul></section><section class='slide'><h2 id="%F0%9F%93%8B-What-is-a-List?">📋 What is a List?<a class="anchor-link" href="#%F0%9F%93%8B-What-is-a-List?">¶</a></h2><ul>
+<li>A list is a collection of items in a particular order</li>
+</ul>
+<p>If you ask Python to print a list, Python returns its representation of the list, including the square brackets:</p>
+<pre><code>&gt;&gt;&gt; bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+&gt;&gt;&gt; print(bicycles) 
+['trek', 'cannondale', 'redline', 'specialized']
+</code></pre></section><section class='slide'><h2 id="Accessing-Elements-in-a-List">Accessing Elements in a List<a class="anchor-link" href="#Accessing-Elements-in-a-List">¶</a></h2><ul>
+<li>Lists are ordered collections, so you can access any element in a list by telling Python the position, or index, of the item desired</li>
+<li>To access an element in a list, write the name of the list followed by the index of the item enclosed in square brackets.</li>
+</ul>
+<h3 id="%F0%9F%85%BE%EF%B8%8F--%3E-1%EF%B8%8F%E2%83%A3-Index-Positions-Start-at-0,-Not-1">🅾️ -&gt; 1️⃣ Index Positions Start at 0, Not 1<a class="anchor-link" href="#%F0%9F%85%BE%EF%B8%8F--%3E-1%EF%B8%8F%E2%83%A3-Index-Positions-Start-at-0,-Not-1">¶</a></h3><ul>
+<li>Python considers the first item in a list to be at position 0, not position 1. This is true of most programming languages, and the reason has to do with how the list operations are implemented at a lower level.</li>
+</ul>
+<h3 id="%E2%80%921%EF%B8%8F%E2%83%A3-Negative-index-values">‒1️⃣ Negative index values<a class="anchor-link" href="#%E2%80%921%EF%B8%8F%E2%83%A3-Negative-index-values">¶</a></h3><ul>
+<li>Python has a special syntax for accessing the last element in a list. If you ask for the item at index <code>-1</code>, Python always returns the last item in the list:</li>
+</ul>
+<p>-This convention extends to other negative index values as well. The index -2 returns the second item from the end of the list, the index -3 returns the third item from the end, and so forth.</p></section><section class='slide'><h2 id="Modifying-Elements-in-a-List">Modifying Elements in a List<a class="anchor-link" href="#Modifying-Elements-in-a-List">¶</a></h2><ul>
+<li>To change an element, use the name of the list followed by the index of the element you want to change, and then provide the new value you want that item to have.</li>
+</ul>
+<h3 id="Appending-elements-to-a-list">Appending elements to a list<a class="anchor-link" href="#Appending-elements-to-a-list">¶</a></h3><ul>
+<li>When you append an item to a list, the new element is added to the end of the list.</li>
+</ul>
+<pre><code>&gt;&gt;&gt; x = ['a', 'b', 'c']
+&gt;&gt;&gt; x.append('d')
+['a', 'b', 'c', 'd']
+</code></pre>
+<h3 id="Inserting-elements-into-a-list">Inserting elements into a list<a class="anchor-link" href="#Inserting-elements-into-a-list">¶</a></h3><ul>
+<li>You can add a new element at any position in your list by using the insert() method. You do this by specifying the index of the new element and the value of the new item:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
+&gt;&gt;&gt; motorcycles.insert(0, 'ducati)
+&gt;&gt;&gt; print(motorcycles)
+['ducati', 'honda', 'yamaha', 'suzuki']
+</code></pre></section><section class='slide'><h2 id="Removing-elements-from-a-list">Removing elements from a list<a class="anchor-link" href="#Removing-elements-from-a-list">¶</a></h2><ul>
+<li>If you know the position of the item you want to remove from a list, you can use the del statement:</li>
+</ul>
+<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
+&gt;&gt;&gt; print(motorcycles)
 
-<span class="n">name</span> <span class="o">=</span> <span class="s1">'jake smith'</span>
-<span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'Jake Smith'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4a45075a-2fda-421f-b59e-f7850879bf21">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#  String method example</span>
+&gt;&gt;&gt; del motorcycles[0]
+&gt;&gt;&gt; print(motorcycles)
+['yamaha', 'suzuki']
+</code></pre>
+<h3 id="removing-an-item-using-the-pop()-method">removing an item using the pop() method<a class="anchor-link" href="#removing-an-item-using-the-pop()-method">¶</a></h3><ul>
+<li>The pop() method removes the last item in a list, but it lets you work with that item after removing it unlike the del statement</li>
+</ul>
+<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
+&gt;&gt;&gt; print(motorcycles)
 
-<span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'JAKE SMITH'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=44140c02-30ee-4533-8c30-e782731f87d8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#  String method example</span>
+&gt;&gt;&gt; popped_motorcycle = motorcycles.pop()
+&gt;&gt;&gt; print(motorcycles)
+&gt;&gt;&gt; print(popped_motorcycle)
+</code></pre>
+<h3 id="Removing-an-item-by-value">Removing an item by value<a class="anchor-link" href="#Removing-an-item-by-value">¶</a></h3><ul>
+<li>Sometimes you won’t know the position of the value you want to remove from a list. If you only know the value of the item you want to remove, you can use the remove() method.</li>
+</ul>
+<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
+&gt;&gt;&gt; print(motorcycles)
 
-<span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'jake smith'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=05199f91-6dad-4cd0-a693-a270afc39917">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># f-string example</span>
+&gt;&gt;&gt; motorcycles.remove('ducati')
+&gt;&gt;&gt; print(motorcycles)
 
-<span class="n">first_name</span> <span class="o">=</span> <span class="s1">'Sarah'</span>
-<span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Leslie'</span>
-<span class="n">full_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s1">'</span>
-<span class="n">full_name</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'Sarah Leslie'</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a7e31d17-3737-4d8e-b640-7f399d6207b1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># strip() example</span>
+['honda', 'yamaha', 'suzuki']
+</code></pre>
+<h3 id="Note:">Note:<a class="anchor-link" href="#Note:">¶</a></h3><p>The <code>remove()</code> method deletes only the first occurrence of the value you specify. If there’s a possibility the value appears more than once in the list, you’ll need to use a loop to make sure all occurrences of the value are removed</p></section><section class='slide'><h2 id="Organizing-a-list">Organizing a list<a class="anchor-link" href="#Organizing-a-list">¶</a></h2><p>Sometimes we want to present information in a particular order. Python provides a number of different ways to organize lists.</p>
+<h3 id="Sorting-a-list-permanently-with-the-sort()-method">Sorting a list permanently with the sort() method<a class="anchor-link" href="#Sorting-a-list-permanently-with-the-sort()-method">¶</a></h3><p>We can use sort() to sort items alphabetically or reverse-alphabetical order.</p>
+<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
+&gt;&gt;&gt; cars.sort()
+&gt;&gt;&gt; print(cars)
 
-<span class="n">my_text</span> <span class="o">=</span> <span class="s1">'   hello   world !    '</span>
-<span class="n">my_text</span> <span class="o">=</span> <span class="n">my_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="n">my_text</span>
-</pre></div>
+['audi', 'bmw', 'subaru', 'toyota']
+</code></pre>
+<p>We can also pass the argument <code>reverse=True</code> to display the sorted list in reverse-alphabetical order.</p>
+<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
+&gt;&gt;&gt; cars.sort(reverse=True)
+&gt;&gt;&gt; print(cars)
+
+['toyota', 'subaru', 'bmw', 'audi']
+</code></pre>
+<h3 id="Sorting-a-list-temporarily-using-the-sorted()-function">Sorting a list temporarily using the sorted() function<a class="anchor-link" href="#Sorting-a-list-temporarily-using-the-sorted()-function">¶</a></h3><p>Instead of using sort() which alters the original object, we can use sorted() which does not alter the original list.</p>
+<h3 id="Printing-a-list-in-Reverse-Order">Printing a list in Reverse Order<a class="anchor-link" href="#Printing-a-list-in-Reverse-Order">¶</a></h3><p>To reverse the original order of a list, you can use the reverse() method. This permanently changes the order of the list</p>
+<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
+&gt;&gt;&gt; cars.reverse()
+&gt;&gt;&gt; print(cars)
+
+['subaru', 'toyota', 'audi', 'bmw']
+</code></pre>
+<p><strong>Notice</strong> that reverse() doesn’t sort backward alphabetically; it simply reverses the order of the list:</p>
+<h3 id="Finding-the-length-of-a-list">Finding the length of a list<a class="anchor-link" href="#Finding-the-length-of-a-list">¶</a></h3><p>You can quickly find the length of a list by using the len() function.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</main></section>
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'hello   world !'</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
 </body>
 </html>

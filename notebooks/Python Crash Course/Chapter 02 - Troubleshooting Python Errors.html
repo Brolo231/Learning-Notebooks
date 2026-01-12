@@ -7513,7 +7513,18 @@ a.anchor-link {
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
+
+<nav class="notebook-top-nav">
+  <a href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
+</nav>
+
+<div class="slide-wrapper">
+  <div class="slide-controls">
+    <button onclick="prevSlide()">⬅</button>
+    <span id="slide-indicator"></span>
+    <button onclick="nextSlide()">➡</button>
+  </div>
+  <section class='slide'><main>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27bf4bc0-9262-4f69-87be-4982733cd378">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7521,8 +7532,17 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%F0%9F%9B%A0%EF%B8%8F-Troubleshooting-&amp;-Understanding-Python-Errors">🛠️ Troubleshooting &amp; Understanding Python Errors<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Troubleshooting-&amp;-Understanding-Python-Errors">¶</a></h2><p>Python errors are messages raised by the <strong>Python interpreter</strong> when it cannot understand or safely run your code. Learning to read and interpret these errors is a <strong>core programming skill</strong>.</p>
-<hr/>
-<h3 id="%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">🔍 How to Read a Python Error (Top → Bottom)<a class="anchor-link" href="#%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">¶</a></h3><p>A typical error message looks like this:</p>
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
+<li>Pg 2: Reading python errors</li>
+<li>Pg 3: SyntaxError</li>
+<li>Pg 4: NameError</li>
+<li>Pg 5: TypeError</li>
+<li>Pg 6: ValueError</li>
+<li>Pg 7: IndexError</li>
+<li>Pg 8: KeyError</li>
+<li>Pg 9: Attribute Error</li>
+<li>Pg 10: Debugging Mindset</li>
+</ul></section><section class='slide'><h3 id="%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">🔍 How to Read a Python Error (Top → Bottom)<a class="anchor-link" href="#%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">¶</a></h3><p>A typical error message looks like this:</p>
 <div class="highlight"><pre><span></span>Traceback (most recent call last):
   File "example.py", line 3, in &lt;module&gt;
     print(x)
@@ -7533,12 +7553,7 @@ NameError: name 'x' is not defined
 <li><strong>Last line</strong> → error type + short explanation</li>
 <li><strong>Line number</strong> → where the error occurred</li>
 <li><strong>Your code line</strong> → what Python failed on</li>
-</ol>
-<blockquote>
-<p>👉 The <strong>last line is the most important</strong>.</p>
-</blockquote>
-<hr/>
-<h3 id="%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">❌ SyntaxError — code cannot run<a class="anchor-link" href="#%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">¶</a></h3><p>Occurs when Python <strong>cannot understand the structure</strong> of your code.</p>
+</ol></section><section class='slide'><h3 id="%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">❌ SyntaxError — code cannot run<a class="anchor-link" href="#%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">¶</a></h3><p>Occurs when Python <strong>cannot understand the structure</strong> of your code.</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -7550,9 +7565,7 @@ NameError: name 'x' is not defined
 </ul>
 <blockquote>
 <p>🧠 Fix syntax errors before anything else.</p>
-</blockquote>
-<hr/>
-<h3 id="%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">❌ NameError — variable not defined<a class="anchor-link" href="#%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</blockquote></section><section class='slide'><h3 id="%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">❌ NameError — variable not defined<a class="anchor-link" href="#%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 <p><strong>Meaning:</strong><br/>
 Python has never seen <code>total</code>.</p>
@@ -7561,40 +7574,28 @@ Python has never seen <code>total</code>.</p>
 <li>Variable not created</li>
 <li>Misspelled variable name</li>
 <li>Variable defined in another scope</li>
-</ul>
-<hr/>
-<h3 id="%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">❌ TypeError — invalid operation for a type<a class="anchor-link" href="#%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">¶</a></h3><div class="highlight"><pre><span></span><span class="s2">"5"</span> <span class="o">+</span> <span class="mi">2</span>
+</ul></section><section class='slide'><h3 id="%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">❌ TypeError — invalid operation for a type<a class="anchor-link" href="#%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">¶</a></h3><div class="highlight"><pre><span></span><span class="s2">"5"</span> <span class="o">+</span> <span class="mi">2</span>
 </pre></div>
 <p><strong>Meaning:</strong><br/>
 The operation is not valid for the given data types.</p>
 <blockquote>
 <p>🧠 Read as: <em>“This operation doesn’t make sense for these values.”</em></p>
-</blockquote>
-<hr/>
-<h3 id="%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">❌ ValueError — correct type, invalid value<a class="anchor-link" href="#%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">)</span>
+</blockquote></section><section class='slide'><h3 id="%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">❌ ValueError — correct type, invalid value<a class="anchor-link" href="#%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">)</span>
 </pre></div>
 <p><strong>Meaning:</strong><br/>
-The type is correct, but the value cannot be converted or used.</p>
-<hr/>
-<h3 id="%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">❌ IndexError — index out of range<a class="anchor-link" href="#%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">¶</a></h3><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+The type is correct, but the value cannot be converted or used.</p></section><section class='slide'><h3 id="%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">❌ IndexError — index out of range<a class="anchor-link" href="#%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">¶</a></h3><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 <p><strong>Meaning:</strong><br/>
-You tried to access an index that does not exist.</p>
-<hr/>
-<h3 id="%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">❌ KeyError — dictionary key missing<a class="anchor-link" href="#%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+You tried to access an index that does not exist.</p></section><section class='slide'><h3 id="%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">❌ KeyError — dictionary key missing<a class="anchor-link" href="#%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 <span class="n">data</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]</span>
 </pre></div>
 <p><strong>Meaning:</strong><br/>
-The specified key does not exist in the dictionary.</p>
-<hr/>
-<h3 id="%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">❌ AttributeError — attribute or method missing<a class="anchor-link" href="#%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+The specified key does not exist in the dictionary.</p></section><section class='slide'><h3 id="%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">❌ AttributeError — attribute or method missing<a class="anchor-link" href="#%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 <p><strong>Meaning:</strong><br/>
-The object does not support that attribute or method.</p>
-<hr/>
-<h2 id="%F0%9F%A7%A0-Debugging-Mindset">🧠 Debugging Mindset<a class="anchor-link" href="#%F0%9F%A7%A0-Debugging-Mindset">¶</a></h2><p>When an error occurs:</p>
+The object does not support that attribute or method.</p></section><section class='slide'><h2 id="%F0%9F%A7%A0-Debugging-Mindset">🧠 Debugging Mindset<a class="anchor-link" href="#%F0%9F%A7%A0-Debugging-Mindset">¶</a></h2><p>When an error occurs:</p>
 <ol>
 <li>Stay calm — errors are normal</li>
 <li>Read the <strong>last line first</strong></li>
@@ -7610,29 +7611,13 @@ The object does not support that attribute or method.</p>
 </ul>
 </li>
 </ol>
-<hr/>
-<h2 id="%E2%9C%85-Key-Rule-to-Remember">✅ Key Rule to Remember<a class="anchor-link" href="#%E2%9C%85-Key-Rule-to-Remember">¶</a></h2><blockquote>
-<p><strong>Errors are feedback, not failure.</strong><br/>
+<h2 id="%E2%9C%85-Key-Rule-to-Remember">✅ Key Rule to Remember<a class="anchor-link" href="#%E2%9C%85-Key-Rule-to-Remember">¶</a></h2><p><strong>Errors are feedback, not failure.</strong> <br/>
 The interpreter is telling you exactly what it cannot understand.</p>
-</blockquote>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0e952baf-78b3-41a7-adbc-6104c0d7ca41">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
 </div>
 </div>
 </div>
+</main></section>
 </div>
-</main>
 </body>
 </html>

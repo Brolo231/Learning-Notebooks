@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>347. Top K Frequent Elements - medium</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Reverse Sentence with Grammar Correction</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,82 +7508,84 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../../../assets/notebook.css">
-<script src="../../../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7db1b455-9089-44a1-8e3c-f6cd1d084fa0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b279af9-a38e-45ea-94fb-49873d18eb85">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="347.--Top-K-Frequent-Elements">347.  Top K Frequent Elements<a class="anchor-link" href="#347.--Top-K-Frequent-Elements">¶</a></h1><p>Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.</p>
+<p>You are given a sentence where the word order has been reversed, and punctuation marks are incorrectly attached to the beginning of words instead of their proper positions. Additionally, the first word is not capitalized, and the original punctuation marks (like ., !, ?) should be moved to the end of the sentence with correct formatting.</p>
+<p>Your task is to:</p>
+<ol>
+<li>Reverse the order of words.</li>
+<li>Move any leading punctuation (like ., !, ?, ,) to the end of the word it belongs to.</li>
+<li>Ensure the resulting sentence starts with a capital letter and ends with the correct punctuation mark (preserved from the original sentence).</li>
+</ol>
+<p>Assumptions:</p>
+<ul>
+<li>The sentence is not empty and ends with valid punctuation at the beginning of the first word.</li>
+<li>Words are separated by exactly one space.</li>
+<li>Punctuation only appears as a leading character on a word (e.g., .Ben), not in the middle or end.</li>
+</ul>
 <p>Example 1: <br/>
-<code>Input: nums = [1,1,1,2,2,3], k = 2</code> <br/>
-<code>Output: [1,2]</code></p>
-<p>Example 2: <br/>
-<code>Input: nums = [1], k = 1</code><br/>
-<code>Output: [1]</code></p>
-<p>Constraints:
-1 &lt;= nums.length &lt;= 105 <br/>
--104 &lt;= nums[i] &lt;= 104 <br/>
-k is in the range [1, the number of unique elements in the array]. <br/>
-It is guaranteed that the answer is unique.</p>
-<p>Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</p>
-<p><code>class Solution:</code><br/>
-<code>def topKFrequent(self, nums: List[int], k: int) -&gt; List[int]:</code></p>
+<code>Input:</code>
+<code>".Ben I'm !Hi"</code>
+Output: <br/>
+<code>"Hi! I'm Ben."</code></p>
+<p>Explanation:</p>
+<ul>
+<li>Reversed input: .Ben I'm !Hi</li>
+<li>Reversed back: Hi! I'm Ben.</li>
+</ul>
+<p>Example 3: <br/>
+<code>Input:</code>
+<code>".you thank ,Hello"</code>
+Output: <br/>
+<code>"Hello, thank you."</code></p>
+<p><code>class Solution():</code> <br/>
+<code>def reverseSentence(sentence: str) -&gt; str:</code></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2616d9d3-199f-4b02-ad1c-2429a9395009">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fbecd4b1-30e7-4911-ad48-5c9d2f2508b7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">reverseSentence</span><span class="p">(</span><span class="n">sentence</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 
-<span class="c1"># Without collections: </span>
-<span class="c1"># if num not in seen:</span>
-<span class="c1">#     seen[num] = 0</span>
-<span class="c1"># seen[num] += 1</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5663e0b8-fea2-49fc-85c5-1b393ab50725">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">topKFrequent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">reverse</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">reverse</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">reverse</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">reverse</span>
 
-        <span class="n">seen</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
-            <span class="n">seen</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">seen</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-
-        <span class="c1"># print(list(seen.items()))</span>
-
-        <span class="c1"># for key, value in seen.items():</span>
+    <span class="k">return</span> <span class="n">reverse</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             
-        
 
-<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">topKFrequent</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span>
+
+<span class="n">test_cases</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"?day good a such !What"</span><span class="p">,</span>
+    <span class="s2">".Hello"</span><span class="p">,</span>
+    <span class="s2">".end !start ,middle"</span><span class="p">,</span>
+    <span class="s2">".1234 is number favorite My"</span><span class="p">,</span>
+    <span class="s2">"@email my is This"</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">test_cases</span><span class="p">:</span>
+    <span class="n">s</span>
 </pre></div>
 </div>
 </div>
@@ -7596,44 +7598,17 @@ It is guaranteed that the answer is unique.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>(1, 3)
-(5, 2)
-(2, 1)
-(3, 3)
+<pre>?day good a such !What
+.Hello
+.end !start ,middle
+.1234 is number favorite My
+@email my is This
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c913883d-687b-489c-b5ad-b64b05af460a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">seen</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">seen</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>1</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=24823c2b-d2a3-4620-a283-7581049a61ac">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c3bcbb27-5cf8-4246-a560-5c80c6b5c649">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

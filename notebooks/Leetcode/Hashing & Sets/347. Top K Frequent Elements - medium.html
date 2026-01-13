@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>2. Extrovert vs Introvert Dataset</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>347. Top K Frequent Elements - medium</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,270 +7508,82 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=805b631c-a8e7-4f98-aefe-bb8c3c886753">
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7db1b455-9089-44a1-8e3c-f6cd1d084fa0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="347.--Top-K-Frequent-Elements">347.  Top K Frequent Elements<a class="anchor-link" href="#347.--Top-K-Frequent-Elements">¶</a></h1><p>Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.</p>
+<p>Example 1: <br/>
+<code>Input: nums = [1,1,1,2,2,3], k = 2</code> <br/>
+<code>Output: [1,2]</code></p>
+<p>Example 2: <br/>
+<code>Input: nums = [1], k = 1</code><br/>
+<code>Output: [1]</code></p>
+<p>Constraints:
+1 &lt;= nums.length &lt;= 105 <br/>
+-104 &lt;= nums[i] &lt;= 104 <br/>
+k is in the range [1, the number of unique elements in the array]. <br/>
+It is guaranteed that the answer is unique.</p>
+<p>Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.</p>
+<p><code>class Solution:</code><br/>
+<code>def topKFrequent(self, nums: List[int], k: int) -&gt; List[int]:</code></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2616d9d3-199f-4b02-ad1c-2429a9395009">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Extrovert vs Introvert dataset has already been loaded from "How to use kaggle datasets in jupyter notebook" </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
-<span class="c1"># Load the dataset</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'datasets/personality_dataset.csv'</span><span class="p">)</span>
+<span class="c1"># Without collections: </span>
+<span class="c1"># if num not in seen:</span>
+<span class="c1">#     seen[num] = 0</span>
+<span class="c1"># seen[num] += 1</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=32d43afb-6309-4c6a-842c-f745a3e9a348">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5663e0b8-fea2-49fc-85c5-1b393ab50725">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load top 5 results </span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">topKFrequent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+        <span class="n">seen</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Time_spent_Alone</th>
-<th>Stage_fear</th>
-<th>Social_event_attendance</th>
-<th>Going_outside</th>
-<th>Drained_after_socializing</th>
-<th>Friends_circle_size</th>
-<th>Post_frequency</th>
-<th>Personality</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>4.0</td>
-<td>No</td>
-<td>4.0</td>
-<td>6.0</td>
-<td>No</td>
-<td>13.0</td>
-<td>5.0</td>
-<td>Extrovert</td>
-</tr>
-<tr>
-<th>1</th>
-<td>9.0</td>
-<td>Yes</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>Yes</td>
-<td>0.0</td>
-<td>3.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>2</th>
-<td>9.0</td>
-<td>Yes</td>
-<td>1.0</td>
-<td>2.0</td>
-<td>Yes</td>
-<td>5.0</td>
-<td>2.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>3</th>
-<td>0.0</td>
-<td>No</td>
-<td>6.0</td>
-<td>7.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>8.0</td>
-<td>Extrovert</td>
-</tr>
-<tr>
-<th>4</th>
-<td>3.0</td>
-<td>No</td>
-<td>9.0</td>
-<td>4.0</td>
-<td>No</td>
-<td>8.0</td>
-<td>5.0</td>
-<td>Extrovert</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e6f7dfdc-652b-4939-bea6-863ffed53a92">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get a quick overview of the data</span>
-<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">seen</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">seen</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Time_spent_Alone</th>
-<th>Social_event_attendance</th>
-<th>Going_outside</th>
-<th>Friends_circle_size</th>
-<th>Post_frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>count</th>
-<td>2837.000000</td>
-<td>2838.000000</td>
-<td>2834.000000</td>
-<td>2823.000000</td>
-<td>2835.000000</td>
-</tr>
-<tr>
-<th>mean</th>
-<td>4.505816</td>
-<td>3.963354</td>
-<td>3.000000</td>
-<td>6.268863</td>
-<td>3.564727</td>
-</tr>
-<tr>
-<th>std</th>
-<td>3.479192</td>
-<td>2.903827</td>
-<td>2.247327</td>
-<td>4.289693</td>
-<td>2.926582</td>
-</tr>
-<tr>
-<th>min</th>
-<td>0.000000</td>
-<td>0.000000</td>
-<td>0.000000</td>
-<td>0.000000</td>
-<td>0.000000</td>
-</tr>
-<tr>
-<th>25%</th>
-<td>2.000000</td>
-<td>2.000000</td>
-<td>1.000000</td>
-<td>3.000000</td>
-<td>1.000000</td>
-</tr>
-<tr>
-<th>50%</th>
-<td>4.000000</td>
-<td>3.000000</td>
-<td>3.000000</td>
-<td>5.000000</td>
-<td>3.000000</td>
-</tr>
-<tr>
-<th>75%</th>
-<td>8.000000</td>
-<td>6.000000</td>
-<td>5.000000</td>
-<td>10.000000</td>
-<td>6.000000</td>
-</tr>
-<tr>
-<th>max</th>
-<td>11.000000</td>
-<td>10.000000</td>
-<td>7.000000</td>
-<td>15.000000</td>
-<td>10.000000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f027a52a-8436-4d7d-bf4c-909230e3d6bc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+        <span class="c1"># print(list(seen.items()))</span>
+
+        <span class="c1"># for key, value in seen.items():</span>
+            
+        
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">topKFrequent</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7784,210 +7596,16 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 2900 entries, 0 to 2899
-Data columns (total 8 columns):
- #   Column                     Non-Null Count  Dtype  
----  ------                     --------------  -----  
- 0   Time_spent_Alone           2837 non-null   float64
- 1   Stage_fear                 2827 non-null   object 
- 2   Social_event_attendance    2838 non-null   float64
- 3   Going_outside              2834 non-null   float64
- 4   Drained_after_socializing  2848 non-null   object 
- 5   Friends_circle_size        2823 non-null   float64
- 6   Post_frequency             2835 non-null   float64
- 7   Personality                2900 non-null   object 
-dtypes: float64(5), object(3)
-memory usage: 181.4+ KB
+<pre>(1, 3)
+(5, 2)
+(2, 1)
+(3, 3)
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ffa67759-4c5b-492f-ad4a-70dfddc52164">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">'number'</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Time_spent_Alone</th>
-<th>Social_event_attendance</th>
-<th>Going_outside</th>
-<th>Friends_circle_size</th>
-<th>Post_frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>Time_spent_Alone</th>
-<td>1.000000</td>
-<td>-0.733011</td>
-<td>-0.750760</td>
-<td>-0.717185</td>
-<td>-0.732649</td>
-</tr>
-<tr>
-<th>Social_event_attendance</th>
-<td>-0.733011</td>
-<td>1.000000</td>
-<td>0.747756</td>
-<td>0.734795</td>
-<td>0.744615</td>
-</tr>
-<tr>
-<th>Going_outside</th>
-<td>-0.750760</td>
-<td>0.747756</td>
-<td>1.000000</td>
-<td>0.736390</td>
-<td>0.770819</td>
-</tr>
-<tr>
-<th>Friends_circle_size</th>
-<td>-0.717185</td>
-<td>0.734795</td>
-<td>0.736390</td>
-<td>1.000000</td>
-<td>0.707888</td>
-</tr>
-<tr>
-<th>Post_frequency</th>
-<td>-0.732649</td>
-<td>0.744615</td>
-<td>0.770819</td>
-<td>0.707888</td>
-<td>1.000000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=742e6c54-8c12-49e7-a4ce-b06f9f3417fe">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"Personality"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality
-Extrovert    1491
-Introvert    1409
-Name: count, dtype: int64</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=296bd277-9294-4d94-aa97-9c4d1b14b061">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Average post rating by personality type</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Personality"</span><span class="p">)[</span><span class="s2">"Post_frequency"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality
-Extrovert    5.638546
-Introvert    1.368918
-Name: Post_frequency, dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16679043-8a81-404f-a573-12b4fd7116eb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Average alone time by personality type</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Personality"</span><span class="p">)[</span><span class="s2">"Time_spent_Alone"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality
-Extrovert    2.067261
-Introvert    7.080435
-Name: Time_spent_Alone, dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ab3cadc7-aa2f-48d5-8657-a9adf9dab96d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c913883d-687b-489c-b5ad-b64b05af460a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7995,8 +7613,9 @@ Name: Time_spent_Alone, dtype: float64</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Does stage fear play a role in personality type? </span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Personality"</span><span class="p">)[</span><span class="s2">"Stage_fear"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">seen</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">seen</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> 
 </pre></div>
 </div>
 </div>
@@ -8009,358 +7628,21 @@ Name: Time_spent_Alone, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality  Stage_fear
-Extrovert    No            1338
-             Yes            111
-Introvert    Yes           1299
-             No              79
-Name: count, dtype: int64</pre>
+<pre>1</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f7ea7d8d-d90e-46da-ac4c-e5b82aabb398">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=24823c2b-d2a3-4620-a283-7581049a61ac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Average friend size of personality type</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Personality"</span><span class="p">)[</span><span class="s2">"Friends_circle_size"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality
-Extrovert    9.173673
-Introvert    3.196793
-Name: Friends_circle_size, dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1e8bc4c6-2858-4355-abcf-24cd5cb1f629">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Largest friend size of personality type</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Personality"</span><span class="p">)[</span><span class="s2">"Friends_circle_size"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality
-Extrovert    15.0
-Introvert    14.0
-Name: Friends_circle_size, dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=006af874-2e25-4d48-be36-353c11f73dc3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Smallest friend size of personality type</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"Personality"</span><span class="p">)[</span><span class="s2">"Friends_circle_size"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Personality
-Extrovert    0.0
-Introvert    0.0
-Name: Friends_circle_size, dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=95af7b44-fa64-44fe-ad6c-53048e589fe3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Friends_circle_size"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">14</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"Personality"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Introvert"</span><span class="p">)]</span>
-<span class="n">filtered</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Time_spent_Alone</th>
-<th>Stage_fear</th>
-<th>Social_event_attendance</th>
-<th>Going_outside</th>
-<th>Drained_after_socializing</th>
-<th>Friends_circle_size</th>
-<th>Post_frequency</th>
-<th>Personality</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>550</th>
-<td>0.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>4.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>NaN</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>720</th>
-<td>3.0</td>
-<td>No</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>7.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>851</th>
-<td>1.0</td>
-<td>No</td>
-<td>5.0</td>
-<td>4.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>3.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>883</th>
-<td>2.0</td>
-<td>No</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>3.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>912</th>
-<td>2.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>6.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>8.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>951</th>
-<td>2.0</td>
-<td>No</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>7.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1101</th>
-<td>2.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>5.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1439</th>
-<td>2.0</td>
-<td>No</td>
-<td>8.0</td>
-<td>7.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>7.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1552</th>
-<td>1.0</td>
-<td>No</td>
-<td>8.0</td>
-<td>7.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>6.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1581</th>
-<td>2.0</td>
-<td>No</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>9.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1859</th>
-<td>0.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>7.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>8.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1860</th>
-<td>2.0</td>
-<td>No</td>
-<td>9.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>7.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>1916</th>
-<td>2.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>7.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>2106</th>
-<td>0.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>6.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>7.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>2208</th>
-<td>1.0</td>
-<td>No</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>8.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>2293</th>
-<td>1.0</td>
-<td>No</td>
-<td>9.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>9.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>2457</th>
-<td>0.0</td>
-<td>No</td>
-<td>9.0</td>
-<td>5.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>9.0</td>
-<td>Introvert</td>
-</tr>
-<tr>
-<th>2678</th>
-<td>2.0</td>
-<td>No</td>
-<td>9.0</td>
-<td>7.0</td>
-<td>No</td>
-<td>14.0</td>
-<td>5.0</td>
-<td>Introvert</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>

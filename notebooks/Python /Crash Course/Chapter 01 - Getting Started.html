@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 03 - Introducing Lists</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 01 - Getting Started</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,8 +7508,8 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
@@ -7525,109 +7525,110 @@ a.anchor-link {
     <button onclick="nextSlide()">➡</button>
   </div>
   <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4fd4fa18-6edf-4bd3-a319-8e44b17eff2f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3eae17a-e2c4-43d6-9934-f4d39e89c9fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Python-Lists">Python Lists<a class="anchor-link" href="#Python-Lists">¶</a></h1><hr/>
+<h1 id="Getting-started-with-Python">Getting started with Python<a class="anchor-link" href="#Getting-started-with-Python">¶</a></h1><hr/>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: What is a List?</li>
-<li>Pg 3: Accessing elements in a list</li>
-<li>Pg 4: Modifying Elements in a List</li>
-<li>Pg 5: Removing Elements from a list</li>
-<li>Pg 6: Organizing a list</li>
-</ul></section><section class='slide'><h2 id="%F0%9F%93%8B-What-is-a-List?">📋 What is a List?<a class="anchor-link" href="#%F0%9F%93%8B-What-is-a-List?">¶</a></h2><ul>
-<li>A list is a collection of items in a particular order</li>
+<li>Pg 2: Python in the Terminal</li>
+<li>Pg 3: Variables</li>
+<li>Pg 4: Data Types<ul>
+<li>Pg 5: Data Types - Strings</li>
+<li>Pg 6: Data Types - Numbers</li>
 </ul>
-<p>If you ask Python to print a list, Python returns its representation of the list, including the square brackets:</p>
-<pre><code>&gt;&gt;&gt; bicycles = ['trek', 'cannondale', 'redline', 'specialized']
-&gt;&gt;&gt; print(bicycles) 
-['trek', 'cannondale', 'redline', 'specialized']
-</code></pre></section><section class='slide'><h2 id="Accessing-Elements-in-a-List">Accessing Elements in a List<a class="anchor-link" href="#Accessing-Elements-in-a-List">¶</a></h2><ul>
-<li>Lists are ordered collections, so you can access any element in a list by telling Python the position, or index, of the item desired</li>
-<li>To access an element in a list, write the name of the list followed by the index of the item enclosed in square brackets.</li>
+</li>
+</ul></section><section class='slide'><h2 id="Python-in-the-Terminal">Python in the Terminal<a class="anchor-link" href="#Python-in-the-Terminal">¶</a></h2><hr/>
+<h3 id="Running-python-in-a-terminal-session">Running python in a terminal session<a class="anchor-link" href="#Running-python-in-a-terminal-session">¶</a></h3><p>Start by opening up a command window / terminal and type: <code>python</code></p>
+<p>This will show the currrent version of python installed.</p>
+<h3 id="Useful-Terminal-shortcuts-(macos):">Useful Terminal shortcuts (macos):<a class="anchor-link" href="#Useful-Terminal-shortcuts-(macos):">¶</a></h3><ul>
+<li>ctrl + L = Clear Python Terminal</li>
+<li>ctrl + D = Leave python prompt and return to terminal prompt</li>
 </ul>
-<h3 id="%F0%9F%85%BE%EF%B8%8F--%3E-1%EF%B8%8F%E2%83%A3-Index-Positions-Start-at-0,-Not-1">🅾️ -&gt; 1️⃣ Index Positions Start at 0, Not 1<a class="anchor-link" href="#%F0%9F%85%BE%EF%B8%8F--%3E-1%EF%B8%8F%E2%83%A3-Index-Positions-Start-at-0,-Not-1">¶</a></h3><ul>
-<li>Python considers the first item in a list to be at position 0, not position 1. This is true of most programming languages, and the reason has to do with how the list operations are implemented at a lower level.</li>
+<h3 id="Useful-Terminal-commands-(macos):">Useful Terminal commands (macos):<a class="anchor-link" href="#Useful-Terminal-commands-(macos):">¶</a></h3><ul>
+<li>cd (by itself) = is used to go to the home directory</li>
+<li>cd .. = is used to naviagte around directories where .. represents directory names</li>
+<li>cd - = is used to go back to the previous directory</li>
+<li>pwd = print working directory shows the path to the current directory</li>
+<li>ls = represents list, which shows all nonhidden files that exist in the current directory</li>
+</ul></section><section class='slide'><h2 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h2><p>Variable names can contain only letters, numbers, and underscores. They can start with a letter or an underscore, but not with a number.  <br/>
+For instance, you can call a variable: <br/>
+✅ <code>message_1</code> <br/>
+but not <br/>
+❌ <code>1_message.</code></p>
+<br/>
+<p>✅ variable references -&gt; object (value) <br>
+❌ variables do not store values</br></p></section><section class='slide'><h2 id="Data-Types">Data Types<a class="anchor-link" href="#Data-Types">¶</a></h2><p>Because most programs define and gather some sort of data and then do something useful with it, it helps to classify different types of data.</p></section><section class='slide'><h2 id="Strings">Strings<a class="anchor-link" href="#Strings">¶</a></h2><p>A string is a series of characters. Anything placed within single or double quotes in python is a string.</p>
+<br/>
+<h3 id="Useful-String-Methods:">Useful String Methods:<a class="anchor-link" href="#Useful-String-Methods:">¶</a></h3><ul>
+<li>title()</li>
+<li>upper()</li>
+<li>lower()</li>
 </ul>
-<h3 id="%E2%80%921%EF%B8%8F%E2%83%A3-Negative-index-values">‒1️⃣ Negative index values<a class="anchor-link" href="#%E2%80%921%EF%B8%8F%E2%83%A3-Negative-index-values">¶</a></h3><ul>
-<li>Python has a special syntax for accessing the last element in a list. If you ask for the item at index <code>-1</code>, Python always returns the last item in the list:</li>
+<p>When storing data it is useful to store it using lower(), as user data is not trustworthy when it comes to capitalization</p>
+<br/>
+<h3 id="Python-f-strings">Python f-strings<a class="anchor-link" href="#Python-f-strings">¶</a></h3><p>f-strings (f stands for format) allow variables to be passed within strings with which python replaces the variable with the object / value associated with that variable.</p>
+<br/>
+<h3 id="Adding-whitespae-to-strings-with-Tabs-and-Newlines">Adding whitespae to strings with Tabs and Newlines<a class="anchor-link" href="#Adding-whitespae-to-strings-with-Tabs-and-Newlines">¶</a></h3><p>To add a tab to text we can use the following character combination: <code>\t</code></p>
+<p>To add a newline we can use the following character combination: <code>\n</code></p>
+<br/>
+<h3 id="Stripping-whitespace-in-python">Stripping whitespace in python<a class="anchor-link" href="#Stripping-whitespace-in-python">¶</a></h3><p>We can either strip whitespace to the left of a string. the right, or all the whitespace.</p>
+<ul>
+<li>lstrip()</li>
+<li>rstrip()</li>
+<li>strip()</li>
 </ul>
-<p>-This convention extends to other negative index values as well. The index -2 returns the second item from the end of the list, the index -3 returns the third item from the end, and so forth.</p></section><section class='slide'><h2 id="Modifying-Elements-in-a-List">Modifying Elements in a List<a class="anchor-link" href="#Modifying-Elements-in-a-List">¶</a></h2><ul>
-<li>To change an element, use the name of the list followed by the index of the element you want to change, and then provide the new value you want that item to have.</li>
-</ul>
-<h3 id="Appending-elements-to-a-list">Appending elements to a list<a class="anchor-link" href="#Appending-elements-to-a-list">¶</a></h3><ul>
-<li>When you append an item to a list, the new element is added to the end of the list.</li>
-</ul>
-<pre><code>&gt;&gt;&gt; x = ['a', 'b', 'c']
-&gt;&gt;&gt; x.append('d')
-['a', 'b', 'c', 'd']
+<p>Note that the above string methods do not alter the variables object in place. To alter the variables object we need to asign the variable to the updated value.</p>
+<p>For e.g. <br>
+<code>x = x.strip()</code></br></p>
+<h3 id="Removing-Prefixes-and-suffixes">Removing Prefixes and suffixes<a class="anchor-link" href="#Removing-Prefixes-and-suffixes">¶</a></h3><p>We can use the following methods: <code>removeprefix(prefix_to_remove_from_string)</code> <br>
+<code>removesuffix(...)</code></br></p>
+<p>Remember, just like how strip() does not alter the object associated with the variable that we apply these methods to, the same principle applies with removeprefix().</p></section><section class='slide'><h2 id="Numbers">Numbers<a class="anchor-link" href="#Numbers">¶</a></h2><h3 id="Integers">Integers<a class="anchor-link" href="#Integers">¶</a></h3><p>You can add (+), subtract (-), multiply (*), and divide (/) integers in Python.</p>
+<pre><code>&gt;&gt;&gt; 2 + 3
+5
+&gt;&gt;&gt; 3 - 2
+1
+&gt;&gt;&gt; 2 * 3
+6
+&gt;&gt;&gt; 3 / 2
+1.5
 </code></pre>
-<h3 id="Inserting-elements-into-a-list">Inserting elements into a list<a class="anchor-link" href="#Inserting-elements-into-a-list">¶</a></h3><ul>
-<li>You can add a new element at any position in your list by using the insert() method. You do this by specifying the index of the new element and the value of the new item:</li>
-</ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
-&gt;&gt;&gt; motorcycles.insert(0, 'ducati)
-&gt;&gt;&gt; print(motorcycles)
-['ducati', 'honda', 'yamaha', 'suzuki']
-</code></pre></section><section class='slide'><h2 id="Removing-elements-from-a-list">Removing elements from a list<a class="anchor-link" href="#Removing-elements-from-a-list">¶</a></h2><ul>
-<li>If you know the position of the item you want to remove from a list, you can use the del statement:</li>
-</ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
-&gt;&gt;&gt; print(motorcycles)
-
-&gt;&gt;&gt; del motorcycles[0]
-&gt;&gt;&gt; print(motorcycles)
-['yamaha', 'suzuki']
+<p>Python uses two multiplication symbols to represent exponents:</p>
+<pre><code>&gt;&gt;&gt; 3 ** 2
+9
+&gt;&gt;&gt; 3 ** 3
+27
+&gt;&gt;&gt; 10 ** 6
+1000000
 </code></pre>
-<h3 id="removing-an-item-using-the-pop()-method">removing an item using the pop() method<a class="anchor-link" href="#removing-an-item-using-the-pop()-method">¶</a></h3><ul>
-<li>The pop() method removes the last item in a list, but it lets you work with that item after removing it unlike the del statement</li>
-</ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
-&gt;&gt;&gt; print(motorcycles)
-
-&gt;&gt;&gt; popped_motorcycle = motorcycles.pop()
-&gt;&gt;&gt; print(motorcycles)
-&gt;&gt;&gt; print(popped_motorcycle)
+<p>Python supports the order of operations too, so you can use multiple operations in one expression. You can also use parentheses to modify the order of operations so Python can evaluate your expression in the order you specify. For example:</p>
+<pre><code>&gt;&gt;&gt; 2 + 3*4
+14
+&gt;&gt;&gt; (2 + 3) * 4
+20
 </code></pre>
-<h3 id="Removing-an-item-by-value">Removing an item by value<a class="anchor-link" href="#Removing-an-item-by-value">¶</a></h3><ul>
-<li>Sometimes you won’t know the position of the value you want to remove from a list. If you only know the value of the item you want to remove, you can use the remove() method.</li>
-</ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
-&gt;&gt;&gt; print(motorcycles)
-
-&gt;&gt;&gt; motorcycles.remove('ducati')
-&gt;&gt;&gt; print(motorcycles)
-
-['honda', 'yamaha', 'suzuki']
+<h3 id="floats">floats<a class="anchor-link" href="#floats">¶</a></h3><p>Python calls any number with a decimal point a float. This term is used in most programming languages, and it refers to the fact that a decimal point can appear at any position in a number.</p>
+<p>For the most part floats can be treated as normal:</p>
+<pre><code>&gt;&gt;&gt; 0.1 + 0.1
+0.2
 </code></pre>
-<h3 id="Note:">Note:<a class="anchor-link" href="#Note:">¶</a></h3><p>The <code>remove()</code> method deletes only the first occurrence of the value you specify. If there’s a possibility the value appears more than once in the list, you’ll need to use a loop to make sure all occurrences of the value are removed</p></section><section class='slide'><h2 id="Organizing-a-list">Organizing a list<a class="anchor-link" href="#Organizing-a-list">¶</a></h2><p>Sometimes we want to present information in a particular order. Python provides a number of different ways to organize lists.</p>
-<h3 id="Sorting-a-list-permanently-with-the-sort()-method">Sorting a list permanently with the sort() method<a class="anchor-link" href="#Sorting-a-list-permanently-with-the-sort()-method">¶</a></h3><p>We can use sort() to sort items alphabetically or reverse-alphabetical order.</p>
-<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
-&gt;&gt;&gt; cars.sort()
-&gt;&gt;&gt; print(cars)
-
-['audi', 'bmw', 'subaru', 'toyota']
+<p>However, be aware that you can sometimes get an arbitrary number of decimal places in your answer:</p>
+<pre><code>&gt;&gt;&gt; 0.2 + 0.1
+0.30000000000000004
+&gt;&gt;&gt; 3 * 0.1
+0.30000000000000004
 </code></pre>
-<p>We can also pass the argument <code>reverse=True</code> to display the sorted list in reverse-alphabetical order.</p>
-<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
-&gt;&gt;&gt; cars.sort(reverse=True)
-&gt;&gt;&gt; print(cars)
-
-['toyota', 'subaru', 'bmw', 'audi']
+<p>Python tries to find a way to represent the result as precisely as possible, which is sometimes difficult given how computers have to represent numbers internally.</p>
+<h3 id="Underscores-in-Numbers">Underscores in Numbers<a class="anchor-link" href="#Underscores-in-Numbers">¶</a></h3><p>When you’re writing long numbers, you can group digits using underscores to make large numbers more readable:</p>
+<pre><code>&gt;&gt;&gt; universe_age = 14_000_000_000
+&gt;&gt;&gt; universe_age
+14000000000 # Notice how python only prints the digits
 </code></pre>
-<h3 id="Sorting-a-list-temporarily-using-the-sorted()-function">Sorting a list temporarily using the sorted() function<a class="anchor-link" href="#Sorting-a-list-temporarily-using-the-sorted()-function">¶</a></h3><p>Instead of using sort() which alters the original object, we can use sorted() which does not alter the original list.</p>
-<h3 id="Printing-a-list-in-Reverse-Order">Printing a list in Reverse Order<a class="anchor-link" href="#Printing-a-list-in-Reverse-Order">¶</a></h3><p>To reverse the original order of a list, you can use the reverse() method. This permanently changes the order of the list</p>
-<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
-&gt;&gt;&gt; cars.reverse()
-&gt;&gt;&gt; print(cars)
-
-['subaru', 'toyota', 'audi', 'bmw']
+<h3 id="Constants">Constants<a class="anchor-link" href="#Constants">¶</a></h3><p>A constant is a variable whose value stays the same throughout the life of a program. Python doesn’t have built-in constant types, but Python programmers use all capital letters to indicate a variable should be treated as a constant and never be changed:</p>
+<pre><code>MAX_CONNECTIONS = 5000
 </code></pre>
-<p><strong>Notice</strong> that reverse() doesn’t sort backward alphabetically; it simply reverses the order of the list:</p>
-<h3 id="Finding-the-length-of-a-list">Finding the length of a list<a class="anchor-link" href="#Finding-the-length-of-a-list">¶</a></h3><p>You can quickly find the length of a list by using the len() function.</p>
 </div>
 </div>
 </div>

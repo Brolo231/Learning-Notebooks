@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 02 - Troubleshooting Python Errors</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>238. Product of Array Except Self - medium</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,116 +7508,202 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-
-<nav class="notebook-top-nav">
-  <a href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
-</nav>
-
-<div class="slide-wrapper">
-  <div class="slide-controls">
-    <button onclick="prevSlide()">⬅</button>
-    <span id="slide-indicator"></span>
-    <button onclick="nextSlide()">➡</button>
-  </div>
-  <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27bf4bc0-9262-4f69-87be-4982733cd378">
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=42d99282-94f5-4c0b-a0e9-de4f23947887">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="%F0%9F%9B%A0%EF%B8%8F-Troubleshooting-&amp;-Understanding-Python-Errors">🛠️ Troubleshooting &amp; Understanding Python Errors<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Troubleshooting-&amp;-Understanding-Python-Errors">¶</a></h2><p>Python errors are messages raised by the <strong>Python interpreter</strong> when it cannot understand or safely run your code. Learning to read and interpret these errors is a <strong>core programming skill</strong>.</p>
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: Reading python errors</li>
-<li>Pg 3: SyntaxError</li>
-<li>Pg 4: NameError</li>
-<li>Pg 5: TypeError</li>
-<li>Pg 6: ValueError</li>
-<li>Pg 7: IndexError</li>
-<li>Pg 8: KeyError</li>
-<li>Pg 9: Attribute Error</li>
-<li>Pg 10: Debugging Mindset</li>
-</ul></section><section class='slide'><h3 id="%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">🔍 How to Read a Python Error (Top → Bottom)<a class="anchor-link" href="#%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">¶</a></h3><p>A typical error message looks like this:</p>
-<div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File "example.py", line 3, in &lt;module&gt;
-    print(x)
-NameError: name 'x' is not defined
+<h2 id="238.-Product-of-Array-Except-Self"><a href="https://leetcode.com/problems/product-of-array-except-self/description/">238. Product of Array Except Self</a><a class="anchor-link" href="#238.-Product-of-Array-Except-Self">¶</a></h2><p><span style="background-color: yellow; color: black;">medium<span></span></span></p>
+<p>Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].</p>
+<p>The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.</p>
+<p>You must write an algorithm that runs in O(n) time and without using the division operation.</p>
+<p>Example 1:</p>
+<p><code>Input: nums = [1,2,3,4]</code>
+<code>Output: [24,12,8,6]</code></p>
+<p>Example 2:</p>
+<p><code>Input: nums = [-1,1,0,-3,3]</code>
+<code>Output: [0,0,9,0,0]</code></p>
+<p>Constraints:</p>
+<p>2 &lt;= nums.length &lt;= 105
+-30 &lt;= nums[i] &lt;= 30</p>
+<p>The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer.</p>
+<p><code>class Solution:</code><br/>
+<code>def productExceptSelf(self, nums: List[int]) -&gt; List[int]:</code></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2befe653-eec7-4771-a673-5713816620d1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">idx_answer</span><span class="p">,</span> <span class="n">idx_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="n">idx_answer</span><span class="p">:</span>
+                    <span class="n">answer</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">*=</span> <span class="n">nums</span><span class="p">[</span><span class="n">idx_answer</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">answer</span>
+            
+        
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">productExceptSelf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
-<p>Read errors in this order:</p>
-<ol>
-<li><strong>Last line</strong> → error type + short explanation</li>
-<li><strong>Line number</strong> → where the error occurred</li>
-<li><strong>Your code line</strong> → what Python failed on</li>
-</ol></section><section class='slide'><h3 id="%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">❌ SyntaxError — code cannot run<a class="anchor-link" href="#%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">¶</a></h3><p>Occurs when Python <strong>cannot understand the structure</strong> of your code.</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[24, 12, 8, 6]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52343c11-e8fb-46b8-85eb-84818320137c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>ChatGPT Answer:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=778e48b1-8989-4311-8dda-c2d409c5b93f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># O(n) Time, O(1) Extra Space (LeetCode Optimal)</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+        <span class="n">prefix</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">answer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">prefix</span>
+            <span class="n">prefix</span> <span class="o">*=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">suffix</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">answer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">suffix</span>
+            <span class="n">suffix</span> <span class="o">*=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">answer</span>
 </pre></div>
-<p><strong>Common causes:</strong></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1f39cd3-b984-495b-b150-79ba33662ddb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="If-we-could-use-division-it-would-look-as-follows">If we could use division it would look as follows<a class="anchor-link" href="#If-we-could-use-division-it-would-look-as-follows">¶</a></h3><p><strong>❗ What if there are zeros?</strong></p>
 <ul>
-<li>Missing <code>:</code></li>
-<li>Unmatched brackets</li>
-<li>Incorrect indentation</li>
+<li>If there’s 1 zero, all positions except the one with zero become 0.</li>
+<li>If there are 2 or more zeros, every product is 0.</li>
 </ul>
-<blockquote>
-<p>🧠 Fix syntax errors before anything else.</p>
-</blockquote></section><section class='slide'><h3 id="%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">❌ NameError — variable not defined<a class="anchor-link" href="#%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2e8e6efa-66c5-4afa-8815-041162a6ba31">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">productExceptSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">total_product</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">zero_count</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># If more than one zero, result is all zeros</span>
+        <span class="k">if</span> <span class="n">zero_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+        <span class="c1"># Calculate product of all non-zero numbers</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">total_product</span> <span class="o">*=</span> <span class="n">num</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">zero_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_product</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_product</span> <span class="o">//</span> <span class="n">num</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">productExceptSelf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>        <span class="c1"># ➜ [24, 12, 8, 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">productExceptSelf</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>   <span class="c1"># ➜ [0, 0, 9, 0, 0]</span>
 </pre></div>
-<p><strong>Meaning:</strong><br/>
-Python has never seen <code>total</code>.</p>
-<p><strong>Common causes:</strong></p>
-<ul>
-<li>Variable not created</li>
-<li>Misspelled variable name</li>
-<li>Variable defined in another scope</li>
-</ul></section><section class='slide'><h3 id="%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">❌ TypeError — invalid operation for a type<a class="anchor-link" href="#%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">¶</a></h3><div class="highlight"><pre><span></span><span class="s2">"5"</span> <span class="o">+</span> <span class="mi">2</span>
-</pre></div>
-<p><strong>Meaning:</strong><br/>
-The operation is not valid for the given data types.</p>
-<blockquote>
-<p>🧠 Read as: <em>“This operation doesn’t make sense for these values.”</em></p>
-</blockquote></section><section class='slide'><h3 id="%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">❌ ValueError — correct type, invalid value<a class="anchor-link" href="#%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">)</span>
-</pre></div>
-<p><strong>Meaning:</strong><br/>
-The type is correct, but the value cannot be converted or used.</p></section><section class='slide'><h3 id="%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">❌ IndexError — index out of range<a class="anchor-link" href="#%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">¶</a></h3><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-<p><strong>Meaning:</strong><br/>
-You tried to access an index that does not exist.</p></section><section class='slide'><h3 id="%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">❌ KeyError — dictionary key missing<a class="anchor-link" href="#%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]</span>
-</pre></div>
-<p><strong>Meaning:</strong><br/>
-The specified key does not exist in the dictionary.</p></section><section class='slide'><h3 id="%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">❌ AttributeError — attribute or method missing<a class="anchor-link" href="#%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-<p><strong>Meaning:</strong><br/>
-The object does not support that attribute or method.</p></section><section class='slide'><h2 id="%F0%9F%A7%A0-Debugging-Mindset">🧠 Debugging Mindset<a class="anchor-link" href="#%F0%9F%A7%A0-Debugging-Mindset">¶</a></h2><p>When an error occurs:</p>
-<ol>
-<li>Stay calm — errors are normal</li>
-<li>Read the <strong>last line first</strong></li>
-<li>Identify:<ul>
-<li>The error type</li>
-<li>The line number</li>
-</ul>
-</li>
-<li>Ask:<ul>
-<li>Is the variable defined?</li>
-<li>Is the type correct?</li>
-<li>Is the value valid?</li>
-</ul>
-</li>
-</ol>
-<h2 id="%E2%9C%85-Key-Rule-to-Remember">✅ Key Rule to Remember<a class="anchor-link" href="#%E2%9C%85-Key-Rule-to-Remember">¶</a></h2><p><strong>Errors are feedback, not failure.</strong> <br/>
-The interpreter is telling you exactly what it cannot understand.</p>
 </div>
 </div>
 </div>
 </div>
-</main></section>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[24, 12, 8, 6]
+[0, 0, 9, 0, 0]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=de50b2dd-7b2f-4e4f-9cec-bfbbaa35c3fa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
 </body>
 </html>

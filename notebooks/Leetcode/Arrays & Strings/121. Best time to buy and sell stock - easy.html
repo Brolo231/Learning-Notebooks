@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>49. Group Anagrams - medium</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>121. Best time to buy and sell stock - easy</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,98 +7508,41 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../../../assets/notebook.css">
-<script src="../../../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5bc9830d-9803-4519-b053-688c35e9e157">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a81fe7ec-fad0-40d1-aa92-22b4932f59fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="49.-Group-Anagrams"><a href="https://leetcode.com/problems/group-anagrams/description/">49. Group Anagrams</a><a class="anchor-link" href="#49.-Group-Anagrams">¶</a></h2><p><span style="background-color: yellow; color: black;">medium<span></span></span></p>
-<p>Given an array of strings strs, group the anagrams together. You can return the answer in any order.</p>
+<h2 id="121.-Best-time-to-buy-and-sell-stock"><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">121. Best time to buy and sell stock</a><a class="anchor-link" href="#121.-Best-time-to-buy-and-sell-stock">¶</a></h2><p><span style="background-color: lightgreen; color: black;">easy<span></span></span></p>
+<p>You are given an array <em>prices</em> where <em>prices[i]</em> is the price of a given stock on the ith day.</p>
+<p>You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.</p>
+<p>Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.</p>
 <p>Example 1:</p>
-<p><code>Input: strs = ["eat","tea","tan","ate","nat","bat"]</code><br/>
-<code>Output: [["bat"],["nat","tan"],["ate","eat","tea"]]</code></p>
-<p>Explanation:</p>
-<p>There is no string in strs that can be rearranged to form "bat". <br/>
-The strings "nat" and "tan" are anagrams as they can be rearranged to form each other. <br/>
-The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.</p>
+<p><code>Input: prices = [7,1,5,3,6,4]</code><br/>
+<code>Output: 5</code> <br/>
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. <br/>
+<strong>Note:</strong> that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.</p>
 <p>Example 2:</p>
-<p><code>Input: strs = [""]</code><br/>
-<code>Output: [[""]]</code></p>
-<p>Example 3:</p>
-<p><code>Input: strs = ["a"]</code><br/>
-<code>Output: [["a"]]</code></p>
+<p><code>Input: prices = [7,6,4,3,1]</code><br/>
+<code>Output: 0</code> <br/>
+Explanation: In this case, no transactions are done and the max profit = 0.</p>
 <p>Constraints:</p>
-<p>1 &lt;= strs.length &lt;= 104 <br/>
-0 &lt;= strs[i].length &lt;= 100 <br/>
-strs[i] consists of lowercase English letters.</p>
-<p><code>class Solution:</code><br/>
-<code>def groupAnagrams(self, strs: List[str]) -&gt; List[List[str]]:</code></p>
+<p><code>1 &lt;= prices.length &lt;= 105</code><br/>
+<code>0 &lt;= prices[i] &lt;= 104</code></p>
+<p>Given: <br/>
+<code>class Solution:</code><br/>
+<code>def maxProfit(self, prices: List[int]) -&gt; int:</code></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c06b61d1-3aa7-491f-8ace-d27eaa397d4a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">groupAnagrams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-
-        <span class="n">seen</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seen</span><span class="p">):</span>
-                <span class="k">if</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                    <span class="n">seen</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-                    <span class="k">break</span>
-                <span class="k">if</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">and</span> <span class="n">idx</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">seen</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">seen</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">value</span><span class="p">])</span>
-                    <span class="k">break</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">seen</span><span class="p">:</span>
-                <span class="n">seen</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-
-        <span class="k">return</span> <span class="n">seen</span>
-
-<span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">groupAnagrams</span><span class="p">([</span><span class="s2">"eat"</span><span class="p">,</span><span class="s2">"tea"</span><span class="p">,</span><span class="s2">"tan"</span><span class="p">,</span><span class="s2">"ate"</span><span class="p">,</span><span class="s2">"nat"</span><span class="p">,</span><span class="s2">"bat"</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49222b8e-c5c3-4174-a202-fb06af38618c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-a-nested-for-loop-to-iterate-over-each-value-in-strs-and-compare-it-to-the-'groups'-currently-added-to-seen-makes-sense-to-me.-However,-with-a-time-complexity-of-$O(n%C2%B2-*-k-log-k)$-(n-=-%23-of-words,-k-=-word-length)-this-solution-is-insufficient-for-leetcode's-grader.">Using a nested for loop to iterate over each value in strs and compare it to the 'groups' currently added to <em>seen</em> makes sense to me. However, with a time complexity of $O(n² * k log k)$ (n = # of words, k = word length) this solution is insufficient for leetcode's grader.<a class="anchor-link" href="#Using-a-nested-for-loop-to-iterate-over-each-value-in-strs-and-compare-it-to-the-'groups'-currently-added-to-seen-makes-sense-to-me.-However,-with-a-time-complexity-of-$O(n%C2%B2-*-k-log-k)$-(n-=-%23-of-words,-k-=-word-length)-this-solution-is-insufficient-for-leetcode's-grader.">¶</a></h3><h3 id="ChatGPT-Solution:">ChatGPT Solution:<a class="anchor-link" href="#ChatGPT-Solution:">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8bf69a17-e2cd-4ec2-8f32-58557ad973c2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b748440b-c41e-4ba6-86cf-c907a2f26e27">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7608,19 +7551,17 @@ strs[i] consists of lowercase English letters.</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">groupAnagrams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-        <span class="n">anagrams</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">current_highest_profit</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">current_highest_profit</span> <span class="ow">and</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="n">current_highest_profit</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">value</span>
 
-        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>  <span class="c1"># use sorted string as the key</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">anagrams</span><span class="p">:</span>
-                <span class="n">anagrams</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">anagrams</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">anagrams</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">current_highest_profit</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">groupAnagrams</span><span class="p">([</span><span class="s2">"eat"</span><span class="p">,</span><span class="s2">"tea"</span><span class="p">,</span><span class="s2">"tan"</span><span class="p">,</span><span class="s2">"ate"</span><span class="p">,</span><span class="s2">"nat"</span><span class="p">,</span><span class="s2">"bat"</span><span class="p">])</span>
+<span class="n">s</span><span class="o">.</span><span class="n">maxProfit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -7633,7 +7574,7 @@ strs[i] consists of lowercase English letters.</p>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]</pre>
+<pre>8</pre>
 </div>
 </div>
 </div>

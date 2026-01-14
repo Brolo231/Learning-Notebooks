@@ -52,33 +52,6 @@ document.addEventListener("click", e => {
   target.scrollIntoView({ behavior: "smooth" });
 });
 
-function buildBreadcrumb() {
-  const el = document.getElementById("breadcrumb");
-  if (!el) return;
-
-  const path = window.location.pathname
-    .split("/")
-    .filter(p => p && p !== "notebooks");
-
-  if (path.length <= 1) return;
-
-  let current = "/Learning-Notebooks/notebooks/";
-  el.innerHTML = " / ";
-
-  path.slice(0, -1).forEach((part, i) => {
-    current += part + "/";
-    const a = document.createElement("a");
-    a.href = current;
-    a.textContent = part.replace(/_/g, " ");
-    a.style.marginRight = "6px";
-    el.appendChild(a);
-
-    if (i < path.length - 2) {
-      el.appendChild(document.createTextNode(" / "));
-    }
-  });
-}
-
 document.addEventListener("DOMContentLoaded", buildBreadcrumb);
 
 function buildPageJump() {

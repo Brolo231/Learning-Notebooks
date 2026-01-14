@@ -283,3 +283,26 @@ details > summary {
   height: 420px;   /* 👈 increase/decrease here */
   margin-top: 24px;
 }
+
+.page-jump {
+  text-align: center;
+  margin: 12px 0 24px;
+}
+
+.page-jump button {
+  margin: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: var(--green-light);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--green-light);
+  margin: 24px 0;
+}

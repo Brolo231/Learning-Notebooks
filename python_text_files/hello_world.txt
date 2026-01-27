@@ -1,0 +1,11 @@
+Hello world
+this 
+is 
+an example 
+of a txt file 
+with different words
+on multiple lines 
+
+3.141
+592
+654

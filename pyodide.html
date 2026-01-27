@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Python Web IDE (Pyodide)</title>
+<title>Python Web IDE + LeetCode (Pyodide)</title>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.css">
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.js"></script>
 
 <style>
 body {
@@ -24,11 +25,23 @@ body {
 
 /* LEFT PANEL */
 #problem-panel {
-  width: 30%;
+  width: 32%;
   background: #252526;
   padding: 1rem;
   overflow-y: auto;
   border-right: 1px solid #333;
+}
+
+h2 { margin-top: 0; }
+
+#problem-preview {
+  margin-top: 1rem;
+  background: #1a1a1a;
+  padding: 0.8rem;
+  border-radius: 6px;
+  max-height: 50vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
 }
 
 /* RIGHT PANEL */
@@ -81,8 +94,9 @@ button:hover { background: #505357; }
 }
 
 .tab.active {
-  background: #1e1e1e;
-  border-bottom: 2px solid cyan;
+  background: #f0f0f0;
+  color: #000;
+  border-bottom: 2px solid #00aaff;
 }
 
 /* EDITOR */
@@ -95,8 +109,14 @@ button:hover { background: #505357; }
 
 .CodeMirror {
   height: 100%;
-  background: #1e1e1e;
-  color: #fff;
+  background: #f2f2f2;   /* LIGHT GREY */
+  color: #000;
+  font-size: 15px;
+}
+
+.CodeMirror-gutters {
+  background: #e5e5e5;
+  border-right: 1px solid #ccc;
 }
 
 /* OUTPUT */
@@ -123,15 +143,6 @@ pre {
   white-space: pre-wrap;
 }
 
-/* COPY ICON */
-.copy-btn {
-  cursor: pointer;
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-.copy-btn:hover { opacity: 1; }
-
 #status {
   margin-left: auto;
   font-size: 13px;
@@ -143,10 +154,23 @@ pre {
 <body>
 <div id="app">
 
-<!-- LEFT -->
+<!-- ================= LEFT PANEL ================= -->
 <div id="problem-panel">
-<h3>📁 Python Files</h3>
 
+<h2 id="problem-title">LeetCode Problems</h2>
+
+<button onclick="loadRandomProblem()">🎲 Random</button>
+
+<div style="margin-top:0.5rem;">
+  <input id="search-input" placeholder="Search problem..." style="width:100%; padding:6px;">
+  <button onclick="searchProblems()" style="width:100%; margin-top:0.3rem;">🔍 Search</button>
+</div>
+
+<ul id="search-results"></ul>
+
+<hr>
+
+<h3>📁 Python Files</h3>
 <select id="file-select" style="width:100%; margin-bottom:0.5rem;"></select>
 
 <button onclick="loadSelectedFile()">📂 Load File</button>
@@ -154,11 +178,12 @@ pre {
 
 <hr>
 
-<p>Status:</p>
-<div id="file-status">Waiting...</div>
+<h3>Preview</h3>
+<div id="problem-preview">Select a problem or file…</div>
+
 </div>
 
-<!-- RIGHT -->
+<!-- ================= RIGHT PANEL ================= -->
 <div id="editor-panel">
 
 <div class="toolbar">
@@ -174,15 +199,11 @@ pre {
 </div>
 
 <div id="editor-wrapper">
-  <textarea id="code">
-print("Hello from Pyodide IDE!")
-  </textarea>
+  <textarea id="code">print("Hello from Pyodide IDE!")</textarea>
 </div>
 
 <div id="output-panel">
-  <div id="output-header">
-    <strong>Output</strong>
-  </div>
+  <div id="output-header"><strong>Output</strong></div>
   <pre id="output">(Output)</pre>
 </div>
 
@@ -193,13 +214,14 @@ print("Hello from Pyodide IDE!")
 let editor;
 let pyodideReady = false;
 let loadedFiles = {};
+let leetcodeData = [];
 let currentTab = "main";
-let previewContent = "";
 
 editor = CodeMirror.fromTextArea(document.getElementById("code"), {
   mode: "python",
   lineNumbers: true,
-  indentUnit: 4
+  indentUnit: 4,
+  matchBrackets: true
 });
 
 /* ---------------- PYODIDE INIT ---------------- */
@@ -211,64 +233,86 @@ async function main() {
   document.getElementById("status").textContent = "Ready";
 
   await loadPythonFiles();
+
+  try {
+    const r = await fetch("leetcode_dataset_clean.json");
+    leetcodeData = await r.json();
+  } catch {
+    document.getElementById("problem-preview").textContent = "Failed to load LeetCode dataset.";
+  }
 }
 main();
 
-/* -------- FILE LOADING LOGIC (IMPORTANT PART) -------- */
+/* -------- FILE LOADING -------- */
 
 async function loadPythonFiles() {
-  const files = ["hello_world.txt"];   // add more later automatically
+  const files = ["hello_world.txt"];
 
   pyodide.FS.mkdir("python_text_files");
-
   const select = document.getElementById("file-select");
   select.innerHTML = "";
 
   for (const file of files) {
-    try {
-      const r = await fetch(`python_text_files/${file}`);
-      const text = await r.text();
+    const r = await fetch(`python_text_files/${file}`);
+    const text = await r.text();
 
-      pyodide.FS.writeFile(`python_text_files/${file}`, text);
-      loadedFiles[file] = text;
+    pyodide.FS.writeFile(`python_text_files/${file}`, text);
+    loadedFiles[file] = text;
 
-      const opt = document.createElement("option");
-      opt.value = file;
-      opt.textContent = file;
-      select.appendChild(opt);
-
-      document.getElementById("file-status").textContent = "Files loaded ✔";
-
-    } catch {
-      document.getElementById("file-status").textContent = "Failed to load files ❌";
-    }
+    const opt = document.createElement("option");
+    opt.value = file;
+    opt.textContent = file;
+    select.appendChild(opt);
   }
 }
 
-/* -------- FILE ACTIONS -------- */
-
 function loadSelectedFile() {
   const file = document.getElementById("file-select").value;
-  if (!file) return;
-
   editor.setValue(loadedFiles[file]);
-  switchTab("main");
+  document.getElementById("problem-preview").textContent = loadedFiles[file];
 }
 
 function previewFile() {
   const file = document.getElementById("file-select").value;
-  if (!file) return;
+  editor.setValue(loadedFiles[file]);
+  document.getElementById("problem-preview").textContent = loadedFiles[file];
+}
 
-  previewContent = loadedFiles[file];
-  editor.setValue(previewContent);
-  switchTab("preview");
+/* -------- LEETCODE LOGIC -------- */
+
+function loadRandomProblem() {
+  const p = leetcodeData[Math.floor(Math.random() * leetcodeData.length)];
+  showProblem(p);
+}
+
+function searchProblems() {
+  const q = document.getElementById("search-input").value.toLowerCase();
+  const results = document.getElementById("search-results");
+  results.innerHTML = "";
+
+  leetcodeData.filter(p => p.title.toLowerCase().includes(q)).slice(0, 20)
+    .forEach(p => {
+      const li = document.createElement("li");
+      li.textContent = p.title;
+      li.style.cursor = "pointer";
+      li.onclick = () => showProblem(p);
+      results.appendChild(li);
+    });
+}
+
+function showProblem(problem) {
+  document.getElementById("problem-title").textContent = problem.title;
+
+  const text = `Difficulty: ${problem.difficulty}\n\n${problem.content}`;
+  document.getElementById("problem-preview").textContent = text;
+
+  editor.setValue(`# ${problem.title}\n# Difficulty: ${problem.difficulty}\n\n`);
 }
 
 /* -------- TAB SYSTEM -------- */
 
 function switchTab(tab) {
   currentTab = tab;
-
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   document.querySelectorAll(".tab")[tab === "main" ? 0 : 1].classList.add("active");
 }
@@ -278,29 +322,16 @@ function switchTab(tab) {
 async function runCode() {
   const output = document.getElementById("output");
 
-  if (!pyodideReady) {
-    output.textContent = "Loading Pyodide...";
-    return;
-  }
-
   try {
-    await pyodide.runPythonAsync(`
-import sys, io
-sys.stdout = io.StringIO()
-sys.stderr = sys.stdout
-    `);
-
+    await pyodide.runPythonAsync(`import sys, io\nsys.stdout = io.StringIO()\nsys.stderr = sys.stdout`);
     await pyodide.runPythonAsync(editor.getValue());
-
-    output.textContent =
-      await pyodide.runPythonAsync("sys.stdout.getvalue()") || "(No output)";
-
+    output.textContent = await pyodide.runPythonAsync("sys.stdout.getvalue()") || "(No output)";
   } catch (err) {
     output.textContent = err;
   }
 }
 
-/* -------- COPY BUTTONS -------- */
+/* -------- COPY -------- */
 
 function copyEditor() {
   navigator.clipboard.writeText(editor.getValue());

@@ -1,258 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Python WebAssembly + LeetCode Editor</title>
+<meta charset="UTF-8">
+<title>Python Web IDE (Pyodide)</title>
 
-  <!-- Pyodide -->
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
 
-  <!-- CodeMirror -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.css">
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/matchbrackets.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.js"></script>
 
-  <style>
-    body {
-      margin: 0;
-      background: #1e1e1e;
-      color: white;
-      font-family: sans-serif;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    #app {
-      display: flex;
-      height: 100vh;
-    }
-
-    /* LEFT: PROBLEM PANEL */
-    #problem-panel {
-      width: 35%;
-      min-width: 320px;
-      max-width: 45%;
-      background: #252526;
-      border-right: 1px solid #333;
-      padding: 1rem;
-      overflow-y: auto;
-    }
-
-    #problem-panel.hidden {
-      display: none;
-    }
-
-    /* RIGHT: EDITOR PANEL */
-    #editor-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      overflow: hidden;
-    }
-
-    .toolbar {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    button {
-      padding: 8px 14px;
-      font-size: 14px;
-      cursor: pointer;
-      border-radius: 6px;
-      border: none;
-    }
-
-    pre {
-      background: #333;
-      padding: 1rem;
-      border-radius: 6px;
-      overflow-y: auto;
-      max-height: 160px;
-    }
-
-    #plot img {
-      max-width: 100%;
-      background: white;
-      margin-top: 0.5rem;
-      border-radius: 6px;
-    }
-
-    /* CodeMirror Styling */
-    .CodeMirror {
-      height: 100%;
-      font-size: 15px;
-      background: #1e1e1e;
-      color: #fff;
-      border-radius: 6px;
-    }
-
-    .CodeMirror-gutters {
-      background: #1e1e1e;
-      border-right: 1px solid #333;
-    }
-
-    #editor-wrapper {
-      flex: 1;
-      overflow: hidden;
-      margin-bottom: 0.5rem;
-    }
-
-    #problem-title a {
-      margin-left: 0.5rem;
-    }
-    
-    /* ===== Improve CodeMirror cursor visibility ===== */
-.CodeMirror-cursor {
-  border-left: 2px solid #00ffff !important; /* bright cyan */
+<style>
+body {
+  margin: 0;
+  background: #1e1e1e;
+  color: #ddd;
+  font-family: system-ui;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.CodeMirror-focused .CodeMirror-cursor {
-  border-left: 2px solid #00ffff !important;
+#app { display: flex; height: 100vh; }
+
+/* LEFT PANEL */
+#problem-panel {
+  width: 30%;
+  background: #252526;
+  padding: 1rem;
+  overflow-y: auto;
+  border-right: 1px solid #333;
 }
 
-/* Optional: subtle line highlight where cursor is */
-.CodeMirror-activeline-background {
-  background: rgba(255, 255, 255, 0.04);
+/* RIGHT PANEL */
+#editor-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
-  </style>
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background: #3a3d41;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover { background: #505357; }
+
+/* FILE BAR */
+#file-bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* TABS */
+#tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab {
+  padding: 6px 12px;
+  background: #333;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1e1e1e;
+  border-bottom: 2px solid cyan;
+}
+
+/* EDITOR */
+#editor-wrapper {
+  flex: 1;
+  border: 1px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.CodeMirror {
+  height: 100%;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+/* OUTPUT */
+#output-panel {
+  margin-top: 0.5rem;
+  background: #111;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+#output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+pre {
+  background: #222;
+  padding: 0.7rem;
+  border-radius: 6px;
+  max-height: 160px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* COPY ICON */
+.copy-btn {
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.copy-btn:hover { opacity: 1; }
+
+#status {
+  margin-left: auto;
+  font-size: 13px;
+  color: #aaa;
+}
+</style>
 </head>
 
 <body>
 <div id="app">
 
-  <!-- ================= PROBLEM PANEL ================= -->
-  <div id="problem-panel">
-    <h2 id="problem-title">LeetCode Problem</h2>
-    <div id="problem-description">
-      Load a problem to begin.
-    </div>
+<!-- LEFT -->
+<div id="problem-panel">
+<h3>📁 Python Files</h3>
 
-    <hr>
+<select id="file-select" style="width:100%; margin-bottom:0.5rem;"></select>
 
-    <button onclick="loadProblem('Easy')">🎯 Easy</button>
-    <button onclick="loadProblem('Medium')">⚖️ Medium</button>
-    <button onclick="loadProblem('Hard')">🔥 Hard</button>
+<button onclick="loadSelectedFile()">📂 Load File</button>
+<button onclick="previewFile()">👁 Preview</button>
 
-    <details style="margin-top:1rem;">
-      <summary>🔍 Search Problems</summary>
-      <input id="search-input" placeholder="Search..." style="width:100%; margin-top:0.5rem;">
-      <button onclick="searchProblems()">Search</button>
-      <ul id="search-results"></ul>
-    </details>
+<hr>
+
+<p>Status:</p>
+<div id="file-status">Waiting...</div>
+</div>
+
+<!-- RIGHT -->
+<div id="editor-panel">
+
+<div class="toolbar">
+  <button onclick="runCode()">▶ Run</button>
+  <button onclick="copyEditor()">📋 Copy Code</button>
+  <button onclick="copyOutput()">📋 Copy Output</button>
+  <span id="status">Loading Pyodide…</span>
+</div>
+
+<div id="tabs">
+  <div class="tab active" onclick="switchTab('main')">Main Code</div>
+  <div class="tab" onclick="switchTab('preview')">Preview</div>
+</div>
+
+<div id="editor-wrapper">
+  <textarea id="code">
+print("Hello from Pyodide IDE!")
+  </textarea>
+</div>
+
+<div id="output-panel">
+  <div id="output-header">
+    <strong>Output</strong>
   </div>
+  <pre id="output">(Output)</pre>
+</div>
 
-  <!-- ================= EDITOR PANEL ================= -->
-  <div id="editor-panel">
-
-    <div class="toolbar">
-      <button onclick="runCode()">▶ Run (⌘+B)</button>
-      <button onclick="saveCodeCache()">💾 Save</button>
-      <button onclick="resetCodeCache()">🧹 Reset</button>
-      <button onclick="toggleProblem()">👁 Toggle Problem</button>
-    </div>
-
-    <div id="editor-wrapper">
-      <textarea id="code">
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(0, 10, 100)
-y = np.sin(x)
-
-plt.plot(x, y)
-plt.show()
-      </textarea>
-    </div>
-
-    <pre id="output">(Output)</pre>
-    <div id="plot"></div>
-
-  </div>
+</div>
 </div>
 
 <script>
 let editor;
 let pyodideReady = false;
-let leetcodeData = [];
+let loadedFiles = {};
+let currentTab = "main";
+let previewContent = "";
 
 editor = CodeMirror.fromTextArea(document.getElementById("code"), {
   mode: "python",
-  theme: "default",
   lineNumbers: true,
-  indentUnit: 4,
-  tabSize: 4,
-  indentWithTabs: false,
-  matchBrackets: true,
-  electricChars: true
+  indentUnit: 4
 });
 
-editor.on("keydown", (cm, e) => {
-  if (e.key === "Enter") {
-    const line = cm.getLine(cm.getCursor().line);
-    if (line.trim().endsWith(":")) {
-      setTimeout(() => cm.replaceSelection("    "), 0);
-    }
-  }
-
-  if (e.key.toLowerCase() === "b" && e.metaKey) {
-    e.preventDefault();
-    runCode();
-  }
-});
+/* ---------------- PYODIDE INIT ---------------- */
 
 async function main() {
   window.pyodide = await loadPyodide();
-  await pyodide.loadPackage(["matplotlib", "numpy", "pandas"]);
+  await pyodide.loadPackage(["numpy", "matplotlib"]);
   pyodideReady = true;
+  document.getElementById("status").textContent = "Ready";
 
-  const saved = localStorage.getItem("userPythonCode");
-  if (saved) editor.setValue(saved);
-
-  try {
-    const r = await fetch("leetcode_dataset_clean.json");
-    leetcodeData = await r.json();
-  } catch {
-    document.getElementById("output").textContent = "❌ Failed to load problems.";
-  }
+  await loadPythonFiles();
 }
 main();
 
-function toggleProblem() {
-  document.getElementById("problem-panel").classList.toggle("hidden");
-}
+/* -------- FILE LOADING LOGIC (IMPORTANT PART) -------- */
 
-function saveCodeCache() {
-  localStorage.setItem("userPythonCode", editor.getValue());
-  alert("Saved!");
-}
+async function loadPythonFiles() {
+  const files = ["hello_world.txt"];   // add more later automatically
 
-function resetCodeCache() {
-  if (confirm("Clear saved code?")) {
-    editor.setValue("");
-    localStorage.removeItem("userPythonCode");
+  pyodide.FS.mkdir("python_text_files");
+
+  const select = document.getElementById("file-select");
+  select.innerHTML = "";
+
+  for (const file of files) {
+    try {
+      const r = await fetch(`python_text_files/${file}`);
+      const text = await r.text();
+
+      pyodide.FS.writeFile(`python_text_files/${file}`, text);
+      loadedFiles[file] = text;
+
+      const opt = document.createElement("option");
+      opt.value = file;
+      opt.textContent = file;
+      select.appendChild(opt);
+
+      document.getElementById("file-status").textContent = "Files loaded ✔";
+
+    } catch {
+      document.getElementById("file-status").textContent = "Failed to load files ❌";
+    }
   }
 }
 
+/* -------- FILE ACTIONS -------- */
+
+function loadSelectedFile() {
+  const file = document.getElementById("file-select").value;
+  if (!file) return;
+
+  editor.setValue(loadedFiles[file]);
+  switchTab("main");
+}
+
+function previewFile() {
+  const file = document.getElementById("file-select").value;
+  if (!file) return;
+
+  previewContent = loadedFiles[file];
+  editor.setValue(previewContent);
+  switchTab("preview");
+}
+
+/* -------- TAB SYSTEM -------- */
+
+function switchTab(tab) {
+  currentTab = tab;
+
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".tab")[tab === "main" ? 0 : 1].classList.add("active");
+}
+
+/* -------- RUN CODE -------- */
+
 async function runCode() {
   const output = document.getElementById("output");
-  const plot = document.getElementById("plot");
-  plot.innerHTML = "";
 
   if (!pyodideReady) {
-    output.textContent = "Loading...";
+    output.textContent = "Loading Pyodide...";
     return;
   }
 
   try {
     await pyodide.runPythonAsync(`
-import sys, io, matplotlib
-matplotlib.use("AGG")
-import matplotlib.pyplot as plt
+import sys, io
 sys.stdout = io.StringIO()
 sys.stderr = sys.stdout
     `);
@@ -262,27 +295,19 @@ sys.stderr = sys.stdout
     output.textContent =
       await pyodide.runPythonAsync("sys.stdout.getvalue()") || "(No output)";
 
-    const imgs = await pyodide.runPythonAsync(`
-import base64, io
-imgs=[]
-for i in plt.get_fignums():
-    buf=io.BytesIO()
-    plt.figure(i).savefig(buf, format="png")
-    buf.seek(0)
-    imgs.append("data:image/png;base64,"+base64.b64encode(buf.read()).decode())
-    plt.close(i)
-imgs
-    `);
-
-    imgs.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src;
-      plot.appendChild(img);
-    });
-
   } catch (err) {
     output.textContent = err;
   }
+}
+
+/* -------- COPY BUTTONS -------- */
+
+function copyEditor() {
+  navigator.clipboard.writeText(editor.getValue());
+}
+
+function copyOutput() {
+  navigator.clipboard.writeText(document.getElementById("output").textContent);
 }
 </script>
 </body>

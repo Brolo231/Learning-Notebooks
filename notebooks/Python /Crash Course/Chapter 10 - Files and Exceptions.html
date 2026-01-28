@@ -7513,21 +7513,78 @@ a.anchor-link {
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d1cd3184-80e6-4890-bdab-d41b4b533767">
+    
+    <nav class="notebook-top-nav">
+      <div class="notebook-nav-inner">
+        <div class="notebook-title-text">
+          Chapter 10 - files and exceptions
+        </div>
+
+        <div class="chapter-nav-bar">
+          
+        <a class="chapter-nav prev" href="Chapter 09 - Classes.html">
+          ⬅ Chapter 09 - classes
+        </a>
+        
+          <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
+          
+        </div>
+      </div>
+    </nav>
+    
+    <div class="slide-wrapper">
+
+      <div class="slide-controls">
+      <div class="slide-nav-row">
+        <button onclick="prevSlide()">⬅</button>
+        <span id="slide-indicator"></span>
+        <button onclick="nextSlide()">➡</button>
+      </div>
+    
+      <div class="page-jump" id="page-jump"></div>
+    </div>
+
+      <section class='slide'><main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eeeaa673-d93a-48be-aa00-036ca3ef0ba4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="File-and-Exceptions">File and Exceptions<a class="anchor-link" href="#File-and-Exceptions">¶</a></h1><hr/>
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
+<li>Pg 2: Reading from a File</li>
+<li>Pg 3:</li>
+<li>Pg 4:</li>
+<li>Pg 5:</li>
+<li>Pg 6:</li>
+<li>Pg 7:</li>
+<li>Pg 8:</li>
+<li>Pg 9:</li>
+</ul></section><section class='slide'><h2 id="Reading-from-a-file">Reading from a file<a class="anchor-link" href="#Reading-from-a-file">¶</a></h2><p>The following is a simple example of reading and printing the contents of a file:</p>
+<pre><code>from pathlib import Path
+
+path = Path('pi_digits.txt')
+contents = path.read_text()
+print(contents)
+</code></pre>
+<p><code>read_text</code> returns the contents of the file in the form of a single string</p>
+<p>In the example above the file pi_digits.txt would need to be in the same directory that this python script is saved in, in order for it to be successfully read, otherwise, the exact path to that files directory would need to be provided.</p>
+<h3 id="Accessing-a-file's-lines">Accessing a file's lines<a class="anchor-link" href="#Accessing-a-file's-lines">¶</a></h3><p>You can use the splitlines() method to turn a long string into a set of lines, and then use a for loop to examine each line from a file, one at a time:</p>
+<pre><code>from pathlib import Path
+
+path = Path('pi_digits.txt')
+contents = path.read_text()
+
+lines = contents.splitlines()
+for line in lines:
+    print(line)
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-</main>
-</body>
+</main></section>
+    </div>
+    </body>
 </html>

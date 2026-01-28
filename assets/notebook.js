@@ -89,67 +89,70 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   searchBox.addEventListener("input", function () {
-    const q = this.value.toLowerCase().trim();
-    const lessons = document.querySelectorAll(".lesson-item");
-    const allDetails = document.querySelectorAll("details");
+  const query = this.value.toLowerCase().trim();
+  const tokens = query.split(/\s+/).filter(Boolean);
 
-    console.log("🔎 Searching for:", q);
+  const lessons = document.querySelectorAll(".lesson-item");
+  const allDetails = document.querySelectorAll("details");
 
-    // Reset
-    lessons.forEach(el => (el.style.display = "block"));
-    allDetails.forEach(d => d.open = false);
+  // Reset
+  lessons.forEach(el => (el.style.display = "block"));
+  allDetails.forEach(d => (d.open = false));
 
-    if (!q) return;
+  if (!tokens.length) return;
 
-    const matchedLessons = [];
+  const matchedLessons = [];
 
-    lessons.forEach(el => {
-      const titleEl = el.querySelector(".lesson-title");
-      const link = el.querySelector("a.lesson-link");
-      if (!link || !titleEl) return;
+  lessons.forEach(el => {
+    const titleEl = el.querySelector(".lesson-title");
+    const link = el.querySelector("a.lesson-link");
+    if (!link || !titleEl) return;
 
-      const titleText = titleEl.innerText.toLowerCase();
+    const titleText = titleEl.innerText.toLowerCase();
+    const href = link.getAttribute("href");
+    const filename = href.split("/").pop().toLowerCase();
 
-      // Filename (safe match key)
-      const href = link.getAttribute("href");
-      const filename = href.split("/").pop().toLowerCase();
+    const entry = SEARCH_DATA.find(n =>
+      n.path.toLowerCase().endsWith(filename)
+    );
 
-      const entry = SEARCH_DATA.find(n =>
-        n.path.toLowerCase().endsWith(filename)
-      );
+    // Build weighted search text
+    let searchText = titleText + " ";
 
-      let haystack = titleText;
+    if (entry) {
+      searchText +=
+        entry.title + " " +
+        entry.headings + " " +
+        entry.content;
+    }
 
-      if (entry) {
-        haystack += " " + entry.content.toLowerCase();
-      }
+    // ALL tokens must match somewhere
+    const matched = tokens.every(token =>
+      searchText.includes(token)
+    );
 
-      if (!haystack.includes(q)) {
-        el.style.display = "none";
-      } else {
-        matchedLessons.push(el);
-      }
-    });
-
-    console.log("✅ Matches found:", matchedLessons.length);
-
-    // 🔽 Auto-expand parents
-    matchedLessons.forEach(el => {
-      let parent = el.parentElement;
-      while (parent) {
-        if (parent.tagName === "DETAILS") {
-          parent.open = true;
-        }
-        parent = parent.parentElement;
-      }
-    });
-
-    // 🔒 Close folders with no visible lessons
-    allDetails.forEach(d => {
-      const visibleInside = d.querySelector(".lesson-item:not([style*='display: none'])");
-      if (!visibleInside) {
-        d.open = false;
-      }
-    });
+    if (!matched) {
+      el.style.display = "none";
+    } else {
+      matchedLessons.push(el);
+    }
   });
+
+  // Auto-expand parents
+  matchedLessons.forEach(el => {
+    let parent = el.parentElement;
+    while (parent) {
+      if (parent.tagName === "DETAILS") parent.open = true;
+      parent = parent.parentElement;
+    }
+  });
+
+  // Close empty folders
+  allDetails.forEach(d => {
+    const visibleInside = d.querySelector(
+      ".lesson-item:not([style*='display: none'])"
+    );
+    if (!visibleInside) d.open = false;
+  });
+});
 });

@@ -22,6 +22,7 @@ body {
   font-family: "Segoe UI", system-ui, sans-serif;
   color: var(--text-main);
   line-height: 1.7;
+  padding-top: 72px;
 }
 
 /* ===============================
@@ -29,12 +30,29 @@ body {
    =============================== */
 
 .notebook-top-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  width: 100%;
+  z-index: 300;
   background: var(--green-dark);
-  padding: 12px 18px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  margin: 0;
+  padding: 0;
+}
+
+.notebook-nav-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px 10px;
+}
+
+.notebook-title-text {
+  color: var(--green-accent);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 6px;
 }
 
 .notebook-top-nav a {
@@ -49,17 +67,34 @@ body {
    =============================== */
 
 .slide-controls {
-  position: sticky;
-  top: 52px;
-  z-index: 90;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
   background: linear-gradient(
     135deg,
     var(--green-main),
     var(--green-dark)
   );
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.slide-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+#page-jump {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .slide-controls button {
@@ -221,5 +256,144 @@ th {
   .slide-controls button {
     margin: 6px;
     padding: 8px 12px;
+  }
+}
+
+.slide-wrapper {
+  padding: 28px 16px 120px;
+}
+
+.notebook-title {
+  background: var(--green-dark);
+  color: white;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.notebook-title h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.chapter-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chapter-nav {
+  background: var(--green-accent);
+  color: var(--green-dark);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.chapter-nav.prev {
+  margin-right: auto;
+}
+
+.chapter-nav.next {
+  margin-left: auto;
+}
+
+.home-link {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+
+  /* ---------- TOP NAV COMPACT ---------- */
+
+  .notebook-nav-inner {
+    padding: 6px 10px 8px;
+  }
+
+  .notebook-title-text {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+  }
+
+  .chapter-nav-bar {
+    gap: 6px;
+  }
+
+  /* ---------- CHAPTER BUTTONS (SHORT TEXT) ---------- */
+
+  .chapter-nav {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  /* Hide long text */
+  .chapter-nav.prev::after,
+  .chapter-nav.next::after {
+    display: none;
+  }
+
+  /* Replace text with short labels */
+  .chapter-nav.prev {
+    font-size: 0;
+  }
+
+  .chapter-nav.prev::before {
+    content: "⬅ Prev";
+    font-size: 0.75rem;
+  }
+
+  .chapter-nav.next {
+    font-size: 0;
+  }
+
+  .chapter-nav.next::before {
+    content: "Next ➡";
+    font-size: 0.75rem;
+  }
+
+  /* ---------- HOME BUTTON ---------- */
+
+  .home-link {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* ---------- BOTTOM SLIDE CONTROLS ---------- */
+
+  .slide-controls {
+    padding: 8px 6px;
+    gap: 6px;
+  }
+
+  .slide-nav-row {
+    gap: 10px;
+  }
+
+  .slide-controls button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  #slide-indicator {
+    font-size: 0.75rem;
+  }
+
+  #page-jump button {
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide {
+    padding: 22px 18px;
+    border-radius: 12px;
   }
 }

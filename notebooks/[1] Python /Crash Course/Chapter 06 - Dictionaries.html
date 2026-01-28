@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 03 - Introducing Lists</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 06 - Dictionaries</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,19 +7517,19 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 03 - introducing lists
+          Chapter 06 - Dictionaries
         </div>
 
         <div class="chapter-nav-bar">
           
-        <a class="chapter-nav prev" href="Chapter 02 - Troubleshooting Python Errors.html">
-          ⬅ Chapter 02 - troubleshooting python errors
+        <a class="chapter-nav prev" href="Chapter 05 - If Statements.html">
+          ⬅ Chapter 05 - If Statements
         </a>
         
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Chapter 04 - Working with Lists.html">
-          Chapter 04 - working with lists ➡
+        <a class="chapter-nav next" href="Chapter 07 - User Input and While Loops.html">
+          Chapter 07 - User Input And While Loops ➡
         </a>
         
         </div>
@@ -7549,109 +7549,133 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4fd4fa18-6edf-4bd3-a319-8e44b17eff2f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c534bfac-3c56-426e-a277-63cc6bc3af3d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Python-Lists">Python Lists<a class="anchor-link" href="#Python-Lists">¶</a></h1><hr/>
+<h1 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries">¶</a></h1><hr/>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: What is a List?</li>
-<li>Pg 3: Accessing elements in a list</li>
-<li>Pg 4: Modifying Elements in a List</li>
-<li>Pg 5: Removing Elements from a list</li>
-<li>Pg 6: Organizing a list</li>
-</ul></section><section class='slide'><h2 id="%F0%9F%93%8B-What-is-a-List?">📋 What is a List?<a class="anchor-link" href="#%F0%9F%93%8B-What-is-a-List?">¶</a></h2><ul>
-<li>A list is a collection of items in a particular order</li>
-</ul>
-<p>If you ask Python to print a list, Python returns its representation of the list, including the square brackets:</p>
-<pre><code>&gt;&gt;&gt; bicycles = ['trek', 'cannondale', 'redline', 'specialized']
-&gt;&gt;&gt; print(bicycles) 
-['trek', 'cannondale', 'redline', 'specialized']
-</code></pre></section><section class='slide'><h2 id="Accessing-Elements-in-a-List">Accessing Elements in a List<a class="anchor-link" href="#Accessing-Elements-in-a-List">¶</a></h2><ul>
-<li>Lists are ordered collections, so you can access any element in a list by telling Python the position, or index, of the item desired</li>
-<li>To access an element in a list, write the name of the list followed by the index of the item enclosed in square brackets.</li>
-</ul>
-<h3 id="%F0%9F%85%BE%EF%B8%8F--%3E-1%EF%B8%8F%E2%83%A3-Index-Positions-Start-at-0,-Not-1">🅾️ -&gt; 1️⃣ Index Positions Start at 0, Not 1<a class="anchor-link" href="#%F0%9F%85%BE%EF%B8%8F--%3E-1%EF%B8%8F%E2%83%A3-Index-Positions-Start-at-0,-Not-1">¶</a></h3><ul>
-<li>Python considers the first item in a list to be at position 0, not position 1. This is true of most programming languages, and the reason has to do with how the list operations are implemented at a lower level.</li>
-</ul>
-<h3 id="%E2%80%921%EF%B8%8F%E2%83%A3-Negative-index-values">‒1️⃣ Negative index values<a class="anchor-link" href="#%E2%80%921%EF%B8%8F%E2%83%A3-Negative-index-values">¶</a></h3><ul>
-<li>Python has a special syntax for accessing the last element in a list. If you ask for the item at index <code>-1</code>, Python always returns the last item in the list:</li>
-</ul>
-<p>-This convention extends to other negative index values as well. The index -2 returns the second item from the end of the list, the index -3 returns the third item from the end, and so forth.</p></section><section class='slide'><h2 id="Modifying-Elements-in-a-List">Modifying Elements in a List<a class="anchor-link" href="#Modifying-Elements-in-a-List">¶</a></h2><ul>
-<li>To change an element, use the name of the list followed by the index of the element you want to change, and then provide the new value you want that item to have.</li>
-</ul>
-<h3 id="Appending-elements-to-a-list">Appending elements to a list<a class="anchor-link" href="#Appending-elements-to-a-list">¶</a></h3><ul>
-<li>When you append an item to a list, the new element is added to the end of the list.</li>
-</ul>
-<pre><code>&gt;&gt;&gt; x = ['a', 'b', 'c']
-&gt;&gt;&gt; x.append('d')
-['a', 'b', 'c', 'd']
-</code></pre>
-<h3 id="Inserting-elements-into-a-list">Inserting elements into a list<a class="anchor-link" href="#Inserting-elements-into-a-list">¶</a></h3><ul>
-<li>You can add a new element at any position in your list by using the insert() method. You do this by specifying the index of the new element and the value of the new item:</li>
-</ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
-&gt;&gt;&gt; motorcycles.insert(0, 'ducati)
-&gt;&gt;&gt; print(motorcycles)
-['ducati', 'honda', 'yamaha', 'suzuki']
-</code></pre></section><section class='slide'><h2 id="Removing-elements-from-a-list">Removing elements from a list<a class="anchor-link" href="#Removing-elements-from-a-list">¶</a></h2><ul>
-<li>If you know the position of the item you want to remove from a list, you can use the del statement:</li>
-</ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
-&gt;&gt;&gt; print(motorcycles)
+<li>Pg 2: Dictionaries</li>
+<li>Pg 3: Accessing values in a Dictionary</li>
+<li>Pg 4: Adding new key-value pairs</li>
+<li>Pg 5: Removing key-value pairs</li>
+<li>Pg 6: Accessing values with get()</li>
+<li>Pg 7: Looping through all key-value pairs</li>
+<li>Pg 8: Sets</li>
+</ul></section><section class='slide'><h2 id="Dictioanries">Dictioanries<a class="anchor-link" href="#Dictioanries">¶</a></h2><p>A dictionary in Python is a collection of key-value pairs. Each key is connected to a value, and you can use a key to access the value associated with that key. A key’s value can be a number, a string, a list, or even another dictionary. In fact, you can use any object that you can create in Python as a value in a dictionary.</p>
+<p>In Python, a dictionary is wrapped in braces ({}) with a series of key-value pairs inside the braces</p>
+<p>Consider the following dictionary example:</p>
+<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'points': 5}
 
-&gt;&gt;&gt; del motorcycles[0]
-&gt;&gt;&gt; print(motorcycles)
-['yamaha', 'suzuki']
+&gt;&gt;&gt; print(alien_0['color'])
+&gt;&gt;&gt; print(alien_0['points'])
+
+green
+5
+</code></pre></section><section class='slide'><h2 id="Accessing-values-in-a-Dictionary">Accessing values in a Dictionary<a class="anchor-link" href="#Accessing-values-in-a-Dictionary">¶</a></h2><p>To get the value associated with a key, give the name of the dictionary and then place the key inside a set of square brackets</p>
+<p>For example:</p>
+<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green'}
+&gt;&gt;&gt; print(alien_0['color'])
+
+green
+</code></pre></section><section class='slide'><h2 id="Adding-new-key-value-pairs">Adding new key-value pairs<a class="anchor-link" href="#Adding-new-key-value-pairs">¶</a></h2><p>Dictionaries are dynamic structures, and you can add new key-value pairs to a dictionary at any time. To add a new key-value pair, you would give the name of the dictionary followed by the new key in square brackets, along with the new value.</p>
+<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'points': 5}
+&gt;&gt;&gt; print(alien_0)
+
+&gt;&gt;&gt; alien_0['x_position'] = 0
+&gt;&gt;&gt; alien_0['y_position'] = 25
+&gt;&gt;&gt; print(alien_0)
+
+
+{'color': 'green', 'points': 5}
+{'color': 'green', 'points': 5, 'x_position': 0, 'y_position': 25}
 </code></pre>
-<h3 id="removing-an-item-using-the-pop()-method">removing an item using the pop() method<a class="anchor-link" href="#removing-an-item-using-the-pop()-method">¶</a></h3><ul>
-<li>The pop() method removes the last item in a list, but it lets you work with that item after removing it unlike the del statement</li>
+<p>Dictionaries retain the order in which they were defined. When you print a dictionary or loop through its elements, you will see the elements in the same order they were added to the dictionary.</p></section><section class='slide'><h2 id="Removing-key-value-pairs">Removing key-value pairs<a class="anchor-link" href="#Removing-key-value-pairs">¶</a></h2><p>When you no longer need a piece of information that’s stored in a dictionary, you can use the del statement to completely remove a key-value pair. All del needs is the name of the dictionary and the key that you want to remove.</p>
+<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'points': 5}
+&gt;&gt;&gt; print(alien_0)
+
+&gt;&gt;&gt; del alien_0['points']
+&gt;&gt;&gt; print(alien_0)
+
+
+{'color': 'green', 'points': 5}
+{'color': 'green'}
+</code></pre>
+<p>Note that the deleted key-value pair is removed permanently</p></section><section class='slide'><h2 id="Accessing-elements-using-the-get()-method">Accessing elements using the get() method<a class="anchor-link" href="#Accessing-elements-using-the-get()-method">¶</a></h2><p>The get() method requires a key as a first argument. As a second optional argument, you can pass the value to be returned if the key doesn’t exist:</p>
+<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'speed': 'slow'}
+
+&gt;&gt;&gt; point_value = alien_0.get('points', 'No point value assigned.')
+&gt;&gt;&gt; print(point_value)
+
+No point value assigned.
+</code></pre>
+<p>If there’s a chance the key you’re asking for might not exist, consider using the get() method instead of the square bracket notation.</p>
+<p><strong>Note:</strong> If you leave out the second argument in the call to get() and the key doesn’t exist, Python will return the value None, which means “no value exists.”</p></section><section class='slide'><h2 id="Looping-through-all-Key-Value-pairs">Looping through all Key-Value pairs<a class="anchor-link" href="#Looping-through-all-Key-Value-pairs">¶</a></h2><p>We can use a for loop together with the .tems() method to iterate over all the keys and values from a dictionary</p>
+<pre><code>&gt;&gt;&gt; user_0 = {
+        'username': 'efermi',
+        'first': 'enrico',
+        'last': 'fermi',
+        }
+
+&gt;&gt;&gt; for key, value in user_0.items():
+        print(f"\nKey: {key}")
+        print(f"Value: {value}")
+
+Key: username
+Value: efermi
+
+Key: first
+Value: enrico
+
+Key: last
+Value: fermi
+</code></pre>
+<h3 id="Looping-through-all-the-keys-in-a-dictionary">Looping through all the keys in a dictionary<a class="anchor-link" href="#Looping-through-all-the-keys-in-a-dictionary">¶</a></h3><p>We can then loop through just the keys from a dictionary by replacing the .tems() method with the .keys() method instead</p>
+<pre><code>&gt;&gt;&gt; favorite_languages = {
+        'jen': 'python',
+        'sarah': 'c',
+        'edward': 'rust',
+        'phil': 'python',
+        }
+
+&gt;&gt;&gt; for name in favorite_languages.keys():
+        print(name.title())
+
+Jen
+Sarah
+Edward
+Phil
+</code></pre>
+<p><strong>Note:</strong> Looping through keys is the default behaviour when looping through a dictionary so <code>for name in favourite_languages</code> would be the same.</p>
+<p>We can also use the keys() method to find out if a particular person was polled based on the example above</p>
+<pre><code>&gt;&gt;&gt; if 'erin' not in favorite_languages.keys():
+        print("Erin, please take our poll!")
+
+Erin, please take our poll!
+</code></pre>
+<h3 id="Looping-through-All-values-in-a-Dictionary">Looping through All values in a Dictionary<a class="anchor-link" href="#Looping-through-All-values-in-a-Dictionary">¶</a></h3><p>Just like how we used .keys() to retrieve only the keys from a dictionary, we can use the same concept but for retrieving only values by using the .value() method.</p>
+<pre><code>&gt;&gt;&gt; for language in favorite_languages.values():
+        print(language.title())
+</code></pre></section><section class='slide'><h2 id="sets">sets<a class="anchor-link" href="#sets">¶</a></h2><p>Sets look like dictionaries because they are also enclosed in curly braces {}. However, unlike dictionaries and lists, sets do not retain the original order in which values were added to the set. Additionally, sets do not allow duplicate values</p>
+<pre><code>my_set = {'python', 'java', 'c#'}
+</code></pre>
+<p>Sets support:</p>
+<ul>
+<li>add()</li>
+<li>remove()</li>
+<li>discard()</li>
+<li>clear()</li>
 </ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki']
-&gt;&gt;&gt; print(motorcycles)
-
-&gt;&gt;&gt; popped_motorcycle = motorcycles.pop()
-&gt;&gt;&gt; print(motorcycles)
-&gt;&gt;&gt; print(popped_motorcycle)
-</code></pre>
-<h3 id="Removing-an-item-by-value">Removing an item by value<a class="anchor-link" href="#Removing-an-item-by-value">¶</a></h3><ul>
-<li>Sometimes you won’t know the position of the value you want to remove from a list. If you only know the value of the item you want to remove, you can use the remove() method.</li>
+<p>Sets only allow immutable types to be stored:</p>
+<ul>
+<li>int</li>
+<li>float</li>
+<li>str</li>
+<li>tuple</li>
+<li>frozenset</li>
 </ul>
-<pre><code>&gt;&gt;&gt; motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
-&gt;&gt;&gt; print(motorcycles)
-
-&gt;&gt;&gt; motorcycles.remove('ducati')
-&gt;&gt;&gt; print(motorcycles)
-
-['honda', 'yamaha', 'suzuki']
-</code></pre>
-<h3 id="Note:">Note:<a class="anchor-link" href="#Note:">¶</a></h3><p>The <code>remove()</code> method deletes only the first occurrence of the value you specify. If there’s a possibility the value appears more than once in the list, you’ll need to use a loop to make sure all occurrences of the value are removed</p></section><section class='slide'><h2 id="Organizing-a-list">Organizing a list<a class="anchor-link" href="#Organizing-a-list">¶</a></h2><p>Sometimes we want to present information in a particular order. Python provides a number of different ways to organize lists.</p>
-<h3 id="Sorting-a-list-permanently-with-the-sort()-method">Sorting a list permanently with the sort() method<a class="anchor-link" href="#Sorting-a-list-permanently-with-the-sort()-method">¶</a></h3><p>We can use sort() to sort items alphabetically or reverse-alphabetical order.</p>
-<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
-&gt;&gt;&gt; cars.sort()
-&gt;&gt;&gt; print(cars)
-
-['audi', 'bmw', 'subaru', 'toyota']
-</code></pre>
-<p>We can also pass the argument <code>reverse=True</code> to display the sorted list in reverse-alphabetical order.</p>
-<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
-&gt;&gt;&gt; cars.sort(reverse=True)
-&gt;&gt;&gt; print(cars)
-
-['toyota', 'subaru', 'bmw', 'audi']
-</code></pre>
-<h3 id="Sorting-a-list-temporarily-using-the-sorted()-function">Sorting a list temporarily using the sorted() function<a class="anchor-link" href="#Sorting-a-list-temporarily-using-the-sorted()-function">¶</a></h3><p>Instead of using sort() which alters the original object, we can use sorted() which does not alter the original list.</p>
-<h3 id="Printing-a-list-in-Reverse-Order">Printing a list in Reverse Order<a class="anchor-link" href="#Printing-a-list-in-Reverse-Order">¶</a></h3><p>To reverse the original order of a list, you can use the reverse() method. This permanently changes the order of the list</p>
-<pre><code>&gt;&gt;&gt; cars = ['bmw', 'audi', 'toyota', 'subaru']
-&gt;&gt;&gt; cars.reverse()
-&gt;&gt;&gt; print(cars)
-
-['subaru', 'toyota', 'audi', 'bmw']
-</code></pre>
-<p><strong>Notice</strong> that reverse() doesn’t sort backward alphabetically; it simply reverses the order of the list:</p>
-<h3 id="Finding-the-length-of-a-list">Finding the length of a list<a class="anchor-link" href="#Finding-the-length-of-a-list">¶</a></h3><p>You can quickly find the length of a list by using the len() function.</p>
 </div>
 </div>
 </div>

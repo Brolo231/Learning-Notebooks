@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 04 - Working with Lists</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>GitHub and Git in the Terminal</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,8 +7508,8 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../../assets/notebook.css">
-<script src="../../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../assets/notebook.css">
+<script src="../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
@@ -7517,19 +7517,15 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 04 - working with lists
+          Github And Git In The Terminal
         </div>
 
         <div class="chapter-nav-bar">
           
-        <a class="chapter-nav prev" href="Chapter 03 - Introducing Lists.html">
-          ⬅ Chapter 03 - introducing lists
-        </a>
-        
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Chapter 05 - If Statements.html">
-          Chapter 05 - if statements ➡
+        <a class="chapter-nav next" href="Terminal.html">
+          Terminal ➡
         </a>
         
         </div>
@@ -7549,122 +7545,136 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=22ba620d-1aba-4b75-ade4-573a0d1d97e6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cf0ada9-1d3d-420f-99cb-8a3d9db66775">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Working-with-Lists">Working with Lists<a class="anchor-link" href="#Working-with-Lists">¶</a></h1><hr/>
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: Looping through an Entire List</li>
-<li>Pg 3: Making Numerical Lists - range()</li>
-<li>Pg 4: Simple Statistics with a List of numbers</li>
-<li>Pg 5: List Comprehensions</li>
-<li>Pg 6: Working with Part of a List - slicing</li>
-<li>Pg 7: Copying a List</li>
-<li>Pg 8: Tuples</li>
-</ul></section><section class='slide'><h2 id="Looping-through-an-entire-list">Looping through an entire list<a class="anchor-link" href="#Looping-through-an-entire-list">¶</a></h2><p>We can use a <code>for</code> loop to iterate through all elements in a list. Looping is important because it automates repetitive tasks</p>
-<pre><code>&gt;&gt;&gt; cars = ["Audi", "BMW", "Ford"]
+<h1 id="GitHub-&amp;-Git">GitHub &amp; Git<a class="anchor-link" href="#GitHub-&amp;-Git">¶</a></h1><hr/>
+<p>Git is a local version control system that tracks changes in files on your computer.</p>
+<h4 id="If-you-havent-already-installed-Git,-install-it:">If you havent already installed Git, install it:<a class="anchor-link" href="#If-you-havent-already-installed-Git,-install-it:">¶</a></h4><pre><code>• Linux (Debian-based): sudo apt install git
+• Mac: brew install git
+• Windows: Download and install Git for Windows
 
-&gt;&gt;&gt; for car in cars:
-&gt;&gt;&gt;     print(car)
-
-Audi
-BMW
-Ford
-</code></pre></section><section class='slide'><h2 id="Making-numerical-lists">Making numerical lists<a class="anchor-link" href="#Making-numerical-lists">¶</a></h2><h3 id="range()">range()<a class="anchor-link" href="#range()">¶</a></h3><p>Lists are ideal for storing sets of numbers, and Python provides a variety of tools to help you work efficiently with lists of numbers.</p>
-<p>Python’s <code>range()</code> function makes it easy to generate a series of numbers. For example, you can use the range() function to print a series of numbers like this:</p>
-<pre><code>&gt;&gt;&gt; for value in range(1, 5):
-&gt;&gt;&gt;    print(value)
-
-1
-2
-3
-4
 </code></pre>
-<h3 id="using-range()-to-make-a-list-of-Numbers">using range() to make a list of Numbers<a class="anchor-link" href="#using-range()-to-make-a-list-of-Numbers">¶</a></h3><pre><code>&gt;&gt;&gt; numbers = list(range(1,6))
-&gt;&gt;&gt; print(numbers)
-
-[1, 2, 3, 4, 5]
-</code></pre>
-<p>We can also pass a thrid argument to <code>range()</code> which will tell python to use that value as a step in generating the numbers</p>
-<p>For Example, the following creates a list of even numbers:</p>
-<pre><code>&gt;&gt;&gt; even_numbers = list(range(2, 11, 2))
-&gt;&gt;&gt; print(even_numbers)
-
-[2, 4, 6, 8, 10]
-</code></pre></section><section class='slide'><h2 id="Simple-statistics-with-a-List-of-Numbers">Simple statistics with a List of Numbers<a class="anchor-link" href="#Simple-statistics-with-a-List-of-Numbers">¶</a></h2><p>A few Python functions are helpful when working with lists of numbers. For example, you can easily find the minimum, maximum, and sum of a list of numbers:</p>
-<pre><code>&gt;&gt;&gt; digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-&gt;&gt;&gt; min(digits)
-0
-&gt;&gt;&gt; max(digits)
-9
-&gt;&gt;&gt; sum(digits)
-45
-</code></pre></section><section class='slide'><h2 id="List-comprehensions">List comprehensions<a class="anchor-link" href="#List-comprehensions">¶</a></h2><p>A list comprehension combines the for loop and the creation of new elements into one line, and automatically appends each new element.</p>
-<p>The following list comprehension generateas a list contasining square numbers 1-10</p>
-<pre><code>&gt;&gt;&gt; squares = [value**2 for value in range(1, 11)]
-&gt;&gt;&gt; print(squares)
-
-[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-</code></pre>
-<p>To use this syntax, begin with a descriptive name for the list, such as squares. Next, open a set of square brackets and define the expression for the values you want to store in the new list. In this example the expression is value<strong>2, which raises the value to the second power. Then, write a for loop to generate the numbers you want to feed into the expression, and close the square brackets. The for loop in this example is for value in range(1, 11), which feeds the values 1 through 10 into the expression value</strong>2. Note that no colon is used at the end of the for statement.</p>
-<p>We can also add condtionals to list comprehensions in the following way:</p>
-<pre><code>[expression for item in iterable if condition]
-</code></pre>
-<p>Python allows inline conditional expressions (also called a ternary expression):</p>
-<pre><code>value_if_true if condition else value_if_false
-</code></pre></section><section class='slide'><h2 id="Working-with-part-of-a-list">Working with part of a list<a class="anchor-link" href="#Working-with-part-of-a-list">¶</a></h2><p>A slice, in python, refers to working with a specific group of items from a list.</p>
-<h3 id="Slicing-a-List">Slicing a List<a class="anchor-link" href="#Slicing-a-List">¶</a></h3><p>To slice a list we need to specify two indexes. The first is where the slice starts (this value is included in the slice), the second index is where we want the slice to end (excluding this value in the slice)</p>
-<pre><code>&gt;&gt;&gt; players = ['charles', 'martina', 'michael', 'florence', 'eli']
-&gt;&gt;&gt; print(players[0:3])
-
-['charles', 'martina', 'michael']
-</code></pre>
-<p><strong>Note:</strong> If you omit the first index, python starts the slice at the beginning of the list, the same principle applies with a slice unitl the end of the list</p>
-<p>Recall that a negative index returns an element a certain distance from the end of a list; therefore, you can output any slice from the end of a list.</p>
-<pre><code>&gt;&gt;&gt; players = ['charles', 'martina', 'michael', 'florence', 'eli']
-&gt;&gt;&gt; print(players[-3:])
-
-['michael', 'florence', 'eli']
-</code></pre>
-<h3 id="Looping-through-a-slice">Looping through a slice<a class="anchor-link" href="#Looping-through-a-slice">¶</a></h3><pre><code>&gt;&gt;&gt; numbers = [1, 2, 3, 4, ,5 ,6]
-
-&gt;&gt;&gt; for number in numbers[-3:]:
-&gt;&gt;&gt;     print(number)
-
-4
-5
-6
-</code></pre></section><section class='slide'><h2 id="Copying-a-List">Copying a List<a class="anchor-link" href="#Copying-a-List">¶</a></h2><p>To copy a list, you can make a slice that includes the entire original list by omitting the first index and the second index ([:]). This tells Python to make a slice that starts at the first item and ends with the last item, producing a copy of the entire list.</p>
-<pre><code>&gt;&gt;&gt; favourite_foods = ['apple', 'grape', 'watermelon']
-&gt;&gt;&gt; fruits = favourite_foods[:]
-
-&gt;&gt;&gt; print(fruits)
-
-['apple', 'grape', 'watermelon']
-</code></pre></section><section class='slide'><h2 id="Tuples">Tuples<a class="anchor-link" href="#Tuples">¶</a></h2><p>Sometimes you’ll want to create a list of items that cannot change. Tuples allow you to do just that. Python refers to values that cannot change as immutable, and an immutable list is called a tuple.</p>
-<p>A tuple looks just like a list, except you use parentheses instead of square brackets. Once you define a tuple, you can access individual elements by using each item’s index, just as you would for a list.</p>
-<p>For example, if we have a rectangle that should always be a certain size, we can ensure that its size doesn’t change by putting the dimensions into a tuple:</p>
-<pre><code>&gt;&gt;&gt; dimensions = (200, 50)
-&gt;&gt;&gt; print(dimensions[0])
-&gt;&gt;&gt; print(dimensions[1])
-
-200
-50
-</code></pre>
-<p>Now if we try to change one of the items from a tuple:</p>
-<pre><code>&gt;&gt;&gt; dimensions = (200, 50)
-&gt;&gt;&gt; dimensions[0] = 250
-
-Traceback (most recent call last):
-  File "dimensions.py", line 2, in &lt;module&gt;
-    dimensions[0] = 250
-TypeError: 'tuple' object does not support item assignment
-</code></pre>
-<p><strong>Note:</strong> Tuples are technically defined by the presence of a comma; the parentheses make them look neater and more readable. If you want to define a tuple with one element, you need to include a trailing comma:</p>
-<p><code>my_t = (3,)</code></p>
+<h4 id="Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">Configure Git with your details to ensure commits are linked to GitHub<a class="anchor-link" href="#Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">¶</a></h4><p><code>git config --global user.name "Your Name"</code> <br/>
+<code>git config --global user.email "your_email@example.com"</code></p></section><section class='slide'></div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d8107e-edf9-40c2-b74b-01ab1e061a68">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="GitHub-CLI">GitHub CLI<a class="anchor-link" href="#GitHub-CLI">¶</a></h1><h4 id="The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">The easiest way to interact with GitHub from the terminal is by using the GitHub CLI.<a class="anchor-link" href="#The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">¶</a></h4><p>Ubuntu/Debian: <code>sudo apt install gh</code> <br/>
+Mac (homebrew): <code>brew install gh</code> <br/>
+Windows: Download from GitHub CLI website</p>
+<h4 id="Authenticate-GitHub-CLI:">Authenticate GitHub CLI:<a class="anchor-link" href="#Authenticate-GitHub-CLI:">¶</a></h4><p><code>gh auth login</code></p></section><section class='slide'></div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e351bc58-0ccc-459a-9d1c-3a871ed69018">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="1.-List-your-repositories">1. List your repositories<a class="anchor-link" href="#1.-List-your-repositories">¶</a></h3><p><code>gh repo list</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=576bec11-1a0b-4198-8491-4f1566c21fcb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2.-Check-to-see-if-you're-inside-a-git-repo">2. Check to see if you're inside a git repo<a class="anchor-link" href="#2.-Check-to-see-if-you're-inside-a-git-repo">¶</a></h3><p><code>git status</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3987bb2b-dd55-4b81-b2a3-77c9b5f7ef81">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3.-Navigate-to-repo-by-cd-into">3. Navigate to repo by cd into<a class="anchor-link" href="#3.-Navigate-to-repo-by-cd-into">¶</a></h3><p><code>cd /path/to/repository</code></p>
+<h4 id="Then-we-can-use-tree--a-to-list-the-full-directory-structure">Then we can use tree -a to list the full directory structure<a class="anchor-link" href="#Then-we-can-use-tree--a-to-list-the-full-directory-structure">¶</a></h4><p><code>tree -a</code></p></section><section class='slide'></div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9264e1cd-9106-436f-832e-e7fb4721a044">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Create-a-repository-from-the-terminal">4. Create a repository from the terminal<a class="anchor-link" href="#4.-Create-a-repository-from-the-terminal">¶</a></h2><ol>
+<li><p>Create a Local Repository <br/>
+<code>mkdir my-new-repo</code> # Create a new folder <br/>
+<code>cd my-new-repo</code> # Navigate into the folder <br/>
+<code>git init</code> # Initialize Git in this folder</p>
+</li>
+<li><p>Add files and make initial commit <br/>
+<code>echo "# My New Repository" &gt;&gt; README.md</code> # Create a README file <br/>
+<code>git add .</code> # Stage all files <br/>
+<code>git commit -m "Initial commit"</code> # Commit the files</p>
+</li>
+<li><p>Create a GitHub Repository from Terminal <br/>
+<code>gh repo create my-new-repo --public --source=. --remote=origin</code> <br/>
+     	• --public → Creates a public repository (use --private for private repos). <br/>
+     	• --source=. → Uses the current directory as the repo. <br/>
+     	• --remote=origin → Adds GitHub as a remote repository.</p>
+</li>
+<li><p>Verify remote URL <br/>
+<code>git remote -v</code> <br/>
+     # This tells us what repository our local git is linked to</p>
+</li>
+</ol></section><section class='slide'></div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4626fc0-3dfb-4d96-91ee-61deabe56002">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="5.-Push-code-to-github">5. Push code to github<a class="anchor-link" href="#5.-Push-code-to-github">¶</a></h2><p><code>git branch -M main</code> # Rename default branch to 'main' (optional) <br/>
+<code>git push -u origin main</code> # Push the repo to GitHub</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=faa232c5-603a-46d4-b1fd-cda5d57bf9e0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="6.-Force-push-local-to-github">6. Force push local to github<a class="anchor-link" href="#6.-Force-push-local-to-github">¶</a></h2><p><code>git push -f originb main</code></p>
+<h2 id="7.-Merge-remote-and-local">7. Merge remote and local<a class="anchor-link" href="#7.-Merge-remote-and-local">¶</a></h2><p><em>This command fetches changes from the remote repository and merges them into your local branch.</em></p>
+<p><code>git pull origin main</code></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d969a260-52f5-48ed-82d7-8eccb7687048">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

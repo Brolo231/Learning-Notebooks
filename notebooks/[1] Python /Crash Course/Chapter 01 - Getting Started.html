@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 06 - Dictionaries</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 01 - Getting Started</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,19 +7517,15 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 06 - dictionaries
+          Chapter 01 - Getting Started
         </div>
 
         <div class="chapter-nav-bar">
           
-        <a class="chapter-nav prev" href="Chapter 05 - If Statements.html">
-          ⬅ Chapter 05 - if statements
-        </a>
-        
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Chapter 07 - User Input and While Loops.html">
-          Chapter 07 - user input and while loops ➡
+        <a class="chapter-nav next" href="Chapter 02 - Troubleshooting Python Errors.html">
+          Chapter 02 - Troubleshooting Python Errors ➡
         </a>
         
         </div>
@@ -7549,133 +7545,110 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c534bfac-3c56-426e-a277-63cc6bc3af3d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3eae17a-e2c4-43d6-9934-f4d39e89c9fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries">¶</a></h1><hr/>
+<h1 id="Getting-started-with-Python">Getting started with Python<a class="anchor-link" href="#Getting-started-with-Python">¶</a></h1><hr/>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: Dictionaries</li>
-<li>Pg 3: Accessing values in a Dictionary</li>
-<li>Pg 4: Adding new key-value pairs</li>
-<li>Pg 5: Removing key-value pairs</li>
-<li>Pg 6: Accessing values with get()</li>
-<li>Pg 7: Looping through all key-value pairs</li>
-<li>Pg 8: Sets</li>
-</ul></section><section class='slide'><h2 id="Dictioanries">Dictioanries<a class="anchor-link" href="#Dictioanries">¶</a></h2><p>A dictionary in Python is a collection of key-value pairs. Each key is connected to a value, and you can use a key to access the value associated with that key. A key’s value can be a number, a string, a list, or even another dictionary. In fact, you can use any object that you can create in Python as a value in a dictionary.</p>
-<p>In Python, a dictionary is wrapped in braces ({}) with a series of key-value pairs inside the braces</p>
-<p>Consider the following dictionary example:</p>
-<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'points': 5}
-
-&gt;&gt;&gt; print(alien_0['color'])
-&gt;&gt;&gt; print(alien_0['points'])
-
-green
+<li>Pg 2: Python in the Terminal</li>
+<li>Pg 3: Variables</li>
+<li>Pg 4: Data Types<ul>
+<li>Pg 5: Data Types - Strings</li>
+<li>Pg 6: Data Types - Numbers</li>
+</ul>
+</li>
+</ul></section><section class='slide'><h2 id="Python-in-the-Terminal">Python in the Terminal<a class="anchor-link" href="#Python-in-the-Terminal">¶</a></h2><hr/>
+<h3 id="Running-python-in-a-terminal-session">Running python in a terminal session<a class="anchor-link" href="#Running-python-in-a-terminal-session">¶</a></h3><p>Start by opening up a command window / terminal and type: <code>python</code></p>
+<p>This will show the currrent version of python installed.</p>
+<h3 id="Useful-Terminal-shortcuts-(macos):">Useful Terminal shortcuts (macos):<a class="anchor-link" href="#Useful-Terminal-shortcuts-(macos):">¶</a></h3><ul>
+<li>ctrl + L = Clear Python Terminal</li>
+<li>ctrl + D = Leave python prompt and return to terminal prompt</li>
+</ul>
+<h3 id="Useful-Terminal-commands-(macos):">Useful Terminal commands (macos):<a class="anchor-link" href="#Useful-Terminal-commands-(macos):">¶</a></h3><ul>
+<li>cd (by itself) = is used to go to the home directory</li>
+<li>cd .. = is used to naviagte around directories where .. represents directory names</li>
+<li>cd - = is used to go back to the previous directory</li>
+<li>pwd = print working directory shows the path to the current directory</li>
+<li>ls = represents list, which shows all nonhidden files that exist in the current directory</li>
+</ul></section><section class='slide'><h2 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h2><p>Variable names can contain only letters, numbers, and underscores. They can start with a letter or an underscore, but not with a number.  <br/>
+For instance, you can call a variable: <br/>
+✅ <code>message_1</code> <br/>
+but not <br/>
+❌ <code>1_message.</code></p>
+<br/>
+<p>✅ variable references -&gt; object (value) <br>
+❌ variables do not store values</br></p></section><section class='slide'><h2 id="Data-Types">Data Types<a class="anchor-link" href="#Data-Types">¶</a></h2><p>Because most programs define and gather some sort of data and then do something useful with it, it helps to classify different types of data.</p></section><section class='slide'><h2 id="Strings">Strings<a class="anchor-link" href="#Strings">¶</a></h2><p>A string is a series of characters. Anything placed within single or double quotes in python is a string.</p>
+<br/>
+<h3 id="Useful-String-Methods:">Useful String Methods:<a class="anchor-link" href="#Useful-String-Methods:">¶</a></h3><ul>
+<li>title()</li>
+<li>upper()</li>
+<li>lower()</li>
+</ul>
+<p>When storing data it is useful to store it using lower(), as user data is not trustworthy when it comes to capitalization</p>
+<br/>
+<h3 id="Python-f-strings">Python f-strings<a class="anchor-link" href="#Python-f-strings">¶</a></h3><p>f-strings (f stands for format) allow variables to be passed within strings with which python replaces the variable with the object / value associated with that variable.</p>
+<br/>
+<h3 id="Adding-whitespae-to-strings-with-Tabs-and-Newlines">Adding whitespae to strings with Tabs and Newlines<a class="anchor-link" href="#Adding-whitespae-to-strings-with-Tabs-and-Newlines">¶</a></h3><p>To add a tab to text we can use the following character combination: <code>\t</code></p>
+<p>To add a newline we can use the following character combination: <code>\n</code></p>
+<br/>
+<h3 id="Stripping-whitespace-in-python">Stripping whitespace in python<a class="anchor-link" href="#Stripping-whitespace-in-python">¶</a></h3><p>We can either strip whitespace to the left of a string. the right, or all the whitespace.</p>
+<ul>
+<li>lstrip()</li>
+<li>rstrip()</li>
+<li>strip()</li>
+</ul>
+<p>Note that the above string methods do not alter the variables object in place. To alter the variables object we need to asign the variable to the updated value.</p>
+<p>For e.g. <br>
+<code>x = x.strip()</code></br></p>
+<h3 id="Removing-Prefixes-and-suffixes">Removing Prefixes and suffixes<a class="anchor-link" href="#Removing-Prefixes-and-suffixes">¶</a></h3><p>We can use the following methods: <code>removeprefix(prefix_to_remove_from_string)</code> <br>
+<code>removesuffix(...)</code></br></p>
+<p>Remember, just like how strip() does not alter the object associated with the variable that we apply these methods to, the same principle applies with removeprefix().</p></section><section class='slide'><h2 id="Numbers">Numbers<a class="anchor-link" href="#Numbers">¶</a></h2><h3 id="Integers">Integers<a class="anchor-link" href="#Integers">¶</a></h3><p>You can add (+), subtract (-), multiply (*), and divide (/) integers in Python.</p>
+<pre><code>&gt;&gt;&gt; 2 + 3
 5
-</code></pre></section><section class='slide'><h2 id="Accessing-values-in-a-Dictionary">Accessing values in a Dictionary<a class="anchor-link" href="#Accessing-values-in-a-Dictionary">¶</a></h2><p>To get the value associated with a key, give the name of the dictionary and then place the key inside a set of square brackets</p>
-<p>For example:</p>
-<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green'}
-&gt;&gt;&gt; print(alien_0['color'])
-
-green
-</code></pre></section><section class='slide'><h2 id="Adding-new-key-value-pairs">Adding new key-value pairs<a class="anchor-link" href="#Adding-new-key-value-pairs">¶</a></h2><p>Dictionaries are dynamic structures, and you can add new key-value pairs to a dictionary at any time. To add a new key-value pair, you would give the name of the dictionary followed by the new key in square brackets, along with the new value.</p>
-<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'points': 5}
-&gt;&gt;&gt; print(alien_0)
-
-&gt;&gt;&gt; alien_0['x_position'] = 0
-&gt;&gt;&gt; alien_0['y_position'] = 25
-&gt;&gt;&gt; print(alien_0)
-
-
-{'color': 'green', 'points': 5}
-{'color': 'green', 'points': 5, 'x_position': 0, 'y_position': 25}
+&gt;&gt;&gt; 3 - 2
+1
+&gt;&gt;&gt; 2 * 3
+6
+&gt;&gt;&gt; 3 / 2
+1.5
 </code></pre>
-<p>Dictionaries retain the order in which they were defined. When you print a dictionary or loop through its elements, you will see the elements in the same order they were added to the dictionary.</p></section><section class='slide'><h2 id="Removing-key-value-pairs">Removing key-value pairs<a class="anchor-link" href="#Removing-key-value-pairs">¶</a></h2><p>When you no longer need a piece of information that’s stored in a dictionary, you can use the del statement to completely remove a key-value pair. All del needs is the name of the dictionary and the key that you want to remove.</p>
-<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'points': 5}
-&gt;&gt;&gt; print(alien_0)
-
-&gt;&gt;&gt; del alien_0['points']
-&gt;&gt;&gt; print(alien_0)
-
-
-{'color': 'green', 'points': 5}
-{'color': 'green'}
+<p>Python uses two multiplication symbols to represent exponents:</p>
+<pre><code>&gt;&gt;&gt; 3 ** 2
+9
+&gt;&gt;&gt; 3 ** 3
+27
+&gt;&gt;&gt; 10 ** 6
+1000000
 </code></pre>
-<p>Note that the deleted key-value pair is removed permanently</p></section><section class='slide'><h2 id="Accessing-elements-using-the-get()-method">Accessing elements using the get() method<a class="anchor-link" href="#Accessing-elements-using-the-get()-method">¶</a></h2><p>The get() method requires a key as a first argument. As a second optional argument, you can pass the value to be returned if the key doesn’t exist:</p>
-<pre><code>&gt;&gt;&gt; alien_0 = {'color': 'green', 'speed': 'slow'}
-
-&gt;&gt;&gt; point_value = alien_0.get('points', 'No point value assigned.')
-&gt;&gt;&gt; print(point_value)
-
-No point value assigned.
+<p>Python supports the order of operations too, so you can use multiple operations in one expression. You can also use parentheses to modify the order of operations so Python can evaluate your expression in the order you specify. For example:</p>
+<pre><code>&gt;&gt;&gt; 2 + 3*4
+14
+&gt;&gt;&gt; (2 + 3) * 4
+20
 </code></pre>
-<p>If there’s a chance the key you’re asking for might not exist, consider using the get() method instead of the square bracket notation.</p>
-<p><strong>Note:</strong> If you leave out the second argument in the call to get() and the key doesn’t exist, Python will return the value None, which means “no value exists.”</p></section><section class='slide'><h2 id="Looping-through-all-Key-Value-pairs">Looping through all Key-Value pairs<a class="anchor-link" href="#Looping-through-all-Key-Value-pairs">¶</a></h2><p>We can use a for loop together with the .tems() method to iterate over all the keys and values from a dictionary</p>
-<pre><code>&gt;&gt;&gt; user_0 = {
-        'username': 'efermi',
-        'first': 'enrico',
-        'last': 'fermi',
-        }
-
-&gt;&gt;&gt; for key, value in user_0.items():
-        print(f"\nKey: {key}")
-        print(f"Value: {value}")
-
-Key: username
-Value: efermi
-
-Key: first
-Value: enrico
-
-Key: last
-Value: fermi
+<h3 id="floats">floats<a class="anchor-link" href="#floats">¶</a></h3><p>Python calls any number with a decimal point a float. This term is used in most programming languages, and it refers to the fact that a decimal point can appear at any position in a number.</p>
+<p>For the most part floats can be treated as normal:</p>
+<pre><code>&gt;&gt;&gt; 0.1 + 0.1
+0.2
 </code></pre>
-<h3 id="Looping-through-all-the-keys-in-a-dictionary">Looping through all the keys in a dictionary<a class="anchor-link" href="#Looping-through-all-the-keys-in-a-dictionary">¶</a></h3><p>We can then loop through just the keys from a dictionary by replacing the .tems() method with the .keys() method instead</p>
-<pre><code>&gt;&gt;&gt; favorite_languages = {
-        'jen': 'python',
-        'sarah': 'c',
-        'edward': 'rust',
-        'phil': 'python',
-        }
-
-&gt;&gt;&gt; for name in favorite_languages.keys():
-        print(name.title())
-
-Jen
-Sarah
-Edward
-Phil
+<p>However, be aware that you can sometimes get an arbitrary number of decimal places in your answer:</p>
+<pre><code>&gt;&gt;&gt; 0.2 + 0.1
+0.30000000000000004
+&gt;&gt;&gt; 3 * 0.1
+0.30000000000000004
 </code></pre>
-<p><strong>Note:</strong> Looping through keys is the default behaviour when looping through a dictionary so <code>for name in favourite_languages</code> would be the same.</p>
-<p>We can also use the keys() method to find out if a particular person was polled based on the example above</p>
-<pre><code>&gt;&gt;&gt; if 'erin' not in favorite_languages.keys():
-        print("Erin, please take our poll!")
-
-Erin, please take our poll!
+<p>Python tries to find a way to represent the result as precisely as possible, which is sometimes difficult given how computers have to represent numbers internally.</p>
+<h3 id="Underscores-in-Numbers">Underscores in Numbers<a class="anchor-link" href="#Underscores-in-Numbers">¶</a></h3><p>When you’re writing long numbers, you can group digits using underscores to make large numbers more readable:</p>
+<pre><code>&gt;&gt;&gt; universe_age = 14_000_000_000
+&gt;&gt;&gt; universe_age
+14000000000 # Notice how python only prints the digits
 </code></pre>
-<h3 id="Looping-through-All-values-in-a-Dictionary">Looping through All values in a Dictionary<a class="anchor-link" href="#Looping-through-All-values-in-a-Dictionary">¶</a></h3><p>Just like how we used .keys() to retrieve only the keys from a dictionary, we can use the same concept but for retrieving only values by using the .value() method.</p>
-<pre><code>&gt;&gt;&gt; for language in favorite_languages.values():
-        print(language.title())
-</code></pre></section><section class='slide'><h2 id="sets">sets<a class="anchor-link" href="#sets">¶</a></h2><p>Sets look like dictionaries because they are also enclosed in curly braces {}. However, unlike dictionaries and lists, sets do not retain the original order in which values were added to the set. Additionally, sets do not allow duplicate values</p>
-<pre><code>my_set = {'python', 'java', 'c#'}
+<h3 id="Constants">Constants<a class="anchor-link" href="#Constants">¶</a></h3><p>A constant is a variable whose value stays the same throughout the life of a program. Python doesn’t have built-in constant types, but Python programmers use all capital letters to indicate a variable should be treated as a constant and never be changed:</p>
+<pre><code>MAX_CONNECTIONS = 5000
 </code></pre>
-<p>Sets support:</p>
-<ul>
-<li>add()</li>
-<li>remove()</li>
-<li>discard()</li>
-<li>clear()</li>
-</ul>
-<p>Sets only allow immutable types to be stored:</p>
-<ul>
-<li>int</li>
-<li>float</li>
-<li>str</li>
-<li>tuple</li>
-<li>frozenset</li>
-</ul>
 </div>
 </div>
 </div>

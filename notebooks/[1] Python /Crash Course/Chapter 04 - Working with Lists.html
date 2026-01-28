@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 07 - User Input and While Loops</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 04 - Working with Lists</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,19 +7517,19 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 07 - user input and while loops
+          Chapter 04 - Working With Lists
         </div>
 
         <div class="chapter-nav-bar">
           
-        <a class="chapter-nav prev" href="Chapter 06 - Dictionaries.html">
-          ⬅ Chapter 06 - dictionaries
+        <a class="chapter-nav prev" href="Chapter 03 - Introducing Lists.html">
+          ⬅ Chapter 03 - Introducing Lists
         </a>
         
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Chapter 08 - Functions.html">
-          Chapter 08 - functions ➡
+        <a class="chapter-nav next" href="Chapter 05 - If Statements.html">
+          Chapter 05 - If Statements ➡
         </a>
         
         </div>
@@ -7549,118 +7549,122 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=af282c2f-13c0-40fb-813e-d83d1f22f243">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=22ba620d-1aba-4b75-ade4-573a0d1d97e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="User-Input-and-While-Loops">User Input and While Loops<a class="anchor-link" href="#User-Input-and-While-Loops">¶</a></h1><hr/>
+<h1 id="Working-with-Lists">Working with Lists<a class="anchor-link" href="#Working-with-Lists">¶</a></h1><hr/>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: input()</li>
-<li>Pg 3: Using int() to accept numerical input</li>
-<li>Pg 4: The Modulo Operator %</li>
-<li>Pg 5: while loops</li>
-</ul></section><section class='slide'><h2 id="How-the-input()-function-works">How the input() function works<a class="anchor-link" href="#How-the-input()-function-works">¶</a></h2><p>The input() function pauses your program and waits for the user to enter some text. Once Python receives the user’s input, it assigns that input to a variable to make it convenient for you to work with.</p>
-<pre><code>&gt;&gt;&gt; message = input("Tell me something, and I will repeat it back to you: ")
-&gt;&gt;&gt; print(message)
+<li>Pg 2: Looping through an Entire List</li>
+<li>Pg 3: Making Numerical Lists - range()</li>
+<li>Pg 4: Simple Statistics with a List of numbers</li>
+<li>Pg 5: List Comprehensions</li>
+<li>Pg 6: Working with Part of a List - slicing</li>
+<li>Pg 7: Copying a List</li>
+<li>Pg 8: Tuples</li>
+</ul></section><section class='slide'><h2 id="Looping-through-an-entire-list">Looping through an entire list<a class="anchor-link" href="#Looping-through-an-entire-list">¶</a></h2><p>We can use a <code>for</code> loop to iterate through all elements in a list. Looping is important because it automates repetitive tasks</p>
+<pre><code>&gt;&gt;&gt; cars = ["Audi", "BMW", "Ford"]
 
+&gt;&gt;&gt; for car in cars:
+&gt;&gt;&gt;     print(car)
 
-Tell me something, and I will repeat it back to you: Hello everyone!
-Hello everyone!
-</code></pre>
-<p>Sometimes you’ll want to write a prompt that’s longer than one line. We can acheive this through the use of the += operator:</p>
-<pre><code>&gt;&gt;&gt; prompt = "If you share your name, we can personalize the messages you see."
-&gt;&gt;&gt; prompt += "\nWhat is your first name? "
-
-&gt;&gt;&gt; name = input(prompt)
-&gt;&gt;&gt; print(f"\nHello, {name}!")
-
-If you share your name, we can personalize the messages you see.
-What is your first name? Eric
-
-Hello, Eric!
-</code></pre></section><section class='slide'><h2 id="Using-int()-to-accept-numerical-input">Using int() to accept numerical input<a class="anchor-link" href="#Using-int()-to-accept-numerical-input">¶</a></h2><p>Sometimes we will want user input in a numerical format, for example, age. By default input() stores user input as a string, therefore, we can use int() to convert user input to type int</p>
-<pre><code>&gt;&gt;&gt; age = int(input("How old are you? "))
-
-How old are you? 21
-
-&gt;&gt;&gt; age
-
-21
-
-&gt;&gt;&gt; age &gt; 18
-
-True
-</code></pre></section><section class='slide'><h2 id="The-modulo-operator">The modulo operator<a class="anchor-link" href="#The-modulo-operator">¶</a></h2><p>A useful tool for working with numerical information is the modulo operator (%), which divides one number by another number and returns the remainder:</p>
-<pre><code>&gt;&gt;&gt; 4 % 3
-1
-&gt;&gt;&gt; 5 % 3
-2
-&gt;&gt;&gt; 6 % 3
-0
-&gt;&gt;&gt; 7 % 3
-1
-</code></pre>
-<p>We can use this logic to determine if a number is even or if it is odd. When <code>if number % 2 is equal to 0</code> then 'number' is even</p></section><section class='slide'><h2 id="Introducing-while-loops">Introducing while loops<a class="anchor-link" href="#Introducing-while-loops">¶</a></h2><p>The while loop runs as long as, or while, a certain condition is true.</p>
-<pre><code>&gt;&gt;&gt; num = 1
-&gt;&gt;&gt; while num &lt;= 5:
-        print(num)
-        num += 1
+Audi
+BMW
+Ford
+</code></pre></section><section class='slide'><h2 id="Making-numerical-lists">Making numerical lists<a class="anchor-link" href="#Making-numerical-lists">¶</a></h2><h3 id="range()">range()<a class="anchor-link" href="#range()">¶</a></h3><p>Lists are ideal for storing sets of numbers, and Python provides a variety of tools to help you work efficiently with lists of numbers.</p>
+<p>Python’s <code>range()</code> function makes it easy to generate a series of numbers. For example, you can use the range() function to print a series of numbers like this:</p>
+<pre><code>&gt;&gt;&gt; for value in range(1, 5):
+&gt;&gt;&gt;    print(value)
 
 1
 2
 3
 4
-5
 </code></pre>
-<h3 id="Letting-the-user-choose-when-to-quit-the-while-loop">Letting the user choose when to quit the while loop<a class="anchor-link" href="#Letting-the-user-choose-when-to-quit-the-while-loop">¶</a></h3><pre><code>&gt;&gt;&gt; message = ""
-&gt;&gt;&gt; while message != 'quit':
-        message = input("type 'quit' to quit: ")
-        print(f"You typed: {message}")
+<h3 id="using-range()-to-make-a-list-of-Numbers">using range() to make a list of Numbers<a class="anchor-link" href="#using-range()-to-make-a-list-of-Numbers">¶</a></h3><pre><code>&gt;&gt;&gt; numbers = list(range(1,6))
+&gt;&gt;&gt; print(numbers)
 
-type 'quit' to quit: quit
-You typed: quit
+[1, 2, 3, 4, 5]
 </code></pre>
-<h3 id="Using-break-to-Exit-a-loop">Using break to Exit a loop<a class="anchor-link" href="#Using-break-to-Exit-a-loop">¶</a></h3><pre><code>num = 5
-&gt;&gt;&gt; while True:
-        print(num)
-        num += 1
-        if num &gt;= 10:
-            break
+<p>We can also pass a thrid argument to <code>range()</code> which will tell python to use that value as a step in generating the numbers</p>
+<p>For Example, the following creates a list of even numbers:</p>
+<pre><code>&gt;&gt;&gt; even_numbers = list(range(2, 11, 2))
+&gt;&gt;&gt; print(even_numbers)
 
+[2, 4, 6, 8, 10]
+</code></pre></section><section class='slide'><h2 id="Simple-statistics-with-a-List-of-Numbers">Simple statistics with a List of Numbers<a class="anchor-link" href="#Simple-statistics-with-a-List-of-Numbers">¶</a></h2><p>A few Python functions are helpful when working with lists of numbers. For example, you can easily find the minimum, maximum, and sum of a list of numbers:</p>
+<pre><code>&gt;&gt;&gt; digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+&gt;&gt;&gt; min(digits)
+0
+&gt;&gt;&gt; max(digits)
+9
+&gt;&gt;&gt; sum(digits)
+45
+</code></pre></section><section class='slide'><h2 id="List-comprehensions">List comprehensions<a class="anchor-link" href="#List-comprehensions">¶</a></h2><p>A list comprehension combines the for loop and the creation of new elements into one line, and automatically appends each new element.</p>
+<p>The following list comprehension generateas a list contasining square numbers 1-10</p>
+<pre><code>&gt;&gt;&gt; squares = [value**2 for value in range(1, 11)]
+&gt;&gt;&gt; print(squares)
+
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+</code></pre>
+<p>To use this syntax, begin with a descriptive name for the list, such as squares. Next, open a set of square brackets and define the expression for the values you want to store in the new list. In this example the expression is value<strong>2, which raises the value to the second power. Then, write a for loop to generate the numbers you want to feed into the expression, and close the square brackets. The for loop in this example is for value in range(1, 11), which feeds the values 1 through 10 into the expression value</strong>2. Note that no colon is used at the end of the for statement.</p>
+<p>We can also add condtionals to list comprehensions in the following way:</p>
+<pre><code>[expression for item in iterable if condition]
+</code></pre>
+<p>Python allows inline conditional expressions (also called a ternary expression):</p>
+<pre><code>value_if_true if condition else value_if_false
+</code></pre></section><section class='slide'><h2 id="Working-with-part-of-a-list">Working with part of a list<a class="anchor-link" href="#Working-with-part-of-a-list">¶</a></h2><p>A slice, in python, refers to working with a specific group of items from a list.</p>
+<h3 id="Slicing-a-List">Slicing a List<a class="anchor-link" href="#Slicing-a-List">¶</a></h3><p>To slice a list we need to specify two indexes. The first is where the slice starts (this value is included in the slice), the second index is where we want the slice to end (excluding this value in the slice)</p>
+<pre><code>&gt;&gt;&gt; players = ['charles', 'martina', 'michael', 'florence', 'eli']
+&gt;&gt;&gt; print(players[0:3])
+
+['charles', 'martina', 'michael']
+</code></pre>
+<p><strong>Note:</strong> If you omit the first index, python starts the slice at the beginning of the list, the same principle applies with a slice unitl the end of the list</p>
+<p>Recall that a negative index returns an element a certain distance from the end of a list; therefore, you can output any slice from the end of a list.</p>
+<pre><code>&gt;&gt;&gt; players = ['charles', 'martina', 'michael', 'florence', 'eli']
+&gt;&gt;&gt; print(players[-3:])
+
+['michael', 'florence', 'eli']
+</code></pre>
+<h3 id="Looping-through-a-slice">Looping through a slice<a class="anchor-link" href="#Looping-through-a-slice">¶</a></h3><pre><code>&gt;&gt;&gt; numbers = [1, 2, 3, 4, ,5 ,6]
+
+&gt;&gt;&gt; for number in numbers[-3:]:
+&gt;&gt;&gt;     print(number)
+
+4
 5
 6
-7
-8
-9
+</code></pre></section><section class='slide'><h2 id="Copying-a-List">Copying a List<a class="anchor-link" href="#Copying-a-List">¶</a></h2><p>To copy a list, you can make a slice that includes the entire original list by omitting the first index and the second index ([:]). This tells Python to make a slice that starts at the first item and ends with the last item, producing a copy of the entire list.</p>
+<pre><code>&gt;&gt;&gt; favourite_foods = ['apple', 'grape', 'watermelon']
+&gt;&gt;&gt; fruits = favourite_foods[:]
+
+&gt;&gt;&gt; print(fruits)
+
+['apple', 'grape', 'watermelon']
+</code></pre></section><section class='slide'><h2 id="Tuples">Tuples<a class="anchor-link" href="#Tuples">¶</a></h2><p>Sometimes you’ll want to create a list of items that cannot change. Tuples allow you to do just that. Python refers to values that cannot change as immutable, and an immutable list is called a tuple.</p>
+<p>A tuple looks just like a list, except you use parentheses instead of square brackets. Once you define a tuple, you can access individual elements by using each item’s index, just as you would for a list.</p>
+<p>For example, if we have a rectangle that should always be a certain size, we can ensure that its size doesn’t change by putting the dimensions into a tuple:</p>
+<pre><code>&gt;&gt;&gt; dimensions = (200, 50)
+&gt;&gt;&gt; print(dimensions[0])
+&gt;&gt;&gt; print(dimensions[1])
+
+200
+50
 </code></pre>
-<h3 id="Using-continue-in-a-Loop">Using continue in a Loop<a class="anchor-link" href="#Using-continue-in-a-Loop">¶</a></h3><p>Rather than breaking out of a loop entirely without executing the rest of its code, you can use the continue statement to return to the beginning of the loop, based on the result of a conditional test. For example, consider a loop that counts from 1 to 10 but prints only the odd numbers in that range:</p>
-<pre><code>current_number = 0
-&gt;&gt;&gt; while current_number &lt; 10:
-        current_number += 1
-        if current_number % 2 == 0:
-           continue
+<p>Now if we try to change one of the items from a tuple:</p>
+<pre><code>&gt;&gt;&gt; dimensions = (200, 50)
+&gt;&gt;&gt; dimensions[0] = 250
 
-        print(current_number)
-
-
-1
-3
-5
-7
-9
+Traceback (most recent call last):
+  File "dimensions.py", line 2, in &lt;module&gt;
+    dimensions[0] = 250
+TypeError: 'tuple' object does not support item assignment
 </code></pre>
-<p>If a while loop continues forever press CTRL-C to stop the program from running</p>
-<h3 id="Removing-all-instances-of-specific-values-from-a-List">Removing all instances of specific values from a List<a class="anchor-link" href="#Removing-all-instances-of-specific-values-from-a-List">¶</a></h3><p>Say you have a list of pets with the value 'cat' repeated several times. To remove all instances of that value, you can run a while loop until 'cat' is no longer in the list, as shown here:</p>
-<pre><code>&gt;&gt;&gt; pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
-&gt;&gt;&gt; print(pets)
-
-&gt;&gt;&gt; while 'cat' in pets:
-&gt;&gt;&gt;     pets.remove('cat')
-
-&gt;&gt;&gt; print(pets)
-</code></pre>
+<p><strong>Note:</strong> Tuples are technically defined by the presence of a comma; the parentheses make them look neater and more readable. If you want to define a tuple with one element, you need to include a trailing comma:</p>
+<p><code>my_t = (3,)</code></p>
 </div>
 </div>
 </div>

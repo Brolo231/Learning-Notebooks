@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 01 - Getting Started</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 08 - Functions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,15 +7517,19 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 01 - getting started
+          Chapter 08 - Functions
         </div>
 
         <div class="chapter-nav-bar">
           
+        <a class="chapter-nav prev" href="Chapter 07 - User Input and While Loops.html">
+          ⬅ Chapter 07 - User Input And While Loops
+        </a>
+        
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Chapter 02 - Troubleshooting Python Errors.html">
-          Chapter 02 - troubleshooting python errors ➡
+        <a class="chapter-nav next" href="Chapter 09 - Classes.html">
+          Chapter 09 - Classes ➡
         </a>
         
         </div>
@@ -7545,109 +7549,133 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3eae17a-e2c4-43d6-9934-f4d39e89c9fe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c787880f-bdc9-450f-b5ce-303f3d331f4c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Getting-started-with-Python">Getting started with Python<a class="anchor-link" href="#Getting-started-with-Python">¶</a></h1><hr/>
+<h1 id="Functions">Functions<a class="anchor-link" href="#Functions">¶</a></h1><hr/>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: Python in the Terminal</li>
-<li>Pg 3: Variables</li>
-<li>Pg 4: Data Types<ul>
-<li>Pg 5: Data Types - Strings</li>
-<li>Pg 6: Data Types - Numbers</li>
-</ul>
-</li>
-</ul></section><section class='slide'><h2 id="Python-in-the-Terminal">Python in the Terminal<a class="anchor-link" href="#Python-in-the-Terminal">¶</a></h2><hr/>
-<h3 id="Running-python-in-a-terminal-session">Running python in a terminal session<a class="anchor-link" href="#Running-python-in-a-terminal-session">¶</a></h3><p>Start by opening up a command window / terminal and type: <code>python</code></p>
-<p>This will show the currrent version of python installed.</p>
-<h3 id="Useful-Terminal-shortcuts-(macos):">Useful Terminal shortcuts (macos):<a class="anchor-link" href="#Useful-Terminal-shortcuts-(macos):">¶</a></h3><ul>
-<li>ctrl + L = Clear Python Terminal</li>
-<li>ctrl + D = Leave python prompt and return to terminal prompt</li>
-</ul>
-<h3 id="Useful-Terminal-commands-(macos):">Useful Terminal commands (macos):<a class="anchor-link" href="#Useful-Terminal-commands-(macos):">¶</a></h3><ul>
-<li>cd (by itself) = is used to go to the home directory</li>
-<li>cd .. = is used to naviagte around directories where .. represents directory names</li>
-<li>cd - = is used to go back to the previous directory</li>
-<li>pwd = print working directory shows the path to the current directory</li>
-<li>ls = represents list, which shows all nonhidden files that exist in the current directory</li>
-</ul></section><section class='slide'><h2 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h2><p>Variable names can contain only letters, numbers, and underscores. They can start with a letter or an underscore, but not with a number.  <br/>
-For instance, you can call a variable: <br/>
-✅ <code>message_1</code> <br/>
-but not <br/>
-❌ <code>1_message.</code></p>
-<br/>
-<p>✅ variable references -&gt; object (value) <br>
-❌ variables do not store values</br></p></section><section class='slide'><h2 id="Data-Types">Data Types<a class="anchor-link" href="#Data-Types">¶</a></h2><p>Because most programs define and gather some sort of data and then do something useful with it, it helps to classify different types of data.</p></section><section class='slide'><h2 id="Strings">Strings<a class="anchor-link" href="#Strings">¶</a></h2><p>A string is a series of characters. Anything placed within single or double quotes in python is a string.</p>
-<br/>
-<h3 id="Useful-String-Methods:">Useful String Methods:<a class="anchor-link" href="#Useful-String-Methods:">¶</a></h3><ul>
-<li>title()</li>
-<li>upper()</li>
-<li>lower()</li>
-</ul>
-<p>When storing data it is useful to store it using lower(), as user data is not trustworthy when it comes to capitalization</p>
-<br/>
-<h3 id="Python-f-strings">Python f-strings<a class="anchor-link" href="#Python-f-strings">¶</a></h3><p>f-strings (f stands for format) allow variables to be passed within strings with which python replaces the variable with the object / value associated with that variable.</p>
-<br/>
-<h3 id="Adding-whitespae-to-strings-with-Tabs-and-Newlines">Adding whitespae to strings with Tabs and Newlines<a class="anchor-link" href="#Adding-whitespae-to-strings-with-Tabs-and-Newlines">¶</a></h3><p>To add a tab to text we can use the following character combination: <code>\t</code></p>
-<p>To add a newline we can use the following character combination: <code>\n</code></p>
-<br/>
-<h3 id="Stripping-whitespace-in-python">Stripping whitespace in python<a class="anchor-link" href="#Stripping-whitespace-in-python">¶</a></h3><p>We can either strip whitespace to the left of a string. the right, or all the whitespace.</p>
+<li>Pg 2: Defining a function</li>
+<li>Pg 3: Passing information to a function</li>
+<li>Pg 4: Positional arguments</li>
+<li>Pg 5: Default values</li>
+<li>Pg 6: Return values</li>
+<li>Pg 7: args</li>
+<li>Pg 8: kwargs</li>
+<li>Pg 9: func(*list)</li>
+</ul></section><section class='slide'><h2 id="Defining-a-function">Defining a function<a class="anchor-link" href="#Defining-a-function">¶</a></h2><p>Functions are named blocks of code that are designed to do a specific task. Instead of a rewriting code over and over, we can <em>call</em> a function, this makes python run the code inside the function.</p>
+<pre><code>def greet_user():
+    """ Display a simple greeting """
+    print("Hello!")
+
+greet_user()
+</code></pre>
 <ul>
-<li>lstrip()</li>
-<li>rstrip()</li>
-<li>strip()</li>
+<li>'def' is used to define a function in python</li>
+<li>The line under the function name is a comment called the <em>doc-string</em> this describes what the function does</li>
+</ul></section><section class='slide'><h2 id="Passing-information-to-a-function">Passing information to a function<a class="anchor-link" href="#Passing-information-to-a-function">¶</a></h2><pre><code>def greet_user(username):
+    """ Display a personal greeting """
+    print(f"Hello, {username.title}!")
+
+greet_user("john")
+
+Hello, John!
+</code></pre>
+<h3 id="Arguments-and-Parameters">Arguments and Parameters<a class="anchor-link" href="#Arguments-and-Parameters">¶</a></h3><ul>
+<li><p>In the previous block of code we defined a function that accepted a variable 'username'. This is called a parameter</p>
+</li>
+<li><p>When we pass the value for this paramter in the calling of the function it is called an argument. In the example above 'john' is the argument and username is the parameter</p>
+</li>
+</ul></section><section class='slide'><h2 id="Positional-arguments">Positional arguments<a class="anchor-link" href="#Positional-arguments">¶</a></h2><p>When you call a function, Python must match each argument in the function call with a parameter in the function definition. The simplest way to do this is based on the order of the arguments provided. Values matched up this way are called <em>positional arguments</em>.</p>
+<pre><code>def pets(breed, name):
+    """ Displays information about pets """
+    print(f"My {breed}'s name is {name.title()}.")
+
+pets("rottweiler", "bruce")
+pets("golden retriever", "max")
+</code></pre>
+<p>A function may be called multiple times as shown above</p>
+<h3 id="keyword-arguments">keyword arguments<a class="anchor-link" href="#keyword-arguments">¶</a></h3><p>A keyword argument is a name-value pair that you pass to a function. You directly associate the name and the value within the argument, so when you pass the argument to the function, there’s no confusion (you won’t end up with a harry named Hamster). Keyword arguments free you from having to worry about correctly ordering your arguments in the function call, and they clarify the role of each value in the function call.</p>
+<pre><code>def pets(breed, name):
+    """ Displays information about pets """
+    print(f"My {breed}'s name is {name.title()}.")
+
+pets(name="bruce", breed="rottweiler")
+</code></pre>
+<p><strong>Notice:</strong> we are able to place our keyword arguments in any order because we are defining which parameter the argument is passed to.</p></section><section class='slide'><h2 id="Default-values">Default values<a class="anchor-link" href="#Default-values">¶</a></h2><p>When writing a function, you can define a default value for each parameter. If an argument for a parameter is provided in the function call, Python uses the argument value. If not, it uses the parameter’s default value.</p>
+<pre><code>&gt;&gt;&gt; def describe_pet(pet_name, animal_type='dog'):
+        """Display information about a pet."""
+        print(f"\nI have a {animal_type}.")
+        print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+&gt;&gt;&gt; describe_pet(pet_name='willie')
+
+I have a dog.
+My dog's name is Willie.
+</code></pre>
+<p><strong>Note:</strong> the above is using positional arguments functionality, if animal_type='dog' was first and the user passed only "willie" there would be a SyntaxError</p></section><section class='slide'><h2 id="Return-Values">Return Values<a class="anchor-link" href="#Return-Values">¶</a></h2><p>A function doesn’t always have to display its output directly. Instead, it can process some data and then return a value or set of values. The return statement takes a value from inside a function and sends it back to the line that called the function.</p>
+<pre><code>&gt;&gt;&gt; def get_formatted_name(first_name, last_name):
+        """Return a full name, neatly formatted."""
+         full_name = f"{first_name} {last_name}"
+         return full_name.title()
+
+&gt;&gt;&gt; musician = get_formatted_name('jimi', 'hendrix')
+&gt;&gt;&gt; print(musician)
+
+Jimi Hendrix
+</code></pre></section><section class='slide'><h2 id="*args">*args<a class="anchor-link" href="#*args">¶</a></h2><p><code>*args</code> are used to collect extra positional arguments into a tuple</p>
+<pre><code>&gt;&gt;&gt; def add_numbers(*args):
+        print(args)
+
+&gt;&gt;&gt; add_numbers(1, 2, 3, 4)
+
+(1, 2, 3, 4)
+</code></pre>
+<p><strong>Note:</strong> Name args is a convention, not required</p></section><section class='slide'><h2 id="**kwargs">**kwargs<a class="anchor-link" href="#**kwargs">¶</a></h2><p>kwargs are variable keyword arguments. The ** collects extra keyword arguments into a dictionary.</p>
+<pre><code>&gt;&gt;&gt; def show_profile(**kwargs):
+        print(kwargs)
+
+&gt;&gt;&gt; show_profile(name="John", age=21, field="Informatics")
+
+{'name': 'John', 'age': 21, 'field': 'Informatics'}
+</code></pre></section><section class='slide'><h2 id="func(*list)---Unpacking-positional-arguments">func(*list) - Unpacking positional arguments<a class="anchor-link" href="#func(*list)---Unpacking-positional-arguments">¶</a></h2><p>Normally, functions expect separate arguments:</p>
+<pre><code>&gt;&gt;&gt; def add(a, b, c):
+        return a + b + c
+</code></pre>
+<p>You must call it like:</p>
+<pre><code>add(1,2,3)
+</code></pre>
+<p>But what if your values are already in:</p>
+<ul>
+<li>a list → [1, 2, 3]</li>
+<li>or a dictionary → {"a": 1, "b": 2, "c": 3}</li>
 </ul>
-<p>Note that the above string methods do not alter the variables object in place. To alter the variables object we need to asign the variable to the updated value.</p>
-<p>For e.g. <br>
-<code>x = x.strip()</code></br></p>
-<h3 id="Removing-Prefixes-and-suffixes">Removing Prefixes and suffixes<a class="anchor-link" href="#Removing-Prefixes-and-suffixes">¶</a></h3><p>We can use the following methods: <code>removeprefix(prefix_to_remove_from_string)</code> <br>
-<code>removesuffix(...)</code></br></p>
-<p>Remember, just like how strip() does not alter the object associated with the variable that we apply these methods to, the same principle applies with removeprefix().</p></section><section class='slide'><h2 id="Numbers">Numbers<a class="anchor-link" href="#Numbers">¶</a></h2><h3 id="Integers">Integers<a class="anchor-link" href="#Integers">¶</a></h3><p>You can add (+), subtract (-), multiply (*), and divide (/) integers in Python.</p>
-<pre><code>&gt;&gt;&gt; 2 + 3
-5
-&gt;&gt;&gt; 3 - 2
-1
-&gt;&gt;&gt; 2 * 3
-6
-&gt;&gt;&gt; 3 / 2
-1.5
+<p>Without unpacking, this fails:</p>
+<pre><code>values = [1, 2, 3]
+add(values)        # ❌ wrong — parameter 'a' gets the whole list
 </code></pre>
-<p>Python uses two multiplication symbols to represent exponents:</p>
-<pre><code>&gt;&gt;&gt; 3 ** 2
-9
-&gt;&gt;&gt; 3 ** 3
-27
-&gt;&gt;&gt; 10 ** 6
-1000000
+<p>So Python gives you unpacking operators:</p>
+<ul>
+<li>'*' for sequences (list / tuple)</li>
+<li>'**' for dictionaries</li>
+</ul>
+<p>They “spread” the values into separate arguments.</p>
+<h4 id="Example-using-'*':">Example using '*':<a class="anchor-link" href="#Example-using-'*':">¶</a></h4><pre><code>&gt;&gt;&gt; def add(a, b, c):
+        print(a, b, c)
+
+&gt;&gt;&gt; values = [10, 20, 30]
+&gt;&gt;&gt; add(*values)
 </code></pre>
-<p>Python supports the order of operations too, so you can use multiple operations in one expression. You can also use parentheses to modify the order of operations so Python can evaluate your expression in the order you specify. For example:</p>
-<pre><code>&gt;&gt;&gt; 2 + 3*4
-14
-&gt;&gt;&gt; (2 + 3) * 4
-20
+<p>Internally, python turns this into</p>
+<pre><code>add(10, 20, 30)
 </code></pre>
-<h3 id="floats">floats<a class="anchor-link" href="#floats">¶</a></h3><p>Python calls any number with a decimal point a float. This term is used in most programming languages, and it refers to the fact that a decimal point can appear at any position in a number.</p>
-<p>For the most part floats can be treated as normal:</p>
-<pre><code>&gt;&gt;&gt; 0.1 + 0.1
-0.2
-</code></pre>
-<p>However, be aware that you can sometimes get an arbitrary number of decimal places in your answer:</p>
-<pre><code>&gt;&gt;&gt; 0.2 + 0.1
-0.30000000000000004
-&gt;&gt;&gt; 3 * 0.1
-0.30000000000000004
-</code></pre>
-<p>Python tries to find a way to represent the result as precisely as possible, which is sometimes difficult given how computers have to represent numbers internally.</p>
-<h3 id="Underscores-in-Numbers">Underscores in Numbers<a class="anchor-link" href="#Underscores-in-Numbers">¶</a></h3><p>When you’re writing long numbers, you can group digits using underscores to make large numbers more readable:</p>
-<pre><code>&gt;&gt;&gt; universe_age = 14_000_000_000
-&gt;&gt;&gt; universe_age
-14000000000 # Notice how python only prints the digits
-</code></pre>
-<h3 id="Constants">Constants<a class="anchor-link" href="#Constants">¶</a></h3><p>A constant is a variable whose value stays the same throughout the life of a program. Python doesn’t have built-in constant types, but Python programmers use all capital letters to indicate a variable should be treated as a constant and never be changed:</p>
-<pre><code>MAX_CONNECTIONS = 5000
+<h4 id="Example-using-'**':">Example using '**':<a class="anchor-link" href="#Example-using-'**':">¶</a></h4><pre><code>def greet(name, age):
+    print(name, age)
+
+data = {"name": "Brandon", "age": 21}
+greet(**data)
 </code></pre>
 </div>
 </div>

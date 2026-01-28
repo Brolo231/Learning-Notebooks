@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GitHub and Git in the Terminal</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 09 - Classes</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7508,8 +7508,8 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration -->
-<link rel="stylesheet" href="../../assets/notebook.css">
-<script src="../../assets/notebook.js"></script>
+<link rel="stylesheet" href="../../../assets/notebook.css">
+<script src="../../../assets/notebook.js"></script>
 
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
@@ -7517,15 +7517,19 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Github and git in the terminal
+          Chapter 09 - Classes
         </div>
 
         <div class="chapter-nav-bar">
           
+        <a class="chapter-nav prev" href="Chapter 08 - Functions.html">
+          ⬅ Chapter 08 - Functions
+        </a>
+        
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Terminal.html">
-          Terminal ➡
+        <a class="chapter-nav next" href="Chapter 10 - Files and Exceptions.html">
+          Chapter 10 - Files And Exceptions ➡
         </a>
         
         </div>
@@ -7545,136 +7549,313 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cf0ada9-1d3d-420f-99cb-8a3d9db66775">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f51dba66-01d3-43b3-b9b1-1a7aad546d47">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GitHub-&amp;-Git">GitHub &amp; Git<a class="anchor-link" href="#GitHub-&amp;-Git">¶</a></h1><hr/>
-<p>Git is a local version control system that tracks changes in files on your computer.</p>
-<h4 id="If-you-havent-already-installed-Git,-install-it:">If you havent already installed Git, install it:<a class="anchor-link" href="#If-you-havent-already-installed-Git,-install-it:">¶</a></h4><pre><code>• Linux (Debian-based): sudo apt install git
-• Mac: brew install git
-• Windows: Download and install Git for Windows
+<h1 id="Classes">Classes<a class="anchor-link" href="#Classes">¶</a></h1><hr/>
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
+<li>Pg 2: Object-oriented programming</li>
+<li>Pg 3: <code>__init__()</code></li>
+<li>Pg 4: Attributes</li>
+<li>Pg 5: Inheritance</li>
+<li>Pg 6: Overriding Methods from Parent Class</li>
+<li>Pg 7: Composition</li>
+<li>Pg 8: Importing Classes</li>
+<li>Pg 9: Terminology summary</li>
+</ul></section><section class='slide'><h2 id="OOP-(Object-Oriented-Programming)">OOP (Object Oriented Programming)<a class="anchor-link" href="#OOP-(Object-Oriented-Programming)">¶</a></h2><p>Before OOP, programs were mostly:</p>
+<ul>
+<li>long scripts</li>
+<li>excessive functions</li>
+<li>global variables</li>
+<li>difficult to expand on</li>
+</ul>
+<p>OOP allows you to model your program as a collection of objects. When you write a class, you define the general behavior that a whole category of objects can have</p>
+<p>Without classes:</p>
+<ul>
+<li>no objects</li>
+<li>no encapsulation</li>
+<li>no inheritence</li>
+<li>no polymoprhism</li>
+</ul>
+<p>Although we have not learnt the above yet, these form the 4 pillars of OOP</p>
+<h3 id="What-is-an-object?">What is an object?<a class="anchor-link" href="#What-is-an-object?">¶</a></h3><p>An object is a real instance that is created from a class</p>
+<h3 id="Creating-a-simple-class">Creating a simple class<a class="anchor-link" href="#Creating-a-simple-class">¶</a></h3><pre><code>class Dog:
 
+    # doc-string describing what the class does 
+    """A simple attempt to model a dog.""" 
+
+     def __init__(self, name, age):
+        """Initialize name and age attributes."""
+        self.name = name
+        self.age = age
+
+     def sit(self):
+        """Simulate a dog sitting in response to a command."""
+        print(f"{self.name} is now sitting.")
+
+     def roll_over(self):
+        """Simulate rolling over in response to a command."""
+        print(f"{self.name} rolled over!")
 </code></pre>
-<h4 id="Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">Configure Git with your details to ensure commits are linked to GitHub<a class="anchor-link" href="#Configure-Git-with-your-details-to-ensure-commits-are-linked-to-GitHub">¶</a></h4><p><code>git config --global user.name "Your Name"</code> <br/>
-<code>git config --global user.email "your_email@example.com"</code></p></section><section class='slide'></div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d8107e-edf9-40c2-b74b-01ab1e061a68">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GitHub-CLI">GitHub CLI<a class="anchor-link" href="#GitHub-CLI">¶</a></h1><h4 id="The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">The easiest way to interact with GitHub from the terminal is by using the GitHub CLI.<a class="anchor-link" href="#The-easiest-way-to-interact-with-GitHub-from-the-terminal-is-by-using-the-GitHub-CLI.">¶</a></h4><p>Ubuntu/Debian: <code>sudo apt install gh</code> <br/>
-Mac (homebrew): <code>brew install gh</code> <br/>
-Windows: Download from GitHub CLI website</p>
-<h4 id="Authenticate-GitHub-CLI:">Authenticate GitHub CLI:<a class="anchor-link" href="#Authenticate-GitHub-CLI:">¶</a></h4><p><code>gh auth login</code></p></section><section class='slide'></div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e351bc58-0ccc-459a-9d1c-3a871ed69018">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.-List-your-repositories">1. List your repositories<a class="anchor-link" href="#1.-List-your-repositories">¶</a></h3><p><code>gh repo list</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=576bec11-1a0b-4198-8491-4f1566c21fcb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.-Check-to-see-if-you're-inside-a-git-repo">2. Check to see if you're inside a git repo<a class="anchor-link" href="#2.-Check-to-see-if-you're-inside-a-git-repo">¶</a></h3><p><code>git status</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3987bb2b-dd55-4b81-b2a3-77c9b5f7ef81">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.-Navigate-to-repo-by-cd-into">3. Navigate to repo by cd into<a class="anchor-link" href="#3.-Navigate-to-repo-by-cd-into">¶</a></h3><p><code>cd /path/to/repository</code></p>
-<h4 id="Then-we-can-use-tree--a-to-list-the-full-directory-structure">Then we can use tree -a to list the full directory structure<a class="anchor-link" href="#Then-we-can-use-tree--a-to-list-the-full-directory-structure">¶</a></h4><p><code>tree -a</code></p></section><section class='slide'></div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9264e1cd-9106-436f-832e-e7fb4721a044">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Create-a-repository-from-the-terminal">4. Create a repository from the terminal<a class="anchor-link" href="#4.-Create-a-repository-from-the-terminal">¶</a></h2><ol>
-<li><p>Create a Local Repository <br/>
-<code>mkdir my-new-repo</code> # Create a new folder <br/>
-<code>cd my-new-repo</code> # Navigate into the folder <br/>
-<code>git init</code> # Initialize Git in this folder</p>
+<p>By convention, capitalized names refer to classes in python</p></section><section class='slide'><h3 id="The-init()-method">The <strong>init</strong>() method<a class="anchor-link" href="#The-init()-method">¶</a></h3><p>A function that is part of a class is called a method. The <code>__init__()</code> method is a special method that python runs automatically whenever we create a new instance based on the Dog class.</p>
+<p>To understand the <code>self</code> paarmeter we can compre the difference between a class and a function. A function is also an object in python, however it is usually stateless by default which means when you reuse a function it has no memory of previous calls to it. However when we create an instance of a class the changes we make to that instance persist in memory and previous changes are remembered. Now <code>self</code> does the follwoing:</p>
+<ul>
+<li>self = “this specific object”</li>
+<li>It allows methods to access and modify that object’s own data</li>
+</ul>
+<p>The following example showcases this distinction between using self and not using self</p>
+<pre><code>class Example:
+    def __init__(self):
+        self.persistent = 0      # stored in the object (uses self)
+        temporary = 0           # local variable (NO self) — useless here
+
+    def increment(self):
+        self.persistent += 1    # modifies object state
+        temporary = 0           # local variable created fresh each call
+        temporary += 1
+
+        print("self.persistent =", self.persistent)
+        print("temporary =", temporary)
+</code></pre>
+<p>Now if we ran the following :</p>
+<pre><code>e = Example()
+
+e.increment()
+e.increment()
+e.increment()
+</code></pre>
+<p>We would get this out put:</p>
+<pre><code>self.persistent = 1
+temporary = 1
+
+self.persistent = 2
+temporary = 1
+
+self.persistent = 3
+temporary = 1
+</code></pre>
+<p>Any variable prefixed with self is available to every method in the class, and we’ll also be able to access these variables through any instance created from the class.</p></section><section class='slide'><h2 id="Attributes">Attributes<a class="anchor-link" href="#Attributes">¶</a></h2><p>There are two types of attributes:</p>
+<ul>
+<li>Instance attributes<ul>
+<li>These belong to each object separately</li>
+</ul>
 </li>
-<li><p>Add files and make initial commit <br/>
-<code>echo "# My New Repository" &gt;&gt; README.md</code> # Create a README file <br/>
-<code>git add .</code> # Stage all files <br/>
-<code>git commit -m "Initial commit"</code> # Commit the files</p>
+<li>Class attributes<ul>
+<li>These belong to the class itself, and are shared by all instances.</li>
+</ul>
 </li>
-<li><p>Create a GitHub Repository from Terminal <br/>
-<code>gh repo create my-new-repo --public --source=. --remote=origin</code> <br/>
-     	• --public → Creates a public repository (use --private for private repos). <br/>
-     	• --source=. → Uses the current directory as the repo. <br/>
-     	• --remote=origin → Adds GitHub as a remote repository.</p>
-</li>
-<li><p>Verify remote URL <br/>
-<code>git remote -v</code> <br/>
-     # This tells us what repository our local git is linked to</p>
-</li>
-</ol></section><section class='slide'></div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4626fc0-3dfb-4d96-91ee-61deabe56002">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Push-code-to-github">5. Push code to github<a class="anchor-link" href="#5.-Push-code-to-github">¶</a></h2><p><code>git branch -M main</code> # Rename default branch to 'main' (optional) <br/>
-<code>git push -u origin main</code> # Push the repo to GitHub</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=faa232c5-603a-46d4-b1fd-cda5d57bf9e0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Force-push-local-to-github">6. Force push local to github<a class="anchor-link" href="#6.-Force-push-local-to-github">¶</a></h2><p><code>git push -f originb main</code></p>
-<h2 id="7.-Merge-remote-and-local">7. Merge remote and local<a class="anchor-link" href="#7.-Merge-remote-and-local">¶</a></h2><p><em>This command fetches changes from the remote repository and merges them into your local branch.</em></p>
-<p><code>git pull origin main</code></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d969a260-52f5-48ed-82d7-8eccb7687048">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+</ul>
+<pre><code>class User:
+    total_users = 0   # class attribute
+
+    def __init__(self, name):
+        User.total_users += 1
+        self.name = name   # instance attribute
+</code></pre>
+<h3 id="Default-attribute-values">Default attribute values<a class="anchor-link" href="#Default-attribute-values">¶</a></h3><p>We can use default attribute values similarily to how we used default paramter values in functions</p>
+<pre><code>class User:
+    def __init__(self, username, active = True, role = 'user'):
+        self.username = username
+        self.active = active
+        self.role = role
+
+u1 = User("john")
+u2 = User("alice", role="admin")
+
+print(u2.role)
+</code></pre></section><section class='slide'><h2 id="Inheritance">Inheritance<a class="anchor-link" href="#Inheritance">¶</a></h2><p>Inheritance allows you to define new classes based on other versions of classes previously written.</p>
+<p>When one class inherits from another, it takes on the attributes and methods of the first class.</p>
+<p>The original class is called the parent class (superclass), and the new class is the child class (subclass). The child class can inherit any or all of the attributes and methods of its parent class, but it’s also free to define new attributes and methods of its own.</p>
+<p>The following is a simple example of a class inheriting the methods and attributes from another class</p>
+<pre><code>class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        """Set the odometer reading to the given value."""
+        if mileage &gt;= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """Initialize attributes of the parent class."""
+        super().__init__(make, model, year)
+
+
+❺ my_leaf = ElectricCar('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+</code></pre>
+<p><strong>Note:</strong> <code>The super()</code> function is a specialized function that allows you to call a method from the parent class.</p>
+<p>To inherit the properties from another class we simply input the parent class's name in the parentheses of the new child class we are creating</p>
+<p><strong>Note:</strong> When you inherit from another class, that child class automatically has access to all the parent class's methods and attributes</p></section><section class='slide'><h2 id="Overriding-methods-from-the-parent-class">Overriding methods from the parent class<a class="anchor-link" href="#Overriding-methods-from-the-parent-class">¶</a></h2><p>You can override any method from the parent class that doesn’t fit what you’re trying to model with the child class. To do this, you define a method in the child class with the same name as the method you want to override in the parent class. Python will disregard the parent class method and only pay attention to the method you define in the child class.</p>
+<pre><code>class ElectricCar(Car):
+    --snip--
+
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car doesn't have a gas tank!")
+</code></pre></section><section class='slide'><h2 id="Composition">Composition<a class="anchor-link" href="#Composition">¶</a></h2><p>Composition is when:</p>
+<ul>
+<li>One class owns another class as part of itself</li>
+<li>The relationship is: “has a”, not “is a”</li>
+</ul>
+<pre><code>class Car:
+     --snip--
+
+class Battery:
+     """A simple attempt to model a battery for an electric car."""
+
+     def __init__(self, battery_size=40):
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size
+
+     def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()
+
+my_leaf = ElectricCar('nissan', 'leaf', 2024)
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()
+</code></pre></section><section class='slide'><h2 id="Importing-classes">Importing classes<a class="anchor-link" href="#Importing-classes">¶</a></h2><p>Python allows you to store classes in modules and then import the classes you need into your main program</p>
+<p>It is good practice to write a doc-string for each module you create</p>
+<p>To import a class from a module we can call the python file name and then import the class using the Class Name</p>
+<p>For example:</p>
+<pre><code>from car import Car
+</code></pre>
+<h3 id="Importing-an-Entire-Module">Importing an Entire Module<a class="anchor-link" href="#Importing-an-Entire-Module">¶</a></h3><p>We can also import an entire module and then access the classes you need using dot notation.</p>
+<pre><code>import car
+</code></pre>
+<h3 id="Using-aliases">Using aliases<a class="anchor-link" href="#Using-aliases">¶</a></h3><p>When importing from a module we can use an alias to shorten the keyword we need to enter in order to call the class</p>
+<pre><code>from electric_car import ElectricCar as EC
+</code></pre>
+<h2 id="Terminology">Terminology<a class="anchor-link" href="#Terminology">¶</a></h2><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class</td>
+<td>A blueprint that defines the structure and behavior of objects</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>A real instance created from a class</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>A function that belongs to a class</td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>A variable that belongs to an object or a class</td>
+</tr>
+<tr>
+<td>Instance attribute</td>
+<td>An attribute that belongs to a specific object (each object has its own copy)</td>
+</tr>
+<tr>
+<td>Class attribute</td>
+<td>An attribute shared by all instances of a class</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>The <code>__init__()</code> method that initializes a new object</td>
+</tr>
+<tr>
+<td>self</td>
+<td>Refers to the current object; used to access its attributes and methods</td>
+</tr>
+<tr>
+<td>Inheritance</td>
+<td>“is a” relationship (e.g., Dog is an Animal)</td>
+</tr>
+<tr>
+<td>Parent / Base class</td>
+<td>The class being inherited from</td>
+</tr>
+<tr>
+<td>Child / Subclass</td>
+<td>The class that inherits from another class</td>
+</tr>
+<tr>
+<td>super()</td>
+<td>Calls a method from the parent class, usually the constructor</td>
+</tr>
+<tr>
+<td>Overriding</td>
+<td>Replacing a parent class method with a new version in the child class</td>
+</tr>
+<tr>
+<td>Composition</td>
+<td>“has a” relationship (e.g., Car has an Engine)</td>
+</tr>
+<tr>
+<td>Component class</td>
+<td>A class that is contained inside another class (used in composition)</td>
+</tr>
+<tr>
+<td>Encapsulation</td>
+<td>Keeping data and behavior together and controlling access to them</td>
+</tr>
+<tr>
+<td>Polymorphism</td>
+<td>Different objects responding differently to the same method name</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>A Python file that contains classes or functions</td>
+</tr>
+<tr>
+<td>Import</td>
+<td>Bringing a class or module into another file so it can be used</td>
+</tr>
+<tr>
+<td>Alias</td>
+<td>A short alternative name given during import (e.g., <code>as EC</code>)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

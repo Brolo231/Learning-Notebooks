@@ -10,6 +10,9 @@ function showSlide(i) {
   if (indicator) {
     indicator.innerText = `Page ${i + 1} / ${slides().length}`;
   }
+
+  // ✅ FIX: toggle pagination visibility
+  updatePaginationVisibility(i);
 }
 
 function nextSlide() {
@@ -69,6 +72,13 @@ function buildPageJump() {
 
 document.addEventListener("DOMContentLoaded", buildPageJump);
 
+function updatePaginationVisibility(index) {
+  const pageJump = document.getElementById("page-jump");
+  if (!pageJump) return;
+
+  // Show page jump ONLY on first slide
+  pageJump.style.display = index === 0 ? "flex" : "none";
+}
 
 let SEARCH_DATA = [];
 
@@ -90,6 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchBox.addEventListener("input", function () {
   const query = this.value.toLowerCase().trim();
+    if (!query) return;
+
+    // Build safe regex: whole word or exact phrase
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const wordRegex = new RegExp(`\\b${escaped}\\b`, "i");
   const tokens = query.split(/\s+/).filter(Boolean);
 
   const lessons = document.querySelectorAll(".lesson-item");
@@ -117,19 +132,22 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     // Build weighted search text
-    let searchText = titleText + " ";
+    let matched = false;
 
-    if (entry) {
-      searchText +=
-        entry.title + " " +
-        entry.headings + " " +
-        entry.content;
+    // 1️⃣ Title match (highest priority)
+    if (wordRegex.test(titleText)) {
+      matched = true;
     }
 
-    // ALL tokens must match somewhere
-    const matched = tokens.every(token =>
-      searchText.includes(token)
-    );
+    // 2️⃣ Headings match
+    else if (entry && wordRegex.test(entry.headings)) {
+      matched = true;
+    }
+
+    // 3️⃣ Content match (WHOLE WORD only)
+    else if (entry && wordRegex.test(entry.content)) {
+      matched = true;
+    }
 
     if (!matched) {
       el.style.display = "none";

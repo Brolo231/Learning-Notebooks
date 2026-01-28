@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 08 - Functions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 07 - User Input and While Loops</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,19 +7517,19 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 08 - functions
+          Chapter 07 - User Input And While Loops
         </div>
 
         <div class="chapter-nav-bar">
           
-        <a class="chapter-nav prev" href="Chapter 07 - User Input and While Loops.html">
-          ⬅ Chapter 07 - user input and while loops
+        <a class="chapter-nav prev" href="Chapter 06 - Dictionaries.html">
+          ⬅ Chapter 06 - Dictionaries
         </a>
         
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
-        <a class="chapter-nav next" href="Chapter 09 - Classes.html">
-          Chapter 09 - classes ➡
+        <a class="chapter-nav next" href="Chapter 08 - Functions.html">
+          Chapter 08 - Functions ➡
         </a>
         
         </div>
@@ -7549,133 +7549,117 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c787880f-bdc9-450f-b5ce-303f3d331f4c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=af282c2f-13c0-40fb-813e-d83d1f22f243">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Functions">Functions<a class="anchor-link" href="#Functions">¶</a></h1><hr/>
+<h1 id="User-Input-and-While-Loops">User Input and While Loops<a class="anchor-link" href="#User-Input-and-While-Loops">¶</a></h1><hr/>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: Defining a function</li>
-<li>Pg 3: Passing information to a function</li>
-<li>Pg 4: Positional arguments</li>
-<li>Pg 5: Default values</li>
-<li>Pg 6: Return values</li>
-<li>Pg 7: args</li>
-<li>Pg 8: kwargs</li>
-<li>Pg 9: func(*list)</li>
-</ul></section><section class='slide'><h2 id="Defining-a-function">Defining a function<a class="anchor-link" href="#Defining-a-function">¶</a></h2><p>Functions are named blocks of code that are designed to do a specific task. Instead of a rewriting code over and over, we can <em>call</em> a function, this makes python run the code inside the function.</p>
-<pre><code>def greet_user():
-    """ Display a simple greeting """
-    print("Hello!")
+<li>Pg 2: input()</li>
+<li>Pg 3: Using int() to accept numerical input</li>
+<li>Pg 4: The Modulo Operator %</li>
+<li>Pg 5: while loops</li>
+</ul></section><section class='slide'><h2 id="How-the-input()-function-works">How the input() function works<a class="anchor-link" href="#How-the-input()-function-works">¶</a></h2><p>The input() function pauses your program and waits for the user to enter some text. Once Python receives the user’s input, it assigns that input to a variable to make it convenient for you to work with.</p>
+<pre><code>&gt;&gt;&gt; message = input("Tell me something, and I will repeat it back to you: ")
+&gt;&gt;&gt; print(message)
 
-greet_user()
+
+Tell me something, and I will repeat it back to you: Hello everyone!
+Hello everyone!
 </code></pre>
-<ul>
-<li>'def' is used to define a function in python</li>
-<li>The line under the function name is a comment called the <em>doc-string</em> this describes what the function does</li>
-</ul></section><section class='slide'><h2 id="Passing-information-to-a-function">Passing information to a function<a class="anchor-link" href="#Passing-information-to-a-function">¶</a></h2><pre><code>def greet_user(username):
-    """ Display a personal greeting """
-    print(f"Hello, {username.title}!")
+<p>Sometimes you’ll want to write a prompt that’s longer than one line. We can acheive this through the use of the += operator:</p>
+<pre><code>&gt;&gt;&gt; prompt = "If you share your name, we can personalize the messages you see."
+&gt;&gt;&gt; prompt += "\nWhat is your first name? "
 
-greet_user("john")
+&gt;&gt;&gt; name = input(prompt)
+&gt;&gt;&gt; print(f"\nHello, {name}!")
 
-Hello, John!
+If you share your name, we can personalize the messages you see.
+What is your first name? Eric
+
+Hello, Eric!
+</code></pre></section><section class='slide'><h2 id="Using-int()-to-accept-numerical-input">Using int() to accept numerical input<a class="anchor-link" href="#Using-int()-to-accept-numerical-input">¶</a></h2><p>Sometimes we will want user input in a numerical format, for example, age. By default input() stores user input as a string, therefore, we can use int() to convert user input to type int</p>
+<pre><code>&gt;&gt;&gt; age = int(input("How old are you? "))
+
+How old are you? 21
+
+&gt;&gt;&gt; age
+
+21
+
+&gt;&gt;&gt; age &gt; 18
+
+True
+</code></pre></section><section class='slide'><h2 id="The-modulo-operator">The modulo operator<a class="anchor-link" href="#The-modulo-operator">¶</a></h2><p>A useful tool for working with numerical information is the modulo operator (%), which divides one number by another number and returns the remainder:</p>
+<pre><code>&gt;&gt;&gt; 4 % 3
+1
+&gt;&gt;&gt; 5 % 3
+2
+&gt;&gt;&gt; 6 % 3
+0
+&gt;&gt;&gt; 7 % 3
+1
 </code></pre>
-<h3 id="Arguments-and-Parameters">Arguments and Parameters<a class="anchor-link" href="#Arguments-and-Parameters">¶</a></h3><ul>
-<li><p>In the previous block of code we defined a function that accepted a variable 'username'. This is called a parameter</p>
-</li>
-<li><p>When we pass the value for this paramter in the calling of the function it is called an argument. In the example above 'john' is the argument and username is the parameter</p>
-</li>
-</ul></section><section class='slide'><h2 id="Positional-arguments">Positional arguments<a class="anchor-link" href="#Positional-arguments">¶</a></h2><p>When you call a function, Python must match each argument in the function call with a parameter in the function definition. The simplest way to do this is based on the order of the arguments provided. Values matched up this way are called <em>positional arguments</em>.</p>
-<pre><code>def pets(breed, name):
-    """ Displays information about pets """
-    print(f"My {breed}'s name is {name.title()}.")
+<p>We can use this logic to determine if a number is even or if it is odd. When <code>if number % 2 is equal to 0</code> then 'number' is even</p></section><section class='slide'><h2 id="Introducing-while-loops">Introducing while loops<a class="anchor-link" href="#Introducing-while-loops">¶</a></h2><p>The while loop runs as long as, or while, a certain condition is true.</p>
+<pre><code>&gt;&gt;&gt; num = 1
+&gt;&gt;&gt; while num &lt;= 5:
+        print(num)
+        num += 1
 
-pets("rottweiler", "bruce")
-pets("golden retriever", "max")
+1
+2
+3
+4
+5
 </code></pre>
-<p>A function may be called multiple times as shown above</p>
-<h3 id="keyword-arguments">keyword arguments<a class="anchor-link" href="#keyword-arguments">¶</a></h3><p>A keyword argument is a name-value pair that you pass to a function. You directly associate the name and the value within the argument, so when you pass the argument to the function, there’s no confusion (you won’t end up with a harry named Hamster). Keyword arguments free you from having to worry about correctly ordering your arguments in the function call, and they clarify the role of each value in the function call.</p>
-<pre><code>def pets(breed, name):
-    """ Displays information about pets """
-    print(f"My {breed}'s name is {name.title()}.")
+<h3 id="Letting-the-user-choose-when-to-quit-the-while-loop">Letting the user choose when to quit the while loop<a class="anchor-link" href="#Letting-the-user-choose-when-to-quit-the-while-loop">¶</a></h3><pre><code>&gt;&gt;&gt; message = ""
+&gt;&gt;&gt; while message != 'quit':
+        message = input("type 'quit' to quit: ")
+        print(f"You typed: {message}")
 
-pets(name="bruce", breed="rottweiler")
+type 'quit' to quit: quit
+You typed: quit
 </code></pre>
-<p><strong>Notice:</strong> we are able to place our keyword arguments in any order because we are defining which parameter the argument is passed to.</p></section><section class='slide'><h2 id="Default-values">Default values<a class="anchor-link" href="#Default-values">¶</a></h2><p>When writing a function, you can define a default value for each parameter. If an argument for a parameter is provided in the function call, Python uses the argument value. If not, it uses the parameter’s default value.</p>
-<pre><code>&gt;&gt;&gt; def describe_pet(pet_name, animal_type='dog'):
-        """Display information about a pet."""
-        print(f"\nI have a {animal_type}.")
-        print(f"My {animal_type}'s name is {pet_name.title()}.")
+<h3 id="Using-break-to-Exit-a-loop">Using break to Exit a loop<a class="anchor-link" href="#Using-break-to-Exit-a-loop">¶</a></h3><pre><code>num = 5
+&gt;&gt;&gt; while True:
+        print(num)
+        num += 1
+        if num &gt;= 10:
+            break
 
-&gt;&gt;&gt; describe_pet(pet_name='willie')
-
-I have a dog.
-My dog's name is Willie.
+5
+6
+7
+8
+9
 </code></pre>
-<p><strong>Note:</strong> the above is using positional arguments functionality, if animal_type='dog' was first and the user passed only "willie" there would be a SyntaxError</p></section><section class='slide'><h2 id="Return-Values">Return Values<a class="anchor-link" href="#Return-Values">¶</a></h2><p>A function doesn’t always have to display its output directly. Instead, it can process some data and then return a value or set of values. The return statement takes a value from inside a function and sends it back to the line that called the function.</p>
-<pre><code>&gt;&gt;&gt; def get_formatted_name(first_name, last_name):
-        """Return a full name, neatly formatted."""
-         full_name = f"{first_name} {last_name}"
-         return full_name.title()
+<h3 id="Using-continue-in-a-Loop">Using continue in a Loop<a class="anchor-link" href="#Using-continue-in-a-Loop">¶</a></h3><p>Rather than breaking out of a loop entirely without executing the rest of its code, you can use the continue statement to return to the beginning of the loop, based on the result of a conditional test. For example, consider a loop that counts from 1 to 10 but prints only the odd numbers in that range:</p>
+<pre><code>current_number = 0
+&gt;&gt;&gt; while current_number &lt; 10:
+        current_number += 1
+        if current_number % 2 == 0:
+           continue
 
-&gt;&gt;&gt; musician = get_formatted_name('jimi', 'hendrix')
-&gt;&gt;&gt; print(musician)
+        print(current_number)
 
-Jimi Hendrix
-</code></pre></section><section class='slide'><h2 id="*args">*args<a class="anchor-link" href="#*args">¶</a></h2><p><code>*args</code> are used to collect extra positional arguments into a tuple</p>
-<pre><code>&gt;&gt;&gt; def add_numbers(*args):
-        print(args)
 
-&gt;&gt;&gt; add_numbers(1, 2, 3, 4)
-
-(1, 2, 3, 4)
+1
+3
+5
+7
+9
 </code></pre>
-<p><strong>Note:</strong> Name args is a convention, not required</p></section><section class='slide'><h2 id="**kwargs">**kwargs<a class="anchor-link" href="#**kwargs">¶</a></h2><p>kwargs are variable keyword arguments. The ** collects extra keyword arguments into a dictionary.</p>
-<pre><code>&gt;&gt;&gt; def show_profile(**kwargs):
-        print(kwargs)
+<p>If a while loop continues forever press CTRL-C to stop the program from running</p>
+<h3 id="Removing-all-instances-of-specific-values-from-a-List">Removing all instances of specific values from a List<a class="anchor-link" href="#Removing-all-instances-of-specific-values-from-a-List">¶</a></h3><p>Say you have a list of pets with the value 'cat' repeated several times. To remove all instances of that value, you can run a while loop until 'cat' is no longer in the list, as shown here:</p>
+<pre><code>&gt;&gt;&gt; pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
+&gt;&gt;&gt; print(pets)
 
-&gt;&gt;&gt; show_profile(name="John", age=21, field="Informatics")
+&gt;&gt;&gt; while 'cat' in pets:
+&gt;&gt;&gt;     pets.remove('cat')
 
-{'name': 'John', 'age': 21, 'field': 'Informatics'}
-</code></pre></section><section class='slide'><h2 id="func(*list)---Unpacking-positional-arguments">func(*list) - Unpacking positional arguments<a class="anchor-link" href="#func(*list)---Unpacking-positional-arguments">¶</a></h2><p>Normally, functions expect separate arguments:</p>
-<pre><code>&gt;&gt;&gt; def add(a, b, c):
-        return a + b + c
-</code></pre>
-<p>You must call it like:</p>
-<pre><code>add(1,2,3)
-</code></pre>
-<p>But what if your values are already in:</p>
-<ul>
-<li>a list → [1, 2, 3]</li>
-<li>or a dictionary → {"a": 1, "b": 2, "c": 3}</li>
-</ul>
-<p>Without unpacking, this fails:</p>
-<pre><code>values = [1, 2, 3]
-add(values)        # ❌ wrong — parameter 'a' gets the whole list
-</code></pre>
-<p>So Python gives you unpacking operators:</p>
-<ul>
-<li>'*' for sequences (list / tuple)</li>
-<li>'**' for dictionaries</li>
-</ul>
-<p>They “spread” the values into separate arguments.</p>
-<h4 id="Example-using-'*':">Example using '*':<a class="anchor-link" href="#Example-using-'*':">¶</a></h4><pre><code>&gt;&gt;&gt; def add(a, b, c):
-        print(a, b, c)
-
-&gt;&gt;&gt; values = [10, 20, 30]
-&gt;&gt;&gt; add(*values)
-</code></pre>
-<p>Internally, python turns this into</p>
-<pre><code>add(10, 20, 30)
-</code></pre>
-<h4 id="Example-using-'**':">Example using '**':<a class="anchor-link" href="#Example-using-'**':">¶</a></h4><pre><code>def greet(name, age):
-    print(name, age)
-
-data = {"name": "Brandon", "age": 21}
-greet(**data)
+&gt;&gt;&gt; print(pets)
 </code></pre>
 </div>
 </div>

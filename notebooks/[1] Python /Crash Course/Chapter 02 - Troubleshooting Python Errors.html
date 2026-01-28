@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chapter 10 - Files and Exceptions</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Chapter 02 - Troubleshooting Python Errors</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,17 +7517,21 @@ a.anchor-link {
     <nav class="notebook-top-nav">
       <div class="notebook-nav-inner">
         <div class="notebook-title-text">
-          Chapter 10 - files and exceptions
+          Chapter 02 - Troubleshooting Python Errors
         </div>
 
         <div class="chapter-nav-bar">
           
-        <a class="chapter-nav prev" href="Chapter 09 - Classes.html">
-          ⬅ Chapter 09 - classes
+        <a class="chapter-nav prev" href="Chapter 01 - Getting Started.html">
+          ⬅ Chapter 01 - Getting Started
         </a>
         
           <a class="home-link" href="https://brolo231.github.io/Learning-Notebooks/">🏠 Home</a>
           
+        <a class="chapter-nav next" href="Chapter 03 - Introducing Lists.html">
+          Chapter 03 - Introducing Lists ➡
+        </a>
+        
         </div>
       </div>
     </nav>
@@ -7545,41 +7549,94 @@ a.anchor-link {
     </div>
 
       <section class='slide'><main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eeeaa673-d93a-48be-aa00-036ca3ef0ba4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27bf4bc0-9262-4f69-87be-4982733cd378">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="File-and-Exceptions">File and Exceptions<a class="anchor-link" href="#File-and-Exceptions">¶</a></h1><hr/>
+<h2 id="%F0%9F%9B%A0%EF%B8%8F-Troubleshooting-&amp;-Understanding-Python-Errors">🛠️ Troubleshooting &amp; Understanding Python Errors<a class="anchor-link" href="#%F0%9F%9B%A0%EF%B8%8F-Troubleshooting-&amp;-Understanding-Python-Errors">¶</a></h2><p>Python errors are messages raised by the <strong>Python interpreter</strong> when it cannot understand or safely run your code. Learning to read and interpret these errors is a <strong>core programming skill</strong>.</p>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li>Pg 2: Reading from a File</li>
-<li>Pg 3:</li>
-<li>Pg 4:</li>
-<li>Pg 5:</li>
-<li>Pg 6:</li>
-<li>Pg 7:</li>
-<li>Pg 8:</li>
-<li>Pg 9:</li>
-</ul></section><section class='slide'><h2 id="Reading-from-a-file">Reading from a file<a class="anchor-link" href="#Reading-from-a-file">¶</a></h2><p>The following is a simple example of reading and printing the contents of a file:</p>
-<pre><code>from pathlib import Path
-
-path = Path('pi_digits.txt')
-contents = path.read_text()
-print(contents)
-</code></pre>
-<p><code>read_text</code> returns the contents of the file in the form of a single string</p>
-<p>In the example above the file pi_digits.txt would need to be in the same directory that this python script is saved in, in order for it to be successfully read, otherwise, the exact path to that files directory would need to be provided.</p>
-<h3 id="Accessing-a-file's-lines">Accessing a file's lines<a class="anchor-link" href="#Accessing-a-file's-lines">¶</a></h3><p>You can use the splitlines() method to turn a long string into a set of lines, and then use a for loop to examine each line from a file, one at a time:</p>
-<pre><code>from pathlib import Path
-
-path = Path('pi_digits.txt')
-contents = path.read_text()
-
-lines = contents.splitlines()
-for line in lines:
-    print(line)
-</code></pre>
+<li>Pg 2: Reading python errors</li>
+<li>Pg 3: SyntaxError</li>
+<li>Pg 4: NameError</li>
+<li>Pg 5: TypeError</li>
+<li>Pg 6: ValueError</li>
+<li>Pg 7: IndexError</li>
+<li>Pg 8: KeyError</li>
+<li>Pg 9: Attribute Error</li>
+<li>Pg 10: Debugging Mindset</li>
+</ul></section><section class='slide'><h3 id="%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">🔍 How to Read a Python Error (Top → Bottom)<a class="anchor-link" href="#%F0%9F%94%8D-How-to-Read-a-Python-Error-(Top-%E2%86%92-Bottom)">¶</a></h3><p>A typical error message looks like this:</p>
+<div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File "example.py", line 3, in &lt;module&gt;
+    print(x)
+NameError: name 'x' is not defined
+</pre></div>
+<p>Read errors in this order:</p>
+<ol>
+<li><strong>Last line</strong> → error type + short explanation</li>
+<li><strong>Line number</strong> → where the error occurred</li>
+<li><strong>Your code line</strong> → what Python failed on</li>
+</ol></section><section class='slide'><h3 id="%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">❌ SyntaxError — code cannot run<a class="anchor-link" href="#%E2%9D%8C-SyntaxError-%E2%80%94-code-cannot-run">¶</a></h3><p>Occurs when Python <strong>cannot understand the structure</strong> of your code.</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p><strong>Common causes:</strong></p>
+<ul>
+<li>Missing <code>:</code></li>
+<li>Unmatched brackets</li>
+<li>Incorrect indentation</li>
+</ul>
+<blockquote>
+<p>🧠 Fix syntax errors before anything else.</p>
+</blockquote></section><section class='slide'><h3 id="%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">❌ NameError — variable not defined<a class="anchor-link" href="#%E2%9D%8C-NameError-%E2%80%94-variable-not-defined">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+<p><strong>Meaning:</strong><br/>
+Python has never seen <code>total</code>.</p>
+<p><strong>Common causes:</strong></p>
+<ul>
+<li>Variable not created</li>
+<li>Misspelled variable name</li>
+<li>Variable defined in another scope</li>
+</ul></section><section class='slide'><h3 id="%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">❌ TypeError — invalid operation for a type<a class="anchor-link" href="#%E2%9D%8C-TypeError-%E2%80%94-invalid-operation-for-a-type">¶</a></h3><div class="highlight"><pre><span></span><span class="s2">"5"</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+<p><strong>Meaning:</strong><br/>
+The operation is not valid for the given data types.</p>
+<blockquote>
+<p>🧠 Read as: <em>“This operation doesn’t make sense for these values.”</em></p>
+</blockquote></section><section class='slide'><h3 id="%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">❌ ValueError — correct type, invalid value<a class="anchor-link" href="#%E2%9D%8C-ValueError-%E2%80%94-correct-type,-invalid-value">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">)</span>
+</pre></div>
+<p><strong>Meaning:</strong><br/>
+The type is correct, but the value cannot be converted or used.</p></section><section class='slide'><h3 id="%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">❌ IndexError — index out of range<a class="anchor-link" href="#%E2%9D%8C-IndexError-%E2%80%94-index-out-of-range">¶</a></h3><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">nums</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+<p><strong>Meaning:</strong><br/>
+You tried to access an index that does not exist.</p></section><section class='slide'><h3 id="%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">❌ KeyError — dictionary key missing<a class="anchor-link" href="#%E2%9D%8C-KeyError-%E2%80%94-dictionary-key-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]</span>
+</pre></div>
+<p><strong>Meaning:</strong><br/>
+The specified key does not exist in the dictionary.</p></section><section class='slide'><h3 id="%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">❌ AttributeError — attribute or method missing<a class="anchor-link" href="#%E2%9D%8C-AttributeError-%E2%80%94-attribute-or-method-missing">¶</a></h3><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+<p><strong>Meaning:</strong><br/>
+The object does not support that attribute or method.</p></section><section class='slide'><h2 id="%F0%9F%A7%A0-Debugging-Mindset">🧠 Debugging Mindset<a class="anchor-link" href="#%F0%9F%A7%A0-Debugging-Mindset">¶</a></h2><p>When an error occurs:</p>
+<ol>
+<li>Stay calm — errors are normal</li>
+<li>Read the <strong>last line first</strong></li>
+<li>Identify:<ul>
+<li>The error type</li>
+<li>The line number</li>
+</ul>
+</li>
+<li>Ask:<ul>
+<li>Is the variable defined?</li>
+<li>Is the type correct?</li>
+<li>Is the value valid?</li>
+</ul>
+</li>
+</ol>
+<h2 id="%E2%9C%85-Key-Rule-to-Remember">✅ Key Rule to Remember<a class="anchor-link" href="#%E2%9C%85-Key-Rule-to-Remember">¶</a></h2><p><strong>Errors are feedback, not failure.</strong> <br/>
+The interpreter is telling you exactly what it cannot understand.</p>
 </div>
 </div>
 </div>
